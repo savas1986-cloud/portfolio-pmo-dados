@@ -1,2 +1,2 @@
 # portfolio-pmo-dados
-Portfólio de projetos de PMO de dados | Documentos, análises e templates
+Portfólio profissional de PMO (Project Management Office) focado em projetos de dados. Inclui TAP (Termo de Abertura de Projeto), OKRs, matriz de riscos, análise de viabilidade e templates de governança.
