@@ -104,7 +104,7 @@ Este portfólio está em **construção**. Os documentos serão adicionados conf
 ## Contato
 
 📧 **E-mail:** savas1986@gmail.com  
-🔗 **LinkedIn:** linkedin.com/in/patriciavasconcelos  
+🔗 **LinkedIn:** www.linkedin.com/in/patricia-vasconcelos-b6013068
 📁 **GitHub:** github.com/savas1986-cloud/portfolio-pmo-dados
 
 ---
