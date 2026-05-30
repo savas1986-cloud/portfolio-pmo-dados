@@ -9,7 +9,7 @@
 
 Profissional de TI com 5+ anos de experiência em Gestão de Projetos, PMO e Análise de Dados. Atualmente em transição para **PMO de Dados**, combinando minha experiência em gestão com conhecimentos técnicos em SQL, Power BI e Python.
 
-**MBA em Gerenciamento de Projetos** | **MBA em Gestão Empresarial** | **Pós-graduação em Gestão, Estratégia e Liderança (FIAP - cursando)**
+**MBA em Gerenciamento de Projetos** | **MBA em Gestão Empresarial** | **Pós-graduação em Gestão, Estratégia e Liderança (FIAP)**
 
 ---
 
