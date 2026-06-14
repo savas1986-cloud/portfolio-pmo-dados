@@ -41,7 +41,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 
 | # | Projeto | O que demonstra | Link |
 |---|---------|-----------------|------|
-| 1 | Termo de Abertura de Projeto (TAP) | Escopo, stakeholders e cronograma | [Ver →][(portfolio-pmo-dados/01-projeto-abertura/)] |
+| 1 | Termo de Abertura de Projeto (TAP) | Escopo, stakeholders e cronograma | [Ver →](portfolio-pmo-dados/01-projeto-abertura/) |
 | 2 | Checklist de Viabilidade Técnica | Framework de 7 perguntas para validar demandas | [Ver →](projetos/02-checklist-viabilidade/) |
 | 3 | Análise Crítica de Dashboard | Governança visual e sugestões de melhoria | [Ver →](projetos/03-analise-dashboard/) |
 | 4 | Backlog Priorizado (MoSCoW) | Priorização de demandas de dados | [Ver →](projetos/04-backlog-moscow/) |
