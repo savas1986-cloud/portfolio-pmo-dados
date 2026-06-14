@@ -63,7 +63,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | 4      | Governança de Dados & LGPD       | ⏳ Programado             |
 | 5      | Power BI Avançado (DAX)          | ⏳ Programado             |
 
-📄 [Ver roteiro completo de estudos](roteiros/roteiro-estudos-2026.html)
+
 
 ---
 
@@ -78,7 +78,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | PL-300 — Power BI Data Analyst      | Microsoft    | ⏳ Planejada      | Mar/2027  |
 | CDMP Associate                      | DAMA         | ⏳ Planejada      | Jun/2027  |
 
-📄 [Ver plano completo de certificações](roteiros/roteiro-certificacoes-2027.html)
+
 
 ---
 
