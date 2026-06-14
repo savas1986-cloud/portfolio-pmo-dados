@@ -1,8 +1,7 @@
 # Patricia Vasconcelos Gomes
 ### PMO de Dados · Gestão de Projetos Analíticos · Power BI · SQL · Governança
-
-📍 Colina, SP &nbsp;·&nbsp; 🏢 F1RST — Santander Group &nbsp;·&nbsp;
-[LinkedIn](www.linkedin.com/in/patricia-vasconcelos-b6013068) &nbsp;·&nbsp; [E-mail](patricia.gvasconcelos.pmo@gmail.com)
+&nbsp;·&nbsp;
+[LinkedIn](www.linkedin.com/in/patricia-vasconcelos-b6013068) [E-mail](patricia.gvasconcelos.pmo@gmail.com)
 
 ---
 
