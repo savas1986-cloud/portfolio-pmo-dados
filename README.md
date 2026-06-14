@@ -1,114 +1,86 @@
-# Meu Portfólio - PMO de Dados
+# Patricia Vasconcelos Gomes
+### PMO de Dados · Gestão de Projetos Analíticos · Power BI · SQL · Governança
 
-**Patricia Vasconcelos Gomes**  
-📧 savas1986@gmail.com | 📍 Cotia - SP | 🔗 www.linkedin.com/in/patricia-vasconcelos-b6013068
+📍 Colina, SP &nbsp;·&nbsp; 🏢 F1RST — Santander Group &nbsp;·&nbsp;
+[LinkedIn](www.linkedin.com/in/patricia-vasconcelos-b6013068) &nbsp;·&nbsp; [E-mail](patricia.gvasconcelos.pmo@gmail.com)
 
 ---
 
 ## Sobre mim
 
-Profissional de TI com 5+ anos de experiência em Gestão de Projetos, PMO e Análise de Dados. Atualmente em transição para **PMO de Dados**, combinando minha experiência em gestão com conhecimentos técnicos em SQL, Power BI e Python.
+Profissional de TI com 5+ anos em Gestão de Projetos e PMO,
+especializando em PMO de Dados. Atualmente na F1RST (empresa de
+tecnologia do Santander Group), onde atuo na gestão de demandas
+analíticas, especificação de dashboards e interface entre negócio
+e times de engenharia de dados.
 
-**MBA em Gerenciamento de Projetos** | **MBA em Gestão Empresarial** | **Pós-graduação em Gestão, Estratégia e Liderança (FIAP)**
+**Formação:** MBA em Gerenciamento de Projetos · MBA em Gestão
+Empresarial · Pós-graduação em Gestão, Estratégia e Liderança —
+FIAP
 
----
-
-## Habilidades Técnicas
-
-| Categoria | Ferramentas / Habilidades |
-|-----------|---------------------------|
-| **BI e Dados** | Power BI (dashboards, DAX, modelagem), SQL (consultas), Excel Avançado (Power Query) |
-| **Gestão e PMO** | Service Now (SPM), Scrum, Kanban, OKRs, KPIs, Gestão de Portfólio, Riscos |
-| **IA** | ChatGPT, Engenharia de Prompts, Microsoft Copilot |
-| **Governança** | Data Governance, Qualidade de Dados, LGPD |
+> *"Meu papel não é dizer se é possível ou não —
+> é mostrar o caminho e as alternativas."*
 
 ---
 
-## Projetos do Portfólio
+## 🛠 Habilidades Técnicas
 
-### 📄 1. Termo de Abertura de Projeto (TAP)
-**Contexto:** Projeto fictício de criação de dashboard de vendas  
-**O que fiz:** Estruturei escopo, stakeholders, riscos, premissas e cronograma  
-📎 [Ver documento](./01-projeto-abertura/termo-abertura-projeto.pdf)
-
----
-
-### ✅ 2. Checklist de Viabilidade Técnica
-**Contexto:** Framework para avaliar demandas de dados  
-**O que fiz:** Criei 7 perguntas críticas para validar viabilidade  
-📎 [Ver documento](./02-viabilidade-tecnica/checklist-viabilidade.pdf)
+| Categoria       | Ferramentas / Habilidades                                                  |
+|-----------------|----------------------------------------------------------------------------|
+| BI e Dados      | Power BI (Dashboards, Power Query), SQL (consultas, filtros, agregações)   |
+| Gestão e PMO    | Jira, ServiceNow (ITSM/SPM), Scrum, Kanban, OKRs, KPIs, MoSCoW, TAP      |
+| Dados           | Pipeline de dados, ETL/ELT, Databricks (Lakehouse), Modelagem Dimensional  |
+| Governança      | Data Governance, Qualidade de Dados, LGPD, DAMA-DMBOK                     |
+| IA              | ChatGPT, Engenharia de Prompts, Microsoft Copilot                          |
 
 ---
 
-### 📊 3. Análise Crítica de Dashboard
-**Contexto:** Dashboard público do Power BI Community  
-**O que fiz:** Análise de UX, performance, governança e sugestões de melhoria  
-📎 [Ver documento](./03-dashboard-critico/relatorio-analise-critica.pdf)
+## 🗂 Portfólio de Projetos
+
+Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
+— todos baseados em cenários reais do contexto bancário.
+
+| # | Projeto | O que demonstra | Link |
+|---|---------|-----------------|------|
+| 1 | Termo de Abertura de Projeto (TAP) | Escopo, stakeholders e cronograma | [Ver →](projetos/01-tap-termo-abertura/) |
+| 2 | Checklist de Viabilidade Técnica | Framework de 7 perguntas para validar demandas | [Ver →](projetos/02-checklist-viabilidade/) |
+| 3 | Análise Crítica de Dashboard | Governança visual e sugestões de melhoria | [Ver →](projetos/03-analise-dashboard/) |
+| 4 | Backlog Priorizado (MoSCoW) | Priorização de demandas de dados | [Ver →](projetos/04-backlog-moscow/) |
+| 5 | OKRs e KPIs para Projeto de Dados | Métricas estratégicas para Data Lake | [Ver →](projetos/05-okrs-kpis/) |
+| 6 | Matriz de Riscos | Mapeamento e mitigação em projeto de dados | [Ver →](projetos/06-matriz-riscos/) |
+| 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | [Ver →](projetos/07-comunicacao-stakeholders/) |
+| 8 | Glossário PMO de Dados | 23 termos com aplicação no contexto bancário | [Ver →](projetos/08-glossario-pmo-dados/) |
 
 ---
 
-### 📋 4. Backlog Priorizado (MoSCoW)
-**Contexto:** 10 demandas de dados para time fictício de BI  
-**O que fiz:** Priorizei usando método MoSCoW com justificativas  
-📎 [Ver documento](./04-backlog-priorizado/backlog-projeto-dados.pdf)
+## 📚 Roteiro de Estudos 2026
+
+| Módulo | Tema                             | Status                   |
+|--------|----------------------------------|--------------------------|
+| 0      | Fundamentos de Dados & BI        | ✅ Concluído              |
+| 1      | SQL — A Linguagem dos Dados      | 🔵 Em andamento (Aula 1/4)|
+| 2      | Power BI Básico + Intermediário  | ⏳ Programado             |
+| 3      | Excel Avançado (Power Query)     | ⏳ Programado             |
+| 4      | Governança de Dados & LGPD       | ⏳ Programado             |
+| 5      | Power BI Avançado (DAX)          | ⏳ Programado             |
+
+📄 [Ver roteiro completo de estudos](roteiros/roteiro-estudos-2026.html)
 
 ---
 
-### 🎯 5. OKRs e KPIs para Projeto de Dados
-**Contexto:** Projeto de implantação de Data Lake  
-**O que fiz:** Defini OKRs e KPIs mensuráveis  
-📎 [Ver documento](./05-kpis-okrs/okr-projeto-dados.pdf)
+## 📜 Certificações
+
+| Certificação                        | Instituição  | Status           | Previsão  |
+|-------------------------------------|--------------|------------------|-----------|
+| Scrum Fundamentals                  | SCRUMstudy   | ✅ Concluída      | —         |
+| SQL para Data Analyst               | Alura        | 🔵 Em andamento  | Jun/2026  |
+| Formação Power BI                   | Alura        | 🔵 Em andamento  | Ago/2026  |
+| PSM I — Professional Scrum Master   | Scrum.org    | ⏳ Planejada      | Fev/2027  |
+| PL-300 — Power BI Data Analyst      | Microsoft    | ⏳ Planejada      | Mar/2027  |
+| CDMP Associate                      | DAMA         | ⏳ Planejada      | Jun/2027  |
+
+📄 [Ver plano completo de certificações](roteiros/roteiro-certificacoes-2027.html)
 
 ---
 
-### ⚠️ 6. Matriz de Riscos
-**Contexto:** Projeto de migração de dashboards  
-**O que fiz:** Identifiquei riscos, mitigação e planos de contingência  
-📎 [Ver documento](./06-riscos/matriz-risco-projeto.pdf)
-
----
-
-### 📧 7. Comunicação de Risco para Stakeholder
-**Contexto:** Atraso na entrega de fonte de dados  
-**O que fiz:** Escrevi e-mail profissional comunicando risco e alternativas  
-📎 [Ver documento](./06-riscos/email-comunicacao-risco.pdf)
-
----
-
-### 📖 8. Glossário PMO de Dados
-**Contexto:** Referência pessoal de termos técnicos  
-**Termos:** Data Warehouse, Data Lake, ETL, Modelagem Dimensional, KPI, RLS, etc.  
-📎 [Ver documento](./08-glossario/glossario-pmo-dados.pdf)
-
----
-
-## Certificações e Cursos
-
-| Certificação/Curso | Status |
-|--------------------|--------|
-| PL-300 - Microsoft Power BI Data Analyst | 📚 Em andamento |
-| Formação Power BI (Alura) | 📚 Em andamento |
-| SQL para Análise de Dados (Alura) | 📚 Em andamento |
-| Scrum Fundamentals | ✅ Concluído |
-
----
-## 🚧 Status do Portfólio
-
-Este portfólio está em **construção**. Os documentos serão adicionados conforme eu for concluindo os projetos do meu roteiro de estudos.
-
-✅ Estrutura definida  
-⏳ Projeto 1 - Termo de Abertura (em andamento)  
-⏳ Projetos 2 a 8 (previstos para os próximos meses)
-
----
-## Contato
-
-📧 **E-mail:** savas1986@gmail.com  
-🔗 **LinkedIn:** www.linkedin.com/in/patricia-vasconcelos-b6013068
-📁 **GitHub:** github.com/savas1986-cloud/portfolio-pmo-dados
-
----
-
-*"Meu papel não é dizer se é possível ou não - é mostrar o caminho, os trade-offs e os riscos, para que o negócio decida com informação."*
-
-📅 Última atualização: Maio/2026
+*Atualizado em: Junho/2026*
