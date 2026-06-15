@@ -1,0 +1,19 @@
+## Projeto 4 — Backlog Priorizado com MoSCoW
+
+**Contexto:** Backlog fictício de um time de dados com 15 demandas
+simultâneas — incluindo dashboards, pipelines, correções de qualidade
+e solicitações ad hoc de diferentes áreas de negócio.
+
+**O que entrega:** Backlog estruturado com classificação MoSCoW
+(Must have / Should have / Could have / Won't have), justificativa
+para cada classificação e critério de priorização documentado.
+
+**Por que importa:** Time de dados sem backlog priorizado atende
+tudo e entrega nada. A priorização explícita alinha expectativas
+com stakeholders antes de qualquer sprint começar.
+
+**Habilidades demonstradas:** Metodologia ágil · Gestão de backlog ·
+Negociação de prioridade · Alinhamento com stakeholders
+
+**Ferramenta:** Markdown / Jira (simulado)
+**Status:** ✅ Concluído
