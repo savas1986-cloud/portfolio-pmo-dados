@@ -11,7 +11,7 @@ em transição para PMO de Dados. Experiência em ambiente
 bancário regulado (F1RST — Santander Group).
 
 **Localização:** Colina, SP
-**Contato:** [LinkedIn](https://linkedin.com/in/SEU_PERFIL)
+**Contato:** [LinkedIn](https:www.linkedin.com/in/patricia-vasconcelos-b6013068)
 
 ---
 
