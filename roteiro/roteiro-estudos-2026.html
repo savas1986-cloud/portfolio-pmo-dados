@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roteiro de Estudos - Dados para PMO | Patricia (com Exercícios Práticos)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+ 
+        :root {
+            --primary: #b76e79;
+            --primary-light: #f5e6e8;
+            --primary-dark: #8c4a55;
+            --secondary: #d4a574;
+            --accent: #e8c4a0;
+            --bg: #fdf8f6;
+            --bg-card: #ffffff;
+            --text: #4a3540;
+            --text-light: #8a7580;
+            --border: #e8d5d0;
+            --gradient-start: #b76e79;
+            --gradient-end: #d4a574;
+            --shadow: rgba(183, 110, 121, 0.12);
+            --check-color: #b76e79;
+            --progress-bg: #f5e6e8;
+            --highlight: #fff0ed;
+        }
+ 
+        .theme-lavender {
+            --primary: #9b7fb8;
+            --primary-light: #ede6f5;
+            --primary-dark: #6d5a8a;
+            --secondary: #c4a6d4;
+            --accent: #d4b8e0;
+            --bg: #f9f5fd;
+            --bg-card: #ffffff;
+            --text: #3d3050;
+            --text-light: #7a6b8a;
+            --border: #ddd0ea;
+            --gradient-start: #9b7fb8;
+            --gradient-end: #c4a6d4;
+            --shadow: rgba(155, 127, 184, 0.12);
+            --check-color: #9b7fb8;
+            --progress-bg: #ede6f5;
+            --highlight: #f3edfa;
+        }
+ 
+        .theme-sage {
+            --primary: #7a9e7e;
+            --primary-light: #e6f0e8;
+            --primary-dark: #5a7a5e;
+            --secondary: #a8c4a0;
+            --accent: #c4d8b8;
+            --bg: #f5faf6;
+            --bg-card: #ffffff;
+            --text: #2d4030;
+            --text-light: #6a8070;
+            --border: #c8dcc8;
+            --gradient-start: #7a9e7e;
+            --gradient-end: #a8c4a0;
+            --shadow: rgba(122, 158, 126, 0.12);
+            --check-color: #7a9e7e;
+            --progress-bg: #e6f0e8;
+            --highlight: #edf5ee;
+        }
+ 
+        .theme-ocean {
+            --primary: #6b9dbd;
+            --primary-light: #e0eef6;
+            --primary-dark: #4a7a9a;
+            --secondary: #89b8d4;
+            --accent: #a8d0e4;
+            --bg: #f4f9fc;
+            --bg-card: #ffffff;
+            --text: #2a3d4d;
+            --text-light: #6a8090;
+            --border: #c0d8e8;
+            --gradient-start: #6b9dbd;
+            --gradient-end: #89b8d4;
+            --shadow: rgba(107, 157, 189, 0.12);
+            --check-color: #6b9dbd;
+            --progress-bg: #e0eef6;
+            --highlight: #ecf4fa;
+        }
+ 
+        .theme-blush {
+            --primary: #d4748a;
+            --primary-light: #fce8ed;
+            --primary-dark: #b05068;
+            --secondary: #f0a0b0;
+            --accent: #f8c0cc;
+            --bg: #fef6f8;
+            --bg-card: #ffffff;
+            --text: #4a2838;
+            --text-light: #9a6878;
+            --border: #f0d0d8;
+            --gradient-start: #d4748a;
+            --gradient-end: #f0a0b0;
+            --shadow: rgba(212, 116, 138, 0.12);
+            --check-color: #d4748a;
+            --progress-bg: #fce8ed;
+            --highlight: #fef0f3;
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: all 0.4s ease;
+        }
+ 
+        .header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 50px 20px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+ 
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-30%) translateY(-30%); }
+            50% { transform: translateX(30%) translateY(30%); }
+        }
+ 
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+ 
+        .header .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
+            opacity: 0.95;
+            position: relative;
+            font-weight: 600;
+        }
+ 
+        .header .description {
+            font-size: 0.95em;
+            opacity: 0.9;
+            margin-top: 12px;
+            position: relative;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+ 
+        .priority-box {
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-top: 20px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.85em;
+            backdrop-filter: blur(4px);
+        }
+ 
+        .exercise-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-left: 4px solid #ffd700;
+        }
+ 
+        .theme-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 20px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+ 
+        .theme-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+ 
+        .theme-btn:hover {
+            transform: scale(1.2);
+        }
+ 
+        .theme-btn.active {
+            border-color: var(--text);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--text);
+        }
+ 
+        .theme-btn[data-theme="default"] { background: linear-gradient(135deg, #b76e79, #d4a574); }
+        .theme-btn[data-theme="lavender"] { background: linear-gradient(135deg, #9b7fb8, #c4a6d4); }
+        .theme-btn[data-theme="sage"] { background: linear-gradient(135deg, #7a9e7e, #a8c4a0); }
+        .theme-btn[data-theme="ocean"] { background: linear-gradient(135deg, #6b9dbd, #89b8d4); }
+        .theme-btn[data-theme="blush"] { background: linear-gradient(135deg, #d4748a, #f0a0b0); }
+ 
+        .theme-label {
+            font-size: 0.75em;
+            color: var(--text-light);
+            margin-right: 8px;
+            font-weight: 500;
+        }
+ 
+        [data-tooltip] {
+            position: relative;
+            cursor: help;
+        }
+ 
+        [data-tooltip]:before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px 10px;
+            background: var(--text);
+            color: white;
+            font-size: 0.7em;
+            border-radius: 6px;
+            white-space: nowrap;
+            display: none;
+            z-index: 200;
+            font-family: 'Inter', sans-serif;
+        }
+ 
+        [data-tooltip]:hover:before {
+            display: block;
+        }
+ 
+        .progress-section {
+            background: var(--bg-card);
+            padding: 24px 30px;
+            margin: 24px auto;
+            max-width: 960px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow);
+            border: 1px solid var(--border);
+        }
+ 
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+ 
+        .progress-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1em;
+            color: var(--primary-dark);
+        }
+ 
+        .progress-percent {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+ 
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--progress-bg);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+ 
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+ 
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: var(--text-light);
+        }
+ 
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+ 
+        .module {
+            background: var(--bg-card);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+ 
+        .module:hover {
+            box-shadow: 0 6px 30px var(--shadow);
+            transform: translateY(-2px);
+        }
+ 
+        .module-header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 20px 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+ 
+        .module-header:hover {
+            filter: brightness(1.05);
+        }
+ 
+        .module-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+ 
+        .module-header .module-icon {
+            font-size: 1.4em;
+        }
+ 
+        .module-header .priority-badge {
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.65em;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+ 
+        .module-header .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+ 
+        .module-header .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+ 
+        .module-body {
+            padding: 24px 28px;
+            display: block;
+        }
+ 
+        .module-body.collapsed {
+            display: none;
+        }
+ 
+        .module-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+ 
+        .meta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+ 
+        .hours-badge {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+ 
+        .priority-high {
+            background: #ffebee;
+            color: #c62828;
+        }
+ 
+        .priority-mid {
+            background: #fff8e1;
+            color: #f57f17;
+        }
+ 
+        .priority-low {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+ 
+        .sub-section {
+            margin-bottom: 22px;
+        }
+ 
+        .sub-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05em;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+ 
+        .checklist {
+            list-style: none;
+        }
+ 
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+ 
+        .checklist li:hover {
+            background: var(--highlight);
+        }
+ 
+        .checklist li.completed {
+            opacity: 0.6;
+        }
+ 
+        .checklist li.completed .item-text {
+            text-decoration: line-through;
+        }
+ 
+        .check-box {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin-top: 1px;
+        }
+ 
+        .checklist li.completed .check-box {
+            background: var(--check-color);
+            border-color: var(--check-color);
+        }
+ 
+        .check-box::after {
+            content: '';
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg) scale(0);
+            transition: transform 0.2s ease;
+        }
+ 
+        .checklist li.completed .check-box::after {
+            transform: rotate(45deg) scale(1);
+        }
+ 
+        .item-content {
+            flex: 1;
+        }
+ 
+        .item-text {
+            font-size: 0.92em;
+            line-height: 1.5;
+        }
+ 
+        .item-detail {
+            font-size: 0.8em;
+            color: var(--text-light);
+            margin-top: 3px;
+        }
+ 
+        .item-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+ 
+        .item-link:hover {
+            text-decoration: underline;
+        }
+ 
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.72em;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+ 
+        .tag-alura { background: #e8f5e9; color: #2e7d32; }
+        .tag-livro { background: #e3f2fd; color: #1565c0; }
+        .tag-evento { background: #fff3e0; color: #e65100; }
+        .tag-youtube { background: #fce4ec; color: #c62828; }
+        .tag-podcast { background: #f3e5f5; color: #6a1b9a; }
+        .tag-artigo { background: #e0f2f1; color: #00695c; }
+        .tag-comunidade { background: #fce4ec; color: #ad1457; }
+        .tag-pratica { background: #fff8e1; color: #f57f17; }
+        .tag-cert { background: #e8eaf6; color: #283593; }
+        .tag-projeto { background: #e0f7fa; color: #006064; }
+        .tag-leitura { background: #ede7f6; color: #4527a0; }
+        .tag-exercicio { background: #fff3e0; color: #e65100; }
+ 
+        .tip-box {
+            background: var(--highlight);
+            border-left: 4px solid var(--primary);
+            padding: 14px 18px;
+            border-radius: 0 10px 10px 0;
+            margin: 16px 0;
+            font-size: 0.9em;
+        }
+ 
+        .tip-box strong {
+            color: var(--primary-dark);
+        }
+ 
+        .action-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            flex-wrap: wrap;
+        }
+ 
+        .action-btn {
+            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+ 
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+ 
+        .action-btn.primary {
+            background: var(--primary);
+            color: white;
+        }
+ 
+        .action-btn.primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+ 
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.85em;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1em;
+        }
+ 
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.7em; }
+            .header .subtitle { font-size: 1.1em; }
+            .module-header h2 { font-size: 1.1em; }
+            .module-body { padding: 18px 16px; }
+            .progress-section { margin: 16px 12px; padding: 18px 20px; }
+            .container { padding: 0 12px 40px; }
+        }
+ 
+        @media print {
+            .theme-switcher, .action-bar { display: none; }
+            .module { break-inside: avoid; }
+            .module-body.collapsed { display: block !important; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="header">
+        <h1>Roteiro de Estudos - Dados para PMO</h1>
+        <div class="subtitle">v2.0 com LGPD, Ferramentas PMO e Comunicação Executiva | 1 hora por dia | 4 meses</div>
+        <div class="description">
+            Focado no que o mercado realmente pede para PMO de dados em <strong>banco regulado</strong>. Fundamentos, SQL, Power BI, LGPD, Governança, Gestão, IA, Comunicação Executiva e Inglês Técnico.
+            <br><strong>Cada módulo tem exercícios práticos para você aplicar o que aprendeu!</strong>
+        </div>
+        <div class="priority-box">
+            🎯 <strong>Sua rotina:</strong> 1 hora por dia (~7h/semana) | ⏱️ Duração total: ~155 horas (4 meses)<br>
+            📌 <strong>Prioridades:</strong> 🔴 Alta (faça primeiro) | 🟡 Média | 🟢 Baixa | 🔵 Contínuo<br>
+            📚 <strong>Leitura centralizada:</strong> Todos os livros estão no Módulo 15!<br>
+            ✨ <strong>Atualizações v2.0:</strong> Módulo 0 (Fundamentos) | LGPD aplicada | Ferramentas PMO (JIRA, Confluence) | Comunicação Executiva | Bônus de Inglês Técnico contínuo
+        </div>
+    </div>
+ 
+    <div class="theme-switcher">
+        <span class="theme-label">Temas:</span>
+        <button class="theme-btn active" data-theme="default" data-tooltip="Rose Gold" onclick="setTheme('default')"></button>
+        <button class="theme-btn" data-theme="lavender" data-tooltip="Lavanda" onclick="setTheme('lavender')"></button>
+        <button class="theme-btn" data-theme="sage" data-tooltip="Sálvia" onclick="setTheme('sage')"></button>
+        <button class="theme-btn" data-theme="ocean" data-tooltip="Oceano" onclick="setTheme('ocean')"></button>
+        <button class="theme-btn" data-theme="blush" data-tooltip="Blush Pink" onclick="setTheme('blush')"></button>
+    </div>
+ 
+    <div class="progress-section">
+        <div class="progress-header">
+            <span class="progress-title">Progresso Geral</span>
+            <span class="progress-percent" id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-stats">
+            <span id="completedCount">0 concluídos</span>
+            <span id="totalCount">0 itens no total</span>
+        </div>
+        <div class="action-bar">
+            <button class="action-btn" onclick="resetProgress()">Resetar Progresso</button>
+            <button class="action-btn" onclick="expandAll()">Expandir Tudo</button>
+            <button class="action-btn" onclick="collapseAll()">Recolher Tudo</button>
+            <button class="action-btn primary" onclick="saveAsPDF()">📄 Salvar como PDF</button>
+        </div>
+    </div>
+ 
+    <div class="container">
+ 
+        <!-- =====================================================
+             MÓDULO 0: FUNDAMENTOS DE DADOS (COMECE AQUI!)
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">0.</span> Fundamentos de Dados & BI <span class="priority-badge" style="background:#c62828;">🔴 COMECE AQUI</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 1</span>
+                    <span class="meta-badge priority-high">🔴 Base obrigatória</span>
+                    <span class="meta-badge hours-badge">⏱️ ~12 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Por que começar aqui?</strong> Antes de escrever SQL ou criar dashboards, você precisa entender o vocabulário e o fluxo dos dados. Esta base vai destravar todos os outros módulos — sem ela, você decora; com ela, você entende.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=Business+Intelligence" target="_blank">Curso: Fundamentos de BI (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">O que é BI, ETL, modelagem, DW, indicadores</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/artigos/data-lake-data-warehouse-data-lakehouse" target="_blank">Artigo: Data Lake vs Data Warehouse vs Lakehouse</a> <span class="tag tag-artigo">Artigo</span></div><div class="item-detail">Entenda a diferença antes de qualquer coisa</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=modelagem+dimensional" target="_blank">Curso: Modelagem Dimensional (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Fato, dimensão, esquema estrela — vocabulário básico</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>🎯 Conceitos-chave que você precisa dominar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Diferença entre <strong>dado, informação e conhecimento</strong> <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Você vai usar essa distinção em apresentações executivas</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Tipos de dados: <strong>estruturados, semi-estruturados, não estruturados</strong> <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Tabela (SQL), JSON (API), e-mail/PDF/imagem</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>ETL vs ELT</strong> — extração, transformação e carga <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Saber quando se usa cada um e por quê</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Data Warehouse vs Data Lake vs Lakehouse</strong> <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Onde o Santander tipicamente armazena o quê</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Modelagem dimensional</strong>: fato, dimensão, estrela vs floco de neve <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Vai aparecer toda hora quando você falar com engenheiros de dados</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>KPI, métrica, dimensão, granularidade</strong> <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">A diferença entre os 4 é o que separa um bom PMO de um excelente</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Pipeline de dados</strong>: origem → transformação → análise → visualização → decisão <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Saber em que etapa um problema mora ajuda a alocar o time certo</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Criar <strong>glossário pessoal</strong> com 20+ termos <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">DW, Data Lake, ETL, KPI, OKR, métrica, dimensão, granularidade, fato, modelagem estrela, BI, OLAP, OLTP, drill-down, drill-through, slicer, dashboard, relatório, scorecard, real-time vs batch</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: <strong>Desenhar o fluxo de dados</strong> de um relatório que você usa hoje <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Origem → quem transforma → onde armazena → quem consome (use papel ou draw.io)</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: <strong>Identificar 5 KPIs</strong> da sua área e classificar <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Para cada KPI: qual é a métrica, qual a dimensão analisada, qual a granularidade?</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: <strong>Mapear uma demanda real</strong> usando o vocabulário aprendido <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Reescreva uma demanda do seu trabalho usando os termos certos</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: <strong>Glossário</strong> + <strong>Diagrama de fluxo de dados</strong> + <strong>Tabela de 5 KPIs classificados</strong> <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Salve em uma pasta "00-fundamentos" — vai consultar isso o tempo todo</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 1: SQL
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">1.</span> SQL - A Linguagem dos Dados <span class="priority-badge" style="background:#c62828;">🔴 Prioridade Máxima</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 1-2</span>
+                    <span class="meta-badge priority-high">🔴 Essencial</span>
+                    <span class="meta-badge hours-badge">⏱️ ~20 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Por que SQL é prioritário?</strong> 90% das vagas de PMO de dados pedem SQL. Você precisa saber ler e escrever consultas básicas.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=SQL" target="_blank">Formação: SQL (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Faça apenas os cursos de SELECT, JOIN, GROUP BY, subqueries</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://sqlzoo.net/" target="_blank">SQLZoo - Tutorial interativo</a> <span class="tag tag-pratica">Prática</span></div><div class="item-detail">Faça todos os exercícios do tutorial</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.hackerrank.com/domains/sql" target="_blank">HackerRank - Desafios SQL</a> <span class="tag tag-pratica">Prática</span></div><div class="item-detail">Resolva pelo menos 15 desafios básicos</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <div class="exercise-box">
+                        <strong>📝 Exercício 1: Baixar dados e configurar ambiente</strong><br>
+                        1. Baixe a base de dados pública "Northwind" (dados de vendas fictícios)<br>
+                        2. Instale o SQLite Browser (gratuito)<br>
+                        3. Carregue a base no SQLite<br>
+                        <span class="tag tag-exercicio">Exercício prático</span>
+                    </div>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Baixar dados Northwind e configurar SQLite <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Base de dados pública de vendas fictícias</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: SELECT, WHERE, ORDER BY <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Escreva 5 consultas: selecione produtos, filtre por categoria, ordene por preço</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: JOIN entre tabelas <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Junte tabela de pedidos com clientes, produtos com categorias</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: GROUP BY e funções de agregação <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Calcule total de vendas por cliente, média de valor por produto</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 5: Subqueries <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Encontre clientes com compras acima da média</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: 10 consultas SQL documentadas em um arquivo .sql <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Salve todas as consultas que você escreveu nos exercícios</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 2: POWER BI BÁSICO
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">2.</span> Power BI Básico + Intermediário <span class="priority-badge" style="background:#c62828;">🔴 Prioridade Máxima</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 3-5</span>
+                    <span class="meta-badge priority-high">🔴 Essencial</span>
+                    <span class="meta-badge hours-badge">⏱️ ~25 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Foco:</strong> Conectar dados, criar visuais básicos, Power Query (limpeza de dados).
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=Power+BI+Desktop" target="_blank">Curso: Power BI Desktop - Primeiro dashboard (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Aprenda a importar dados e criar visuais básicos</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=Power+Query" target="_blank">Curso: Power Query (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Limpeza e transformação de dados - essencial</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://learn.microsoft.com/pt-br/training/powerplatform/power-bi" target="_blank">Microsoft Learn: Power BI (gratuito)</a> <span class="tag tag-cert">Microsoft</span></div><div class="item-detail">Trilhas oficiais para complementar</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <div class="exercise-box">
+                        <strong>📝 Exercício 1: Baixar dados de exemplo</strong><br>
+                        1. Baixe um arquivo CSV de dados públicos (ex: dados de vendas do Kaggle)<br>
+                        2. Importe no Power BI Desktop<br>
+                        <span class="tag tag-exercicio">Exercício prático</span>
+                    </div>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Importar dados CSV no Power BI <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Baixe dados públicos e faça a importação</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Criar 3 visuais básicos <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Gráfico de barras, cartão com KPI, gráfico de linhas</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Adicionar segmentadores (filtros) <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Adicione filtros interativos para ano, produto, região</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: Limpeza de dados com Power Query <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Remova linhas nulas, renomeie colunas, altere tipos de dados</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 5: Publicar no Power BI Service <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Publique seu dashboard e gere um link para compartilhar</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: Dashboard publicado com link acessível <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Salve o link do Power BI Service e uma captura de tela</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 3: EXCEL AVANÇADO
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">3.</span> Excel Avançado (Power Query) <span class="priority-badge" style="background:#c62828;">🔴 Prioridade Máxima</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 5</span>
+                    <span class="meta-badge priority-high">🔴 Essencial</span>
+                    <span class="meta-badge hours-badge">⏱️ ~10 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Você já tem Excel!</strong> Só precisa dominar Power Query e tabelas dinâmicas.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=tabelas+dinamicas" target="_blank">Curso: Tabelas Dinâmicas (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Revisão rápida</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://support.microsoft.com/pt-br/office/sobre-o-power-query-no-excel-7104fbee-9e62-4cb9-a02e-5bfb1a6c536a" target="_blank">Power Query no Excel</a> <span class="tag tag-pratica">Prática</span></div><div class="item-detail">Documentação oficial da Microsoft</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Consolidar 3 planilhas em uma usando Power Query <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Crie 3 arquivos CSV similares e consolide em um só</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Criar tabela dinâmica com agrupamento <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Agrupe dados por mês, categoria, região</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Usar PROCV ou XLOOKUP <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Cruze duas tabelas diferentes usando PROCV</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: Automatizar com macro simples <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Grave uma macro que aplica formatação a um relatório</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: Planilha automatizada com Power Query <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Consolide múltiplas fontes em uma planilha única</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 4: DOMÍNIO DE DADOS & GOVERNANÇA
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">4.</span> Domínio de Dados, Governança & LGPD <span class="priority-badge" style="background:#f57f17;">🟡 Prioridade Média</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 6-7</span>
+                    <span class="meta-badge priority-mid">🟡 Essencial para seu papel</span>
+                    <span class="meta-badge hours-badge">⏱️ ~20 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Por que este módulo é essencial para você?</strong> Como sua área vai assumir o domínio de dados, você precisa entender os conceitos de governança, qualidade e arquitetura de dados.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=Data+Governance" target="_blank">Curso: Introdução à Governança de Dados (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">O que é, por que importa e como implementar</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=qualidade+dados" target="_blank">Curso: Qualidade de dados (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Como garantir que os dados são confiáveis</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/artigos/data-lake-data-warehouse-data-lakehouse" target="_blank">Artigo: Data Lake vs Data Warehouse vs Data Lakehouse</a> <span class="tag tag-artigo">Artigo</span></div><div class="item-detail">Leia e faça um resumo de 1 página</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Criar dicionário de dados <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Documente 10 colunas de uma base que você usa no trabalho</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Mapear fluxo de dados da sua área <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Desenhe o caminho dos dados: origem → transformação → destino</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Avaliar qualidade de uma base real <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Identifique problemas: nulos, duplicados, inconsistências</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: Criar checklist de qualidade de dados <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Baseado no curso, crie um documento prático</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>🛡️ LGPD & Compliance Bancário (essencial no Santander)</h3>
+                    <div class="tip-box">
+                        <strong>Por que isso importa para você?</strong> Em banco regulado, LGPD não é um item de compliance — é parte do design de qualquer iniciativa de dados. Você vai precisar saber identificar dado pessoal, dado sensível e propor controles antes do projeto começar.
+                    </div>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.gov.br/anpd/pt-br/canais_atendimento/cidadao/lei-geral-de-protecao-de-dados-lgpd" target="_blank">Lei Geral de Proteção de Dados (texto oficial — ANPD)</a> <span class="tag tag-artigo">Leitura</span></div><div class="item-detail">Foque nos artigos 5º (definições), 7º e 11 (bases legais), 46-49 (segurança)</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=LGPD" target="_blank">Curso: LGPD na prática (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Visão aplicada a TI e dados</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Conceito: <strong>dado pessoal vs dado pessoal sensível</strong> <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Sensível: origem racial, religião, biometria, saúde, orientação sexual</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Conceito: <strong>anonimização vs pseudonimização</strong> <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Anonimização: irreversível (sai da LGPD). Pseudonimização: reversível com chave (continua na LGPD)</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Conceito: <strong>Privacy by Design</strong> e papel do <strong>DPO</strong> <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Privacidade pensada desde o requisito, não como remendo no final</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício LGPD 1: <strong>Classificar dados</strong> de uma base que você usa <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Para cada coluna: é pessoal? é sensível? qual a base legal de uso?</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício LGPD 2: <strong>Mapear riscos LGPD</strong> de um projeto fictício <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">"Quero cruzar dados de cartão com behaviour de app" → quais cuidados?</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: Dicionário de dados + Mapa de fluxo + Checklist de qualidade + <strong>Matriz de classificação LGPD</strong> <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Quatro documentos práticos sobre dados reais da sua empresa</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 5: POWER BI AVANÇADO (DAX)
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">5.</span> Power BI Avançado (DAX) <span class="priority-badge" style="background:#f57f17;">🟡 Prioridade Média</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 8-9</span>
+                    <span class="meta-badge priority-mid">🟡 Essencial</span>
+                    <span class="meta-badge hours-badge">⏱️ ~20 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>DAX é a linguagem dos cálculos no Power BI.</strong> Dominar o básico já te coloca à frente.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=DAX" target="_blank">Curso: Funções DAX (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Foco em CALCULATE, SUMX, FILTER, time intelligence</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.sqlbi.com/" target="_blank">Site: SQLBI (artigos gratuitos)</a> <span class="tag tag-artigo">Artigo</span></div><div class="item-detail">Referência mundial em DAX</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Criar medida de Total de Vendas (SUM) <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use SUM para somar uma coluna numérica</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Criar medida de Vendas Acumuladas (YTD) <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use CALCULATE + DATESYTD</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Criar medida de Comparação com Ano Anterior <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use SAMEPERIODLASTYEAR</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: Criar medida de % de Participação <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use ALL para calcular percentual do total</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: Dashboard com 5 medidas DAX complexas <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Inclua as 4 medidas acima + 1 medida criada por você</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 6: PYTHON (PANDAS)
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">6.</span> Python para Análise (Pandas) <span class="priority-badge" style="background:#2e7d32;">🟢 Prioridade Baixa</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 10-11</span>
+                    <span class="meta-badge priority-low">🟢 Opcional para PMO</span>
+                    <span class="meta-badge hours-badge">⏱️ ~10 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Para PMO, Python não é obrigatório.</strong> O importante é você <strong>entender</strong> o que o time faz — não programar. Foco em ler código básico, abrir um notebook, e saber estimar complexidade de uma demanda de Python. Se quiser ir além, ótimo, mas não é obstáculo para a transição.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=pandas" target="_blank">Curso: Python Pandas (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Foco em: leitura de dados, filtros, groupby, merge</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://colab.research.google.com/" target="_blank">Google Colab (ambiente gratuito)</a> <span class="tag tag-pratica">Ferramenta</span></div><div class="item-detail">Você não precisa instalar nada</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Importar CSV com pandas <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use pd.read_csv() para carregar dados</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Limpeza básica <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Renomear colunas, remover nulos, tratar tipos de dados</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Agregações com groupby <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Agrupe dados e calcule sum, mean, count</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: Merge entre DataFrames <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Junte duas tabelas usando merge()</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 5: Gerar resumo estatístico <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use describe() e info() para entender os dados</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: Notebook Jupyter com análise completa documentada <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Exporte como HTML ou compartilhe o link do Colab</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 7: IA PRÁTICA PARA PMO
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">7.</span> IA Prática para PMO <span class="priority-badge" style="background:#f57f17;">🟡 Prioridade Média</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 11-12</span>
+                    <span class="meta-badge priority-mid">🟡 Diferencial forte</span>
+                    <span class="meta-badge hours-badge">⏱️ ~15 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>IA não é para você programar, é para você USAR.</strong> Foco em ChatGPT, Copilot e como aplicar no dia a dia do PMO.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=ChatGPT+empresas" target="_blank">Curso: ChatGPT para Empresas (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Uso estratégico no ambiente corporativo</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=engenharia+prompts" target="_blank">Curso: Engenharia de Prompts (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Para extrair o melhor do ChatGPT</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Resumir ata de reunião com ChatGPT <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Cole uma ata longa e peça um resumo executivo</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Gerar cronograma de projeto com IA <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Descreva um projeto e peça um cronograma semanal</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Usar Copilot no Power BI <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Peça para o Copilot criar uma medida DAX</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 4: Revisar e-mail de comunicação de risco <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Peça para a IA melhorar o tom e a clareza</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 5: Criar template de prompts para PMO <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Documente 5 prompts úteis para seu dia a dia</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: "Guia de Prompts para PMO" com 10 prompts testados <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Documento com exemplos e resultados</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 8: GESTÃO DE PROJETOS (PMO)
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">8.</span> Gestão de Projetos de Dados (PMO) <span class="priority-badge" style="background:#f57f17;">🟡 Prioridade Média</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 13-14</span>
+                    <span class="meta-badge priority-mid">🟡 Seu diferencial</span>
+                    <span class="meta-badge hours-badge">⏱️ ~20 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Seu superpoder!</strong> Você já tem experiência em gestão. Agora é adaptar para o contexto de dados.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=agilidade" target="_blank">Curso: Agilidade para dados (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Scrum e Kanban aplicados a times de dados</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=OKR" target="_blank">Curso: OKRs e KPIs (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Métricas para projetos de dados</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>🛠️ Ferramentas de PMO (onde o trabalho realmente acontece)</h3>
+                    <div class="tip-box">
+                        <strong>Antes de estudar processos, conheça as ferramentas.</strong> Saber operar bem ao menos uma ferramenta de cada categoria já te diferencia: gestão de demanda + documentação + cronograma.
+                    </div>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>JIRA</strong> ou <strong>Azure DevOps</strong> — gestão de demandas e tickets <span class="tag tag-pratica">Ferramenta</span></div><div class="item-detail">Onde as demandas viram tarefas. Aprenda boards, filtros, JQL básico ou queries do Azure DevOps</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.atlassian.com/agile/tutorials" target="_blank">Atlassian Agile Coach (gratuito)</a> <span class="tag tag-pratica">Curso</span></div><div class="item-detail">Conceitos práticos de JIRA + Scrum/Kanban</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Confluence</strong> ou <strong>SharePoint</strong> — documentação viva de projetos <span class="tag tag-pratica">Ferramenta</span></div><div class="item-detail">Organize TAPs, runbooks, atas, decisões. Páginas linkadas valem mais que pastas</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>MS Project</strong> ou <strong>Planner</strong> ou <strong>Monday</strong> — cronograma e roadmap <span class="tag tag-pratica">Ferramenta</span></div><div class="item-detail">Para projetos pequenos, Planner basta. Para projetos com dependências, MS Project</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Miro</strong> ou <strong>Lucidchart</strong> — diagramas, fluxos, jornadas <span class="tag tag-pratica">Ferramenta</span></div><div class="item-detail">Essencial para apresentar arquitetura de dados, fluxo de processos, dependências</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Montar um <strong>board JIRA/Azure DevOps fictício</strong> com 10 demandas <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Crie épicos, histórias e tarefas. Use a versão gratuita do JIRA Cloud</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Criar uma <strong>página Confluence/SharePoint</strong> de projeto <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Inclua: objetivo, escopo, time, status, decisões, links para artefatos</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>💰 Orçamento e custos de projetos de dados</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Licenças de BI</strong>: Power BI Pro (~US$ 10/usuário/mês) vs Premium (capacidade) <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Quando vale migrar — em geral acima de 500 usuários ou para datasets &gt; 1 GB</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Custos de cloud</strong>: Azure / AWS / GCP — modelo de cobrança por consumo <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Saber estimar storage + compute + queries para defender orçamento</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Estimar <strong>TCO</strong> (Total Cost of Ownership) de um projeto fictício <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Licenças + cloud + horas-pessoa por 12 meses</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📊 Métricas de saúde de área de dados</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Cycle time</strong> e <strong>lead time</strong> de uma demanda <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Da abertura ao fechamento — mede agilidade real do time</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Throughput</strong>: demandas entregues por sprint/mês <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Mais útil que velocity para times de dados (que mistura tipos de demanda)</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Qualidade</strong>: % de retrabalho, incidentes de dados, SLA de relatórios <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Boas métricas de qualidade reduzem fogo amigo do negócio</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Definir <strong>5 métricas de saúde</strong> para sua área <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Como você reportaria a saúde da operação para um diretor?</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos (gestão tradicional)</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Criar um OKR para projeto de dados fictício <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use a estrutura: Objetivo + 3 Key Results mensuráveis</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Definir KPIs para um dashboard <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Quais indicadores são essenciais para o negócio?</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Criar um board Kanban para time de dados <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use Trello gratuito, JIRA ou papel mesmo</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: OKRs + KPIs + Board Kanban + <strong>Página de projeto (Confluence/SharePoint)</strong> + <strong>5 métricas de saúde</strong> <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Use um projeto do seu trabalho ou fictício. Tira foto/print para portfólio</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 9: VIABILIDADE TÉCNICA
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">9.</span> "Pode ou Não Pode Ser Feito?" <span class="priority-badge" style="background:#f57f17;">🟡 Prioridade Média</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 14-15</span>
+                    <span class="meta-badge priority-mid">🟡 Seu superpoder</span>
+                    <span class="meta-badge hours-badge">⏱️ ~10 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>O módulo que vai te destacar como PMO!</strong> Saber avaliar viabilidade técnica é o que separa um PMO comum de um excepcional.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://learn.microsoft.com/pt-br/power-bi/admin/service-admin-manage-your-data-storage-in-power-bi" target="_blank">Limitações do Power BI</a> <span class="tag tag-pratica">Prática</span></div><div class="item-detail">Limites de dados, performance, refresh</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✏️ Exercícios Práticos</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 1: Criar framework de 7 perguntas <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Baseado no que você estudou, crie seu próprio checklist</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 2: Aplicar framework a uma demanda real <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Pegue uma demanda do seu trabalho e analise a viabilidade</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício 3: Documentar a análise e a decisão <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Crie um documento de 1 página com sua conclusão</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: Framework + Análise de viabilidade aplicada a uma demanda real <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Dois documentos para seu portfólio</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 11: STORYTELLING + COMUNICAÇÃO EXECUTIVA
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">11.</span> Storytelling com Dados & Comunicação Executiva <span class="priority-badge" style="background:#f57f17;">🟡 Prioridade Média</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Semana 15-16</span>
+                    <span class="meta-badge priority-mid">🟡 Diferencial sênior</span>
+                    <span class="meta-badge hours-badge">⏱️ ~15 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Por que isso é diferencial?</strong> Análise técnica sem comunicação morre na gaveta. Saber traduzir números em decisão é o que separa um PMO operacional de um PMO estratégico.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Conteúdo para estudar</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.alura.com.br/busca?query=dashboard+design" target="_blank">Curso: Dashboard Design (buscar na Alura)</a> <span class="tag tag-alura">Alura</span></div><div class="item-detail">Princípios de design para dashboards</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.storytellingwithdata.com/blog" target="_blank">Blog: Storytelling with Data (Cole Knaflic)</a> <span class="tag tag-artigo">Blog</span></div><div class="item-detail">Referência mundial — leia 1 post por semana</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://hbr.org/2013/10/how-to-give-a-killer-presentation" target="_blank">Artigo HBR: How to Give a Killer Presentation</a> <span class="tag tag-artigo">Leitura</span></div><div class="item-detail">Princípios de apresentação executiva</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>🎨 Storytelling com dados (visual)</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Pirâmide invertida</strong>: insight primeiro, detalhes depois <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Diretor não tem tempo para "deixa eu explicar como cheguei aqui"</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>BANs</strong> (Big Ass Numbers) — KPIs em destaque <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">O número que importa precisa ser o primeiro que olho vê</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Cor com propósito</strong>: cinza para contexto, cor só para destaque <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Arco-íris = ruído. Acessibilidade importa (8% dos homens têm daltonismo)</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: <strong>Critique um dashboard público</strong> e sugira melhorias <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Documente em 1 página — antes/depois</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: <strong>Reformatar um dashboard interno</strong> aplicando os princípios <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Pegue um dashboard do seu trabalho e proponha versão 2.0</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>🎙️ Comunicação Executiva (apresentar para C-level)</h3>
+                    <div class="tip-box">
+                        <strong>Regra de ouro:</strong> diretor não quer entender a análise — quer saber o que decidir. Comece pela decisão, justifique com 3 pontos, e tenha o detalhe pronto se perguntarem.
+                    </div>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Estrutura SCQA</strong>: Situação → Complicação → Pergunta → Resposta <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Estrutura clássica McKinsey para apresentações estratégicas</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Princípio da pirâmide (Minto)</strong>: resposta primeiro, depois suporte <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Top-down. Apresente a conclusão e desça nos detalhes só se perguntarem</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Status report semanal</strong>: status / progresso / bloqueios / próximos passos <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">RAG (Red/Amber/Green) com 1 linha explicando o porquê de cada cor</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Steering committee</strong>: rituais, papéis, governança <span class="tag tag-leitura">Conceito</span></div><div class="item-detail">Como conduzir um comitê de patrocinadores que decide rumo de projeto</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: <strong>Escrever um status report</strong> de 1 página de um projeto fictício <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use RAG + 3 bullets para cada status. Máximo 1 página</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: <strong>Slide executivo</strong> de 1 página com decisão + justificativa <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use a estrutura: "Recomendo X porque (1) (2) (3). Risco: Y. Mitigação: Z."</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: <strong>Apresentar 5 minutos</strong> para um espelho ou gravar vídeo <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Pegue um dashboard e apresente como se fosse para um diretor. Cronometre</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: <strong>Análise crítica de dashboard</strong> + <strong>Status report exemplo</strong> + <strong>Slide executivo de decisão</strong> <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Três peças para portfólio — bem mais úteis que mais um dashboard</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 12: PROJETOS PRÁTICOS
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">12.</span> Projetos Práticos para Portfólio <span class="priority-badge" style="background:#2e7d32;">🟢 Prioridade Baixa</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Contínuo</span>
+                    <span class="meta-badge priority-low">🟢 Seu cartão de visita</span>
+                    <span class="meta-badge hours-badge">⏱️ ~15 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Portfólio não é só dashboard - é GESTÃO.</strong> Os recrutadores de PMO querem ver documentos de projeto.
+                </div>
+ 
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">✅ Projeto 1: Termo de Abertura de Projeto (TAP) <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Use o template que já temos</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">✅ Projeto 2: Template de validação de viabilidade <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Use o framework do Módulo 9</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">✅ Projeto 3: Análise crítica de um dashboard existente <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Relatório de 1 página</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">✅ Projeto 4: Backlog priorizado para time de dados <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Use MoSCoW</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">✅ Projeto 5: OKRs e KPIs para projeto de dados <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Defina objetivos e indicadores</div></div></li>
+                </ul>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 13: TRANSIÇÃO DE CARREIRA
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">13.</span> Transição de Carreira para Dados <span class="priority-badge" style="background:#2e7d32;">🟢 Prioridade Baixa</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Contínuo</span>
+                    <span class="meta-badge priority-low">🟢 Essencial para sua jornada</span>
+                    <span class="meta-badge hours-badge">⏱️ ~8 horas</span>
+                </div>
+ 
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Mapeie suas habilidades transferíveis <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Liste o que você já sabe que é valioso para dados</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Escreva sua "elevator pitch" de transição <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">30 segundos sobre por que você está migrando</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Faça 3 entrevistas informativas com PMOs de dados <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Use o roteiro de perguntas que já temos</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">✅ Entregável: Documento com habilidades mapeadas + pitch + insights das entrevistas <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Material para seu desenvolvimento pessoal</div></div></li>
+                </ul>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 14: COMO DIZER "NÃO"
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">14.</span> Como Dizer "Não" (Sem Queimar Pontes) <span class="priority-badge" style="background:#f57f17;">🟡 Prioridade Média</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Contínuo</span>
+                    <span class="meta-badge priority-mid">🟡 Habilidade diária de PMO</span>
+                    <span class="meta-badge hours-badge">⏱️ ~5 horas</span>
+                </div>
+ 
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Crie 5 respostas para "não" sem dizer a palavra <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">"Isso é possível, mas teríamos que abrir mão de X"</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Traduza 5 frases técnicas em linguagem de negócio <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">"Não temos dado limpo" → "Precisamos de 2 semanas"</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">✅ Entregável: Documento "Frases para PMO" com exemplos práticos <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Use como consulta rápida no dia a dia</div></div></li>
+                </ul>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 15: LEITURA CENTRALIZADA
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">📚 15.</span> Leitura Centralizada (Livros) <span class="priority-badge" style="background:#1565c0;">🔵 Contínuo</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Contínuo</span>
+                    <span class="meta-badge">📖 Leitura complementar</span>
+                    <span class="meta-badge hours-badge">⏱️ ~20 horas</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Leia quando tiver tempo.</strong> Priorize os primeiros 3.
+                </div>
+ 
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.amazon.com/Storytelling-com-Dados-Cole-Nussbaumer/dp/8550816095" target="_blank">⭐ Storytelling com Dados - Cole Nussbaumer</a> <span class="tag tag-livro">Livro</span></div><div class="item-detail">O melhor para começar. Foco em comunicação.</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.amazon.com/Lean-Analytics-Alistair-Croll/dp/1449335675" target="_blank">Lean Analytics - Alistair Croll</a> <span class="tag tag-livro">Livro</span></div><div class="item-detail">Métricas que realmente importam</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.amazon.com/Projeto-Fenix-Gene-Kim/dp/8550803686" target="_blank">O Projeto Fênix - Gene Kim</a> <span class="tag tag-livro">Livro</span></div><div class="item-detail">Romance sobre DevOps e gestão de TI</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.amazon.com/Data-Teams-Jesse-Anderson/dp/1484262276" target="_blank">Data Teams - Jesse Anderson</a> <span class="tag tag-livro">Livro</span></div><div class="item-detail">Como montar equipes de dados</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.amazon.com/Data-Warehouse-Toolkit-Definitive-Dimensional/dp/1118530802" target="_blank">The Data Warehouse Toolkit - Ralph Kimball</a> <span class="tag tag-livro">Livro</span></div><div class="item-detail">Leia só os capítulos 1-4</div></div></li>
+                </ul>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 16: COMUNIDADES
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">16.</span> Comunidades & Networking <span class="priority-badge" style="background:#1565c0;">🔵 Contínuo</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Contínuo</span>
+                    <span class="meta-badge">🌐 Networking</span>
+                    <span class="meta-badge hours-badge">⏱️ Contínuo</span>
+                </div>
+ 
+                <ul class="checklist">
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.mulheresemdados.com/" target="_blank">Comunidade: Mulheres em Dados</a> <span class="tag tag-comunidade">Comunidade</span></div><div class="item-detail">Gratuito! Faça sua inscrição hoje</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.datahackers.com.br/" target="_blank">Comunidade: Data Hackers</a> <span class="tag tag-comunidade">Comunidade</span></div><div class="item-detail">Maior comunidade de dados do Brasil</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://open.spotify.com/show/1oMIHOXsrLFENAeM743g93" target="_blank">Podcast: Data Hackers</a> <span class="tag tag-podcast">Podcast</span></div><div class="item-detail">Ouça enquanto se desloca</div></div></li>
+                    <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">Exercício: Participe de pelo menos 1 evento online por mês <span class="tag tag-exercicio">Prático</span></div><div class="item-detail">Anote no calendário</div></div></li>
+                </ul>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             BÔNUS: INGLÊS TÉCNICO CONTÍNUO
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">🌐</span> Inglês Técnico (Contínuo, 10-15 min/dia) <span class="priority-badge" style="background:#1565c0;">🔵 Contínuo</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Todos os meses</span>
+                    <span class="meta-badge">📖 10-15 min/dia</span>
+                    <span class="meta-badge hours-badge">⏱️ Contínuo</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Por que importa em banco internacional?</strong> Documentação técnica, calls com times globais, recrutamento interno em vagas Santander Madrid/UK. Inglês não se aprende em 1 mês — mas <strong>15 min/dia</strong> em 4 meses muda o seu patamar.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📚 Recursos recomendados</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.duolingo.com/" target="_blank">Duolingo (gratuito)</a> <span class="tag tag-pratica">App</span></div><div class="item-detail">10 min/dia, mantém a consistência</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.cambly.com/" target="_blank">Cambly</a> <span class="tag tag-pratica">Conversação</span></div><div class="item-detail">Conversação com nativos, 30 min/semana</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://www.bbc.co.uk/learningenglish/english/features/business-english" target="_blank">BBC Learning English — Business</a> <span class="tag tag-artigo">Gratuito</span></div><div class="item-detail">Vocabulário corporativo</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><a class="item-link" href="https://dataelixir.com/" target="_blank">Newsletter: Data Elixir (semanal)</a> <span class="tag tag-artigo">Leitura</span></div><div class="item-detail">Treina leitura técnica em inglês</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📋 Plano diário simples</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Seg/Qua/Sex:</strong> 10 min Duolingo <span class="tag tag-exercicio">Hábito</span></div><div class="item-detail">Mantém a regularidade</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Ter/Qui:</strong> 1 vídeo técnico em inglês com legenda em inglês <span class="tag tag-exercicio">Hábito</span></div><div class="item-detail">Guy in a Cube, Alex The Analyst, Luke Barousse</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>1x por semana:</strong> Ler 1 artigo da Data Elixir <span class="tag tag-exercicio">Hábito</span></div><div class="item-detail">Anotar 5 termos novos no glossário</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>1x por semana:</strong> Aula de conversação (Cambly) 30 min <span class="tag tag-exercicio">Hábito</span></div><div class="item-detail">Opcional mas acelera muito</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>🎯 Objetivos por mês</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Mês 1:</strong> Ler documentação técnica em inglês sem traduzir mentalmente <span class="tag tag-leitura">Meta</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Mês 2:</strong> Entender 70%+ de vídeos técnicos em inglês com legenda <span class="tag tag-leitura">Meta</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Mês 3:</strong> Escrever um post curto em inglês no LinkedIn <span class="tag tag-leitura">Meta</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Mês 4:</strong> Conduzir uma conversa de 5 min sobre um projeto seu <span class="tag tag-leitura">Meta</span></div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>✅ Entregável Final</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text">📁 Entregável: <strong>Glossário técnico em inglês</strong> com 100+ termos + <strong>Currículo em inglês</strong> + <strong>Perfil LinkedIn bilíngue</strong> <span class="tag tag-projeto">Projeto</span></div><div class="item-detail">Termos práticos do dia a dia (stakeholder, lead time, dashboard, milestone, deliverable, etc.)</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- =====================================================
+             MÓDULO 17: CRONOGRAMA
+             ===================================================== -->
+        <div class="module">
+            <div class="module-header" onclick="toggleModule(this)">
+                <h2><span class="module-icon">17.</span> Cronograma (4 meses - 1h/dia) <span class="priority-badge" style="background:#1565c0;">🔵 Contínuo</span></h2>
+                <span class="toggle-icon">&#9660;</span>
+            </div>
+            <div class="module-body">
+                <div class="module-meta">
+                    <span class="meta-badge">Planejamento</span>
+                    <span class="meta-badge hours-badge">⏱️ 1h/dia | 7h/semana | ~155h total</span>
+                </div>
+ 
+                <div class="tip-box">
+                    <strong>Atualizado!</strong> Agora começa pelo Módulo 0 (Fundamentos), com Storytelling e Comunicação Executiva como diferencial sênior na reta final. Python virou prioridade baixa (só ler código), e Inglês entra como hábito diário desde a semana 1.
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📅 Cronograma sequencial</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 1:</strong> Módulo 0 (Fundamentos de Dados) — base obrigatória <span class="tag tag-leitura">🔴</span></div><div class="item-detail">Glossário + diagrama de fluxo + KPIs classificados</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 2-3:</strong> Módulo 1 (SQL) + Exercícios <span class="tag tag-leitura">🔴</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 4-6:</strong> Módulo 2 (Power BI Básico) + Exercícios <span class="tag tag-leitura">🔴</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 6:</strong> Módulo 3 (Excel Avançado) + Exercícios <span class="tag tag-leitura">🔴</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 7-9:</strong> Módulo 4 (Governança + LGPD) + Exercícios <span class="tag tag-leitura">🟡</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 9-11:</strong> Módulo 5 (Power BI Avançado / DAX) + Exercícios <span class="tag tag-leitura">🟡</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 11-12:</strong> Módulo 7 (IA Prática) + Exercícios <span class="tag tag-leitura">🟡</span></div><div class="item-detail">Trocou de posição com o Python — IA é mais útil no dia a dia</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 12-14:</strong> Módulo 8 (Gestão PMO + Ferramentas + Métricas) + Exercícios <span class="tag tag-leitura">🟡</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 14-15:</strong> Módulo 9 (Viabilidade Técnica) + Exercícios <span class="tag tag-leitura">🟡</span></div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 15-16:</strong> Módulo 11 (Storytelling + Comunicação Executiva) <span class="tag tag-leitura">🟡</span></div><div class="item-detail">Subiu de prioridade — fechamento do roteiro com diferencial sênior</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semana 16:</strong> Módulo 6 (Python — opcional, só leitura de código) <span class="tag tag-leitura">🟢</span></div><div class="item-detail">Só se sobrar tempo, foco em ler código de um time de dados</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>🔵 Contínuos (semanas 1-16)</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Diário (10-15 min):</strong> Inglês Técnico (Bônus) — Duolingo + leitura técnica</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semanal:</strong> Módulo 15 (1 livro a cada 4-6 semanas)</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Semanal:</strong> Módulo 16 (1 evento/podcast/comunidade)</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>A cada 4 semanas:</strong> Módulo 12 (Projetos) — entregue 1 projeto de portfólio</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Mensal:</strong> Módulo 13 (Transição) — revise habilidades + 1 entrevista informativa</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Quando aparecer:</strong> Módulo 14 (Como Dizer Não) — aplique no dia a dia 🟡</div></div></li>
+                    </ul>
+                </div>
+ 
+                <div class="sub-section">
+                    <h3>📍 Marcos de auto-avaliação (a cada 30 dias)</h3>
+                    <ul class="checklist">
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Marco 1 (mês 1):</strong> Fundamentos + SQL básico dominados, glossário com 30+ termos</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Marco 2 (mês 2):</strong> Primeiro dashboard publicado + 1 documento de governança</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Marco 3 (mês 3):</strong> DAX intermediário + Framework de viabilidade aplicado a uma demanda real</div></div></li>
+                        <li onclick="toggleCheck(this)"><div class="check-box"></div><div class="item-content"><div class="item-text"><strong>Marco 4 (mês 4):</strong> Status report + slide executivo no portfólio + LinkedIn atualizado em inglês</div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+ 
+    <div class="footer">
+        <p>Feito com carinho para Patricia</p>
+        <p style="font-size: 0.8em; font-family: 'Inter', sans-serif; margin-top: 6px; color: var(--text-light);">
+            ✅ 17 módulos + Bônus de Inglês | 1 hora por dia | 4 meses | 📝 Exercícios práticos em todos os módulos
+        </p>
+    </div>
+ 
+    <script>
+        function setTheme(theme) {
+            const body = document.body;
+            body.className = '';
+            if (theme !== 'default') {
+                body.classList.add('theme-' + theme);
+            }
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === theme);
+            });
+            localStorage.setItem('selectedTheme', theme);
+        }
+ 
+        function toggleModule(header) {
+            const body = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            body.classList.toggle('collapsed');
+            icon.classList.toggle('collapsed');
+        }
+ 
+        function expandAll() {
+            document.querySelectorAll('.module-body').forEach(b => b.classList.remove('collapsed'));
+            document.querySelectorAll('.toggle-icon').forEach(i => i.classList.remove('collapsed'));
+        }
+ 
+        function collapseAll() {
+            document.querySelectorAll('.module-body').forEach(b => b.classList.add('collapsed'));
+            document.querySelectorAll('.toggle-icon').forEach(i => i.classList.add('collapsed'));
+        }
+ 
+        function toggleCheck(li) {
+            li.classList.toggle('completed');
+            saveProgress();
+            updateProgress();
+        }
+ 
+        function updateProgress() {
+            const total = document.querySelectorAll('.checklist li').length;
+            const completed = document.querySelectorAll('.checklist li.completed').length;
+            const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+ 
+            document.getElementById('progressPercent').textContent = percent + '%';
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('completedCount').textContent = completed + ' concluídos';
+            document.getElementById('totalCount').textContent = total + ' itens no total';
+        }
+ 
+        function saveProgress() {
+            const state = [];
+            document.querySelectorAll('.checklist li').forEach((li, idx) => {
+                state.push(li.classList.contains('completed'));
+            });
+            localStorage.setItem('studyProgress', JSON.stringify(state));
+        }
+ 
+        function loadProgress() {
+            const saved = localStorage.getItem('studyProgress');
+            if (saved) {
+                const state = JSON.parse(saved);
+                document.querySelectorAll('.checklist li').forEach((li, idx) => {
+                    if (state[idx]) {
+                        li.classList.add('completed');
+                    }
+                });
+            }
+        }
+ 
+        function resetProgress() {
+            if (confirm('Tem certeza que deseja resetar todo o progresso?')) {
+                document.querySelectorAll('.checklist li').forEach(li => {
+                    li.classList.remove('completed');
+                });
+                localStorage.removeItem('studyProgress');
+                updateProgress();
+            }
+        }
+ 
+        function saveAsPDF() {
+            window.print();
+        }
+ 
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+            setTheme(savedTheme);
+            loadProgress();
+            updateProgress();
+        });
+    </script>
+ 
+</body>
+</html>
