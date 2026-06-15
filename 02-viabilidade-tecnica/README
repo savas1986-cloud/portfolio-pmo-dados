@@ -1,0 +1,19 @@
+## Projeto 2 — Checklist de Viabilidade Técnica
+
+**Contexto:** Framework desenvolvido para avaliar demandas de dados
+antes da aprovação e alocação de recursos — aplicável a qualquer
+solicitação de dashboard, pipeline ou relatório analítico.
+
+**O que entrega:** Checklist com 7 perguntas críticas que cobrem
+disponibilidade de dados, qualidade, infraestrutura, LGPD, prazo
+e capacidade do time. Inclui critério de aprovação / bloqueio.
+
+**Por que importa:** Demandas aprovadas sem viabilidade técnica
+validada são a principal causa de atraso em projetos de dados.
+Esse checklist protege o prazo antes do projeto começar.
+
+**Habilidades demonstradas:** Análise de viabilidade · Gestão de
+risco técnico · Interface com time de engenharia · LGPD aplicada
+
+**Ferramenta:** Markdown / Google Docs
+**Status:** ✅ Concluído
