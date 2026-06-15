@@ -1,1 +1,53 @@
+# ✏️ Exercícios — Prática Técnica
 
+Exercícios práticos desenvolvidos durante o roteiro de estudos.
+Cada subpasta corresponde a uma ferramenta ou linguagem.
+
+---
+
+## Estrutura
+
+```
+exercicios/
+└── sql/
+    ├── aula-1-select.sql     ✅ SELECT, WHERE, ORDER BY, LIMIT
+    ├── aula-2-groupby.sql    ⏳ COUNT, SUM, AVG, GROUP BY, HAVING
+    ├── aula-3-join.sql       ⏳ INNER JOIN, LEFT JOIN, múltiplas tabelas
+    └── aula-4-subqueries.sql ⏳ Subqueries, EXISTS, IN
+```
+
+---
+
+## SQL — Módulo 1
+
+**Base utilizada:** Northwind (SQLite)
+Banco de dados fictício de vendas da Microsoft — padrão mundial
+para aprendizado de SQL.
+
+**Tabelas exploradas:**
+`Customers` · `Orders` · `Products` · `Employees`
+
+| Arquivo | Conteúdo | Status |
+|---|---|---|
+| `aula-1-select.sql` | 5 queries com SELECT, WHERE, AND, OR, ORDER BY, LIMIT | ✅ |
+| `aula-2-groupby.sql` | Agregações e agrupamentos por categoria | ⏳ |
+| `aula-3-join.sql` | Cruzamento entre tabelas | ⏳ |
+| `aula-4-subqueries.sql` | Consultas aninhadas | ⏳ |
+
+**Entregável final do Módulo 1:**
+10 queries documentadas com pergunta, tabela e resultado esperado.
+
+---
+
+## Próximas pastas
+
+```
+exercicios/
+├── sql/          ✅ em andamento
+├── powerbi/      ⏳ Módulo 2 — dashboards e medidas DAX
+└── python/       ⏳ Módulo 6 — pandas e análise exploratória
+```
+
+---
+
+*Módulos de referência disponíveis em [`Estudos/`](../Estudos/)*
