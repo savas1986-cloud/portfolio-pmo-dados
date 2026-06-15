@@ -1,0 +1,19 @@
+## Projeto 5 — OKRs e KPIs para Projeto de Dados
+
+**Contexto:** Definição de objetivos e indicadores para um projeto
+fictício de implantação de Data Lake em ambiente bancário regulado —
+cobrindo desde a fase técnica até a adoção pelos usuários finais.
+
+**O que entrega:** 3 OKRs com Key Results mensuráveis + 5 KPIs
+operacionais com definição, fórmula de cálculo, meta, dimensões
+de análise e frequência de atualização.
+
+**Por que importa:** Projetos de dados sem métricas de sucesso
+definidas não têm critério de encerramento. OKRs mal escritos
+geram retrabalho de escopo no meio da execução.
+
+**Habilidades demonstradas:** Framework OKR · Definição de KPIs ·
+Governança de métricas · Alinhamento estratégico com negócio
+
+**Ferramenta:** Markdown / Excel
+**Status:** ✅ Concluído
