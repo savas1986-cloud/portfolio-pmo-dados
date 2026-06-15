@@ -19,7 +19,7 @@ bancário regulado (F1RST — Santander Group).
 
 - MBA em Gerenciamento de Projetos
 - MBA em Gestão Empresarial
-- Pós-graduação em Gestão, Estratégia e Liderança — FIAP (cursando)
+- Pós-graduação em Gestão, Estratégia e Liderança — FIAP
 
 ---
 
