@@ -1,0 +1,20 @@
+## Projeto 6 — Matriz de Riscos
+
+**Contexto:** Mapeamento de riscos para um projeto fictício de
+migração de dados de um sistema legado para o Databricks —
+cenário comum em transformação digital de bancos regulados.
+
+**O que entrega:** Matriz de riscos com 10 itens avaliados por
+probabilidade e impacto, classificação de severidade, plano de
+mitigação e responsável por cada ação. Inclui riscos técnicos,
+operacionais e de conformidade (LGPD / Bacen).
+
+**Por que importa:** Em projeto de dados em banco regulado, risco
+não mapeado vira incidente. Identificar antes protege o prazo,
+o dado e a conformidade regulatória.
+
+**Habilidades demonstradas:** Gestão de riscos · LGPD aplicada ·
+Compliance bancário · Comunicação com áreas de controle
+
+**Ferramenta:** Markdown / Excel
+**Status:** ✅ Concluído
