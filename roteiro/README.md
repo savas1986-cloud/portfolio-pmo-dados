@@ -7,7 +7,8 @@ Documentos de planejamento da transição para PMO de Dados.
 ## Arquivos desta pasta
 
 ### 📄 Roteiro de Estudos 2026
-**Arquivo:** `roteiro-estudos-2026.html`
+**Arquivo:** [Ver roteiro completo →](https://savas1986-cloud.github.io/portfolio-pmo-dados/roteiro/roteiro-estudos-2026.html)
+
 
 Roteiro completo de 4 meses com 17 módulos, exercícios práticos
 e entregáveis por módulo. Cobre:
@@ -23,7 +24,7 @@ e entregáveis por módulo. Cobre:
 ---
 
 ### 📄 Plano de Certificações 2027
-**Arquivo:** `roteiro-certificacoes-2027.html`
+**Arquivo:** [Ver plano de certificações →](https://savas1986-cloud.github.io/portfolio-pmo-dados/roteiro/roteiro-certificacoes-2027.html)
 
 Roteiro estratégico de certificações com cronograma mensal,
 custo estimado e ordem de execução recomendada.
