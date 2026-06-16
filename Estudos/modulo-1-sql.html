@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1 — SQL: A Linguagem dos Dados</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#EFF4FF;--sidebar-bg:#1E3A8A;--sidebar-accent:#60A5FA;--accent:#2563EB;--accent2:#7C3AED;--surface:#FFFFFF;--border:#E0E7FF;--text:#0F172A;--muted:#64748B;--amber:#D97706;--green:#059669;--red:#DC2626;--code-bg:#EEF2FF;--code:#4338CA;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:"Inter",system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;font-size:14px;}
+    .sidebar{width:240px;min-width:240px;background:var(--sidebar-bg);position:sticky;top:0;height:100vh;overflow-y:auto;padding:1.75rem 1.1rem 1.5rem;display:flex;flex-direction:column;}
+    .sb-badge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F59E0B;margin-bottom:.4rem;}
+    .sb-title{font-family:"DM Serif Display",Georgia,serif;font-size:1.2rem;color:#fff;line-height:1.25;}
+    .sb-meta{margin-top:.5rem;font-size:11px;color:rgba(255,255,255,.4);line-height:1.75;}
+    .sb-divider{height:1px;background:rgba(255,255,255,.1);margin:1rem 0;}
+    .sb-section-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin:.8rem 0 .3rem;}
+    .sb-nav a{display:flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:6px;font-size:11.5px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:1px;transition:all .15s;}
+    .sb-nav a:hover,.sb-nav a.active{background:rgba(255,255,255,.1);color:#fff;}
+    .dot{width:5px;height:5px;border-radius:50%;background:var(--sidebar-accent);flex-shrink:0;}
+    .dot.done{background:#34D399;} .dot.pending{background:rgba(255,255,255,.18);}
+    .sb-footer{margin-top:auto;padding-top:1.25rem;}
+    .sb-prog-label{font-size:10px;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
+    .sb-prog-track{height:4px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
+    .sb-prog-fill{height:100%;width:100%;background:linear-gradient(90deg,#60A5FA,#34D399);border-radius:2px;}
+    .sb-prog-status{font-size:10px;color:#34D399;margin-top:.4rem;font-weight:600;}
+    .main{flex:1;max-width:840px;padding:2.25rem 2.75rem 5rem;overflow-x:hidden;}
+    .anchor{display:block;position:relative;top:-24px;visibility:hidden;height:0;}
+    .aula-divider{display:flex;align-items:center;gap:1rem;margin:2.75rem 0 2rem;}
+    .aula-divider-line{flex:1;height:2px;background:linear-gradient(90deg,var(--accent),transparent);}
+    .aula-divider-label{font-family:"DM Serif Display",Georgia,serif;font-size:1.5rem;color:var(--accent);white-space:nowrap;}
+    .pipeline-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2.25rem;box-shadow:0 1px 4px rgba(37,99,235,.06);}
+    .pipeline-eyebrow{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+    .pipeline-flow{display:flex;align-items:center;overflow-x:auto;padding-bottom:.25rem;}
+    .p-step{flex-shrink:0;text-align:center;}
+    .p-node{display:inline-block;background:var(--bg);border:1.5px solid #C7D7FE;border-radius:8px;padding:.45rem .9rem;}
+    .p-node.active-node{border-color:var(--accent);background:#DBEAFE;box-shadow:0 0 0 3px rgba(37,99,235,.15);}
+    .p-node-name{font-size:11px;font-weight:600;color:var(--accent);}
+    .p-node-name.hi{color:#7C3AED;}
+    .p-node-sub{font-size:9px;color:var(--muted);margin-top:2px;}
+    .p-arrow{font-size:1rem;color:#C7D7FE;padding:0 .35rem;flex-shrink:0;}
+    .pipeline-note{margin-top:.9rem;font-size:11px;color:var(--muted);font-style:italic;}
+    .section{margin-bottom:2.25rem;}
+    .section-head{display:flex;align-items:center;gap:.65rem;margin-bottom:1.1rem;padding-bottom:.55rem;border-bottom:1.5px solid var(--border);}
+    .section-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;background:#EEF2FF;flex-shrink:0;}
+    .section-title{font-family:"DM Serif Display",Georgia,serif;font-size:1.25rem;color:var(--text);}
+    .cg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+    .cc{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.9rem 1.05rem;position:relative;overflow:hidden;}
+    .cc::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;}
+    .c-bl::before{background:var(--accent);} .c-pu::before{background:var(--accent2);}
+    .c-am::before{background:var(--amber);} .c-gr::before{background:var(--green);}
+    .c-re::before{background:var(--red);} .c-te::before{background:#0D9488;}
+    .full{grid-column:1/-1;}
+    .ct{font-size:12px;font-weight:600;margin-bottom:.3rem;}
+    .cx{font-size:12px;color:var(--muted);line-height:1.65;}
+    .ce{margin-top:.5rem;padding:.5rem .7rem;background:#0D1117;border-radius:6px;font-family:"JetBrains Mono",monospace;font-size:10.5px;color:#7EE787;line-height:1.8;white-space:pre;overflow-x:auto;}
+    .cs{font-size:11px;color:var(--muted);margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);line-height:1.6;}
+    .sql{background:#0D1117;border-radius:8px;padding:1rem 1.35rem;font-family:"JetBrains Mono",monospace;font-size:10.5px;line-height:1.85;overflow-x:auto;white-space:pre;margin:.7rem 0;}
+    .kw{color:#FF7B72;} .fn{color:#D2A8FF;} .st{color:#A5D6FF;} .nu{color:#F8C555;}
+    .cm{color:#8B949E;font-style:italic;} .co{color:#7EE787;} .tb{color:#FFA657;}
+    .rl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:.6rem 0 .35rem;}
+    .rt{width:100%;border-collapse:collapse;font-size:11.5px;background:var(--surface);border-radius:7px;overflow:hidden;border:1px solid var(--border);}
+    .rt th{background:#EEF2FF;color:var(--accent);padding:.4rem .7rem;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+    .rt td{padding:.45rem .7rem;border-top:1px solid var(--border);color:var(--text);}
+    .rt tr:hover td{background:#F5F8FF;}
+    .rm{font-size:10.5px;color:var(--green);font-weight:500;margin-top:.35rem;font-family:"JetBrains Mono",monospace;}
+    .ot{width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:.6rem;}
+    .ot th{background:var(--sidebar-bg);color:#fff;padding:.45rem .8rem;text-align:left;font-size:10.5px;font-weight:500;}
+    .ot td{padding:.5rem .8rem;border-top:1px solid var(--border);line-height:1.5;}
+    .ot code{font-family:"JetBrains Mono",monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .ex{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:.8rem;overflow:hidden;}
+    .exh{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.1rem;cursor:pointer;user-select:none;}
+    .exh:hover{background:#F5F8FF;}
+    .exn{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .ext{font-size:13px;font-weight:500;flex:1;}
+    .exb-done{font-size:10px;padding:2px 8px;border-radius:20px;background:#D1FAE5;color:#065F46;font-weight:500;flex-shrink:0;}
+    .exc{font-size:10px;color:var(--muted);flex-shrink:0;}
+    .exbody{display:none;padding:.95rem 1.1rem 1.15rem;border-top:1px solid var(--border);font-size:12.5px;line-height:1.65;color:var(--muted);}
+    .exbody.open{display:block;}
+    .exl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.7rem 0 .3rem;}
+    .exl:first-child{margin-top:0;}
+    .ins{display:flex;gap:.8rem;padding:.9rem 1.05rem;background:var(--surface);border:1px solid var(--border);border-radius:9px;margin-bottom:.7rem;}
+    .ins-i{font-size:1.15rem;flex-shrink:0;margin-top:.05rem;}
+    .ins-t{font-size:12.5px;font-weight:600;margin-bottom:.2rem;color:var(--text);}
+    .ins-x{font-size:12px;color:var(--muted);line-height:1.65;}
+    code{font-family:"JetBrains Mono",monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .tip{display:flex;gap:.7rem;padding:.8rem .95rem;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;margin:.7rem 0;}
+    .tip-i{font-size:1rem;flex-shrink:0;}
+    .tip-t{font-size:12px;color:#92400E;line-height:1.6;}
+    .tip-t strong{color:#78350F;}
+    .imp{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.8rem .95rem;margin-top:.6rem;}
+    .imp-t{font-size:11px;font-weight:700;color:#065F46;margin-bottom:.3rem;}
+    .jd{background:#0D1117;border-radius:10px;padding:1.15rem 1.4rem;font-family:"JetBrains Mono",monospace;font-size:10.5px;color:#E6EDF3;line-height:1.9;overflow-x:auto;white-space:pre;margin:.8rem 0;}
+    .setup-step{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.95rem 1.15rem;display:flex;gap:.95rem;margin-bottom:.8rem;}
+    .sn{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+    .sc{flex:1;}
+    .st2{font-size:13px;font-weight:600;color:var(--text);margin-bottom:.25rem;}
+    .sd{font-size:12px;color:var(--muted);line-height:1.6;}
+    .sl{font-size:11px;font-family:"JetBrains Mono",monospace;background:var(--code-bg);color:var(--code);padding:.28rem .55rem;border-radius:5px;display:inline-block;margin-top:.35rem;}
+    .sv{margin-top:.5rem;padding:.45rem .7rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:6px;font-size:11px;color:#065F46;}
+    @media print{.sidebar{display:none;}.main{max-width:100%;padding:1rem;}.exbody{display:block!important;}}
+  </style>
+</head>
+<body>
+<nav class="sidebar">
+  <div>
+    <div class="sb-badge">Data PMO &middot; Semana 2&ndash;3</div>
+    <div class="sb-title">M&oacute;dulo 1<br>SQL &mdash; A Linguagem<br>dos Dados</div>
+    <div class="sb-meta">&#9201; ~20h &nbsp;&middot;&nbsp; &#128308; Prioridade M&aacute;xima<br>Conclu&iacute;do &middot; Junho 2026</div>
+  </div>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Setup</div>
+  <div class="sb-nav"><a href="#setup"><span class="dot done"></span>Instala&ccedil;&atilde;o das ferramentas &#10003;</a></div>
+  <div class="sb-section-label">Aula 1 &mdash; SELECT</div>
+  <div class="sb-nav">
+    <a href="#a1-intro"><span class="dot done"></span>Estrutura do SELECT &#10003;</a>
+    <a href="#a1-where"><span class="dot done"></span>WHERE, AND, OR &#10003;</a>
+    <a href="#a1-order"><span class="dot done"></span>ORDER BY &middot; LIMIT &#10003;</a>
+    <a href="#ex1"><span class="dot done"></span>Ex 1 &middot; 5 queries &#10003;</a>
+  </div>
+  <div class="sb-section-label">Aula 2 &mdash; GROUP BY</div>
+  <div class="sb-nav">
+    <a href="#a2-intro"><span class="dot done"></span>O problema que resolve &#10003;</a>
+    <a href="#a2-func"><span class="dot done"></span>5 fun&ccedil;&otilde;es de agrega&ccedil;&atilde;o &#10003;</a>
+    <a href="#a2-having"><span class="dot done"></span>WHERE vs HAVING &#10003;</a>
+    <a href="#ex2"><span class="dot done"></span>Ex 2 &middot; 5 queries &#10003;</a>
+  </div>
+  <div class="sb-section-label">Aula 3 &mdash; JOIN</div>
+  <div class="sb-nav">
+    <a href="#a3-intro"><span class="dot done"></span>Por que o JOIN existe &#10003;</a>
+    <a href="#a3-tipos"><span class="dot done"></span>INNER vs LEFT JOIN &#10003;</a>
+    <a href="#a3-alias"><span class="dot done"></span>Alias e prefixos &#10003;</a>
+    <a href="#ex3"><span class="dot done"></span>Ex 3 &middot; 5 queries &#10003;</a>
+  </div>
+  <div class="sb-section-label">Aula 4 &mdash; Subqueries</div>
+  <div class="sb-nav">
+    <a href="#a4-intro"><span class="dot done"></span>Queries dentro de queries &#10003;</a>
+    <a href="#a4-pad"><span class="dot done"></span>3 padr&otilde;es: IN, escalar, FROM &#10003;</a>
+    <a href="#ex4"><span class="dot done"></span>Ex 4 &middot; 5 queries &#10003;</a>
+  </div>
+  <div class="sb-section-label">Reflex&atilde;o</div>
+  <div class="sb-nav"><a href="#insights"><span class="dot"></span>Insights do m&oacute;dulo</a></div>
+  <div class="sb-footer">
+    <div class="sb-prog-label">Progresso do m&oacute;dulo</div>
+    <div class="sb-prog-track"><div class="sb-prog-fill"></div></div>
+    <div class="sb-prog-status">&#10003; 100% &mdash; M&oacute;dulo conclu&iacute;do</div>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- PIPELINE -->
+  <div class="pipeline-card">
+    <div class="pipeline-eyebrow">Onde o SQL entra no fluxo &mdash; M&oacute;dulo 1</div>
+    <div class="pipeline-flow">
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Origem</div><div class="p-node-sub">Jira &middot; ITSM &middot; Excel</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">ETL / ELT</div><div class="p-node-sub">Time de Dom&iacute;nio</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Armazenamento</div><div class="p-node-sub">Databricks (Lakehouse)</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node active-node"><div class="p-node-name hi">&#128451; SQL</div><div class="p-node-sub">Conclu&iacute;do &#10003;</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Visualiza&ccedil;&atilde;o</div><div class="p-node-sub">Power BI</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Decis&atilde;o</div><div class="p-node-sub">CIO Office &middot; F1RST</div></div></div>
+    </div>
+    <div class="pipeline-note">SQL &eacute; a linguagem usada para consultar dados dentro do Databricks, criar as bases dos relat&oacute;rios no Power BI e validar se um dado est&aacute; correto antes de virar KPI.</div>
+  </div>
+
+  <!-- SETUP -->
+  <div class="section">
+    <span class="anchor" id="setup"></span>
+    <div class="section-head"><div class="section-icon">&#9881;</div><h2 class="section-title">Setup &mdash; Instala&ccedil;&atilde;o das Ferramentas</h2></div>
+    <div class="setup-step"><div class="sn">1</div><div class="sc"><div class="st2">DB Browser for SQLite</div><div class="sd">Interface visual gratuita para escrever e executar SQL sem instalar banco completo. Windows, Mac e Linux.</div><div class="sl">sqlitebrowser.org</div><div class="sv">&#10003; Instalado &middot; Interface em portugu&ecirc;s &middot; Execu&ccedil;&atilde;o em 71ms confirmada</div></div></div>
+    <div class="setup-step"><div class="sn">2</div><div class="sc"><div class="st2">Base Northwind (northwind.db)</div><div class="sd">Banco fict&iacute;cio de vendas B2B da Microsoft. Tabelas: Customers, Orders, Products, Employees, Categories, Suppliers, Shippers, OrderDetails. Download: github.com/jpwhite3/northwind-SQLite3 &rarr; pasta dist &rarr; northwind.db</div><div class="sv">&#10003; Carregada no DB Browser &middot; SELECT * FROM Customers LIMIT 10 validado</div></div></div>
+  </div>
+
+  <!-- AULA 1 -->
+  <div class="aula-divider"><div class="aula-divider-label">Aula 1 &mdash; SELECT</div><div class="aula-divider-line"></div></div>
+
+  <div class="section">
+    <span class="anchor" id="a1-intro"></span>
+    <div class="section-head"><div class="section-icon">&#128218;</div><h2 class="section-title">Estrutura do SELECT</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>O SELECT em uma frase:</strong> "me mostre tal coisa, de tal lugar, com tal condi&ccedil;&atilde;o, em tal ordem." A ordem das cl&aacute;usulas &eacute; obrigat&oacute;ria.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Estrutura completa &mdash; ordem obrigat&oacute;ria</div>
+        <div class="ce"><span class="kw">SELECT</span>   <span class="co">coluna1</span>, <span class="co">coluna2</span>     <span class="cm">-- O QUE mostrar</span>
+<span class="kw">FROM</span>     <span class="tb">tabela</span>               <span class="cm">-- DE ONDE vir</span>
+<span class="kw">WHERE</span>    condi&ccedil;&atilde;o             <span class="cm">-- QUAL filtro (opcional)</span>
+<span class="kw">ORDER BY</span> <span class="co">coluna</span> <span class="kw">DESC</span>        <span class="cm">-- EM QUE ORDEM (opcional)</span>
+<span class="kw">LIMIT</span>    <span class="nu">10</span>;                  <span class="cm">-- QUANTAS linhas (opcional)</span></div>
+        <div class="cs">&#128204; Se colocar WHERE antes de FROM, SQL retorna erro de sintaxe.</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">SELECT * vs. colunas espec&iacute;ficas</div>
+        <div class="cx"><code>*</code> traz tudo. Em produ&ccedil;&atilde;o, sempre nomeie as colunas que precisa.</div>
+        <div class="ce"><span class="cm">-- Explora&ccedil;&atilde;o</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="tb">Customers</span> <span class="kw">LIMIT</span> <span class="nu">5</span>;
+<span class="cm">-- Produ&ccedil;&atilde;o</span>
+<span class="kw">SELECT</span> <span class="co">CustomerID</span>, <span class="co">CompanyName</span>
+<span class="kw">FROM</span>   <span class="tb">Customers</span> <span class="kw">LIMIT</span> <span class="nu">5</span>;</div>
+      </div>
+      <span class="anchor" id="a1-where"></span>
+      <div class="cc c-am">
+        <div class="ct">WHERE, AND e OR</div>
+        <div class="cx">Texto entre aspas simples. N&uacute;meros sem aspas. AND restringe, OR amplia.</div>
+        <div class="ce"><span class="kw">WHERE</span> <span class="co">Country</span> = <span class="st">'Germany'</span>
+<span class="kw">WHERE</span> <span class="co">UnitPrice</span> &gt; <span class="nu">20</span> <span class="kw">AND</span> <span class="co">Stock</span> &gt; <span class="nu">0</span>
+<span class="kw">WHERE</span> <span class="co">Country</span> = <span class="st">'USA'</span> <span class="kw">OR</span> <span class="co">Country</span> = <span class="st">'Brazil'</span></div>
+      </div>
+      <span class="anchor" id="a1-order"></span>
+      <div class="cc c-gr">
+        <div class="ct">ORDER BY e LIMIT</div>
+        <div class="cx"><code>DESC</code> = maior para menor. <code>ASC</code> = padr&atilde;o. LIMIT controla o volume retornado.</div>
+        <div class="ce"><span class="kw">ORDER BY</span> <span class="co">UnitPrice</span> <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> <span class="nu">10</span>
+<span class="cm">-- Nunca rode SELECT * sem LIMIT</span>
+<span class="cm">-- em tabelas de produ&ccedil;&atilde;o</span></div>
+      </div>
+      <div class="cc c-re full">
+        <div class="ct">Erro mais comum da Aula 1 &mdash; nome de coluna errado</div>
+        <div class="ce"><span class="cm">-- ERRO: no such column: CustomerName</span>
+<span class="kw">SELECT</span> <span class="co">CustomerName</span> <span class="kw">FROM</span> <span class="tb">Customers</span>;
+<span class="cm">-- CORRETO: o nome real &eacute; CompanyName</span>
+<span class="kw">SELECT</span> <span class="co">CompanyName</span> <span class="kw">FROM</span> <span class="tb">Customers</span>;</div>
+        <div class="cs">&#128204; Antes de escrever qualquer query em tabela nova: <code>SELECT * FROM tabela LIMIT 3</code> e copie os nomes exatos das colunas.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EX 1 -->
+  <div class="section">
+    <span class="anchor" id="ex1"></span>
+    <div class="section-head"><div class="section-icon">&#9999;</div><h2 class="section-title">Exerc&iacute;cio 1 &mdash; 5 Queries SELECT</h2></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">1</div><div class="ext">Explora&ccedil;&atilde;o inicial da tabela Customers</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="exl">Query</div>
+    <div class="sql"><span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="tb">Customers</span> <span class="kw">LIMIT</span> <span class="nu">10</span>;</div>
+    <div class="rm">&#10004; 10 linhas &middot; Colunas: CustomerID, CompanyName, ContactName, Country, City...</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">2</div><div class="ext">Clientes da Alemanha com ORDER BY</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="exl">Query</div>
+    <div class="sql"><span class="kw">SELECT</span> <span class="co">CustomerID</span>, <span class="co">CompanyName</span>, <span class="co">City</span>
+<span class="kw">FROM</span>   <span class="tb">Customers</span>
+<span class="kw">WHERE</span>  <span class="co">Country</span> = <span class="st">'Germany'</span>
+<span class="kw">ORDER BY</span> <span class="co">CompanyName</span> <span class="kw">ASC</span>;</div>
+    <div class="rm">&#10004; 11 clientes &middot; Alemanha &eacute; o maior mercado de clientes da base</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">3</div><div class="ext">Produtos com pre&ccedil;o &gt; 20 e estoque dispon&iacute;vel</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="exl">Query</div>
+    <div class="sql"><span class="kw">SELECT</span> <span class="co">ProductName</span>, <span class="co">UnitPrice</span>, <span class="co">UnitsInStock</span>
+<span class="kw">FROM</span>   <span class="tb">Products</span>
+<span class="kw">WHERE</span>  <span class="co">UnitPrice</span> &gt; <span class="nu">20</span> <span class="kw">AND</span> <span class="co">UnitsInStock</span> &gt; <span class="nu">0</span>
+<span class="kw">ORDER BY</span> <span class="co">UnitPrice</span> <span class="kw">DESC</span>;</div>
+    <div class="rl">Resultado (top 3)</div>
+    <table class="rt"><thead><tr><th>ProductName</th><th>UnitPrice</th><th>UnitsInStock</th></tr></thead>
+    <tbody><tr><td>C&ocirc;te de Blaye</td><td>263.5</td><td>17</td></tr><tr><td>Th&uuml;ringer Rostbratwurst</td><td>123.79</td><td>0*</td></tr><tr><td>Mishi Kobe Niku</td><td>97</td><td>29</td></tr></tbody></table>
+    <div class="rm">&#10004; 33 linhas &middot; C&ocirc;te de Blaye lidera em $263,50</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">4</div><div class="ext">Pedidos para EUA ou Brasil com OR</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="exl">Query</div>
+    <div class="sql"><span class="kw">SELECT</span> <span class="co">OrderID</span>, <span class="co">CustomerID</span>, <span class="co">ShipCountry</span>
+<span class="kw">FROM</span>   <span class="tb">Orders</span>
+<span class="kw">WHERE</span>  <span class="co">ShipCountry</span> = <span class="st">'USA'</span> <span class="kw">OR</span> <span class="co">ShipCountry</span> = <span class="st">'Brazil'</span>
+<span class="kw">ORDER BY</span> <span class="co">ShipCountry</span>;</div>
+    <div class="rm">&#10004; 4.011 linhas &mdash; 1 registro por pedido, n&atilde;o por cliente &rarr; motivou a Aula 2</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">5</div><div class="ext">Query livre &mdash; Funcion&aacute;rios nos EUA</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="exl">Pergunta inventada</div><p style="font-size:12.5px;margin-bottom:.6rem">"Quantos colaboradores est&atilde;o alocados nos EUA?"</p>
+    <div class="exl">Query</div>
+    <div class="sql"><span class="cm">-- Pergunta: Quantos colaboradores est&atilde;o nos EUA?</span>
+<span class="kw">SELECT</span> <span class="co">FirstName</span>, <span class="co">Title</span>, <span class="co">Country</span>
+<span class="kw">FROM</span>   <span class="tb">Employees</span>
+<span class="kw">WHERE</span>  <span class="co">Country</span> = <span class="st">'USA'</span>
+<span class="kw">ORDER BY</span> <span class="co">Title</span>;</div>
+    <div class="rm">&#10004; 5 colaboradores &middot; Tabela nova explorada por iniciativa pr&oacute;pria &#10024;</div></div></div>
+  </div>
+
+  <!-- AULA 2 -->
+  <div class="aula-divider"><div class="aula-divider-label">Aula 2 &mdash; GROUP BY</div><div class="aula-divider-line"></div></div>
+
+  <div class="section">
+    <span class="anchor" id="a2-intro"></span>
+    <div class="section-head"><div class="section-icon">&#128218;</div><h2 class="section-title">O Problema que o GROUP BY Resolve</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>Contexto:</strong> a Query 4 da Aula 1 retornou 4.011 linhas &mdash; uma por pedido. O GROUP BY transforma isso em 1 linha por grupo com o total calculado. &Eacute; aqui que o SQL gera n&uacute;meros de KPI.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Sem vs. Com GROUP BY</div>
+        <div class="ce"><span class="cm">-- Sem GROUP BY: 4.011 linhas</span>
+<span class="kw">SELECT</span> <span class="co">ShipCountry</span> <span class="kw">FROM</span> <span class="tb">Orders</span>;
+<span class="cm">-- Com GROUP BY: 21 linhas (1 por pa&iacute;s)</span>
+<span class="kw">SELECT</span>   <span class="co">ShipCountry</span>, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> Total
+<span class="kw">FROM</span>     <span class="tb">Orders</span>
+<span class="kw">GROUP BY</span> <span class="co">ShipCountry</span>
+<span class="kw">ORDER BY</span> Total <span class="kw">DESC</span>;</div>
+        <div class="cs">&#128204; Toda coluna no SELECT que n&atilde;o for fun&ccedil;&atilde;o de agrega&ccedil;&atilde;o precisa estar no GROUP BY.</div>
+      </div>
+      <span class="anchor" id="a2-func"></span>
+      <div class="cc c-gr full">
+        <div class="ct">As 5 fun&ccedil;&otilde;es de agrega&ccedil;&atilde;o essenciais</div>
+        <table class="ot"><thead><tr><th>Fun&ccedil;&atilde;o</th><th>O que faz</th><th>Uso em PMO</th></tr></thead>
+        <tbody>
+          <tr><td><code>COUNT(*)</code></td><td>Conta linhas</td><td>Total de demandas por squad</td></tr>
+          <tr><td><code>SUM(col)</code></td><td>Soma valores</td><td>Total de horas por projeto</td></tr>
+          <tr><td><code>AVG(col)</code></td><td>M&eacute;dia</td><td>SLA m&eacute;dio por prioridade</td></tr>
+          <tr><td><code>MAX(col)</code></td><td>Maior valor</td><td>Chamado mais antigo em aberto</td></tr>
+          <tr><td><code>MIN(col)</code></td><td>Menor valor</td><td>Entrega mais r&aacute;pida do m&ecirc;s</td></tr>
+        </tbody></table>
+        <div class="cs">&#128204; Use <code>ROUND(AVG(col), 2)</code> para limpar casas decimais em relat&oacute;rios executivos.</div>
+      </div>
+      <span class="anchor" id="a2-having"></span>
+      <div class="cc c-am">
+        <div class="ct">WHERE vs HAVING</div>
+        <div class="cx"><strong>WHERE</strong> filtra linhas antes de agrupar.<br><strong>HAVING</strong> filtra grupos depois de agrupar.</div>
+        <div class="ce"><span class="kw">GROUP BY</span> <span class="co">ShipCountry</span>
+<span class="kw">HAVING</span>   <span class="fn">COUNT</span>(*) &gt; <span class="nu">500</span>
+<span class="cm">-- Threshold precisa fazer sentido</span>
+<span class="cm">-- HAVING &gt; 10 n&atilde;o filtrou nada</span>
+<span class="cm">-- porque todos os pa&iacute;ses j&aacute; t&ecirc;m &gt;10</span></div>
+      </div>
+      <div class="cc c-te">
+        <div class="ct">ROUND &mdash; sempre em m&eacute;dias</div>
+        <div class="ce"><span class="cm">-- Sem ROUND: 54.0066666666667</span>
+<span class="fn">AVG</span>(<span class="co">UnitPrice</span>)
+<span class="cm">-- Com ROUND: 54.01</span>
+<span class="fn">ROUND</span>(<span class="fn">AVG</span>(<span class="co">UnitPrice</span>), <span class="nu">2</span>)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EX 2 -->
+  <div class="section">
+    <span class="anchor" id="ex2"></span>
+    <div class="section-head"><div class="section-icon">&#9999;</div><h2 class="section-title">Exerc&iacute;cio 2 &mdash; 5 Queries GROUP BY</h2></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">1</div><div class="ext">Pedidos por pa&iacute;s &mdash; COUNT com GROUP BY</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">ShipCountry</span>, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> TotalPedidos
+<span class="kw">FROM</span> <span class="tb">Orders</span> <span class="kw">GROUP BY</span> <span class="co">ShipCountry</span> <span class="kw">ORDER BY</span> TotalPedidos <span class="kw">DESC</span>;</div>
+    <div class="rm">&#10004; 21 pa&iacute;ses &middot; EUA: 2.328 &middot; Alemanha: 2.193 &middot; Fran&ccedil;a: 1.778 &middot; Brasil: 1.683</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">2</div><div class="ext">Clientes por pa&iacute;s &mdash; compara&ccedil;&atilde;o com Q1</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">Country</span>, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> TotalClientes
+<span class="kw">FROM</span> <span class="tb">Customers</span> <span class="kw">GROUP BY</span> <span class="co">Country</span> <span class="kw">ORDER BY</span> TotalClientes <span class="kw">DESC</span> <span class="kw">LIMIT</span> <span class="nu">10</span>;</div>
+    <div class="rm">&#10004; EUA: 13 clientes, 2.328 pedidos &rarr; ~179 pedidos/cliente &middot; Mesmo ranking, volumes completamente diferentes</div>
+    <div class="tip" style="margin-top:.6rem"><div class="tip-i">&#128204;</div><div class="tip-t"><strong>Insight PMO:</strong> antes de qualquer an&aacute;lise &mdash; <em>o que &eacute; uma linha nessa tabela?</em></div></div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">3</div><div class="ext">M&uacute;ltiplas agrega&ccedil;&otilde;es por categoria</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">CategoryID</span>, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> Total,
+       <span class="fn">AVG</span>(<span class="co">UnitPrice</span>) <span class="kw">AS</span> PrecoMedio, <span class="fn">MAX</span>(<span class="co">UnitPrice</span>) <span class="kw">AS</span> PrecoMax
+<span class="kw">FROM</span> <span class="tb">Products</span> <span class="kw">GROUP BY</span> <span class="co">CategoryID</span> <span class="kw">ORDER BY</span> PrecoMedio <span class="kw">DESC</span>;</div>
+    <div class="rm">&#10004; 8 categorias &middot; Cat.6 maior m&eacute;dia ($54) &middot; Cat.1 maior pre&ccedil;o ($263,50 = C&ocirc;te de Blaye) &#10024;</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">4</div><div class="ext">HAVING &mdash; threshold calibrado</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">ShipCountry</span>, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> Total
+<span class="kw">FROM</span> <span class="tb">Orders</span> <span class="kw">GROUP BY</span> <span class="co">ShipCountry</span>
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) &gt; <span class="nu">10</span> <span class="kw">ORDER BY</span> Total <span class="kw">DESC</span>;</div>
+    <div class="rm">&#10004; 21 linhas &mdash; mesmo resultado sem HAVING. Todos os pa&iacute;ses j&aacute; t&ecirc;m &gt;10. Usar &gt;500 para filtrar de verdade.</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">5</div><div class="ext">Query livre &mdash; pedidos por funcion&aacute;rio com HAVING</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="cm">-- Pedidos por funcion&aacute;rio + HAVING + COUNT + AVG</span>
+<span class="kw">SELECT</span> <span class="co">EmployeeID</span>, <span class="fn">COUNT</span>(<span class="co">OrderID</span>) <span class="kw">AS</span> TotalPedidos
+<span class="kw">FROM</span> <span class="tb">Orders</span> <span class="kw">GROUP BY</span> <span class="co">EmployeeID</span>
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) &gt; <span class="nu">2</span> <span class="kw">ORDER BY</span> TotalPedidos <span class="kw">DESC</span>;</div>
+    <div class="rm">&#10004; GROUP BY + HAVING + COUNT juntos &#10024; &mdash; AVG(OrderID) n&atilde;o tem significado de neg&oacute;cio (ID &ne; medida)</div></div></div>
+  </div>
+
+  <!-- AULA 3 -->
+  <div class="aula-divider"><div class="aula-divider-label">Aula 3 &mdash; JOIN</div><div class="aula-divider-line"></div></div>
+
+  <div class="section">
+    <span class="anchor" id="a3-intro"></span>
+    <div class="section-head"><div class="section-icon">&#128218;</div><h2 class="section-title">Por que o JOIN Existe</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>O problema:</strong> bancos relacionais guardam dados em tabelas separadas. O nome do cliente n&atilde;o est&aacute; em Orders &mdash; est&aacute; em Customers. O JOIN conecta as duas pela coluna que compartilham.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Sem vs. Com JOIN</div>
+        <div class="ce"><span class="cm">-- Sem JOIN: s&oacute; o c&oacute;digo</span>
+<span class="kw">SELECT</span> <span class="co">OrderID</span>, <span class="co">CustomerID</span> <span class="kw">FROM</span> <span class="tb">Orders</span> <span class="kw">LIMIT</span> <span class="nu">2</span>;
+<span class="cm">-- 10248 | ALFKI     10249 | ANATR</span>
+<span class="cm">-- Com JOIN: nome real da empresa</span>
+<span class="kw">SELECT</span> <span class="co">o</span>.<span class="co">OrderID</span>, <span class="co">c</span>.<span class="co">CompanyName</span>
+<span class="kw">FROM</span>   <span class="tb">Orders</span> <span class="kw">AS</span> o
+<span class="kw">JOIN</span>   <span class="tb">Customers</span> <span class="kw">AS</span> c <span class="kw">ON</span> <span class="co">o</span>.<span class="co">CustomerID</span> = <span class="co">c</span>.<span class="co">CustomerID</span> <span class="kw">LIMIT</span> <span class="nu">2</span>;
+<span class="cm">-- 10248 | Vins et alcools Chevalier</span>
+<span class="cm">-- 10249 | Toms Spezialit&auml;ten</span></div>
+        <div class="cs">&#128204; Northwind &eacute; B2B: clientes s&atilde;o empresas (CompanyName). Nomes de pessoas aparecem em Employees. Esse modelo &eacute; id&ecirc;ntico ao de qualquer base corporativa.</div>
+      </div>
+      <span class="anchor" id="a3-tipos"></span>
+      <div class="cc c-bl">
+        <div class="ct">INNER JOIN &mdash; s&oacute; o que existe nos dois lados</div>
+        <div class="cx">Retorna apenas registros com correspond&ecirc;ncia nas duas tabelas.</div>
+        <div class="ce"><span class="kw">FROM</span>  <span class="tb">Orders</span> <span class="kw">AS</span> o
+<span class="kw">JOIN</span>  <span class="tb">Customers</span> <span class="kw">AS</span> c
+  <span class="kw">ON</span>  <span class="co">o</span>.<span class="co">CustomerID</span> = <span class="co">c</span>.<span class="co">CustomerID</span></div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">LEFT JOIN + IS NULL &mdash; detector de gaps</div>
+        <div class="cx">Todos da esquerda + NULL onde n&atilde;o h&aacute; par. Padr&atilde;o para encontrar registros faltantes.</div>
+        <div class="ce"><span class="kw">FROM</span>      <span class="tb">Customers</span> <span class="kw">AS</span> c
+<span class="kw">LEFT JOIN</span> <span class="tb">Orders</span> <span class="kw">AS</span> o
+  <span class="kw">ON</span>  <span class="co">c</span>.<span class="co">CustomerID</span> = <span class="co">o</span>.<span class="co">CustomerID</span>
+<span class="kw">WHERE</span> <span class="co">o</span>.<span class="co">OrderID</span> <span class="kw">IS NULL</span>
+<span class="cm">-- Northwind: 0 linhas (base &iacute;ntegra)</span></div>
+      </div>
+      <span class="anchor" id="a3-alias"></span>
+      <div class="cc c-am full">
+        <div class="ct">Alias &mdash; por que s&atilde;o obrigat&oacute;rios com JOIN</div>
+        <div class="cx">Quando duas tabelas t&ecirc;m colunas com o mesmo nome (CustomerID existe em Orders e Customers), o alias resolve a ambiguidade.</div>
+        <div class="ce"><span class="kw">SELECT</span> <span class="co">o</span>.<span class="co">OrderID</span>,   <span class="cm">-- de Orders</span>
+       <span class="co">c</span>.<span class="co">CompanyName</span> <span class="cm">-- de Customers</span>
+<span class="cm">-- Conven&ccedil;&atilde;o: inicial da tabela</span>
+<span class="cm">-- o=Orders c=Customers p=Products e=Employees</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EX 3 -->
+  <div class="section">
+    <span class="anchor" id="ex3"></span>
+    <div class="section-head"><div class="section-icon">&#9999;</div><h2 class="section-title">Exerc&iacute;cio 3 &mdash; 5 Queries JOIN</h2></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">1</div><div class="ext">Nome da empresa em cada pedido &mdash; JOIN b&aacute;sico</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">o</span>.<span class="co">OrderID</span>, <span class="co">c</span>.<span class="co">CompanyName</span>, <span class="co">o</span>.<span class="co">OrderDate</span>, <span class="co">o</span>.<span class="co">ShipCountry</span>
+<span class="kw">FROM</span> <span class="tb">Orders</span> <span class="kw">AS</span> o <span class="kw">JOIN</span> <span class="tb">Customers</span> <span class="kw">AS</span> c <span class="kw">ON</span> <span class="co">o</span>.<span class="co">CustomerID</span> = <span class="co">c</span>.<span class="co">CustomerID</span> <span class="kw">LIMIT</span> <span class="nu">15</span>;</div>
+    <div class="rl">Top 3</div>
+    <table class="rt"><thead><tr><th>OrderID</th><th>CompanyName</th><th>OrderDate</th><th>ShipCountry</th></tr></thead>
+    <tbody><tr><td>10248</td><td>Vins et alcools Chevalier</td><td>2016-07-04</td><td>France</td></tr>
+    <tr><td>10249</td><td>Toms Spezialit&auml;ten</td><td>2016-07-05</td><td>Germany</td></tr>
+    <tr><td>10250</td><td>Hanari Carnes</td><td>2016-07-08</td><td>Brazil</td></tr></tbody></table>
+    <div class="rm">&#10004; 15 linhas &middot; CompanyName resolvido via JOIN</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">2</div><div class="ext">Produtos com nome da categoria resolvido</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">p</span>.<span class="co">ProductName</span>, <span class="co">p</span>.<span class="co">UnitPrice</span>, <span class="co">c</span>.<span class="co">CategoryName</span>
+<span class="kw">FROM</span> <span class="tb">Products</span> <span class="kw">AS</span> p <span class="kw">JOIN</span> <span class="tb">Categories</span> <span class="kw">AS</span> c <span class="kw">ON</span> <span class="co">p</span>.<span class="co">CategoryID</span> = <span class="co">c</span>.<span class="co">CategoryID</span>
+<span class="kw">ORDER BY</span> <span class="co">c</span>.<span class="co">CategoryName</span>, <span class="co">p</span>.<span class="co">UnitPrice</span> <span class="kw">DESC</span>;</div>
+    <div class="rm">&#10004; 77 linhas &middot; 8 categorias &middot; C&ocirc;te de Blaye lidera Beverages em $263,50</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">3</div><div class="ext">JOIN + GROUP BY &mdash; pedidos por cliente</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">c</span>.<span class="co">CompanyName</span>, <span class="fn">COUNT</span>(<span class="co">o</span>.<span class="co">OrderID</span>) <span class="kw">AS</span> TotalPedidos
+<span class="kw">FROM</span> <span class="tb">Customers</span> <span class="kw">AS</span> c <span class="kw">JOIN</span> <span class="tb">Orders</span> <span class="kw">AS</span> o <span class="kw">ON</span> <span class="co">c</span>.<span class="co">CustomerID</span> = <span class="co">o</span>.<span class="co">CustomerID</span>
+<span class="kw">GROUP BY</span> <span class="co">c</span>.<span class="co">CompanyName</span> <span class="kw">ORDER BY</span> TotalPedidos <span class="kw">DESC</span> <span class="kw">LIMIT</span> <span class="nu">10</span>;</div>
+    <div class="rm">&#10004; "IT": 335 (outlier) &middot; B&apos;s Beverages: 210 &middot; Ricardo Adocicados: 203 &middot; JOIN+GROUP BY &#10024;</div>
+    <div class="tip" style="margin-top:.6rem"><div class="tip-i">&#128270;</div><div class="tip-t"><strong>"IT" com 335 pedidos:</strong> n&atilde;o apareceu na Aula 4 Query 2 (IN de Customers). Prov&aacute;vel dado &oacute;rf&atilde;o &mdash; CustomerID existe em Orders mas n&atilde;o em Customers. Detectado com LEFT JOIN + IS NULL.</div></div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">4</div><div class="ext">LEFT JOIN &mdash; clientes sem pedidos (IS NULL)</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">c</span>.<span class="co">CompanyName</span>, <span class="co">c</span>.<span class="co">Country</span>, <span class="co">o</span>.<span class="co">OrderID</span>
+<span class="kw">FROM</span> <span class="tb">Customers</span> <span class="kw">AS</span> c <span class="kw">LEFT JOIN</span> <span class="tb">Orders</span> <span class="kw">AS</span> o
+  <span class="kw">ON</span> <span class="co">c</span>.<span class="co">CustomerID</span> = <span class="co">o</span>.<span class="co">CustomerID</span>
+<span class="kw">WHERE</span> <span class="co">o</span>.<span class="co">OrderID</span> <span class="kw">IS NULL</span>;</div>
+    <div class="rm">&#10004; 0 linhas &mdash; todos os clientes t&ecirc;m pedidos &middot; Base &iacute;ntegra confirmada</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">5</div><div class="ext">Query livre &mdash; funcion&aacute;rios com mais pedidos</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="cm">-- Funcion&aacute;rios com mais pedidos e de qual pa&iacute;s</span>
+<span class="kw">SELECT</span> <span class="co">e</span>.<span class="co">FirstName</span>, <span class="co">e</span>.<span class="co">Country</span>, <span class="fn">COUNT</span>(<span class="co">o</span>.<span class="co">OrderID</span>) <span class="kw">AS</span> TotalPedidos
+<span class="kw">FROM</span> <span class="tb">Employees</span> <span class="kw">AS</span> e <span class="kw">JOIN</span> <span class="tb">Orders</span> <span class="kw">AS</span> o <span class="kw">ON</span> <span class="co">e</span>.<span class="co">EmployeeID</span> = <span class="co">o</span>.<span class="co">EmployeeID</span>
+<span class="kw">GROUP BY</span> <span class="co">e</span>.<span class="co">EmployeeID</span>, <span class="co">e</span>.<span class="co">FirstName</span>, <span class="co">e</span>.<span class="co">Country</span>
+<span class="kw">ORDER BY</span> TotalPedidos <span class="kw">DESC</span>;</div>
+    <div class="rm">&#10004; Margaret (USA) 1.908 &middot; Nancy/Janet (USA) 1.846 &middot; GROUP BY por ID aplicado &#10024;</div></div></div>
+  </div>
+
+  <!-- AULA 4 -->
+  <div class="aula-divider"><div class="aula-divider-label">Aula 4 &mdash; Subqueries</div><div class="aula-divider-line"></div></div>
+
+  <div class="section">
+    <span class="anchor" id="a4-intro"></span>
+    <div class="section-head"><div class="section-icon">&#128218;</div><h2 class="section-title">Queries Dentro de Queries</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>O problema:</strong> voc&ecirc; j&aacute; sabe filtrar com WHERE valor = X. A subquery resolve o caso onde voc&ecirc; n&atilde;o conhece X antecipadamente &mdash; precisa calcul&aacute;-lo primeiro. O banco executa de dentro para fora.</div></div>
+    <span class="anchor" id="a4-pad"></span>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Anatomia de uma subquery</div>
+        <div class="ce"><span class="kw">SELECT</span> coluna
+<span class="kw">FROM</span>   tabela_externa
+<span class="kw">WHERE</span>  coluna <span class="kw">OPERADOR</span> (
+    <span class="kw">SELECT</span> coluna          <span class="cm">-- roda primeiro</span>
+    <span class="kw">FROM</span>   tabela_interna
+    <span class="kw">WHERE</span>  condi&ccedil;&atilde;o
+);</div>
+        <div class="cs">&#128204; A query interna roda primeiro e devolve um resultado. A query externa usa esse resultado como filtro.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Padr&atilde;o 1 &mdash; IN: "est&aacute; na lista?"</div>
+        <div class="ce"><span class="cm">-- Clientes com +200 pedidos</span>
+<span class="kw">SELECT</span> <span class="co">CompanyName</span>
+<span class="kw">FROM</span>   <span class="tb">Customers</span>
+<span class="kw">WHERE</span>  <span class="co">CustomerID</span> <span class="kw">IN</span> (
+    <span class="kw">SELECT</span> <span class="co">CustomerID</span>
+    <span class="kw">FROM</span>   <span class="tb">Orders</span>
+    <span class="kw">GROUP BY</span> <span class="co">CustomerID</span>
+    <span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) &gt; <span class="nu">200</span>
+);</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Padr&atilde;o 2 &mdash; Escalar: valor &uacute;nico como refer&ecirc;ncia</div>
+        <div class="ce"><span class="cm">-- Produtos acima da m&eacute;dia</span>
+<span class="kw">SELECT</span> <span class="co">ProductName</span>, <span class="co">UnitPrice</span>
+<span class="kw">FROM</span>   <span class="tb">Products</span>
+<span class="kw">WHERE</span>  <span class="co">UnitPrice</span> &gt; (
+    <span class="kw">SELECT</span> <span class="fn">AVG</span>(<span class="co">UnitPrice</span>)
+    <span class="kw">FROM</span>   <span class="tb">Products</span>
+);</div>
+      </div>
+      <div class="cc c-am full">
+        <div class="ct">Padr&atilde;o 3 &mdash; FROM: subquery como tabela derivada</div>
+        <div class="cx">A query interna vira uma "tabela tempor&aacute;ria". O alias &eacute; obrigat&oacute;rio.</div>
+        <div class="ce"><span class="cm">-- M&eacute;dia geral de pedidos por cliente</span>
+<span class="kw">SELECT</span> <span class="fn">AVG</span>(TotalPedidos) <span class="kw">AS</span> MediaGeral
+<span class="kw">FROM</span> (
+    <span class="kw">SELECT</span> <span class="co">CustomerID</span>, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> TotalPedidos
+    <span class="kw">FROM</span>   <span class="tb">Orders</span>
+    <span class="kw">GROUP BY</span> <span class="co">CustomerID</span>
+) <span class="kw">AS</span> resumo; <span class="cm">-- alias obrigat&oacute;rio</span></div>
+        <div class="cs">&#128204; Subquery vs JOIN: se precisar de colunas das duas tabelas, use JOIN. Se s&oacute; precisar filtrar com base em outra tabela ou calcular um valor agregado como filtro, use subquery.</div>
+      </div>
+      <div class="cc c-te full">
+        <div class="ct">Como ver o valor que a subquery usou como filtro</div>
+        <div class="cx">A subquery calcula internamente e n&atilde;o exibe o valor. Para ver, rode separado ou adicione como coluna extra.</div>
+        <div class="ce"><span class="cm">-- Ver a m&eacute;dia separadamente</span>
+<span class="kw">SELECT</span> <span class="fn">ROUND</span>(<span class="fn">AVG</span>(<span class="co">UnitPrice</span>), <span class="nu">2</span>) <span class="kw">AS</span> MediaGeral <span class="kw">FROM</span> <span class="tb">Products</span>;
+<span class="cm">-- Resultado: 28.87</span>
+<span class="cm">-- Ou adicionar como coluna extra na query principal</span>
+<span class="kw">SELECT</span> <span class="co">ProductName</span>, <span class="co">UnitPrice</span>,
+       (<span class="kw">SELECT</span> <span class="fn">ROUND</span>(<span class="fn">AVG</span>(<span class="co">UnitPrice</span>),<span class="nu">2</span>) <span class="kw">FROM</span> <span class="tb">Products</span>) <span class="kw">AS</span> MediaGeral
+<span class="kw">FROM</span>   <span class="tb">Products</span>
+<span class="kw">WHERE</span>  <span class="co">UnitPrice</span> &gt; (<span class="kw">SELECT</span> <span class="fn">AVG</span>(<span class="co">UnitPrice</span>) <span class="kw">FROM</span> <span class="tb">Products</span>)
+<span class="kw">ORDER BY</span> <span class="co">UnitPrice</span> <span class="kw">DESC</span>;</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EX 4 -->
+  <div class="section">
+    <span class="anchor" id="ex4"></span>
+    <div class="section-head"><div class="section-icon">&#9999;</div><h2 class="section-title">Exerc&iacute;cio 4 &mdash; 5 Queries Subqueries</h2></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">1</div><div class="ext">Produtos acima da m&eacute;dia de pre&ccedil;o</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">ProductName</span>, <span class="co">UnitPrice</span>
+<span class="kw">FROM</span>   <span class="tb">Products</span>
+<span class="kw">WHERE</span>  <span class="co">UnitPrice</span> &gt; (<span class="kw">SELECT</span> <span class="fn">AVG</span>(<span class="co">UnitPrice</span>) <span class="kw">FROM</span> <span class="tb">Products</span>)
+<span class="kw">ORDER BY</span> <span class="co">UnitPrice</span> <span class="kw">DESC</span>;</div>
+    <div class="rm">&#10004; 25 produtos &middot; M&eacute;dia: $28,87 &middot; L&iacute;der: C&ocirc;te de Blaye $263,50</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">2</div><div class="ext">Clientes com mais de 200 pedidos (IN)</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">CompanyName</span>, <span class="co">Country</span>
+<span class="kw">FROM</span>   <span class="tb">Customers</span>
+<span class="kw">WHERE</span>  <span class="co">CustomerID</span> <span class="kw">IN</span> (
+    <span class="kw">SELECT</span> <span class="co">CustomerID</span> <span class="kw">FROM</span> <span class="tb">Orders</span>
+    <span class="kw">GROUP BY</span> <span class="co">CustomerID</span> <span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) &gt; <span class="nu">200</span>
+);</div>
+    <div class="rl">Resultado</div>
+    <table class="rt"><thead><tr><th>CompanyName</th><th>Country</th></tr></thead>
+    <tbody><tr><td>B&apos;s Beverages</td><td>UK</td></tr><tr><td>Gourmet Lanchonetes</td><td>Brazil</td></tr>
+    <tr><td>LILA-Supermercado</td><td>Venezuela</td></tr><tr><td>Ricardo Adocicados</td><td>Brazil</td></tr></tbody></table>
+    <div class="rm">&#10004; 4 empresas &middot; "IT" (335 pedidos) n&atilde;o aparece &mdash; dado &oacute;rf&atilde;o confirmado</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">3</div><div class="ext">M&eacute;dia geral de pedidos por cliente (subquery no FROM)</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="fn">AVG</span>(TotalPedidos) <span class="kw">AS</span> MediaPedidosPorCliente
+<span class="kw">FROM</span> (
+    <span class="kw">SELECT</span> <span class="co">CustomerID</span>, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> TotalPedidos
+    <span class="kw">FROM</span>   <span class="tb">Orders</span>
+    <span class="kw">GROUP BY</span> <span class="co">CustomerID</span>
+) <span class="kw">AS</span> resumo;</div>
+    <div class="rm">&#10004; M&eacute;dia: 175,07 pedidos/cliente &middot; "IT" tem 335 &mdash; quase o dobro &middot; B&apos;s Beverages 210 &mdash; 20% acima</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">4</div><div class="ext">Funcion&aacute;rios acima da m&eacute;dia (subquery aninhada em HAVING)</div><span class="exb-done">&#10003; Conclu&iacute;da</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open"><div class="sql"><span class="kw">SELECT</span> <span class="co">e</span>.<span class="co">FirstName</span>, <span class="co">e</span>.<span class="co">Country</span>,
+       <span class="fn">COUNT</span>(<span class="co">o</span>.<span class="co">OrderID</span>) <span class="kw">AS</span> TotalPedidos
+<span class="kw">FROM</span> <span class="tb">Employees</span> <span class="kw">AS</span> e <span class="kw">JOIN</span> <span class="tb">Orders</span> <span class="kw">AS</span> o <span class="kw">ON</span> <span class="co">e</span>.<span class="co">EmployeeID</span> = <span class="co">o</span>.<span class="co">EmployeeID</span>
+<span class="kw">GROUP BY</span> <span class="co">e</span>.<span class="co">EmployeeID</span>, <span class="co">e</span>.<span class="co">FirstName</span>, <span class="co">e</span>.<span class="co">Country</span>
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(<span class="co">o</span>.<span class="co">OrderID</span>) &gt; (
+    <span class="kw">SELECT</span> <span class="fn">AVG</span>(pedidos_por_func)
+    <span class="kw">FROM</span> (
+        <span class="kw">SELECT</span> <span class="fn">COUNT</span>(*) <span class="kw">AS</span> pedidos_por_func
+        <span class="kw">FROM</span> <span class="tb">Orders</span> <span class="kw">GROUP BY</span> <span class="co">EmployeeID</span>
+    ) <span class="kw">AS</span> sub
+)
+<span class="kw">ORDER BY</span> TotalPedidos <span class="kw">DESC</span>;</div>
+    <div class="rl">Resultado</div>
+    <table class="rt"><thead><tr><th>FirstName</th><th>Country</th><th>TotalPedidos</th></tr></thead>
+    <tbody><tr><td>Margaret</td><td>USA</td><td>1.908</td></tr><tr><td>Nancy</td><td>USA</td><td>1.846</td></tr><tr><td>Janet</td><td>USA</td><td>1.846</td></tr></tbody></table>
+    <div class="rm">&#10004; 3 funcion&aacute;rios &middot; Subquery aninhada em HAVING &middot; GROUP BY por ID aplicado &#10024;</div></div></div>
+    <div class="ex"><div class="exh is-open" onclick="tog(this)"><div class="exn">5</div><div class="ext">Query livre &mdash; Produtos acima da m&eacute;dia com categoria (vers&atilde;o corrigida)</div><span class="exb-done">&#10003; Revisada</span><span class="exc">&#9650;</span></div>
+    <div class="exbody open">
+    <div class="exl">Pergunta</div><p style="font-size:12.5px;margin-bottom:.6rem">"Quais produtos est&atilde;o com o pre&ccedil;o acima da m&eacute;dia geral, e de qual categoria s&atilde;o?"</p>
+    <div class="exl">Tentativa original &mdash; retornou 0 linhas</div>
+    <div class="sql"><span class="cm">-- PROBLEMA: HAVING COUNT(UnitPrice) &gt; AVG</span>
+<span class="cm">-- COUNT por grupo = 1 (cada produto tem 1 pre&ccedil;o)</span>
+<span class="cm">-- Condi&ccedil;&atilde;o: 1 &gt; 28.87 = sempre falso</span>
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(<span class="co">p</span>.<span class="co">UnitPrice</span>) &gt; (<span class="kw">SELECT</span> <span class="fn">AVG</span>(<span class="co">p</span>.<span class="co">UnitPrice</span>))</div>
+    <div class="exl">Vers&atilde;o corrigida &mdash; subquery no WHERE</div>
+    <div class="sql"><span class="cm">-- Produtos acima da m&eacute;dia com nome da categoria</span>
+<span class="kw">SELECT</span> <span class="co">p</span>.<span class="co">ProductName</span>, <span class="co">c</span>.<span class="co">CategoryName</span>, <span class="co">p</span>.<span class="co">UnitPrice</span>
+<span class="kw">FROM</span>   <span class="tb">Products</span> <span class="kw">AS</span> p
+<span class="kw">JOIN</span>   <span class="tb">Categories</span> <span class="kw">AS</span> c <span class="kw">ON</span> <span class="co">p</span>.<span class="co">CategoryID</span> = <span class="co">c</span>.<span class="co">CategoryID</span>
+<span class="kw">WHERE</span>  <span class="co">p</span>.<span class="co">UnitPrice</span> &gt; (
+    <span class="kw">SELECT</span> <span class="fn">AVG</span>(<span class="co">UnitPrice</span>) <span class="kw">FROM</span> <span class="tb">Products</span>
+)
+<span class="kw">ORDER BY</span> <span class="co">p</span>.<span class="co">UnitPrice</span> <span class="kw">DESC</span>;</div>
+    <div class="imp"><div class="imp-t">&#128736; Li&ccedil;&atilde;o: WHERE vs HAVING em subqueries</div>
+    <div style="font-size:12px;color:#065F46;line-height:1.65">Para filtrar linhas com base em um valor calculado, use <strong>WHERE + subquery escalar</strong>. Use HAVING apenas para filtrar grupos ap&oacute;s agrupamento &mdash; e s&oacute; com fun&ccedil;&otilde;es de agrega&ccedil;&atilde;o que fazem sentido para o grupo (COUNT de itens do grupo, n&atilde;o AVG de toda a tabela).</div></div></div></div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="section">
+    <span class="anchor" id="insights"></span>
+    <div class="section-head"><div class="section-icon">&#128273;</div><h2 class="section-title">Insights do M&oacute;dulo 1</h2></div>
+    <div class="ins"><div class="ins-i">&#128308;</div><div><div class="ins-t">Erros SQL s&atilde;o descritivos &mdash; leia antes de qualquer coisa</div><div class="ins-x">"no such column: CustomerName" diz exatamente o que est&aacute; errado. Ler a mensagem de erro &eacute; o h&aacute;bito que separa quem resolve r&aacute;pido de quem fica preso. No contexto PMO: a mensagem do sistema &eacute; o primeiro lugar para olhar antes de acionar o time t&eacute;cnico.</div></div></div>
+    <div class="ins"><div class="ins-i">&#9888;</div><div><div class="ins-t">O que &eacute; uma linha nessa tabela? &mdash; a pergunta que muda tudo</div><div class="ins-x">4.011 linhas vs 13 clientes nos EUA. A tabela Orders guarda um registro por pedido, n&atilde;o por cliente. Antes de qualquer an&aacute;lise, perguntar "o que &eacute; uma linha nessa tabela?" evita n&uacute;meros errados que chegam at&eacute; o CIO.</div></div></div>
+    <div class="ins"><div class="ins-i">&#128202;</div><div><div class="ins-t">GROUP BY &eacute; a base de qualquer KPI em dashboard</div><div class="ins-x">Toda agrega&ccedil;&atilde;o em dashboard &mdash; total por squad, SLA m&eacute;dio, contagem por categoria &mdash; &eacute; GROUP BY com fun&ccedil;&atilde;o de agrega&ccedil;&atilde;o. Entender essa estrutura significa entender de onde vem cada n&uacute;mero em qualquer relat&oacute;rio.</div></div></div>
+    <div class="ins"><div class="ins-i">&#128279;</div><div><div class="ins-t">JOIN d&aacute; contexto ao dado &mdash; e revela dados &oacute;rf&atilde;os</div><div class="ins-x">"IT" com 335 pedidos liderou na Aula 3 mas n&atilde;o apareceu na Aula 4 &mdash; CustomerID existe em Orders mas n&atilde;o em Customers. O LEFT JOIN + IS NULL &eacute; o padr&atilde;o para detectar esses gaps antes de qualquer relat&oacute;rio ir para o negócio.</div></div></div>
+    <div class="ins"><div class="ins-i">&#128027;</div><div><div class="ins-t">Bug silencioso: GROUP BY por nome em vez de por ID</div><div class="ins-x">Agrupar por FirstName funciona at&eacute; dois funcion&aacute;rios terem o mesmo nome. O banco n&atilde;o d&aacute; erro &mdash; simplesmente soma os dois. Sempre agrupe pelo identificador &uacute;nico (EmployeeID, SquadID) e inclua os campos descritivos s&oacute; para exibi&ccedil;&atilde;o.</div></div></div>
+    <div class="ins"><div class="ins-i">&#127919;</div><div><div class="ins-t">WHERE filtra linhas, HAVING filtra grupos, subquery calcula o limite</div><div class="ins-x">As tr&ecirc;s ferramentas de filtro t&ecirc;m momentos diferentes: WHERE antes de agrupar, HAVING depois de agrupar, subquery quando o valor de refer&ecirc;ncia precisa ser calculado. Misturar os tr&ecirc;s no lugar errado &eacute; a causa de 80% dos resultados inesperados em SQL.</div></div></div>
+    <div class="ins"><div class="ins-i">&#128272;</div><div><div class="ins-t">AVG de um ID n&atilde;o tem significado de neg&oacute;cio</div><div class="ins-x">OrderID &eacute; um identificador sequencial, n&atilde;o uma medida. Calcular AVG(OrderID) retorna um n&uacute;mero tecnicamente v&aacute;lido mas sem qualquer significado. Distinguir colunas que medem algo de colunas que apenas identificam registros &eacute; compet&ecirc;ncia central de quem valida qualidade de dados.</div></div></div>
+  </div>
+
+</main>
+
+<script>
+function tog(h){
+  h.classList.toggle("is-open");
+  h.nextElementSibling.classList.toggle("open");
+  h.querySelector(".exc").textContent=h.classList.contains("is-open")?"&#9650;":"&#9660;";
+}
+const ids=["setup","a1-intro","a1-where","a1-order","ex1","a2-intro","a2-func","a2-having","ex2","a3-intro","a3-tipos","a3-alias","ex3","a4-intro","a4-pad","ex4","insights"];
+const lks={};
+ids.forEach(id=>{lks[id]=document.querySelector('.sb-nav a[href="#'+id+'"]');});
+function spy(){let c=ids[0];ids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY+90>=el.getBoundingClientRect().top+window.scrollY)c=id;});Object.values(lks).forEach(l=>l&&l.classList.remove("active"));if(lks[c])lks[c].classList.add("active");}
+window.addEventListener("scroll",spy,{passive:true});spy();
+</script>
+</body>
+</html>
