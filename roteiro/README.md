@@ -46,7 +46,7 @@ custo estimado e ordem de execução recomendada.
 |---|---|
 | Roteiro de estudos definido | ✅ |
 | Módulo 0 concluído | ✅ |
-| Módulo 1 em andamento | 🔵 |
+| Módulo 1 concluído | ✅ |
 | Scrum Fundamentals | ✅ Concluída |
 | SQL para Data Analyst (Alura) | 🔵 Em andamento |
 | PL-300 | ⏳ Planejada 2027 |
