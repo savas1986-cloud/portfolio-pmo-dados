@@ -1,5 +1,6 @@
 # Patricia Vasconcelos Gomes
 ### PMO de Dados · Gestão de Projetos Analíticos · Power BI · SQL · Governança
+🌐 **[Ver portfólio completo →](https://savas1986-cloud.github.io/portfolio-pmo-dados/)**
 ### [LinkedIn]: www.linkedin.com/in/patricia-vasconcelos-b6013068
 ### [E-mail]: patricia.gvasconcelos.pmo@gmail.com
 
