@@ -36,7 +36,7 @@ Cada módulo contém:
 - 5 KPIs classificados com dimensões e granularidade
 - Demanda real reescrita com vocabulário técnico
 
-**Módulo 1 — SQL** 🔵
+**Módulo 1 — SQL** ✅
 - 5 queries documentadas (disponível em `exercicios/sql/`)
 - Aulas: SELECT · GROUP BY · JOIN · Subqueries
 - Base utilizada: Northwind (SQLite)
