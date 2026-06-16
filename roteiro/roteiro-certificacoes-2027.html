@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Certificações - PMO de Dados | Patricia 2027</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+ 
+        :root {
+            --primary: #b76e79;
+            --primary-light: #f5e6e8;
+            --primary-dark: #8c4a55;
+            --secondary: #d4a574;
+            --accent: #e8c4a0;
+            --bg: #fdf8f6;
+            --bg-card: #ffffff;
+            --text: #4a3540;
+            --text-light: #8a7580;
+            --border: #e8d5d0;
+            --gradient-start: #b76e79;
+            --gradient-end: #d4a574;
+            --shadow: rgba(183, 110, 121, 0.12);
+            --highlight: #fff0ed;
+        }
+ 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+ 
+        .header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 50px 20px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+ 
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-30%) translateY(-30%); }
+            50% { transform: translateX(30%) translateY(30%); }
+        }
+ 
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+ 
+        .header .subtitle {
+            font-family: 'Inter', serif;
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+            font-weight: 400;
+        }
+ 
+        .header .description {
+            font-size: 0.95em;
+            opacity: 0.9;
+            margin-top: 12px;
+            position: relative;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+ 
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+ 
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: var(--primary-dark);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+ 
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+ 
+        .card-header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 16px 24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+ 
+        .priority-badge {
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.7em;
+            font-weight: 500;
+            margin-left: auto;
+        }
+ 
+        .recommended-badge {
+            background: #ffd700;
+            color: #4a3540;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.7em;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+ 
+        .card-body {
+            padding: 24px;
+        }
+ 
+        .cert-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+ 
+        .cert-table th {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+ 
+        .cert-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+ 
+        .cert-table tr:hover {
+            background: var(--highlight);
+        }
+ 
+        .option-2-row {
+            background-color: #fff8e1;
+        }
+ 
+        .option-2-row:hover {
+            background-color: #fff3cd;
+        }
+ 
+        .cost-free {
+            color: #2e7d32;
+            font-weight: 600;
+        }
+ 
+        .cost-paid {
+            color: #c62828;
+        }
+ 
+        .link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+ 
+        .link:hover {
+            text-decoration: underline;
+        }
+ 
+        .priority-1 {
+            background-color: #ffebee;
+            color: #c62828;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            font-size: 0.8em;
+        }
+ 
+        .priority-2 {
+            background-color: #fff8e1;
+            color: #f57f17;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            font-size: 0.8em;
+        }
+ 
+        .priority-3 {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            font-size: 0.8em;
+        }
+ 
+        .timeline {
+            background: var(--highlight);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid var(--primary);
+        }
+ 
+        .timeline h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+ 
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+ 
+        .timeline-item:hover {
+            background: rgba(183, 110, 121, 0.08);
+        }
+ 
+        .timeline-date {
+            min-width: 100px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+ 
+        .timeline-content {
+            flex: 1;
+        }
+ 
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+ 
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-light);
+            font-size: 0.85em;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+ 
+        .print-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+ 
+        .print-btn:hover {
+            background: var(--primary-dark);
+        }
+ 
+        .info-note {
+            background: #e3f2fd;
+            border-left: 4px solid #1565c0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.85em;
+        }
+ 
+        @media print {
+            .print-btn, .header::before {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+            .card {
+                break-inside: avoid;
+            }
+        }
+ 
+        @media (max-width: 768px) {
+            .cert-table th, .cert-table td {
+                padding: 8px;
+                font-size: 0.7em;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .timeline-date {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="header">
+        <h1>Plano de Certificações 2027</h1>
+        <div class="subtitle">PMO de Dados | Patricia Vasconcelos</div>
+        <div class="description">
+            Roteiro estratégico de certificações para impulsionar sua carreira como PMO especialista em dados.
+        </div>
+    </div>
+ 
+    <div class="container">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <button class="print-btn" onclick="window.print()">🖨️ Salvar como PDF / Imprimir</button>
+        </div>
+ 
+        <!-- Nota sobre as opções de Scrum -->
+        <div class="info-note">
+            💡 <strong>Sobre as certificações Scrum:</strong> Existem duas excelentes opções. A <strong>PSM I (Scrum.org)</strong> é a recomendada pela melhor relação custo-benefício e validade vitalícia. O <strong>CSM (Scrum Alliance)</strong> é uma alternativa tradicional, muito reconhecida por RH, mas com curso obrigatório e renovação bienal. Avalie qual se encaixa melhor no seu momento.
+        </div>
+ 
+        <!-- Tabela Principal de Certificações -->
+        <h2 class="section-title">📜 Certificações Recomendadas</h2>
+ 
+        <div class="card">
+            <div class="card-header">
+                🎯 Certificações Prioritárias para 2027
+                <span class="priority-badge">Ordem de execução</span>
+            </div>
+            <div class="card-body">
+                <table class="cert-table">
+                    <thead>
+                        <tr>
+                            <th>Certificação</th>
+                            <th>Por que para você</th>
+                            <th>Tempo de preparo</th>
+                            <th>Conteúdo de estudo</th>
+                            <th>Custo</th>
+                            <th>Link para inscrição</th>
+                            <th>Prioridade</th>
+                            <th>Data sugerida</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- PSM I (RECOMENDADA) -->
+                        <tr style="background: #e8f5e9;">
+                            <td>
+                                <strong>PSM I</strong><br>Professional Scrum Master
+                                <span class="recommended-badge">👍 MAIS RECOMENDADA</span>
+                            </td>
+                            <td>Certificação ágil com excelente custo-benefício. Prova rigorosa (85% de acertos) e validade vitalícia. Não exige curso obrigatório.</td>
+                            <td>3-4 semanas<br><span style="font-size:0.8em;">(20-30h)</span></td>
+                            <td>Guia Scrum (leitura aprofundada), conceitos ágeis, framework Scrum, papéis, eventos, artefatos.</td>
+                            <td class="cost-paid">$200 USD<br><span style="font-size:0.7em;">(~R$ 1.000)</span></td>
+                            <td><a class="link" href="https://www.scrum.org/professional-scrum-master-i-certification" target="_blank">scrum.org</a></td>
+                            <td><span class="priority-1">🥇 1ª</span></td>
+                            <td><strong>Fev/2027</strong></td>
+                         </tr>
+ 
+                        <!-- CSM (OPÇÃO 2 - DESTACADA) -->
+                        <tr class="option-2-row">
+                            <td>
+                                <strong>CSM</strong><br>Certified ScrumMaster
+                                <span class="recommended-badge" style="background:#ffb74d;">🔄 OPÇÃO 2</span>
+                            </td>
+                            <td>Certificação ágil tradicional, muito reconhecida por RH. Exige curso de 2 dias obrigatório e renovação bienal.</td>
+                            <td>2-3 dias de curso + prova<br><span style="font-size:0.8em;">(16-20h)</span></td>
+                            <td>Curso com Certified Scrum Trainer (CST). Princípios Scrum, papéis, eventos, artefatos, gestão ágil.</td>
+                            <td class="cost-paid">~$1.000 USD<br><span style="font-size:0.7em;">(curso + prova + 2 anos)</span></td>
+                            <td><a class="link" href="https://www.scrumalliance.org/get-certified/scrummaster-track/certified-scrummaster" target="_blank">scrumalliance.org</a></td>
+                            <td><span class="priority-1">🥇 1ª</span></td>
+                            <td><strong>Fev/2027</strong></td>
+                         </tr>
+ 
+                        <!-- PL-300 -->
+                        <tr>
+                            <td><strong>PL-300</strong><br>Microsoft Power BI Data Analyst</td>
+                            <td>Valida sua competência em Power BI (dashboards, DAX, modelagem) – sua principal ferramenta técnica.</td>
+                            <td>4-6 semanas<br><span style="font-size:0.8em;">(40-60h)</span></td>
+                            <td>Preparação de dados, modelagem, DAX, visuais, publicação e governança no Power BI Service</td>
+                            <td class="cost-paid">$165 USD<br><span style="font-size:0.7em;">(prova)</span></td>
+                            <td><a class="link" href="https://learn.microsoft.com/pt-br/certifications/power-bi-data-analyst-associate/" target="_blank">learn.microsoft.com</a></td>
+                            <td><span class="priority-1">🥇 1ª</span></td>
+                            <td><strong>Mar/2027</strong></td>
+                         </tr>
+ 
+                        <!-- CDMP Associate -->
+                        <tr>
+                            <td><strong>CDMP Associate</strong><br>Certified Data Management Professional</td>
+                            <td>O "padrão ouro" em governança de dados. Essencial para quem vai assumir domínio de dados.</td>
+                            <td>2-3 meses<br><span style="font-size:0.8em;">(80-100h)</span></td>
+                            <td>Data Governance, Data Quality, Data Architecture, Metadata, Reference Data, Data Integration</td>
+                            <td class="cost-paid">~$300 USD<br><span style="font-size:0.7em;">(prova)</span></td>
+                            <td><a class="link" href="https://cdmp.info/" target="_blank">cdmp.info</a></td>
+                            <td><span class="priority-2">🥈 2ª</span></td>
+                            <td><strong>Jun/2027</strong></td>
+                         </tr>
+ 
+                        <!-- Microsoft Fabric -->
+                        <tr>
+                            <td><strong>Microsoft Fabric</strong><br>Applied Skills / Certification</td>
+                            <td>A plataforma de dados unificada da Microsoft. Conhecimento estratégico para entender o ecossistema.</td>
+                            <td>3-4 semanas<br><span style="font-size:0.8em;">(30-40h)</span></td>
+                            <td>OneLake, integração de dados, governança unificada, migração do Power BI Premium para Fabric</td>
+                            <td class="cost-free">Gratuito<br><span style="font-size:0.7em;">(Applied Skills)</span></td>
+                            <td><a class="link" href="https://learn.microsoft.com/pt-br/training/browse/?terms=fabric" target="_blank">learn.microsoft.com</a></td>
+                            <td><span class="priority-2">🥈 2ª</span></td>
+                            <td><strong>Ago/2027</strong></td>
+                         </tr>
+ 
+                        <!-- AWS Cloud Practitioner -->
+                        <tr>
+                            <td><strong>AWS Cloud Practitioner</strong><br>Fundamentos de Nuvem</td>
+                            <td>Visão geral de computação em nuvem – onde os dados modernos estão armazenados e processados.</td>
+                            <td>3-4 semanas<br><span style="font-size:0.8em;">(20-30h)</span></td>
+                            <td>Conceitos de nuvem, segurança, arquitetura, precificação, serviços core AWS (S3, EC2, etc.)</td>
+                            <td class="cost-paid">$100 USD<br><span style="font-size:0.7em;">(prova)</span></td>
+                            <td><a class="link" href="https://aws.amazon.com/pt/certification/certified-cloud-practitioner/" target="_blank">aws.amazon.com</a></td>
+                            <td><span class="priority-3">🥉 3ª</span></td>
+                            <td><strong>Out/2027</strong></td>
+                         </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+ 
+        <!-- Cronograma Mensal 2027 -->
+        <h2 class="section-title">📅 Cronograma Mensal 2027</h2>
+ 
+        <div class="timeline">
+            <h3>📌 Janeiro - Preparação e Planejamento</h3>
+            <div class="timeline-item">
+                <div class="timeline-date">Semana 1-2</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Definição da certificação Scrum (PSM I ou CSM)</div>
+                    <div>Avalie custo-benefício e escolha a melhor opção para seu momento.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Semana 3-4</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Início dos estudos para a certificação escolhida</div>
+                    <div>Leitura do Guia Scrum + cursos online complementares.</div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="timeline">
+            <h3>🎯 Fevereiro - Certificação Scrum (PSM I ou CSM)</h3>
+            <div class="timeline-item">
+                <div class="timeline-date">Semana 1-3</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Estudo intensivo + simulados</div>
+                    <div>Para PSM I: foco no Guia Scrum. Para CSM: realizar o curso obrigatório.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Semana 4</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Realização da prova</div>
+                    <div>🎯 Meta: certificar até final de fevereiro.</div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="timeline">
+            <h3>📊 Março/Abril - PL-300 (Power BI)</h3>
+            <div class="timeline-item">
+                <div class="timeline-date">Março (Semanas 1-4)</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Estudo intensivo PL-300</div>
+                    <div>Microsoft Learn, cursos da Alura, simulados.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Abril (Semana 1-2)</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Simulados e agendamento</div>
+                    <div>Agende a prova no centro de testes ou online.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Abril (Semana 3-4)</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Realização da prova PL-300</div>
+                    <div>🎯 Meta: certificar até final de abril.</div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="timeline">
+            <h3>🗄️ Maio/Junho - CDMP Associate</h3>
+            <div class="timeline-item">
+                <div class="timeline-date">Maio (Semanas 1-4)</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Estudo DAMA-DMBOK</div>
+                    <div>Leitura do capítulo 1 ao 6 (Data Governance, Quality, Architecture).</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Junho (Semanas 1-3)</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Revisão e simulados CDMP</div>
+                    <div>Utilize os guias oficiais da DAMA International.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Junho (Semana 4)</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Realização da prova CDMP Associate</div>
+                    <div>Prova online ou em centro de testes.</div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="timeline">
+            <h3>☁️ Julho/Agosto - Microsoft Fabric</h3>
+            <div class="timeline-item">
+                <div class="timeline-date">Julho</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Estudo Fabric + Applied Skills</div>
+                    <div>Workshop "Fabric Analyst in a Day" (FAIAD). Conclua os módulos gratuitos.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Agosto</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Certificação Microsoft Applied Skills</div>
+                    <div>Complete a credencial prática para validar conhecimento.</div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="timeline">
+            <h3>🌐 Setembro/Outubro - AWS Cloud Practitioner (Opcional)</h3>
+            <div class="timeline-item">
+                <div class="timeline-date">Setembro</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Estudo AWS</div>
+                    <div>AWS Skill Builder (cursos gratuitos). Foco em conceitos de nuvem.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Outubro</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Prova Cloud Practitioner</div>
+                    <div>Se concluir as outras com folga, faça a prova.</div>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="timeline">
+            <h3>📝 Novembro/Dezembro - Recapitulação e Próximos Passos</h3>
+            <div class="timeline-item">
+                <div class="timeline-date">Novembro</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Revisão geral + Atualização do portfólio</div>
+                    <div>Adicione todas as certificações ao seu currículo e LinkedIn.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Dezembro</div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Planejamento 2028</div>
+                    <div>Avaliar próximos passos: PMP, MBA, especializações.</div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Estratégia Financeira -->
+        <h2 class="section-title">💰 Planejamento Financeiro Estimado 2027</h2>
+ 
+        <div class="card">
+            <div class="card-header">
+                💳 Investimento Total em Certificações
+            </div>
+            <div class="card-body">
+                <table class="cert-table">
+                    <thead>
+                        <tr>
+                            <th>Certificação</th>
+                            <th>Custo</th>
+                            <th>Mês sugerido</th>
+                            <th>Forma de pagamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #e8f5e9;">
+                            <td>PSM I (Scrum.org) - RECOMENDADA</td>
+                            <td class="cost-paid">$200 USD</td>
+                            <td>Janeiro/Fevereiro</td>
+                            <td>Cartão de crédito (à vista)</td>
+                         </tr>
+                        <tr class="option-2-row">
+                            <td>CSM (Scrum Alliance) - OPÇÃO 2</td>
+                            <td class="cost-paid">~$1.000 USD</td>
+                            <td>Janeiro/Fevereiro</td>
+                            <td>Cartão de crédito (parcelado)</td>
+                         </tr>
+                        <tr>
+                            <td>PL-300 (Microsoft)</td>
+                            <td class="cost-paid">$165 USD</td>
+                            <td>Março/Abril</td>
+                            <td>À vista ou cartão</td>
+                         </tr>
+                        <tr>
+                            <td>CDMP Associate</td>
+                            <td class="cost-paid">~$300 USD</td>
+                            <td>Maio/Junho</td>
+                            <td>À vista</td>
+                         </tr>
+                        <tr>
+                            <td>AWS Cloud Practitioner</td>
+                            <td class="cost-paid">$100 USD</td>
+                            <td>Setembro/Outubro</td>
+                            <td>À vista</td>
+                         </tr>
+                        <tr style="font-weight:bold; background:var(--primary-light);">
+                            <td>Total estimado (PSM I + demais)</td>
+                            <td class="cost-paid">~$765 USD</td>
+                            <td colspan="2">(~R$ 3.800 - R$ 4.300)</td>
+                         </tr>
+                        <tr style="font-weight:bold; background:#fff3e0;">
+                            <td>Total estimado (CSM + demais)</td>
+                            <td class="cost-paid">~$1.565 USD</td>
+                            <td colspan="2">(~R$ 7.500 - R$ 8.500)</td>
+                         </tr>
+                    </tbody>
+                </table>
+                <div class="info-note" style="margin-top: 16px;">
+                    💡 <strong>Dica financeira:</strong> A PSM I reduz significativamente o investimento inicial. Comece a reservar mensalmente a partir de agora.
+                </div>
+            </div>
+        </div>
+ 
+        <!-- Recomendações Finais -->
+        <h2 class="section-title">🎯 Recomendações Finais</h2>
+ 
+        <div class="card">
+            <div class="card-body">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 12px;">✅ Prioridade Máxima</h3>
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li><strong>PSM I</strong> ou <strong>CSM</strong> – escolha a que faz mais sentido para você</li>
+                            <li><strong>PL-300</strong> – domínio técnico em Power BI</li>
+                            <li><strong>CDMP</strong> – governança de dados (seu diferencial)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 12px;">⚖️ PSM I vs CSM - Decisão</h3>
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li><strong>PSM I:</strong> custo baixo, prova difícil, validade vitalícia</li>
+                            <li><strong>CSM:</strong> curso obrigatório, custo alto, renovação bienal</li>
+                            <li><strong>Minha recomendação:</strong> PSM I para excelente custo-benefício</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 12px;">📌 Lembrete Importante</h3>
+                        <ul style="margin-left: 20px; line-height: 1.8;">
+                            <li>Conclua <strong>primeiro o roteiro de estudos 2026</strong></li>
+                            <li>As certificações são o <strong>selo de validação</strong> do conhecimento prático</li>
+                            <li>Atualize seu currículo e LinkedIn a cada conquista</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+ 
+    <div class="footer">
+        <p>Plano de Certificações 2027 | Elaborado para Patricia Vasconcelos</p>
+        <p style="font-size: 0.8em; margin-top: 6px;">Priorize o roteiro de estudos primeiro. As certificações virão naturalmente após a prática.</p>
+    </div>
+ 
+</body>
+</html>
