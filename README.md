@@ -57,8 +57,8 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | Módulo | Tema                             | Status                   |
 |--------|----------------------------------|--------------------------|
 | 0      | Fundamentos de Dados & BI        | ✅ Concluído              |
-| 1      | SQL — A Linguagem dos Dados      | 🔵 Em andamento (Aula 1/4)|
-| 2      | Power BI Básico + Intermediário  | ⏳ Programado             |
+| 1      | SQL — A Linguagem dos Dados      | ✅ Concluído  (Aula 4/4)  |
+| 2      | Power BI Básico + Intermediário  | 🔵 Em andamento           |
 | 3      | Excel Avançado (Power Query)     | ⏳ Programado             |
 | 4      | Governança de Dados & LGPD       | ⏳ Programado             |
 | 5      | Power BI Avançado (DAX)          | ⏳ Programado             |
