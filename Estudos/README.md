@@ -32,7 +32,7 @@ Cada módulo contém:
 
 **Módulo 0 — Fundamentos** ✅
 - Glossário com 23 termos (disponível em `08-glossario/`)
-- Diagrama do pipeline de dados do Painel de Produtividade F1RST
+- Diagrama do pipeline de dados de painel de produtividade aplicados ao contexto de empresa de tecnologia no setor financeiro regulado
 - 5 KPIs classificados com dimensões e granularidade
 - Demanda real reescrita com vocabulário técnico
 
