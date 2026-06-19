@@ -40,16 +40,17 @@ FIAP
 Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 — todos baseados em cenários reais do contexto bancário.
 
-| # | Projeto | O que demonstra | Link |
-|---|---------|-----------------|------|
-| 1 | Termo de Abertura de Projeto (TAP) | Escopo, stakeholders e cronograma | [Ver →](01-projeto-abertura) |
-| 2 | Checklist de Viabilidade Técnica | Framework de 7 perguntas para validar demandas | [Ver →](02-viabilidade-tecnica) |
-| 3 | Análise Crítica de Dashboard | Governança visual e sugestões de melhoria | [Ver →](03-dashboard-critico/) |
-| 4 | Backlog Priorizado (MoSCoW) | Priorização de demandas de dados | [Ver →](04-backlog-priorizado/) |
-| 5 | OKRs e KPIs para Projeto de Dados | Métricas estratégicas para Data Lake | [Ver →](05-kpis-okrs/) |
-| 6 | Matriz de Riscos | Mapeamento e mitigação em projeto de dados | [Ver →](06-riscos/) |
-| 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | [Ver →](07-comunicacao-riscos/) |
-| 8 | Glossário PMO de Dados | 23 termos com aplicação no contexto bancário | [Ver →](08-glossario/) |
+
+| # | Projeto | O que demonstra | Status | Link |
+|---|---|---|---|---|
+| 1 | Termo de Abertura de Projeto (TAP) | Escopo, stakeholders, riscos e cronograma | ✅ Concluído | [Ver →](01-projeto-abertura/) |
+| 2 | Checklist de Viabilidade Técnica | Framework de validação de demandas | ⏳ Previsto | — |
+| 3 | Análise Crítica de Dashboard | Governança visual e melhoria de BI | ⏳ Previsto | — |
+| 4 | Backlog Priorizado (MoSCoW) | Priorização ágil de demandas de dados | ⏳ Previsto | — |
+| 5 | OKRs e KPIs para Projeto de Dados | Métricas estratégicas para Data Lake | ⏳ Previsto | — |
+| 6 | Matriz de Riscos | Mapeamento e mitigação em migração de dados | ⏳ Previsto | — |
+| 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | ⏳ Previsto | — |
+| 8 | Glossário PMO de Dados | 23 termos com aplicação no contexto bancário | ✅ Concluído | [Ver →](08-glossario/) |
 
 ---
 
