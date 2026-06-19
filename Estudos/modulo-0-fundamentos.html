@@ -566,10 +566,10 @@
       <div class="p-arrow">→</div>
       <div class="p-step"><div class="p-node">
         <div class="p-node-name">Decisão</div>
-        <div class="p-node-sub">CIO Office · F1RST</div>
+        <div class="p-node-sub">Governança de TI</div>
       </div></div>
     </div>
-    <div class="pipeline-note">Exemplo real: Painel de Produtividade F1RST — do Jira até o CIO Office.</div>
+    <div class="pipeline-note">Exemplo real: Painel de Produtividade de Tecnologia — do Jira até o Governança de TI.</div>
   </div>
  
   <!-- ── CONCEITOS-CHAVE ────────────────── -->
@@ -602,7 +602,7 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
           <strong>Semi-estruturado</strong> — JSON, XML. APIs do Open Finance, respostas de serviços.<br><br>
           <strong>Não-estruturado</strong> — e-mails, gravações de call center, PDFs. Requer NLP, OCR ou ML para processar.
         </div>
-        <div class="cc-sub">📌 No F1RST: 80% será estruturado. Dado não-estruturado = squad diferente e prazo diferente.</div>
+        <div class="cc-sub">📌 Empresa (modelo de mercado): 80% será estruturado. Dado não-estruturado = squad diferente e prazo diferente.</div>
       </div>
  
       <div class="concept-card c-amber">
@@ -655,7 +655,7 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
         <tr><td><strong>Onde transforma</strong></td><td>Ambiente intermediário (staging)</td><td>No próprio destino (Lake / Lakehouse)</td></tr>
         <tr><td><strong>Se falha</strong></td><td>Dado preso no staging; destino sem dado</td><td>Dado bruto já no destino; só transformação não rodou</td></tr>
         <tr><td><strong>Recuperação</strong></td><td>Pode precisar re-extrair da origem</td><td>Mais rápida — só reprocessa a transformação</td></tr>
-        <tr><td><strong>Uso no F1RST</strong></td><td>Pipelines regulatórios (Bacen)</td><td>Databricks — análises do domínio de dados</td></tr>
+        <tr><td><strong>Uso na empresa (mercado financeiro) </strong></td><td>Pipelines regulatórios (Bacen)</td><td>Databricks — análises do domínio de dados</td></tr>
       </tbody>
     </table>
  
@@ -668,7 +668,7 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
         <tr><td><strong>SQL</strong></td><td>Nativo</td><td>Limitado</td><td>Completo + ML no mesmo lugar</td></tr>
         <tr><td><strong>Custo</strong></td><td>Alto</td><td>Baixo</td><td>Médio</td></tr>
         <tr><td><strong>Exemplos</strong></td><td>Azure Synapse, Teradata</td><td>Azure Data Lake Storage</td><td><strong>Databricks</strong>, Delta Lake, Fabric</td></tr>
-        <tr><td><strong>No F1RST</strong></td><td>Relatórios regulatórios</td><td>Análises exploratórias</td><td>✅ Painel de Produtividade</td></tr>
+        <tr><td><strong>Empresa (mercado financeiro) </strong></td><td>Relatórios regulatórios</td><td>Análises exploratórias</td><td>✅ Painel de Produtividade</td></tr>
       </tbody>
     </table>
   </div>
@@ -689,7 +689,7 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
  
       <div class="gitem" data-term="data lake lago brutos formato"><div class="g-term">Data Lake</div><div class="g-def">Armazenamento de dados brutos em qualquer formato. Schema definido na leitura (schema on read). Escala massiva, custo baixo. Risco: virar "data swamp" sem governança.</div></div>
  
-      <div class="gitem" data-term="lakehouse databricks delta acid"><div class="g-term">Lakehouse</div><div class="g-def">Combina Data Lake + Data Warehouse: armazena bruto mas adiciona transações ACID e SQL analítico completo. Databricks e Microsoft Fabric são exemplos. É o que o F1RST usa.</div></div>
+      <div class="gitem" data-term="lakehouse databricks delta acid"><div class="g-term">Lakehouse</div><div class="g-def">Combina Data Lake + Data Warehouse: armazena bruto mas adiciona transações ACID e SQL analítico completo. Databricks e Microsoft Fabric são exemplos. É o que a Empresa (modelo de mercado) usa.</div></div>
  
       <div class="gitem" data-term="etl extração transformação carga staging"><div class="g-term">ETL</div><div class="g-def">Extrair → Transformar (em staging intermediário) → Carregar no destino. Padrão legado e de compliance. Se falha, dado fica preso no staging; destino sem dado.</div></div>
  
@@ -751,7 +751,7 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
         <span class="ex-chevron">▲</span>
       </div>
       <div class="ex-body is-open">
-        <p>Os 23 termos estão documentados na seção <strong>Glossário</strong> acima, com definições em linguagem própria e aplicação no contexto F1RST. Use a busca para localizar qualquer termo rapidamente.</p>
+        <p>Os 23 termos estão documentados na seção <strong>Glossário</strong> acima, com definições em linguagem própria e aplicação no contexto da Empresa (mercado financeiro). Use a busca para localizar qualquer termo rapidamente.</p>
       </div>
     </div>
  
@@ -760,7 +760,7 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
     <div class="ex-block">
       <div class="ex-header is-open" onclick="toggleEx(this)">
         <div class="ex-num">2</div>
-        <div class="ex-title">Fluxo de dados — Painel de Produtividade F1RST</div>
+        <div class="ex-title">Fluxo de dados — Painel de Produtividade da Empresa (mercado financeiro)</div>
         <span class="ex-badge">✅ Concluído</span>
         <span class="ex-chevron">▲</span>
       </div>
@@ -781,11 +781,11 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
                                           POWER BI + Power Query
                                                      │
                                       ┌──────────────┴──────────────┐
-                                Cliente solicitante            Toda a F1RST
+                                Cliente solicitante            Toda a Empresa
                             (Área de Produtividade,          (consumo amplo
                               CIO Office, Governança)          via Service)</div>
         <p class="mt075"><strong>Risco mapeado:</strong> O Excel enviado manualmente pelo cliente é um ponto de falha — atraso, formato errado ou esquecimento afeta os indicadores. A migração do ITSM para o Databricks (previsão jun/2026) elimina essa dependência.</p>
-        <p class="mt075"><strong>Insight:</strong> Cliente solicitante (Área de Produtividade / CIO Office) ≠ usuário final (toda a F1RST). Uma mudança validada com o solicitante impacta toda a empresa — escopo pequeno, risco alto.</p>
+        <p class="mt075"><strong>Insight:</strong> Cliente solicitante (Área de Produtividade / CIO Office) ≠ usuário final (toda a Empresa). Uma mudança validada com o solicitante impacta toda a empresa — escopo pequeno, risco alto.</p>
       </div>
     </div>
  
@@ -908,7 +908,7 @@ Conhecimento: "Clientes com 3+ Pix/mês têm 2,3× mais propensão a crédito no
       <div class="insight-ico">👥</div>
       <div>
         <div class="insight-title">Cliente solicitante ≠ usuário final — mapeie os dois sempre</div>
-        <div class="insight-text">A Área de Produtividade (CIO Office) pediu o painel e define os requisitos. Toda a F1RST consome. Uma mudança validada com o solicitante impacta todos os usuários. Escopo pequeno, risco alto — mapear ambos os stakeholders é parte do escopo do projeto.</div>
+        <div class="insight-text">A Área de Produtividade (CIO Office) pediu o painel e define os requisitos. Toda a Empresa consome. Uma mudança validada com o solicitante impacta todos os usuários. Escopo pequeno, risco alto — mapear ambos os stakeholders é parte do escopo do projeto.</div>
       </div>
     </div>
  
