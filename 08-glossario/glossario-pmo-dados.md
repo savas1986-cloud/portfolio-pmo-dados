@@ -1,5 +1,5 @@
 # Glossário PMO de Dados
-**Autora:** Patricia Vasconcelos · **Contexto:** F1RST — Santander Group  
+**Autora:** Patricia Vasconcelos · **Contexto:** TechFinance S.A.  
 **Módulo:** 0 — Fundamentos de Dados · **Data:** Junho/2026
 
 > 23 termos essenciais com definição e aplicação no contexto bancário regulado.
@@ -13,7 +13,7 @@
 Repositório de dados estruturados com schema definido antes da carga.
 Alta confiabilidade, custo elevado. Padrão para relatórios regulatórios
 e histórico financeiro.
-*No F1RST: usado para relatórios do Bacen e dados regulatórios.*
+*Na TechFinance S.A.: usado para relatórios do Bacen e dados regulatórios.*
 
 ---
 
@@ -27,7 +27,7 @@ Risco: virar "data swamp" sem governança adequada.
 **Lakehouse**
 Combina Data Lake + Data Warehouse: armazena dado bruto mas adiciona
 transações ACID e SQL analítico completo.
-*No F1RST: o Databricks usa Delta Lake — é um Lakehouse, não um
+*Na TechFinance S.A.: o Databricks usa Delta Lake — é um Lakehouse, não um
 Data Lake puro, embora o time use os dois termos como sinônimos.*
 
 ---
@@ -36,7 +36,7 @@ Data Lake puro, embora o time use os dois termos como sinônimos.*
 Transforma o dado num ambiente intermediário (staging) antes de
 carregar no destino. Se falhar, o dado fica preso no staging —
 o destino não recebe nada.
-*No F1RST: usado em pipelines regulatórios (Bacen).*
+*Na TechFinance S.A.: usado em pipelines regulatórios (Bacen).*
 
 ---
 
@@ -44,7 +44,7 @@ o destino não recebe nada.
 Carrega o dado bruto no destino primeiro, transforma depois.
 Se falhar, o dado já chegou — só a transformação não rodou.
 Recuperação mais rápida.
-*No F1RST: padrão no Databricks para análises do domínio de dados.*
+*Na TechFinance S.A.: padrão no Databricks para análises do domínio de dados.*
 
 ---
 
