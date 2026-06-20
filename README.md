@@ -1,4 +1,4 @@
-# Patricia Vasconcelos Gomes
+  # Patricia Vasconcelos Gomes
 ### PMO de Dados · Gestão de Projetos Analíticos · Power BI · SQL · Governança
 ### [LinkedIn]: www.linkedin.com/in/patricia-vasconcelos-b6013068
 ### [E-mail]: patricia.gvasconcelos.pmo@gmail.com
@@ -60,8 +60,8 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 |--------|----------------------------------|--------------------------|
 | 0      | Fundamentos de Dados & BI        | ✅ Concluído              |
 | 1      | SQL — A Linguagem dos Dados      | ✅ Concluído  (Aula 4/4)  |
-| 2      | Power BI Básico + Intermediário  | 🔵 Em andamento           |
-| 3      | Excel Avançado (Power Query)     | ⏳ Programado             |
+| 2      | Power BI Básico + Intermediário  | ✅ Concluído              |
+| 3      | Excel Avançado (Power Query)     | 🔵 Em andamento           |
 | 4      | Governança de Dados & LGPD       | ⏳ Programado             |
 | 5      | Power BI Avançado (DAX)          | ⏳ Programado             |
 
