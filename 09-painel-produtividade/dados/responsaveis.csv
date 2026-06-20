@@ -1,0 +1,25 @@
+ResponsavelID,Nome,SquadID,SquadNome
+1,Ana Silva,1,Squad Pagamentos
+2,Bruno Costa,1,Squad Pagamentos
+3,Carla Mendes,1,Squad Pagamentos
+4,Diego Rocha,2,Squad Crédito
+5,Elena Ferreira,2,Squad Crédito
+6,Felipe Santos,2,Squad Crédito
+7,Gabriela Lima,3,Squad Onboarding
+8,Henrique Alves,3,Squad Onboarding
+9,Isabela Nunes,3,Squad Onboarding
+10,João Cardoso,4,Squad Segurança
+11,Karina Souza,4,Squad Segurança
+12,Lucas Pereira,4,Squad Segurança
+13,Marina Oliveira,5,Squad Dados
+14,Nelson Gomes,5,Squad Dados
+15,Olivia Castro,5,Squad Dados
+16,Paulo Martins,6,Squad Integrações
+17,Renata Barbosa,6,Squad Integrações
+18,Sergio Dias,6,Squad Integrações
+19,Tatiana Ramos,7,Squad Experiência
+20,Ulisses Faria,7,Squad Experiência
+21,Vera Lopes,7,Squad Experiência
+22,Wagner Teixeira,8,Squad Infraestrutura
+23,Xenia Campos,8,Squad Infraestrutura
+24,Yuri Fernandes,8,Squad Infraestrutura

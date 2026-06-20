@@ -1,0 +1,5 @@
+PrioridadeID,PrioridadeNome,Nivel,SLA_Dias
+1,Crítica,1,5
+2,Alta,2,10
+3,Média,3,20
+4,Baixa,4,30

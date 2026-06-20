@@ -1,0 +1,6 @@
+StatusID,StatusNome
+1,Aberto
+2,Em Andamento
+3,Concluído
+4,Bloqueado
+5,Cancelado
