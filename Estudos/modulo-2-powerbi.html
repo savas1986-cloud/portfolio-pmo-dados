@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2 — Power BI: Da Conexão ao Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#EFF4FF;--sidebar-bg:#1E3A8A;--accent:#2563EB;--accent2:#7C3AED;--surface:#FFFFFF;--border:#E0E7FF;--text:#0F172A;--muted:#64748B;--amber:#D97706;--green:#059669;--red:#DC2626;--code-bg:#EEF2FF;--code:#4338CA;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;font-size:14px;}
+    .sidebar{width:240px;min-width:240px;background:var(--sidebar-bg);position:sticky;top:0;height:100vh;overflow-y:auto;padding:1.75rem 1.1rem 1.5rem;display:flex;flex-direction:column;}
+    .sb-badge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F59E0B;margin-bottom:.4rem;}
+    .sb-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.2rem;color:#fff;line-height:1.25;}
+    .sb-meta{margin-top:.5rem;font-size:11px;color:rgba(255,255,255,.4);line-height:1.75;}
+    .sb-divider{height:1px;background:rgba(255,255,255,.1);margin:1rem 0;}
+    .sb-section-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin:.8rem 0 .3rem;}
+    .sb-nav a{display:flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:6px;font-size:11.5px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:1px;transition:all .15s;}
+    .sb-nav a:hover,.sb-nav a.active{background:rgba(255,255,255,.1);color:#fff;}
+    .dot{width:5px;height:5px;border-radius:50%;background:#60A5FA;flex-shrink:0;}
+    .dot.done{background:#34D399;}
+    .sb-footer{margin-top:auto;padding-top:1.25rem;}
+    .sb-prog-label{font-size:10px;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
+    .sb-prog-track{height:4px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
+    .sb-prog-fill{height:100%;width:100%;background:linear-gradient(90deg,#60A5FA,#34D399);border-radius:2px;}
+    .sb-prog-status{font-size:10px;color:#34D399;margin-top:.4rem;font-weight:600;}
+    .main{flex:1;max-width:840px;padding:2.25rem 2.75rem 5rem;overflow-x:hidden;}
+    .anchor{display:block;position:relative;top:-24px;visibility:hidden;height:0;}
+    .aula-div{display:flex;align-items:center;gap:1rem;margin:2.75rem 0 2rem;}
+    .aula-div-line{flex:1;height:2px;background:linear-gradient(90deg,var(--accent),transparent);}
+    .aula-div-label{font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:var(--accent);white-space:nowrap;}
+    .pipeline-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2.25rem;box-shadow:0 1px 4px rgba(37,99,235,.06);}
+    .pipeline-eyebrow{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+    .pipeline-flow{display:flex;align-items:center;overflow-x:auto;padding-bottom:.25rem;}
+    .p-step{flex-shrink:0;text-align:center;}
+    .p-node{display:inline-block;background:var(--bg);border:1.5px solid #C7D7FE;border-radius:8px;padding:.45rem .9rem;}
+    .p-node.active-node{border-color:var(--accent);background:#DBEAFE;box-shadow:0 0 0 3px rgba(37,99,235,.15);}
+    .p-node-name{font-size:11px;font-weight:600;color:var(--accent);}
+    .p-node-name.hi{color:#7C3AED;}
+    .p-node-sub{font-size:9px;color:var(--muted);margin-top:2px;}
+    .p-arrow{font-size:1rem;color:#C7D7FE;padding:0 .35rem;flex-shrink:0;}
+    .pipeline-note{margin-top:.9rem;font-size:11px;color:var(--muted);font-style:italic;}
+    .section{margin-bottom:2.25rem;}
+    .section-head{display:flex;align-items:center;gap:.65rem;margin-bottom:1.1rem;padding-bottom:.55rem;border-bottom:1.5px solid var(--border);}
+    .section-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;background:#EEF2FF;flex-shrink:0;}
+    .section-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.25rem;color:var(--text);}
+    .cg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+    .cc{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.9rem 1.05rem;position:relative;overflow:hidden;}
+    .cc::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;}
+    .c-bl::before{background:var(--accent);} .c-pu::before{background:var(--accent2);}
+    .c-am::before{background:var(--amber);} .c-gr::before{background:var(--green);}
+    .c-re::before{background:var(--red);} .c-te::before{background:#0D9488;}
+    .full{grid-column:1/-1;}
+    .ct{font-size:12px;font-weight:600;margin-bottom:.3rem;}
+    .cx{font-size:12px;color:var(--muted);line-height:1.65;}
+    .ce{margin-top:.5rem;padding:.5rem .7rem;background:#0D1117;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7EE787;line-height:1.8;white-space:pre;overflow-x:auto;}
+    .cs{font-size:11px;color:var(--muted);margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);line-height:1.6;}
+    .sql{background:#0D1117;border-radius:8px;padding:1rem 1.35rem;font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.85;overflow-x:auto;white-space:pre;margin:.7rem 0;}
+    .kw{color:#FF7B72;} .fn{color:#D2A8FF;} .st{color:#A5D6FF;} .nu{color:#F8C555;}
+    .cm{color:#8B949E;font-style:italic;} .co{color:#7EE787;} .tb{color:#FFA657;}
+    .ot{width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:.65rem;}
+    .ot th{background:var(--sidebar-bg);color:#fff;padding:.45rem .8rem;text-align:left;font-size:10.5px;font-weight:500;}
+    .ot td{padding:.5rem .8rem;border-top:1px solid var(--border);line-height:1.5;}
+    .ot code{font-family:'JetBrains Mono',monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .error-block{background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:1rem 1.2rem;margin:.75rem 0;}
+    .error-title{font-size:12.5px;font-weight:600;color:var(--red);margin-bottom:.5rem;}
+    .error-msg{font-family:'JetBrains Mono',monospace;font-size:10px;background:#0D1117;color:#FF7B72;padding:.5rem .7rem;border-radius:5px;margin:.4rem 0;}
+    .error-fix{font-size:12px;color:#991B1B;line-height:1.65;}
+    .fix-block{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.8rem 1rem;margin-top:.6rem;}
+    .fix-title{font-size:11px;font-weight:700;color:#065F46;margin-bottom:.3rem;}
+    .ins{display:flex;gap:.8rem;padding:.9rem 1.05rem;background:var(--surface);border:1px solid var(--border);border-radius:9px;margin-bottom:.7rem;}
+    .ins-i{font-size:1.15rem;flex-shrink:0;margin-top:.05rem;}
+    .ins-t{font-size:12.5px;font-weight:600;margin-bottom:.2rem;color:var(--text);}
+    .ins-x{font-size:12px;color:var(--muted);line-height:1.65;}
+    code{font-family:'JetBrains Mono',monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .tip{display:flex;gap:.7rem;padding:.8rem .95rem;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;margin:.7rem 0;}
+    .tip-i{font-size:1rem;flex-shrink:0;}
+    .tip-t{font-size:12px;color:#92400E;line-height:1.6;}
+    .tip-t strong{color:#78350F;}
+    .imp{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.8rem .95rem;margin-top:.6rem;}
+    .imp-t{font-size:11px;font-weight:700;color:#065F46;margin-bottom:.3rem;}
+    .portfolio-card{background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 100%);border-radius:12px;padding:1.75rem;color:#fff;margin-bottom:2rem;}
+    .portfolio-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;margin-bottom:.5rem;}
+    .portfolio-sub{font-size:12px;opacity:.8;margin-bottom:1rem;line-height:1.6;}
+    .portfolio-link{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:6px;padding:.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;text-decoration:none;word-break:break-all;margin-bottom:1rem;}
+    .portfolio-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+    .ptag{background:rgba(255,255,255,.2);border-radius:20px;padding:2px 10px;font-size:10px;font-weight:600;}
+    .color-palette{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;}
+    .color-swatch{display:flex;flex-direction:column;align-items:center;gap:.3rem;}
+    .swatch{width:36px;height:36px;border-radius:6px;border:1px solid var(--border);}
+    .swatch-label{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+    .dax-block{background:#1A1033;border-radius:8px;padding:1rem 1.35rem;font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.85;overflow-x:auto;white-space:pre;margin:.7rem 0;color:#E8DFFF;}
+    .dax-kw{color:#C792EA;} .dax-fn{color:#82AAFF;} .dax-cm{color:#546E7A;font-style:italic;} .dax-str{color:#C3E88D;}
+    .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin:.75rem 0;}
+    .kpi-card{background:var(--surface);border:1.5px solid var(--border);border-radius:9px;padding:1rem;text-align:center;}
+    .kpi-val{font-family:'DM Serif Display',Georgia,serif;font-size:1.75rem;color:var(--accent);font-weight:700;}
+    .kpi-label{font-size:10px;color:var(--muted);margin-top:.2rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+    @media print{.sidebar{display:none;}.main{max-width:100%;padding:1rem;}}
+  </style>
+</head>
+<body>
+<nav class="sidebar">
+  <div>
+    <div class="sb-badge">Data PMO &middot; Semanas 3&ndash;6</div>
+    <div class="sb-title">M&oacute;dulo 2<br>Power BI &mdash;<br>Da Conex&atilde;o ao<br>Dashboard</div>
+    <div class="sb-meta">&#9201; ~25h &nbsp;&middot;&nbsp; &#128308; Prioridade M&aacute;xima<br>Conclu&iacute;do &middot; Junho 2026</div>
+  </div>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Aulas</div>
+  <div class="sb-nav">
+    <a href="#a1"><span class="dot done"></span>Aula 1 &middot; Interface e Conex&atilde;o &#10003;</a>
+    <a href="#a2"><span class="dot done"></span>Aula 2 &middot; Power Query &#10003;</a>
+    <a href="#a3"><span class="dot done"></span>Aula 3 &middot; Modelagem (Star Schema) &#10003;</a>
+    <a href="#a4"><span class="dot done"></span>Aula 4 &middot; Visuais e Formata&ccedil;&atilde;o &#10003;</a>
+    <a href="#a5"><span class="dot done"></span>Aula 5 &middot; DAX B&aacute;sico &#10003;</a>
+    <a href="#a6"><span class="dot done"></span>Aula 6 &middot; Interatividade &#10003;</a>
+    <a href="#a7"><span class="dot done"></span>Aula 7 &middot; Power BI Service &#10003;</a>
+  </div>
+  <div class="sb-section-label">Projeto</div>
+  <div class="sb-nav">
+    <a href="#projeto"><span class="dot done"></span>Painel de Produtividade &#10003;</a>
+  </div>
+  <div class="sb-section-label">Reflex&atilde;o</div>
+  <div class="sb-nav">
+    <a href="#insights"><span class="dot"></span>Insights do m&oacute;dulo</a>
+  </div>
+  <div class="sb-footer">
+    <div class="sb-prog-label">Progresso do m&oacute;dulo</div>
+    <div class="sb-prog-track"><div class="sb-prog-fill"></div></div>
+    <div class="sb-prog-status">&#10003; 100% &mdash; M&oacute;dulo conclu&iacute;do</div>
+  </div>
+</nav>
+
+<main class="main">
+  <!-- PIPELINE -->
+  <div class="pipeline-card">
+    <div class="pipeline-eyebrow">Onde o Power BI entra no fluxo &mdash; M&oacute;dulo 2</div>
+    <div class="pipeline-flow">
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Origem</div><div class="p-node-sub">Jira &middot; ITSM &middot; Excel</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">ETL / ELT</div><div class="p-node-sub">Time de Dom&iacute;nio</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Armazenamento</div><div class="p-node-sub">Databricks</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">SQL &#10003;</div><div class="p-node-sub">M&oacute;dulo 1</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node active-node"><div class="p-node-name hi">&#128202; Power BI</div><div class="p-node-sub">Voc&ecirc; est&aacute; aqui</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Decis&atilde;o</div><div class="p-node-sub">CIO Office</div></div></div>
+    </div>
+    <div class="pipeline-note">Power BI &eacute; a camada de visualiza&ccedil;&atilde;o que transforma dados do Databricks em dashboards e KPIs para tomada de decis&atilde;o executiva.</div>
+  </div>
+
+  <!-- AULA 1 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 1 &mdash; Interface e Conex&atilde;o de Dados</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a1"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128218;</div><h2 class="section-title">Os 3 Views do Power BI Desktop</h2></div>
+    <div class="cg">
+      <div class="cc c-bl">
+        <div class="ct">&#128202; Report View &mdash; onde os visuais s&atilde;o criados</div>
+        <div class="cx">Canvas em branco onde gr&aacute;ficos, cart&otilde;es e filtros s&atilde;o montados. &Eacute; onde o usu&aacute;rio final vai interagir com o painel.</div>
+        <div class="cs">&#128204; &Eacute; aqui que voc&ecirc; vai passar 80% do tempo.</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">&#128451; Data View &mdash; inspecionar os dados</div>
+        <div class="cx">Equivalente ao <code>SELECT * FROM tabela LIMIT 10</code> do SQL. Mostra linhas, colunas e tipos de cada tabela carregada.</div>
+        <div class="cs">&#128204; Usar sempre para validar se os dados foram importados corretamente.</div>
+      </div>
+      <div class="cc c-gr full">
+        <div class="ct">&#128279; Model View &mdash; relacionamentos entre tabelas</div>
+        <div class="cx">Representa visualmente o que o SQL faz com JOIN: cada linha conectando tabelas &eacute; uma rela&ccedil;&atilde;o entre colunas. O <code>1</code> e o <code>*</code> indicam o lado &uacute;nico e o lado m&uacute;ltiplo da rela&ccedil;&atilde;o.</div>
+        <div class="ce"><span class="cm">-- Equivalente visual de:</span>
+JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+<span class="cm">-- No Model View vira uma linha conectando as duas tabelas</span>
+<span class="cm">-- com "1" do lado de Customers e "*" do lado de Orders</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 2 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 2 &mdash; Power Query</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a2"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#9881;</div><h2 class="section-title">Limpeza e Transforma&ccedil;&atilde;o de Dados</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>O que &eacute; o Power Query:</strong> &eacute; o "SQL de limpeza" do Power BI. Tudo que voc&ecirc; faria com WHERE, ROUND e tratamento de NULL no SQL, o Power Query faz com interface visual antes dos dados chegarem aos visuais.</div></div>
+    <div class="cg">
+      <div class="cc c-re full">
+        <div class="ct">Erro real encontrado e resolvido &mdash; DataFormat.Error em colunas de data</div>
+        <div class="error-title">&#128308; DataFormat.Error: N&atilde;o conseguimos analisar a entrada fornecida como um valor Date.</div>
+        <div style="font-size:12px;color:#991B1B;margin:.5rem 0;line-height:1.6"><strong>O que aconteceu:</strong> o Power BI gerou automaticamente um passo "Tipo Alterado" que tentou converter as datas usando o locale do sistema (portugu&ecirc;s). O formato ISO do Northwind (2016-07-04) causou 17% de erros. Quando os passos "Tipo Alterado com Localidade" foram adicionados depois, eles receberam valores j&aacute; corrompidos &mdash; e n&atilde;o conseguiram converter.</div>
+        <div class="fix-block">
+          <div class="fix-title">&#10003; Solu&ccedil;&atilde;o aplicada</div>
+          <div style="font-size:12px;color:#065F46;line-height:1.65">Clicar no passo "Tipo Alterado" nas Etapas Aplicadas &rarr; editar a f&oacute;rmula na barra de f&oacute;rmulas &rarr; trocar <code>type date</code> por <code>type text</code> para as colunas OrderDate, RequiredDate e ShippedDate &rarr; refazer a convers&atilde;o com localidade "Ingl&ecirc;s (Estados Unidos)" diretamente nesse passo.</div>
+        </div>
+      </div>
+      <div class="cc c-am full">
+        <div class="ct">&#128204; Li&ccedil;&atilde;o: a ordem dos passos no Power Query &eacute; obrigat&oacute;ria</div>
+        <div class="cx">Cada passo transforma o resultado do anterior. Um erro criado em um passo anterior n&atilde;o &eacute; corrigido por um passo posterior &mdash; &eacute; propagado. Quando um passo tem &#10007; vermelho, o problema quase sempre est&aacute; numa etapa anterior, n&atilde;o no passo marcado.</div>
+        <div class="cs">Etapas Aplicadas t&iacute;picas: Fonte &rarr; Cabe&ccedil;alhos Promovidos &rarr; Tipo Alterado &rarr; Linhas em Branco Removidas. A ordem &eacute; fixa &mdash; n&atilde;o d&aacute; para colocar WHERE antes de FROM.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 3 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 3 &mdash; Modelagem de Dados (Star Schema)</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a3"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#11088;</div><h2 class="section-title">Star Schema &mdash; O Padr&atilde;o de Ouro para PMO</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>Por que &eacute; chamado de Star Schema:</strong> a tabela fato fica no centro e as dimens&otilde;es ao redor formam uma estrela. &Eacute; o mesmo padr&atilde;o que alimenta o Databricks da empresa.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Regra dos relacionamentos</div>
+        <div class="cx"><strong>Tabela fato</strong> (lado <code>*</code>): registra eventos &mdash; pedidos, demandas, vendas. Tem muitas linhas.<br><br><strong>Tabela dimens&atilde;o</strong> (lado <code>1</code>): descreve quem ou o qu&ecirc; &mdash; squads, status, prioridade. Tem poucas linhas.</div>
+        <div class="cs">&#128204; Nunca conecte duas tabelas dimens&atilde;o diretamente entre si. Toda rela&ccedil;&atilde;o passa pela tabela fato. Linha tracejada = relacionamento inativo = ambiguidade = problema.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Star Schema do Painel de Produtividade</div>
+        <div class="ce">squads     (1) &rarr; demandas (*)
+status     (1) &rarr; demandas (*)
+prioridade (1) &rarr; demandas (*)
+categoria  (1) &rarr; demandas (*)
+responsaveis(1) &rarr; demandas (*)</div>
+        <div class="cs">5 rela&ccedil;&otilde;es &middot; demandas no centro &middot; 0 linhas tracejadas</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Tabela calend&aacute;rio &mdash; pr&oacute;xima etapa</div>
+        <div class="cx">Necess&aacute;ria para intelig&ecirc;ncia de tempo (TOTALYTD, SAMEPERIODLASTYEAR). Criada com DAX: <code>CALENDARAUTO()</code>. Ser&aacute; implementada no M&oacute;dulo 5.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 4 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 4 &mdash; Visuais e Formata&ccedil;&atilde;o</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a4"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#127912;</div><h2 class="section-title">Constru&ccedil;&atilde;o dos Visuais e Paleta de Cores</h2></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Paleta de cores do painel</div>
+        <div class="color-palette">
+          <div class="color-swatch"><div class="swatch" style="background:#1E3A8A"></div><div class="swatch-label">#1E3A8A<br>T&iacute;tulos</div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#2563EB"></div><div class="swatch-label">#2563EB<br>Principal</div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#059669"></div><div class="swatch-label">#059669<br>Conclu&iacute;do</div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#DC2626"></div><div class="swatch-label">#DC2626<br>Bloqueado / Cr&iacute;tica</div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#D97706"></div><div class="swatch-label">#D97706<br>Alta prioridade</div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#94A3B8"></div><div class="swatch-label">#94A3B8<br>Cancelado / Baixa</div></div>
+          <div class="color-swatch"><div class="swatch" style="background:#60A5FA"></div><div class="swatch-label">#60A5FA<br>Aberto</div></div>
+        </div>
+        <div class="cs">&#128204; Cores sem&acirc;nticas: o usu&aacute;rio entende antes de ler a legenda. Vermelho = aten&ccedil;&atilde;o, verde = ok, cinza = neutro. Valido internacionalmente.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Visuais constru&iacute;dos &mdash; P&aacute;gina Operacional</div>
+        <div class="cx" style="line-height:1.9">
+          &#9632; Cart&atilde;o: Total de Demandas (420)<br>
+          &#9632; Barras horizontais: por Squad<br>
+          &#9632; Rosca: por Status (cores sem&acirc;nticas)<br>
+          &#9632; Barras verticais: por Prioridade<br>
+          &#9632; Linha: Evolu&ccedil;&atilde;o mensal (18 meses)
+        </div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Visuais constru&iacute;dos &mdash; P&aacute;gina SLA</div>
+        <div class="cx" style="line-height:1.9">
+          &#9632; 4 cart&otilde;es KPI (DAX)<br>
+          &#9632; Barras: SLA % por Squad<br>
+          &#9632; Barras: SLA % por Prioridade<br>
+          &#9632; Linha: Evolu&ccedil;&atilde;o mensal do SLA<br>
+          &nbsp;&nbsp;&nbsp;com linha de tend&ecirc;ncia
+        </div>
+      </div>
+      <div class="cc c-am full">
+        <div class="ct">Hierarquia de data &mdash; como resolver o agrupamento por m&ecirc;s</div>
+        <div class="cx">Quando uma coluna de data &eacute; adicionada ao eixo, o Power BI cria uma hierarquia autom&aacute;tica (Ano &gt; Trimestre &gt; M&ecirc;s &gt; Dia). Para exibir 18 meses separados, &eacute; necess&aacute;rio expandir todos os n&iacute;veis com o bot&atilde;o &#8595;&#8595; e remover Trimestre e Dia do eixo, mantendo Ano e M&ecirc;s.</div>
+        <div class="cs">&#128204; Sem tabela calend&aacute;rio, a hierarquia agrega todos os "janeiros" em um &uacute;nico ponto. A solu&ccedil;&atilde;o completa vem no M&oacute;dulo 5 com CALENDARAUTO().</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 5 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 5 &mdash; DAX B&aacute;sico</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a5"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#9889;</div><h2 class="section-title">4 Medidas DAX para An&aacute;lise de SLA</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>DAX vs SQL:</strong> uma medida DAX &eacute; como uma subquery que roda automaticamente no contexto de cada visual. Quando colocada num gr&aacute;fico por squad, ela calcula o SLA de cada squad individualmente &mdash; sem nenhuma f&oacute;rmula extra.</div></div>
+    <div class="kpi-row">
+      <div class="kpi-card"><div class="kpi-val">75,75%</div><div class="kpi-label">SLA Cumprido</div></div>
+      <div class="kpi-card"><div class="kpi-val">228</div><div class="kpi-label">No Prazo</div></div>
+      <div class="kpi-card"><div class="kpi-val">73</div><div class="kpi-label">Em Atraso</div></div>
+      <div class="kpi-card"><div class="kpi-val">13,99</div><div class="kpi-label">Dias m&eacute;dios</div></div>
+    </div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Medida 1 &mdash; SLA Cumprido %</div>
+        <div class="dax-block"><span class="dax-fn">SLA Cumprido %</span> =
+<span class="dax-kw">DIVIDE</span>(
+    <span class="dax-kw">COUNTROWS</span>(
+        <span class="dax-kw">FILTER</span>(demandas,
+            <span class="dax-kw">NOT</span>(<span class="dax-kw">ISBLANK</span>(demandas[DataFechamento])) &&
+            demandas[DataFechamento] &lt;= demandas[DataPrazo]
+        )
+    ),
+    <span class="dax-kw">COUNTROWS</span>(
+        <span class="dax-kw">FILTER</span>(demandas,
+            <span class="dax-kw">NOT</span>(<span class="dax-kw">ISBLANK</span>(demandas[DataFechamento]))
+        )
+    ),
+    <span class="dax-nu" style="color:#F8C555">0</span>  <span class="dax-cm">-- evita divis&atilde;o por zero</span>
+)</div>
+        <div class="cs">&#128204; DIVIDE &eacute; sempre preferido a "/" no DAX porque trata automaticamente a divis&atilde;o por zero. FILTER aplica a condi&ccedil;&atilde;o linha a linha. ISBLANK detecta datas ausentes (demandas ainda abertas).</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Medida 2 &mdash; Demandas no Prazo</div>
+        <div class="dax-block"><span class="dax-fn">Demandas no Prazo</span> =
+<span class="dax-kw">COUNTROWS</span>(
+    <span class="dax-kw">FILTER</span>(demandas,
+        <span class="dax-kw">NOT</span>(<span class="dax-kw">ISBLANK</span>(
+            demandas[DataFechamento])) &&
+        demandas[DataFechamento] &lt;=
+        demandas[DataPrazo]
+    )
+)</div>
+      </div>
+      <div class="cc c-re">
+        <div class="ct">Medida 3 &mdash; Demandas em Atraso</div>
+        <div class="dax-block"><span class="dax-fn">Demandas em Atraso</span> =
+<span class="dax-kw">COUNTROWS</span>(
+    <span class="dax-kw">FILTER</span>(demandas,
+        <span class="dax-kw">NOT</span>(<span class="dax-kw">ISBLANK</span>(
+            demandas[DataFechamento])) &&
+        demandas[DataFechamento] >
+        demandas[DataPrazo]
+    )
+)</div>
+      </div>
+      <div class="cc c-pu full">
+        <div class="ct">Medida 4 &mdash; Tempo M&eacute;dio de Resolu&ccedil;&atilde;o (dias)</div>
+        <div class="dax-block"><span class="dax-fn">Tempo M&eacute;dio Resolu&ccedil;&atilde;o (dias)</span> =
+<span class="dax-kw">AVERAGEX</span>(
+    <span class="dax-kw">FILTER</span>(demandas,
+        <span class="dax-kw">NOT</span>(<span class="dax-kw">ISBLANK</span>(demandas[DataFechamento]))
+    ),
+    <span class="dax-kw">DATEDIFF</span>(
+        demandas[DataAbertura],
+        demandas[DataFechamento],
+        <span class="dax-kw">DAY</span>
+    )
+)</div>
+        <div class="cs">&#128204; AVERAGEX itera linha a linha sobre a tabela filtrada e calcula DATEDIFF para cada uma. &Eacute; o equivalente ao AVERAGEX/DATEDIFF do SQL Módulo 1.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 6 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 6 &mdash; Interatividade</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a6"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128427;</div><h2 class="section-title">Segmentadores, Drill-through e Matrix</h2></div>
+    <div class="cg">
+      <div class="cc c-bl">
+        <div class="ct">Segmentador de Squad</div>
+        <div class="cx">Filtro dropdown que atualiza todos os visuais da p&aacute;gina simultaneamente. Campo: <code>squads[Squad]</code>. Configurado como lista suspensa com op&ccedil;&atilde;o "Todos".</div>
+        <div class="cs">&#128204; Um &uacute;nico clique filtra 5 visuais ao mesmo tempo. Isso &eacute; o que diferencia um dashboard de uma planilha.</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Segmentador de Data (Entre)</div>
+        <div class="cx">Barra deslizante com data de in&iacute;cio e fim. Campo: <code>demandas[DataAbertura]</code>. Configura&ccedil;&atilde;o: Segmentador &rarr; Entre. Filtra todo o painel pelo per&iacute;odo selecionado.</div>
+        <div class="cs">&#128204; Selecionar Jan-Out/2024 reduziu de 420 para 225 demandas em todos os visuais simultaneamente.</div>
+      </div>
+      <div class="cc c-am full">
+        <div class="ct">Drill-through &mdash; navega&ccedil;&atilde;o interativa entre p&aacute;ginas</div>
+        <div class="cx">Clicar com bot&atilde;o direito numa barra do Squad Cr&eacute;dito &rarr; Drill-through &rarr; Detalhe Squad abre uma p&aacute;gina filtrada automaticamente para aquele squad.</div>
+        <div class="ce"><span class="cm">-- Configura&ccedil;&atilde;o na p&aacute;gina de destino:</span>
+Formato &rarr; Informa&ccedil;&otilde;es da p&aacute;gina
+Tipo de p&aacute;gina: Detalhamento
+Drill through a partir de: squads[Squad]
+
+<span class="cm">-- Para usar: bot&atilde;o direito na barra do squad</span>
+<span class="cm">-- &rarr; Drill-through &rarr; Detalhe Squad</span>
+<span class="cm">-- Bot&atilde;o &larr; volta para a p&aacute;gina anterior automaticamente</span></div>
+        <div class="cs">&#128204; O campo "Tipo de p&aacute;gina: Detalhamento" &eacute; o que ativa a funcionalidade. Sem isso, a op&ccedil;&atilde;o n&atilde;o aparece no menu de contexto.</div>
+      </div>
+      <div class="cc c-gr full">
+        <div class="ct">Matrix Visual &mdash; Squad &times; Status</div>
+        <div class="cx">Tabela din&acirc;mica que cruza duas dimens&otilde;es. Linhas: <code>squads[Squad]</code> &middot; Colunas: <code>status[StatusNome]</code> &middot; Valores: Contagem de <code>demandas[DemandaID]</code>.</div>
+        <table class="ot" style="margin-top:.65rem;font-size:11px">
+          <thead><tr><th>Squad</th><th>Aberto</th><th>Bloqueado</th><th>Cancelado</th><th>Conclu&iacute;do</th><th>Em Andamento</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>Squad Cr&eacute;dito</td><td>1</td><td>3</td><td>2</td><td>38</td><td>8</td><td>52</td></tr>
+            <tr><td>Squad Dados</td><td>7</td><td>3</td><td>7</td><td>54</td><td>12</td><td>83</td></tr>
+            <tr><td>Squad Experi&ecirc;ncia</td><td>5</td><td>3</td><td>2</td><td>26</td><td>11</td><td>47</td></tr>
+            <tr><td>Squad Pagamentos</td><td>5</td><td>8</td><td>7</td><td>48</td><td>6</td><td>74</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>30</strong></td><td><strong>29</strong></td><td><strong>31</strong></td><td><strong>270</strong></td><td><strong>60</strong></td><td><strong>420</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="cs">&#128204; Squad Pagamentos tem 8 bloqueadas &mdash; maior absoluto. Substitui completamente planilhas de acompanhamento semanal.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 7 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 7 &mdash; Power BI Service</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a7"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#127758;</div><h2 class="section-title">Publicar e Compartilhar</h2></div>
+    <div class="cg">
+      <div class="cc c-bl">
+        <div class="ct">Publicar no Power BI Service</div>
+        <div class="cx">P&aacute;gina Inicial &rarr; Publicar &rarr; Meu Workspace. Requer conta Microsoft (gratuita).</div>
+        <div class="cs">O arquivo .pbix sobe para a nuvem e fica acess&iacute;vel pelo navegador.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Publicar na Web (link p&uacute;blico)</div>
+        <div class="cx">Arquivo &rarr; Inserir relat&oacute;rio &rarr; Publicar na Web (p&uacute;blico). Gera link acess&iacute;vel sem conta Power BI &mdash; ideal para portf&oacute;lio.</div>
+        <div class="cs">&#9888; Nunca usar com dados reais da empresa. Apenas para dados sint&eacute;ticos ou p&uacute;blicos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJETO -->
+  <span class="anchor" id="projeto"></span>
+  <div class="portfolio-card">
+    <div class="portfolio-title">&#128202; Painel de Produtividade &mdash; Portf&oacute;lio</div>
+    <div class="portfolio-sub">Dashboard publicado com dados sint&eacute;ticos &middot; 3 p&aacute;ginas &middot; 4 medidas DAX &middot; 420 demandas &middot; 18 meses (Jan 2024&ndash;Jun 2025)</div>
+    <a class="portfolio-link" href="https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9" target="_blank">&#128279; Acessar dashboard publicado</a>
+    <div class="portfolio-tags">
+      <span class="ptag">P&aacute;gina Operacional</span>
+      <span class="ptag">P&aacute;gina SLA</span>
+      <span class="ptag">Drill-through: Detalhe Squad</span>
+      <span class="ptag">4 Medidas DAX</span>
+      <span class="ptag">Segmentador de Data</span>
+      <span class="ptag">Matrix Squad &times; Status</span>
+      <span class="ptag">Star Schema &middot; 6 tabelas</span>
+      <span class="ptag">Dados sint&eacute;ticos &middot; sem dados reais</span>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <span class="anchor" id="insights"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128273;</div><h2 class="section-title">Insights do M&oacute;dulo 2</h2></div>
+    <div class="ins"><div class="ins-i">&#128279;</div><div><div class="ins-t">Power BI Model View &eacute; o JOIN do SQL em forma visual</div><div class="ins-x">Cada linha no Model View representa exatamente o que um JOIN faria: conecta duas tabelas pela coluna em comum. O "1" e o "*" s&atilde;o os mesmos lados do relacionamento que voc&ecirc; aprendeu com INNER JOIN e LEFT JOIN no M&oacute;dulo 1.</div></div></div>
+    <div class="ins"><div class="ins-i">&#128308;</div><div><div class="ins-t">A ordem dos passos no Power Query &eacute; t&atilde;o obrigat&oacute;ria quanto no SQL</div><div class="ins-x">Um erro gerado num passo anterior &eacute; propagado para todos os passos seguintes. Quando um passo tem &#10007; vermelho, o problema quase sempre est&aacute; numa etapa anterior. Mesma l&oacute;gica de depura&ccedil;&atilde;o do SQL: rodar a query interna primeiro, validar o resultado, depois construir a externa.</div></div></div>
+    <div class="ins"><div class="ins-i">&#127912;</div><div><div class="ins-t">Cores sem&acirc;nticas comunicam antes da legenda</div><div class="ins-x">Verde = conclu&iacute;do, vermelho = bloqueado/cr&iacute;tico, cinza = cancelado/baixa. Essa conven&ccedil;&atilde;o &eacute; universal &mdash; qualquer gestor entende sem ler a legenda. Dashboards que precisam de explica&ccedil;&atilde;o n&atilde;o s&atilde;o dashboards, s&atilde;o relat&oacute;rios.</div></div></div>
+    <div class="ins"><div class="ins-i">&#9889;</div><div><div class="ins-t">Uma medida DAX &eacute; contextual por natureza</div><div class="ins-x">A medida SLA Cumprido % calcula automaticamente o SLA de cada squad quando colocada num visual por squad, o SLA de cada prioridade num visual por prioridade, e o SLA geral num cart&atilde;o &mdash; sem nenhuma f&oacute;rmula extra. &Eacute; o equivalente de uma subquery que se adapta ao contexto.</div></div></div>
+    <div class="ins"><div class="ins-i">&#128202;</div><div><div class="ins-t">Squad Pagamentos bloqueado &eacute; o alerta que o CIO precisa ver</div><div class="ins-x">8 demandas bloqueadas &mdash; maior absoluto entre os squads, num squad que processa os produtos de maior impacto financeiro. A matrix Squad &times; Status revelou isso em segundos. Esse &eacute; o valor de um painel de PMO: n&atilde;o contar o que aconteceu, mas mostrar onde a aten&ccedil;&atilde;o &eacute; urgente.</div></div></div>
+    <div class="ins"><div class="ins-i">&#127919;</div><div><div class="ins-t">SLA uniforme entre prioridades &eacute; um sinal de alerta</div><div class="ins-x">Cr&iacute;tica (75,86%) e M&eacute;dia (75,51%) com SLA pr&aacute;ticamente id&ecirc;ntico indica que demandas cr&iacute;ticas n&atilde;o est&atilde;o sendo tratadas de forma diferenciada. Em um dashboard real, esse seria o primeiro questionamento levantado numa reuni&atilde;o com o CIO.</div></div></div>
+  </div>
+</main>
+
+<script>
+const ids=["a1","a2","a3","a4","a5","a6","a7","projeto","insights"];
+const lks={};
+ids.forEach(id=>{lks[id]=document.querySelector('.sb-nav a[href="#'+id+'"]');});
+function spy(){let c=ids[0];ids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY+90>=el.getBoundingClientRect().top+window.scrollY)c=id;});Object.values(lks).forEach(l=>l&&l.classList.remove("active"));if(lks[c])lks[c].classList.add("active");}
+window.addEventListener("scroll",spy,{passive:true});spy();
+</script>
+</body>
+</html>
