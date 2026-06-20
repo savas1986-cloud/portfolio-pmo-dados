@@ -8,7 +8,7 @@
 
 
 -- -----------------------------------------------------
--- QUERY 1 — Pedidos por país
+-- QUERY 6 — Pedidos por país
 -- Pergunta: Quantos pedidos por país?
 -- Tabela: Orders
 -- Resultado: 21 linhas retornadas. EUA lideram com 2.328 pedidos.
@@ -21,7 +21,7 @@ ORDER BY TotalPedidos DESC;
 
 
 -- -----------------------------------------------------
--- QUERY 2 — Clientes por país
+-- QUERY 7 — Clientes por país
 -- Pergunta: Quantos clientes por país ?
 -- Tabela: Customers
 -- Resultado: 10 linhas
@@ -35,7 +35,7 @@ LIMIT 10;
 
 
 -- -----------------------------------------------------
--- QUERY 3 — Média e preço máximo por categoria de produto
+-- QUERY 8 — Média e preço máximo por categoria de produto
 -- Pergunta: Qual categoria tem o produto mais caro? Qual tem a maior média de preço?
 -- Tabela: Products
 -- Resultado: 8 linhas. A categoria 1 tem o produto mais caro, enquanto a categoria 6, tem a maior média de preço
@@ -51,7 +51,7 @@ ORDER BY PrecoMedio DESC;
 
 
 -- -----------------------------------------------------
--- QUERY 4 — Grupos com mais de 500 pedidos
+-- QUERY 9 — Grupos com mais de 500 pedidos
 -- Pergunta: Quantos países sobraran? 
 -- Tabela: Orders
 -- Resultado: 11 linhas. 10 países tiveram menos de 500 pedidos.
@@ -67,7 +67,7 @@ ORDER BY TotalPedidos DESC;
 
 
 -- -----------------------------------------------------
--- QUERY 5 — Pedidos por colaborador e país
+-- QUERY 10 — Pedidos por colaborador e país
 -- Pergunta: Quantos pedidos os colaboradores de cada país atenderam?
 -- Tabela: Order
 -- Resultado: 9 linhas. EUA e UK tiveram o maior número de pedidos por colaborador.
