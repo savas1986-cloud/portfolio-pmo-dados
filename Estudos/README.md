@@ -17,8 +17,8 @@ Cada módulo contém:
 |--------|------|-------|--------|
 | [Módulo 0](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-0-fundamentos.html) | Fundamentos de Dados & BI | ~12h | ✅ Concluído |
 | [Módulo 1](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-1-sql.html) | SQL — A Linguagem dos Dados | ~20h | ✅ Concluído |
-| Módulo 2 | Power BI Básico + Intermediário | ~25h | 🔵 Programado |
-| Módulo 3 | Excel Avançado (Power Query) | ~10h | ⏳ Programado |
+| [Módulo 2](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-2-powerbi.html) | Power BI Básico + Intermediário | ~25h |  ✅ Concluído |
+| Módulo 3 | Excel Avançado (Power Query) | ~10h | 🔵 Em Andamento |
 | Módulo 4 | Governança de Dados & LGPD | ~20h | ⏳ Programado |
 | Módulo 5 | Power BI Avançado (DAX) | ~20h | ⏳ Programado |
 | Módulo 6 | Python para Análise (Pandas) | ~10h | ⏳ Programado |
