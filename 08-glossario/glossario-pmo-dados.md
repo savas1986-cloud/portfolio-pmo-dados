@@ -13,7 +13,7 @@
 Repositório de dados estruturados com schema definido antes da carga.
 Alta confiabilidade, custo elevado. Padrão para relatórios regulatórios
 e histórico financeiro.
-*Na TechFinance S.A.: usado para relatórios do Bacen e dados regulatórios.*
+*Na TechFinance S.A.: usado para relatórios regulatórios e histórico financeiro.*
 
 ---
 
@@ -36,7 +36,7 @@ Data Lake puro, embora o time use os dois termos como sinônimos.*
 Transforma o dado num ambiente intermediário (staging) antes de
 carregar no destino. Se falhar, o dado fica preso no staging —
 o destino não recebe nada.
-*Na TechFinance S.A.: usado em pipelines regulatórios (Bacen).*
+*Na TechFinance S.A.: usado em pipelines regulatórios.*
 
 ---
 
@@ -72,7 +72,7 @@ com um objetivo estratégico declarado.
 ---
 
 **Dimensão**
-Contexto pelo qual uma métrica é analisada: por squad, vertical,
+Contexto pelo qual uma métrica é analisada: por squad, divisão,
 região, período. É a dimensão que transforma um número em insight.
 *Exemplo: taxa de inadimplência por segmento (Premium vs. Básico).*
 
