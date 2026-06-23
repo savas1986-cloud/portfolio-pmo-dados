@@ -1,53 +1,68 @@
-# ✏️ Exercícios — Prática Técnica
+# ✏️ Exercícios SQL — Módulo 1
 
-Exercícios práticos desenvolvidos durante o roteiro de estudos.
-Cada subpasta corresponde a uma ferramenta ou linguagem.
-
----
-
-## Estrutura
-
-```
-exercicios/
-└── sql/
-    ├── aula-1-select.sql     ✅ SELECT, WHERE, ORDER BY, LIMIT
-    ├── aula-2-groupby.sql    ⏳ COUNT, SUM, AVG, GROUP BY, HAVING
-    ├── aula-3-join.sql       ⏳ INNER JOIN, LEFT JOIN, múltiplas tabelas
-    └── aula-4-subqueries.sql ⏳ Subqueries, EXISTS, IN
-```
-
----
-
-## SQL — Módulo 1
+Queries documentadas durante o Módulo 1 do roteiro de estudos
+PMO de Dados — **módulo concluído (4 de 4 aulas)**.
 
 **Base utilizada:** Northwind (SQLite)
 Banco de dados fictício de vendas da Microsoft — padrão mundial
 para aprendizado de SQL.
 
-**Tabelas exploradas:**
-`Customers` · `Orders` · `Products` · `Employees`
-
-| Arquivo | Conteúdo | Status |
-|---|---|---|
-| `aula-1-select.sql` | 5 queries com SELECT, WHERE, AND, OR, ORDER BY, LIMIT | ✅ |
-| `aula-2-groupby.sql` | Agregações e agrupamentos por categoria | ⏳ |
-| `aula-3-join.sql` | Cruzamento entre tabelas | ⏳ |
-| `aula-4-subqueries.sql` | Consultas aninhadas | ⏳ |
-
-**Entregável final do Módulo 1:**
-10 queries documentadas com pergunta, tabela e resultado esperado.
+**Ferramenta:** DB Browser for SQLite
 
 ---
 
-## Próximas pastas
+## Arquivos
 
-```
-exercicios/
-├── sql/          ✅ em andamento
-├── powerbi/      ⏳ Módulo 2 — dashboards e medidas DAX
-└── python/       ⏳ Módulo 6 — pandas e análise exploratória
-```
+| Arquivo | Aula | Conteúdo | Status |
+|---|---|---|---|
+| `aula-1-select.sql` | 1 | SELECT, WHERE, AND/OR, ORDER BY, LIMIT | ✅ |
+| `aula-2-groupby.sql` | 2 | COUNT, SUM, AVG, MAX, MIN, GROUP BY, HAVING | ✅ |
+| `aula-3-join.sql` | 3 | INNER JOIN, LEFT JOIN, detecção de órfãos (IS NULL) | ✅ |
+| `aula-4-subqueries.sql` | 4 | Subqueries IN, escalar e FROM (tabela derivada) | ✅ |
 
 ---
 
-*Módulos de referência disponíveis em [`Estudos/`](../Estudos/)*
+## O que cada aula cobre
+
+**Aula 1 — SELECT**
+Fundamentos da consulta: selecionar colunas, filtrar com WHERE,
+combinar condições com AND/OR, ordenar com ORDER BY e limitar
+resultados com LIMIT.
+
+**Aula 2 — GROUP BY e Agregações**
+Transformar muitas linhas em métricas: contar, somar e calcular
+médias por grupo. Diferença crítica entre WHERE (filtra antes
+de agrupar) e HAVING (filtra depois). ROUND aplicado a médias.
+
+**Aula 3 — JOIN**
+Cruzar tabelas para dar contexto ao dado. INNER JOIN para o que
+existe nos dois lados, LEFT JOIN + IS NULL para detectar dados
+órfãos (registros sem correspondência) — padrão essencial de
+qualidade de dados antes de qualquer relatório.
+
+**Aula 4 — Subqueries**
+Consultas dentro de consultas em três padrões: IN (está na lista?),
+escalar (valor único como referência, ex: acima da média) e
+FROM (subquery como tabela derivada).
+
+---
+
+## Conceitos-chave documentados
+
+- **Agrupar por ID, não por nome** — evita fusão silenciosa de dados
+- **LEFT JOIN + IS NULL** — detector de registros órfãos
+- **WHERE vs HAVING** — filtro antes vs depois da agregação
+- **ROUND em médias** — evita números com excesso de casas decimais
+- **Três padrões de subquery** — IN, escalar e FROM
+
+---
+
+## Entregável do Módulo 1
+
+10+ queries documentadas com pergunta, tabela utilizada e
+resultado esperado — todas testadas na base Northwind.
+
+---
+
+*Módulo 1 concluído. Material de referência completo disponível
+em [`Estudos/modulo-1-sql.html`](../../Estudos/modulo-1-sql.html)*
