@@ -1,8 +1,8 @@
 ## Projeto 1 — Termo de Abertura de Projeto (TAP)
 
-**Contexto:** Projeto fictício de criação de dashboard de produtividade
-para um time de tecnologia bancária — baseado em cenário real do
-ambiente TechFinance S.A..
+**Contexto:** Projeto de criação de dashboard de produtividade para
+         squads de uma empresa de tecnologia no setor financeiro
+         regulado (TechFinance S.A. — contexto fictício).
 
 **O que entrega:** Documento formal de abertura de projeto com escopo
 definido, stakeholders mapeados, premissas, restrições, cronograma
@@ -15,5 +15,5 @@ de código ou visual ser criada.
 **Habilidades demonstradas:** Gestão de escopo · Mapeamento de
 stakeholders · Definição de entregáveis · Estimativa de prazo
 
-**Ferramenta:** Google Docs / Word
+**Ferramenta:** Markdown
 **Status:** ✅ Concluído
