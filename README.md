@@ -27,7 +27,7 @@ FIAP
 
 | Categoria       | Ferramentas / Habilidades                                                  |
 |-----------------|----------------------------------------------------------------------------|
-| BI e Dados      | Power BI (Dashboards, Power Query), SQL (consultas, filtros, agregações)   |
+| BI e Dados      | Power BI (Dashboards, Power Query), SQL (consultas, JOINs, agregações, subqueries)   |
 | Gestão e PMO    | Jira, ServiceNow (ITSM/SPM), Scrum, Kanban, OKRs, KPIs, MoSCoW, TAP      |
 | Dados           | Pipeline de dados, ETL/ELT, Databricks (Lakehouse), Modelagem Dimensional  |
 | Governança      | Data Governance, Qualidade de Dados, LGPD, DAMA-DMBOK                     |
@@ -38,15 +38,15 @@ FIAP
 ## 🗂 Portfólio de Projetos
 
 Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
-— todos baseados em cenários reais do contexto bancário.
+— todos aplicados a um contexto fictício de empresa de tecnologia no setor financeiro regulado (TechFinance S.A.)
 
 
 | # | Projeto | O que demonstra | Status | Link |
 |---|---|---|---|---|
 | 1 | Termo de Abertura de Projeto (TAP) | Escopo, stakeholders, riscos e cronograma | ✅ Concluído | [Ver →](01-projeto-abertura/) |
 | 2 | Checklist de Viabilidade Técnica | Framework de validação de demandas | ✅ Concluído | [Ver →](02-viabilidade-tecnica/) |
-| 3 | Análise Crítica de Dashboard | Governança visual e melhoria de BI | ⏳ Previsto | — |
-| 4 | Backlog Priorizado (MoSCoW) | Priorização ágil de demandas de dados | ⏳ Previsto | — |
+| 3 | Análise Crítica de Dashboard | Governança visual e melhoria de BI | ✅ Concluído | [Ver →](03-dashboard-critico/) |
+| 4 | Backlog Priorizado (MoSCoW) | Priorização ágil de demandas de dados | ✅ Concluído | [Ver →](04-backlog-priorizado/) |
 | 5 | OKRs e KPIs para Projeto de Dados | Métricas estratégicas para Data Lake | ✅ Concluído | [Ver →](05-kpis-okrs/) |
 | 6 | Matriz de Riscos | Mapeamento e mitigação em migração de dados | ⏳ Previsto | — |
 | 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | ⏳ Previsto | — |
