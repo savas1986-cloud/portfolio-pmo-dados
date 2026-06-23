@@ -155,7 +155,7 @@ contexto de empresa de tecnologia no setor financeiro regulado.*
 **Nota sobre este documento:** Este TAP representa o planejamento
 > de um projeto de dados em ambiente corporativo, com arquitetura-alvo
 > de produção (Databricks, pipelines ELT, RLS). O dashboard publicado
-> no [Projeto 9](../09...) é o protótipo funcional desta solução,
+> no [Projeto 9](../09-painel-produtividade/) é o protótipo funcional desta solução,
 > construído com dados sintéticos e Power Query para demonstração —
 > validando a modelagem dimensional e as medidas DAX antes de uma
 > eventual implementação em produção.
