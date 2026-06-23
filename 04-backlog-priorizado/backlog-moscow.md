@@ -69,7 +69,7 @@ Este backlog é consistente com as decisões tomadas no TAP e nos OKRs:
 
 | Decisão | TAP | OKRs | Backlog |
 |---|---|---|---|
-| Batch diário — sem real-time | ❌ Fora do escopo | ❌ Won't Have (KR não inclui) | ⚪ W14 |
+| Batch diário — sem real-time | ❌ Fora do escopo | ❌ Won't Have (KR não inclui) | ⚪ B14 |
 | ITSM como dependência externa | ⚠️ Risco R01 | 🟡 KR1 com contingência | 🟡 B07 |
 | RLS obrigatório | ✅ Item 8 do escopo | — | 🔴 B05 |
 | Dicionário de dados | ✅ Item 9 do escopo | ✅ KR2 do O2 | 🔴 B06 |
