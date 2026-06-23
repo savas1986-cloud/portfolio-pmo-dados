@@ -1,8 +1,7 @@
 ## Projeto 4 — Backlog Priorizado com MoSCoW
 
-**Contexto:** Backlog fictício de um time de dados com 15 demandas
-simultâneas — incluindo dashboards, pipelines, correções de qualidade
-e solicitações ad hoc de diferentes áreas de negócio.
+**Contexto:** Backlog de um time de dados com 16 itens priorizados — incluindo dashboards, pipelines, correções de qualidade
+e solicitações de diferentes áreas de negócio.
 
 **O que entrega:** Backlog estruturado com classificação MoSCoW
 (Must have / Should have / Could have / Won't have), justificativa
@@ -16,4 +15,4 @@ com stakeholders antes de qualquer sprint começar.
 Negociação de prioridade · Alinhamento com stakeholders
 
 **Ferramenta:** Markdown
-**Status:** ⏳ Previsto — documento em elaboração
+**Status:** ✅ Concluído
