@@ -15,7 +15,7 @@ ciclo completo de um PMO de Dados: construir → avaliar → melhorar.
 
 **Habilidades demonstradas:** Storytelling com dados · Governança
 de BI · Princípios de design · Formatação condicional · DAX ·
-Drill-through · Pensamento crítico aplicado ao próprio trabalho
+Drill-through · Autoavaliação crítica com framework estruturado
 
 **Ferramenta:** Power BI Desktop + Power BI Service
 **Status:** ✅ Concluído — análise + V2 implementado e publicado
@@ -69,7 +69,8 @@ A análise avaliou o dashboard em 10 critérios:
 
 ## 🔧 Melhorias Implementadas na V2
 
-A partir da análise crítica, o dashboard evoluiu de 2 para 4 páginas:
+Estrutura: de 2 páginas (V1) para 4 páginas (V2).
+Qualidade: de 2 critérios atendidos (V1) para 10 (V2).:
 
 | # | Melhoria | Categoria |
 |---|---|---|
