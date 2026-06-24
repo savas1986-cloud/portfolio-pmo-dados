@@ -32,14 +32,26 @@ Cada módulo contém:
 
 **Módulo 0 — Fundamentos** ✅
 - Glossário com 23 termos (disponível em `08-glossario/`)
-- Diagrama do pipeline de dados de painel de produtividade aplicados ao contexto de empresa de tecnologia no setor financeiro regulado
+- Diagrama do pipeline de dados do Painel de Produtividade, aplicado
+  ao contexto de empresa de tecnologia no setor financeiro regulado
 - 5 KPIs classificados com dimensões e granularidade
 - Demanda real reescrita com vocabulário técnico
 
 **Módulo 1 — SQL** ✅
-- 5 queries documentadas (disponível em `exercicios/sql/`)
-- Aulas: SELECT · GROUP BY · JOIN · Subqueries
+- Queries documentadas nas 4 aulas (disponível em `exercicios/sql/`)
+- Aula 1: SELECT, WHERE, ORDER BY, LIMIT
+- Aula 2: GROUP BY, agregações, WHERE vs HAVING
+- Aula 3: INNER JOIN, LEFT JOIN, detecção de órfãos (IS NULL)
+- Aula 4: Subqueries (IN, escalar, FROM)
 - Base utilizada: Northwind (SQLite)
+
+**Módulo 2 — Power BI** ✅
+- Dashboard "Painel de Produtividade" publicado (4 páginas interativas)
+- Star Schema com modelagem dimensional
+- Medidas DAX: SLA Cumprido %, Demandas no Prazo/Atraso, Tempo Médio
+  de Resolução, com delta de meta e formatação condicional
+- Drill-through por squad e segmentadores
+- Análise crítica do próprio dashboard (disponível em `03-dashboard-critico/`)
 
 ---
 
