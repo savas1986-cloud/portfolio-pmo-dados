@@ -1,20 +1,24 @@
 ## Projeto 6 — Matriz de Riscos
 
-**Contexto:** Mapeamento de riscos para um projeto fictício de
-migração de dados de um sistema legado para o Databricks —
-cenário comum em transformação digital de bancos regulados.
+**Contexto:** Mapeamento de riscos para o projeto do Painel de
+Produtividade, cobrindo duas dimensões — riscos de gestão de
+projeto e riscos específicos de dados — em uma empresa de
+tecnologia no setor financeiro regulado (TechFinance S.A.,
+contexto fictício).
 
-**O que entrega:** Matriz de riscos com 10 itens avaliados por
-probabilidade e impacto, classificação de severidade, plano de
-mitigação e responsável por cada ação. Inclui riscos técnicos,
-operacionais e de conformidade (LGPD / Bacen).
+**O que entrega:** Matriz com 12 riscos (5 de projeto + 7 de dados),
+classificados por probabilidade, impacto e severidade, cada um
+com plano de mitigação e contingência. Inclui foco nos riscos
+críticos, plano de monitoramento e alinhamento com TAP e checklist.
 
-**Por que importa:** Em projeto de dados em banco regulado, risco
-não mapeado vira incidente. Identificar antes protege o prazo,
-o dado e a conformidade regulatória.
+**Por que importa:** Em ambiente financeiro regulado, risco não
+mapeado vira incidente — e incidente de dados vira risco
+regulatório. Mapear riscos de projeto E de dados demonstra a
+visão completa que um PMO de Dados precisa ter.
 
-**Habilidades demonstradas:** Gestão de riscos · LGPD aplicada ·
-Compliance bancário · Comunicação com áreas de controle
+**Habilidades demonstradas:** Gestão de riscos · LGPD (Privacy by
+Design) · Governança de dados · Segurança da informação ·
+Matriz probabilidade × impacto
 
-**Ferramenta:** Markdown / Excel
-**Status:** ⏳ Previsto — documento em elaboração
+**Ferramenta:** Markdown
+**Status:** ✅ Concluído
