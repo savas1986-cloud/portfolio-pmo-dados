@@ -10,8 +10,8 @@ Documentos de planejamento da transição para PMO de Dados.
 **Arquivo:** [Ver roteiro completo →](https://savas1986-cloud.github.io/portfolio-pmo-dados/roteiro/roteiro-estudos-2026.html)
 
 
-Roteiro completo de 4 meses com 17 módulos, exercícios práticos
-e entregáveis por módulo. Cobre:
+Roteiro completo de 4 meses estruturado em módulos temáticos, exercícios práticos e entregáveis.
+Cobre:
 - Fundamentos de dados e BI
 - SQL, Power BI, Excel
 - Governança, LGPD, Databricks
@@ -48,6 +48,8 @@ custo estimado e ordem de execução recomendada.
 | Roteiro de estudos definido | ✅ |
 | Módulo 0 concluído | ✅ |
 | Módulo 1 concluído | ✅ |
+| Módulo 2 concluído | ✅ |
+| Módulo 3 concluído | ✅ |
 | Scrum Fundamentals | ✅ Concluída |
 | SQL para Data Analyst (Alura) | 🔵 Em andamento |
 | PL-300 | ⏳ Planejada 2027 |
