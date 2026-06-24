@@ -6,11 +6,10 @@
 
 ## Perfil
 
-Profissional de TI com 5+ anos em Gestão de Projetos e PMO,
-em transição para PMO de Dados. Experiência em ambiente
+Profissional de TI com 15+ anos de experiência, sendo 5+ dedicados a Gestão de Projetos, PMO e Governança. Experiência em ambiente
 bancário regulado (F1RST — Santander Group).
 
-**Localização:** Colina, SP
+**Localização:** Cotia, SP
 **Contato:** [LinkedIn](https://www.linkedin.com/in/patricia-vasconcelos-b6013068)
 
 ---
