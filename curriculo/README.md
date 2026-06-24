@@ -6,8 +6,7 @@
 
 ## Perfil
 
-Profissional de TI com 15+ anos de experiência, sendo 5+ dedicados a Gestão de Projetos, PMO e Governança. Experiência em ambiente
-bancário regulado (F1RST — Santander Group).
+Profissional de TI com 15+ anos de experiência, sendo 5+ dedicados a Gestão de Projetos, PMO e Governança. Experiência em ambiente de tecnologia no setor financeiro regulado.
 
 **Localização:** Cotia, SP
 **Contato:** [LinkedIn](https://www.linkedin.com/in/patricia-vasconcelos-b6013068)
