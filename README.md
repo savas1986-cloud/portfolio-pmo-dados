@@ -48,8 +48,8 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | 3 | Análise Crítica de Dashboard | Governança visual e melhoria de BI | ✅ Concluído | [Ver →](03-dashboard-critico/) |
 | 4 | Backlog Priorizado (MoSCoW) | Priorização ágil de demandas de dados | ✅ Concluído | [Ver →](04-backlog-priorizado/) |
 | 5 | OKRs e KPIs para Projeto de Dados | Métricas estratégicas para Data Lake | ✅ Concluído | [Ver →](05-kpis-okrs/) |
-| 6 | Matriz de Riscos | Mapeamento e mitigação em migração de dados | ⏳ Previsto | — |
-| 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | ⏳ Previsto | — |
+| 6 | Matriz de Riscos | Mapeamento e mitigação em migração de dados | ✅ Concluído | [Ver →](06-riscos/) |
+| 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | ✅ Concluído | [Ver →](07-comunicacao-riscos/) |
 | 8 | Glossário PMO de Dados | 23 termos com aplicação no contexto bancário | ✅ Concluído | [Ver →](08-glossario/) |
 | 9 | Painel de Produtividade — Power BI | Dashboard executivo: SLA, volume por squad, 4 medidas DAX, Star Schema · 3 páginas interativas | ✅ Concluído | [Ver →](https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9) |
 ---
@@ -73,7 +73,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 
 | Certificação                        | Instituição  | Status           | Previsão  |
 |-------------------------------------|--------------|------------------|-----------|
-| Scrum Fundamentals                  | SCRUMstudy   | ✅ Concluída      | —         |
+| Scrum Fundamentals                  | SCRUMstudy   | ✅ Concluída     | —         |
 | SQL para Data Analyst               | Alura        | 🔵 Em andamento  | Jun/2026  |
 | Formação Power BI                   | Alura        | 🔵 Em andamento  | Ago/2026  |
 | PSM I — Professional Scrum Master   | Scrum.org    | ⏳ Planejada      | Fev/2027  |
