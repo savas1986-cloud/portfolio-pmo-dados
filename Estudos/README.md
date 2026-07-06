@@ -53,6 +53,15 @@ Cada módulo contém:
 - Drill-through por squad e segmentadores
 - Análise crítica do próprio dashboard (disponível em `03-dashboard-critico/`)
 
+**Módulo 3 — Excel Avançado** ✅
+- Tabela Dinâmica com % do Total da Linha e slicers interativos
+  (PrioridadeID + Timeline de DataAbertura por trimestre)
+- Power Query no Excel — merge de 3 tabelas (demandas + squads + status)
+- PROCX e PROCV para resolução de IDs em nomes reais
+- Macro `FormatarRelatorio` (Ctrl+Shift+F) — formata cabeçalho,
+  ajusta colunas e congela linha superior automaticamente
+- Arquivo: `painel-produtividade-excel.xlsm`
+  (disponível em `10-excel-avancado/`)
 ---
 
 *Roteiro completo disponível em [`roteiro/`](../roteiro/)*
