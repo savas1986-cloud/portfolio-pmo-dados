@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 3 — Excel Avançado</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#EFF4FF;--sidebar-bg:#1E3A8A;--accent:#2563EB;--accent2:#7C3AED;--surface:#FFFFFF;--border:#E0E7FF;--text:#0F172A;--muted:#64748B;--amber:#D97706;--green:#059669;--red:#DC2626;--code-bg:#EEF2FF;--code:#4338CA;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;font-size:14px;}
+    .sidebar{width:240px;min-width:240px;background:var(--sidebar-bg);position:sticky;top:0;height:100vh;overflow-y:auto;padding:1.75rem 1.1rem 1.5rem;display:flex;flex-direction:column;}
+    .sb-badge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F59E0B;margin-bottom:.4rem;}
+    .sb-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.2rem;color:#fff;line-height:1.25;}
+    .sb-meta{margin-top:.5rem;font-size:11px;color:rgba(255,255,255,.4);line-height:1.75;}
+    .sb-divider{height:1px;background:rgba(255,255,255,.1);margin:1rem 0;}
+    .sb-section-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin:.8rem 0 .3rem;}
+    .sb-nav a{display:flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:6px;font-size:11.5px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:1px;transition:all .15s;}
+    .sb-nav a:hover,.sb-nav a.active{background:rgba(255,255,255,.1);color:#fff;}
+    .dot{width:5px;height:5px;border-radius:50%;background:#60A5FA;flex-shrink:0;}
+    .dot.done{background:#34D399;}
+    .sb-footer{margin-top:auto;padding-top:1.25rem;}
+    .sb-prog-label{font-size:10px;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
+    .sb-prog-track{height:4px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
+    .sb-prog-fill{height:100%;width:100%;background:linear-gradient(90deg,#60A5FA,#34D399);border-radius:2px;}
+    .sb-prog-status{font-size:10px;color:#34D399;margin-top:.4rem;font-weight:600;}
+    .main{flex:1;max-width:840px;padding:2.25rem 2.75rem 5rem;overflow-x:hidden;}
+    .anchor{display:block;position:relative;top:-24px;visibility:hidden;height:0;}
+    .aula-div{display:flex;align-items:center;gap:1rem;margin:2.75rem 0 2rem;}
+    .aula-div-line{flex:1;height:2px;background:linear-gradient(90deg,var(--accent),transparent);}
+    .aula-div-label{font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:var(--accent);white-space:nowrap;}
+    .pipeline-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2.25rem;box-shadow:0 1px 4px rgba(37,99,235,.06);}
+    .pipeline-eyebrow{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+    .pipeline-flow{display:flex;align-items:center;overflow-x:auto;padding-bottom:.25rem;}
+    .p-step{flex-shrink:0;text-align:center;}
+    .p-node{display:inline-block;background:var(--bg);border:1.5px solid #C7D7FE;border-radius:8px;padding:.45rem .9rem;}
+    .p-node.active-node{border-color:var(--accent);background:#DBEAFE;box-shadow:0 0 0 3px rgba(37,99,235,.15);}
+    .p-node-name{font-size:11px;font-weight:600;color:var(--accent);}
+    .p-node-name.hi{color:#7C3AED;}
+    .p-node-sub{font-size:9px;color:var(--muted);margin-top:2px;}
+    .p-arrow{font-size:1rem;color:#C7D7FE;padding:0 .35rem;flex-shrink:0;}
+    .pipeline-note{margin-top:.9rem;font-size:11px;color:var(--muted);font-style:italic;}
+    .section{margin-bottom:2.25rem;}
+    .section-head{display:flex;align-items:center;gap:.65rem;margin-bottom:1.1rem;padding-bottom:.55rem;border-bottom:1.5px solid var(--border);}
+    .section-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;background:#EEF2FF;flex-shrink:0;}
+    .section-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.25rem;color:var(--text);}
+    .cg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+    .cc{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.9rem 1.05rem;position:relative;overflow:hidden;}
+    .cc::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;}
+    .c-bl::before{background:var(--accent);}.c-pu::before{background:var(--accent2);}
+    .c-am::before{background:var(--amber);}.c-gr::before{background:var(--green);}
+    .c-re::before{background:var(--red);}.c-te::before{background:#0D9488;}
+    .full{grid-column:1/-1;}
+    .ct{font-size:12px;font-weight:600;margin-bottom:.3rem;}
+    .cx{font-size:12px;color:var(--muted);line-height:1.65;}
+    .ce{margin-top:.5rem;padding:.5rem .7rem;background:#0D1117;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7EE787;line-height:1.8;white-space:pre;overflow-x:auto;}
+    .cs{font-size:11px;color:var(--muted);margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);line-height:1.6;}
+    .ot{width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:.65rem;}
+    .ot th{background:var(--sidebar-bg);color:#fff;padding:.45rem .8rem;text-align:left;font-size:10.5px;font-weight:500;}
+    .ot td{padding:.5rem .8rem;border-top:1px solid var(--border);line-height:1.5;}
+    .ot tr:hover td{background:#F5F8FF;}
+    .ot code{font-family:'JetBrains Mono',monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .ins{display:flex;gap:.8rem;padding:.9rem 1.05rem;background:var(--surface);border:1px solid var(--border);border-radius:9px;margin-bottom:.7rem;}
+    .ins-i{font-size:1.15rem;flex-shrink:0;margin-top:.05rem;}
+    .ins-t{font-size:12.5px;font-weight:600;margin-bottom:.2rem;color:var(--text);}
+    .ins-x{font-size:12px;color:var(--muted);line-height:1.65;}
+    code{font-family:'JetBrains Mono',monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .tip{display:flex;gap:.7rem;padding:.8rem .95rem;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;margin:.7rem 0;}
+    .tip-i{font-size:1rem;flex-shrink:0;}
+    .tip-t{font-size:12px;color:#92400E;line-height:1.6;}
+    .tip-t strong{color:#78350F;}
+    .imp{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.8rem .95rem;margin-top:.6rem;}
+    .imp-t{font-size:11px;font-weight:700;color:#065F46;margin-bottom:.3rem;}
+    .formula-block{background:#1A1033;border-radius:8px;padding:1rem 1.35rem;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.85;overflow-x:auto;white-space:pre;margin:.7rem 0;color:#E8DFFF;}
+    .fn{color:#82AAFF;}.arg{color:#C3E88D;}.sep{color:#89DDFF;}.cm2{color:#546E7A;font-style:italic;}
+    .result-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin:.75rem 0;}
+    .result-card{background:var(--surface);border:1.5px solid var(--border);border-radius:9px;padding:1rem;text-align:center;}
+    .result-val{font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:var(--accent);font-weight:700;}
+    .result-label{font-size:10px;color:var(--muted);margin-top:.2rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+    @media print{.sidebar{display:none;}.main{max-width:100%;padding:1rem;}}
+  </style>
+</head>
+<body>
+<nav class="sidebar">
+  <div>
+    <div class="sb-badge">Data PMO &middot; Semana 6</div>
+    <div class="sb-title">M&oacute;dulo 3<br>Excel Avan&ccedil;ado</div>
+    <div class="sb-meta">&#9201; ~10h &nbsp;&middot;&nbsp; &#128308; Prioridade M&aacute;xima<br>Conclu&iacute;do &middot; Junho 2026</div>
+  </div>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Aulas</div>
+  <div class="sb-nav">
+    <a href="#a1"><span class="dot done"></span>Aula 1 &middot; Tabelas Din&acirc;micas &#10003;</a>
+    <a href="#a2"><span class="dot done"></span>Aula 2 &middot; Power Query &#10003;</a>
+    <a href="#a3"><span class="dot done"></span>Aula 3 &middot; PROCX e PROCV &#10003;</a>
+    <a href="#a4"><span class="dot done"></span>Aula 4 &middot; Macro B&aacute;sica &#10003;</a>
+  </div>
+  <div class="sb-section-label">Reflex&atilde;o</div>
+  <div class="sb-nav">
+    <a href="#insights"><span class="dot"></span>Insights do m&oacute;dulo</a>
+  </div>
+  <div class="sb-footer">
+    <div class="sb-prog-label">Progresso do m&oacute;dulo</div>
+    <div class="sb-prog-track"><div class="sb-prog-fill"></div></div>
+    <div class="sb-prog-status">&#10003; 100% &mdash; M&oacute;dulo conclu&iacute;do</div>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="pipeline-card">
+    <div class="pipeline-eyebrow">Excel no fluxo de trabalho de PMO de Dados</div>
+    <div class="pipeline-flow">
+      <div class="p-step"><div class="p-node"><div class="p-node-name">SQL &#10003;</div><div class="p-node-sub">M&oacute;dulo 1</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Power BI &#10003;</div><div class="p-node-sub">M&oacute;dulo 2</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node active-node"><div class="p-node-name hi">&#128202; Excel</div><div class="p-node-sub">Voc&ecirc; est&aacute; aqui</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Governan&ccedil;a</div><div class="p-node-sub">M&oacute;dulo 4</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">DAX Avan&ccedil;ado</div><div class="p-node-sub">M&oacute;dulo 5</div></div></div>
+    </div>
+    <div class="pipeline-note">Excel &eacute; a ferramenta de entrada e valida&ccedil;&atilde;o de dados mais usada em PMO. Power Query, PROCX e macros transformam planilhas brutas em relat&oacute;rios padronizados com um clique.</div>
+  </div>
+
+  <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>Vantagem do M&oacute;dulo 3:</strong> Power Query no Excel usa a mesma interface e l&oacute;gica do Power Query no Power BI. O que voc&ecirc; aprendeu no M&oacute;dulo 2 (etapas aplicadas, tipos de dado, mesclar consultas) vale diretamente aqui. PROCX e PROCV fazem o mesmo que JOIN no SQL &mdash; s&oacute; muda a interface.</div></div>
+
+  <!-- AULA 1 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 1 &mdash; Tabelas Din&acirc;micas Avan&ccedil;adas</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a1"></span>
+
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128218;</div><h2 class="section-title">Tabela Din&acirc;mica com % e Filtros Interativos</h2></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Estrutura montada — SquadID &times; StatusID com % do Total da Linha</div>
+        <div class="cx">Linhas: SquadID &nbsp;&middot;&nbsp; Colunas: StatusID &nbsp;&middot;&nbsp; Valores: Contagem de DemandaID &rarr; % do Total da Linha</div>
+        <div class="ce">Squad Onboarding  | 75,00% Conclu&iacute;do | 3,85% Bloqueado
+Squad Cr&eacute;dito     | 73,08% Conclu&iacute;do | 5,77% Bloqueado
+Squad Seguran&ccedil;a   | 54,17% Conclu&iacute;do | 12,50% Bloqueado  ← alerta
+Squad Infraestr.  | 50,00% Conclu&iacute;do | 8,33% Bloqueado   ← alerta</div>
+        <div class="cs">&#128204; Como aplicar: clique com bot&atilde;o direito em qualquer valor → Mostrar Valores Como → % do Total da Linha.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Slicer de PrioridadeID</div>
+        <div class="cx">Filtro visual clicável que controla a tabela din&acirc;mica. Inserir → Segmenta&ccedil;&atilde;o de Dados → PrioridadeID. Mesmo conceito do slicer no Power BI.</div>
+        <div class="cs">&#128204; Um slicer pode ser conectado a m&uacute;ltiplas tabelas din&acirc;micas: clique direito → Conex&otilde;es de Relat&oacute;rio.</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Timeline de DataAbertura</div>
+        <div class="cx">Seletor visual de per&iacute;odo por m&ecirc;s, trimestre ou ano. Especificamente para colunas de data. An&aacute;lise de Tabela Din&acirc;mica → Inserir Linha do Tempo.</div>
+        <div class="cs">&#128204; Melhor que slicer de data comum — n&atilde;o lista cada dia individualmente. Arraste para selecionar o intervalo desejado.</div>
+      </div>
+      <div class="cc c-am full">
+        <div class="ct">Por que % do Total da Linha &eacute; melhor que Campo Calculado para percentuais</div>
+        <div class="cx">Campos calculados em Pivot Tables operam sobre valores j&aacute; agregados. N&atilde;o &eacute; poss&iacute;vel filtrar "contar s&oacute; StatusID = 3" dentro da f&oacute;rmula. Para percentuais baseados em categorias, "Mostrar Valores Como" &eacute; o caminho correto — mais simples e produz o mesmo resultado.</div>
+        <div class="cs">&#128204; Campo Calculado &eacute; &uacute;til para opera&ccedil;&otilde;es como Receita / Quantidade. Para % de categorias, sempre use "Mostrar Valores Como".</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 2 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 2 &mdash; Power Query no Excel</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a2"></span>
+
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#9881;</div><h2 class="section-title">Merge de 3 Tabelas via Power Query</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>Mesma ferramenta, mesma l&oacute;gica:</strong> o Power Query Editor no Excel &eacute; id&ecirc;ntico ao do Power BI. As Etapas Aplicadas, os tipos de dado e a opera&ccedil;&atilde;o de Mesclar Consultas funcionam exatamente da mesma forma.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Fluxo do merge</div>
+        <div class="ce">demandas.csv  (420 linhas, 10 colunas)
+    + squads.csv   (8 linhas)   → LEFT JOIN por SquadID
+    + status.csv   (5 linhas)   → LEFT JOIN por StatusID
+    = Mesclar1     (420 linhas, 12 colunas)
+        com SquadNome e StatusNome resolvidos</div>
+        <div class="cs">&#128204; Dados → Obter Dados → De Arquivo → De Texto/CSV → Transformar Dados. Sempre importar CSV via Power Query para controlar encoding (UTF-8) e separadores.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Mesclar Consultas — p&aacute;sso a passo</div>
+        <div class="cx" style="line-height:1.9">
+          1. Selecione a consulta <strong>demandas</strong><br>
+          2. P&aacute;gina Inicial → Mesclar Consultas<br>
+          3. Selecione <strong>squads</strong> como segunda tabela<br>
+          4. Coluna de jun&ccedil;&atilde;o: SquadID (nas duas)<br>
+          5. Tipo: <strong>Externa esquerda</strong> (LEFT JOIN)<br>
+          6. Expandir coluna → marcar apenas SquadNome
+        </div>
+      </div>
+      <div class="cc c-am">
+        <div class="ct">Tipo de Jun&ccedil;&atilde;o — equivalentes SQL</div>
+        <table class="ot" style="margin-top:.4rem">
+          <thead><tr><th>Power Query</th><th>SQL</th></tr></thead>
+          <tbody>
+            <tr><td>Externa esquerda</td><td>LEFT JOIN</td></tr>
+            <tr><td>Externa direita</td><td>RIGHT JOIN</td></tr>
+            <tr><td>Externa completa</td><td>FULL OUTER JOIN</td></tr>
+            <tr><td>Interna</td><td>INNER JOIN</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cc c-re">
+        <div class="ct">Erro de encoding — como evitar</div>
+        <div class="cx">Abrir CSV direto (duplo clique) causa encoding errado: acentos viram <code>Ã§Ã£o</code>. Sempre importar via:</div>
+        <div class="ce">Dados → Obter Dados → De Arquivo
+→ De Texto/CSV
+→ Origem do arquivo: 65001 (UTF-8)
+→ Delimitador: V&iacute;rgula</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 3 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 3 &mdash; PROCX e PROCV</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a3"></span>
+
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128279;</div><h2 class="section-title">Cruzamento de Tabelas por F&oacute;rmula</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>PROCX e PROCV = JOIN por f&oacute;rmula:</strong> fazem exatamente o que o JOIN faz no SQL e o Mesclar faz no Power Query. A diferen&ccedil;a &eacute; que a f&oacute;rmula calcula linha a linha, em tempo real, sem criar uma nova tabela.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">PROCX (Portugu&ecirc;s) = XLOOKUP (Ingl&ecirc;s) — Microsoft 365+</div>
+        <div class="formula-block"><span class="fn">PROCX</span><span class="sep">(</span><span class="arg">valor_procurado</span><span class="sep">;</span> <span class="arg">matriz_procura</span><span class="sep">;</span> <span class="arg">matriz_retorno</span><span class="sep">)</span>
+
+<span class="cm2">-- Aplicado: SquadID → SquadNome</span>
+<span class="fn">=PROCX</span><span class="sep">(</span><span class="arg">[@SquadID]</span><span class="sep">;</span> <span class="arg">squads!A:A</span><span class="sep">;</span> <span class="arg">squads!B:B</span><span class="sep">)</span>
+
+<span class="cm2">-- [@SquadID] = referência estruturada (tabela reconhecida pelo Excel)</span>
+<span class="cm2">-- squads!A:A = coluna SquadID na aba squads (onde procurar)</span>
+<span class="cm2">-- squads!B:B = coluna SquadNome na aba squads (o que retornar)</span></div>
+        <div class="cs">&#128204; No Excel em portugu&ecirc;s: XLOOKUP = PROCX. Quando o Excel reconhece a tabela como estruturada, substitui C2 por <code>[@NomeColuna]</code> automaticamente &mdash; mais robusto.</div>
+      </div>
+      <div class="cc c-pu full">
+        <div class="ct">PROCV &mdash; vers&atilde;o cl&aacute;ssica (todas as vers&otilde;es do Excel)</div>
+        <div class="formula-block"><span class="fn">PROCV</span><span class="sep">(</span><span class="arg">valor_procurado</span><span class="sep">;</span> <span class="arg">tabela_matriz</span><span class="sep">;</span> <span class="arg">n&uacute;m_&iacute;ndice_col</span><span class="sep">;</span> <span class="arg">0</span><span class="sep">)</span>
+
+<span class="cm2">-- Aplicado: StatusID → StatusNome</span>
+<span class="fn">=PROCV</span><span class="sep">(</span><span class="arg">[@StatusID]</span><span class="sep">;</span> <span class="arg">status!$A:$B</span><span class="sep">;</span> <span class="arg">2</span><span class="sep">;</span> <span class="arg">0</span><span class="sep">)</span>
+
+<span class="cm2">-- status!$A:$B = procura nas colunas A e B da aba status</span>
+<span class="cm2">-- 2 = retorna a 2ª coluna (StatusNome)</span>
+<span class="cm2">-- 0 = correspond&ecirc;ncia EXATA (nunca omitir)</span></div>
+        <div class="cs">&#9888; O <code>0</code> no &uacute;ltimo argumento &eacute; obrigat&oacute;rio. Sem ele, o Excel usa correspond&ecirc;ncia aproximada e pode retornar valores errados se a tabela n&atilde;o estiver ordenada.</div>
+      </div>
+      <div class="cc c-gr full">
+        <div class="ct">PROCX vs PROCV &mdash; quando usar cada um</div>
+        <table class="ot">
+          <thead><tr><th></th><th>PROCX</th><th>PROCV</th></tr></thead>
+          <tbody>
+            <tr><td>Vers&atilde;o necess&aacute;ria</td><td>Microsoft 365 / 2021+</td><td>Todas</td></tr>
+            <tr><td>Dire&ccedil;&atilde;o de busca</td><td>Qualquer coluna</td><td>S&oacute; retorna colunas &agrave; direita</td></tr>
+            <tr><td>Sintaxe</td><td>Mais simples e leg&iacute;vel</td><td>Mais verboso</td></tr>
+            <tr><td>Erro se n&atilde;o achar</td><td>Personaliz&aacute;vel (4&ordm; argumento)</td><td><code>#N/D</code></td></tr>
+            <tr><td>Recomenda&ccedil;&atilde;o</td><td>Usar sempre que poss&iacute;vel</td><td>Fallback para vers&otilde;es antigas</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cc c-te full">
+        <div class="ct">Nomes das fun&ccedil;&otilde;es em portugu&ecirc;s vs ingl&ecirc;s</div>
+        <table class="ot">
+          <thead><tr><th>Ingl&ecirc;s</th><th>Portugu&ecirc;s</th></tr></thead>
+          <tbody>
+            <tr><td><code>XLOOKUP</code></td><td><code>PROCX</code></td></tr>
+            <tr><td><code>VLOOKUP</code></td><td><code>PROCV</code></td></tr>
+            <tr><td><code>HLOOKUP</code></td><td><code>PROCH</code></td></tr>
+            <tr><td><code>INDEX</code></td><td><code>&Iacute;NDICE</code></td></tr>
+            <tr><td><code>MATCH</code></td><td><code>CORRESP</code></td></tr>
+            <tr><td><code>IFERROR</code></td><td><code>SEERRO</code></td></tr>
+          </tbody>
+        </table>
+        <div class="cs">&#128204; Se o Excel n&atilde;o reconhece uma fun&ccedil;&atilde;o que voc&ecirc; digitou em ingl&ecirc;s, procure o equivalente em portugu&ecirc;s. O autocompletar s&oacute; funciona com o nome na l&iacute;ngua configurada no seu Office.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 4 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 4 &mdash; Macro B&aacute;sica</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a4"></span>
+
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#9889;</div><h2 class="section-title">Automatizando Formata&ccedil;&atilde;o com Ctrl+Shift+F</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>O que &eacute; uma macro:</strong> uma sequ&ecirc;ncia de a&ccedil;&otilde;es gravada e executada com um atalho. Tudo que voc&ecirc; faria manualmente toda vez que receber uma planilha bruta &mdash; formatar cabe&ccedil;alho, ajustar colunas, congelar linha &mdash; vira um clique.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Macro criada: FormatarRelatorio (Ctrl+Shift+F)</div>
+        <div class="cx">A&ccedil;&otilde;es gravadas em ordem:</div>
+        <div class="ce">1. Selecionar Linha 1 (cabe&ccedil;alhos)
+2. Aplicar Negrito (Ctrl+N)
+3. Cor de fundo: Azul escuro (#1E3A8A)
+4. Cor de fonte: Branco
+
+5. Selecionar todas as colunas (A at&eacute; L)
+6. Formatar → Autoajustar Largura da Coluna
+
+7. Exibi&ccedil;&atilde;o → Congelar Pain&eacute;is → Congelar Linha Superior
+
+8. Clicar em A1</div>
+        <div class="cs">&#128204; Resultado: cabe&ccedil;alho azul escuro com fonte branca, colunas ajustadas ao conte&uacute;do, linha 1 congelada. Aplicado em 1 segundo com Ctrl+Shift+F.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Como gravar uma macro</div>
+        <div class="cx" style="line-height:1.9">
+          1. Aba <strong>Desenvolvedor</strong> → Gravar Macro<br>
+          2. Nome: sem espa&ccedil;os<br>
+          3. Atalho: Ctrl+Shift+letra<br>
+          4. Armazenar em: Esta pasta de trabalho<br>
+          5. Execute as a&ccedil;&otilde;es<br>
+          6. Parar Grava&ccedil;&atilde;o
+        </div>
+        <div class="cs">&#128204; Habilitar Desenvolvedor: Arquivo → Op&ccedil;&otilde;es → Personalizar Faixa de Op&ccedil;&otilde;es → marcar Desenvolvedor.</div>
+      </div>
+      <div class="cc c-am">
+        <div class="ct">&#9888; Salvar como .xlsm</div>
+        <div class="cx">Macros n&atilde;o s&atilde;o salvas em arquivos <code>.xlsx</code> comuns. Sempre salvar como:</div>
+        <div class="ce">Arquivo → Salvar Como
+→ Pasta de Trabalho Habilitada
+   para Macro do Excel (*.xlsm)</div>
+        <div class="cs">Se salvar como .xlsx, as macros s&atilde;o perdidas sem aviso. O Excel alerta sobre isso ao fechar.</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Arquivo do projeto</div>
+        <div class="cx">O arquivo gerado neste m&oacute;dulo est&aacute; no GitHub:</div>
+        <div class="ce">📁 10-excel-avancado/
+   painel-produtividade-excel.xlsm
+   README.md</div>
+        <div class="cs">&#128204; Cont&eacute;m: tabela de demandas com PROCX e PROCV, 3 abas (demandas, squads, status), macro FormatarRelatorio ativa.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <span class="anchor" id="insights"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128273;</div><h2 class="section-title">Insights do M&oacute;dulo 3</h2></div>
+
+    <div class="ins"><div class="ins-i">&#128279;</div><div><div class="ins-t">PROCX, JOIN, Mesclar Consultas &mdash; mesma l&oacute;gica, tr&ecirc;s ferramentas</div><div class="ins-x">As tr&ecirc;s operacionalizam o mesmo conceito: pegar um ID numa tabela e trazer o nome correspondente de outra. No SQL &eacute; JOIN, no Power Query &eacute; Mesclar, no Excel por f&oacute;rmula &eacute; PROCX ou PROCV. Quem entende a l&oacute;gica aplica em qualquer ferramenta &mdash; quem decora a sintaxe fica preso a uma s&oacute;.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#9888;</div><div><div class="ins-t">O 0 no PROCV nunca pode ser omitido</div><div class="ins-x">Sem o quarto argumento <code>0</code>, o Excel usa correspond&ecirc;ncia aproximada. Se a tabela de refer&ecirc;ncia n&atilde;o estiver ordenada, o resultado &eacute; errado sem nenhum erro de sintaxe. O banco n&atilde;o reclama &mdash; o n&uacute;mero simplesmente est&aacute; errado. &Eacute; o mesmo tipo de bug silencioso do GROUP BY por nome em vez de por ID no SQL.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#128308;</div><div><div class="ins-t">Encoding de CSV &eacute; detalhe que quebra tudo</div><div class="ins-x">Abrir um CSV com duplo clique usa o encoding padr&atilde;o do sistema, que no Windows geralmente &eacute; ANSI &mdash; e acentos viram caracteres inv&aacute;lidos. Sempre importar via Dados → Obter Dados → De Arquivo, selecionando UTF-8 explicitamente. &Eacute; o mesmo problema que causou 17% de erros nas datas no Power BI &mdash; o dado estava certo, a leitura estava errada.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#127912;</div><div><div class="ins-t">% do Total da Linha &eacute; mais poderoso que Campo Calculado para categorias</div><div class="ins-x">Campo Calculado &eacute; &uacute;til para opera&ccedil;&otilde;es aritm&eacute;ticas simples entre medidas (ex: margem = receita / custo). Para percentuais baseados em subcategorias (% de conclu&iacute;do por squad), "Mostrar Valores Como → % do Total da Linha" &eacute; o caminho correto, mais simples e sem limita&ccedil;&otilde;es de sintaxe.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#9889;</div><div><div class="ins-t">Macro &eacute; o primeiro passo de automa&ccedil;&atilde;o &mdash; e o mais f&aacute;cil de justificar</div><div class="ins-x">Uma macro que formata uma planilha em 1 segundo em vez de 5 minutos poupa 40 horas por ano se feita toda semana. Isso &eacute; o argumento concreto para apresentar automa&ccedil;&atilde;o para um gestor que nunca pediu. PMO de Dados n&atilde;o espera ser solicitado &mdash; identifica o desperd&iacute;cio e entrega a solu&ccedil;&atilde;o.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#127919;</div><div><div class="ins-t">Squad Seguran&ccedil;a com 12,5% bloqueado aparece em todas as ferramentas</div><div class="ins-x">No SQL (GROUP BY), no Power BI (gr&aacute;fico de barras + DAX), e agora no Excel (tabela din&acirc;mica com %). O mesmo dado, tr&ecirc;s leituras diferentes, mesma conclus&atilde;o. Quando um insight se confirma em m&uacute;ltiplas ferramentas, &eacute; dado &mdash; n&atilde;o artifact o da ferramenta.</div></div></div>
+  </div>
+
+</main>
+
+<script>
+const ids=["a1","a2","a3","a4","insights"];
+const lks={};
+ids.forEach(id=>{lks[id]=document.querySelector('.sb-nav a[href="#'+id+'"]');});
+function spy(){let c=ids[0];ids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY+90>=el.getBoundingClientRect().top+window.scrollY)c=id;});Object.values(lks).forEach(l=>l&&l.classList.remove("active"));if(lks[c])lks[c].classList.add("active");}
+window.addEventListener("scroll",spy,{passive:true});spy();
+</script>
+</body>
+</html>
