@@ -17,3 +17,14 @@
 | DataAbertura | Data | Data de criação da demanda | YYYY-MM-DD | 2024-03-15 | Sim |
 | DataPrazo | Data | Prazo de entrega conforme SLA | YYYY-MM-DD | 2024-03-25 | Sim |
 | DataFechamento | Data | Data de conclusão ou cancelamento | YYYY-MM-DD ou vazio | 2024-03-22 | Não |
+
+## Avaliação de Qualidade de Dados
+
+| Dimensão | Status | Problema Identificado |
+|----------|--------|-----------------------|
+| Completude | ⚠️ Parcial | DataFechamento vazio para demandas em aberto (esperado) |
+| Acurácia | ✅ Ok | Dados sintéticos gerados com regras consistentes |
+| Consistência | ✅ Ok | IDs referenciados existem nas tabelas dimensão |
+| Atualidade | ⚠️ Parcial | Base estática — última atualização Jun/2025 |
+| Unicidade | ✅ Ok | DemandaID único por linha |
+| Validade | ✅ Ok | Datas no formato ISO 8601 (YYYY-MM-DD) |
