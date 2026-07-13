@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 4 — Governança de Dados + LGPD</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#EFF4FF;--sidebar-bg:#1E3A8A;--accent:#2563EB;--accent2:#7C3AED;--surface:#FFFFFF;--border:#E0E7FF;--text:#0F172A;--muted:#64748B;--amber:#D97706;--green:#059669;--red:#DC2626;--code-bg:#EEF2FF;--code:#4338CA;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;font-size:14px;}
+    .sidebar{width:240px;min-width:240px;background:var(--sidebar-bg);position:sticky;top:0;height:100vh;overflow-y:auto;padding:1.75rem 1.1rem 1.5rem;display:flex;flex-direction:column;}
+    .sb-badge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#F59E0B;margin-bottom:.4rem;}
+    .sb-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.2rem;color:#fff;line-height:1.25;}
+    .sb-meta{margin-top:.5rem;font-size:11px;color:rgba(255,255,255,.4);line-height:1.75;}
+    .sb-divider{height:1px;background:rgba(255,255,255,.1);margin:1rem 0;}
+    .sb-section-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin:.8rem 0 .3rem;}
+    .sb-nav a{display:flex;align-items:center;gap:.45rem;padding:.35rem .6rem;border-radius:6px;font-size:11.5px;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:1px;transition:all .15s;}
+    .sb-nav a:hover,.sb-nav a.active{background:rgba(255,255,255,.1);color:#fff;}
+    .dot{width:5px;height:5px;border-radius:50%;background:#60A5FA;flex-shrink:0;}
+    .dot.done{background:#34D399;}
+    .sb-footer{margin-top:auto;padding-top:1.25rem;}
+    .sb-prog-label{font-size:10px;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
+    .sb-prog-track{height:4px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
+    .sb-prog-fill{height:100%;width:100%;background:linear-gradient(90deg,#60A5FA,#34D399);border-radius:2px;}
+    .sb-prog-status{font-size:10px;color:#34D399;margin-top:.4rem;font-weight:600;}
+    .main{flex:1;max-width:840px;padding:2.25rem 2.75rem 5rem;overflow-x:hidden;}
+    .anchor{display:block;position:relative;top:-24px;visibility:hidden;height:0;}
+    .aula-div{display:flex;align-items:center;gap:1rem;margin:2.75rem 0 2rem;}
+    .aula-div-line{flex:1;height:2px;background:linear-gradient(90deg,var(--accent),transparent);}
+    .aula-div-label{font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:var(--accent);white-space:nowrap;}
+    .pipeline-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:2.25rem;box-shadow:0 1px 4px rgba(37,99,235,.06);}
+    .pipeline-eyebrow{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+    .pipeline-flow{display:flex;align-items:center;overflow-x:auto;padding-bottom:.25rem;}
+    .p-step{flex-shrink:0;text-align:center;}
+    .p-node{display:inline-block;background:var(--bg);border:1.5px solid #C7D7FE;border-radius:8px;padding:.45rem .9rem;}
+    .p-node.active-node{border-color:var(--accent);background:#DBEAFE;box-shadow:0 0 0 3px rgba(37,99,235,.15);}
+    .p-node-name{font-size:11px;font-weight:600;color:var(--accent);}
+    .p-node-name.hi{color:#7C3AED;}
+    .p-node-sub{font-size:9px;color:var(--muted);margin-top:2px;}
+    .p-arrow{font-size:1rem;color:#C7D7FE;padding:0 .35rem;flex-shrink:0;}
+    .pipeline-note{margin-top:.9rem;font-size:11px;color:var(--muted);font-style:italic;}
+    .section{margin-bottom:2.25rem;}
+    .section-head{display:flex;align-items:center;gap:.65rem;margin-bottom:1.1rem;padding-bottom:.55rem;border-bottom:1.5px solid var(--border);}
+    .section-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.95rem;background:#EEF2FF;flex-shrink:0;}
+    .section-title{font-family:'DM Serif Display',Georgia,serif;font-size:1.25rem;color:var(--text);}
+    .cg{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+    .cc{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.9rem 1.05rem;position:relative;overflow:hidden;}
+    .cc::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;}
+    .c-bl::before{background:var(--accent);}.c-pu::before{background:var(--accent2);}
+    .c-am::before{background:var(--amber);}.c-gr::before{background:var(--green);}
+    .c-re::before{background:var(--red);}.c-te::before{background:#0D9488;}
+    .full{grid-column:1/-1;}
+    .ct{font-size:12px;font-weight:600;margin-bottom:.3rem;}
+    .cx{font-size:12px;color:var(--muted);line-height:1.65;}
+    .ce{margin-top:.5rem;padding:.5rem .7rem;background:#0D1117;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#7EE787;line-height:1.8;white-space:pre;overflow-x:auto;}
+    .cs{font-size:11px;color:var(--muted);margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border);line-height:1.6;}
+    .ot{width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-top:.65rem;}
+    .ot th{background:var(--sidebar-bg);color:#fff;padding:.45rem .8rem;text-align:left;font-size:10.5px;font-weight:500;}
+    .ot td{padding:.5rem .8rem;border-top:1px solid var(--border);line-height:1.5;}
+    .ot tr:hover td{background:#F5F8FF;}
+    .ot code{font-family:'JetBrains Mono',monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .ins{display:flex;gap:.8rem;padding:.9rem 1.05rem;background:var(--surface);border:1px solid var(--border);border-radius:9px;margin-bottom:.7rem;}
+    .ins-i{font-size:1.15rem;flex-shrink:0;margin-top:.05rem;}
+    .ins-t{font-size:12.5px;font-weight:600;margin-bottom:.2rem;color:var(--text);}
+    .ins-x{font-size:12px;color:var(--muted);line-height:1.65;}
+    code{font-family:'JetBrains Mono',monospace;font-size:10.5px;background:var(--code-bg);color:var(--code);padding:1px 5px;border-radius:3px;}
+    .tip{display:flex;gap:.7rem;padding:.8rem .95rem;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;margin:.7rem 0;}
+    .tip-i{font-size:1rem;flex-shrink:0;}
+    .tip-t{font-size:12px;color:#92400E;line-height:1.6;}
+    .tip-t strong{color:#78350F;}
+    .entregavel-card{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:1rem 1.2rem;margin-bottom:.85rem;display:flex;gap:1rem;align-items:flex-start;}
+    .ev-icon{font-size:1.4rem;flex-shrink:0;margin-top:.1rem;}
+    .ev-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:.25rem;}
+    .ev-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+    .ev-link{font-size:10.5px;font-family:'JetBrains Mono',monospace;color:var(--accent);margin-top:.35rem;display:block;}
+    .badge-pessoal{background:#FEF3C7;color:#92400E;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600;}
+    .badge-ok{background:#D1FAE5;color:#065F46;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600;}
+    .badge-alerta{background:#FEF2F2;color:#991B1B;font-size:10px;padding:1px 6px;border-radius:3px;font-weight:600;}
+    @media print{.sidebar{display:none;}.main{max-width:100%;padding:1rem;}}
+  </style>
+</head>
+<body>
+<nav class="sidebar">
+  <div>
+    <div class="sb-badge">Data PMO &middot; Semanas 7&ndash;9</div>
+    <div class="sb-title">M&oacute;dulo 4<br>Governan&ccedil;a de<br>Dados + LGPD</div>
+    <div class="sb-meta">&#9201; ~20h &nbsp;&middot;&nbsp; &#128310; Prioridade M&eacute;dia<br>Conclu&iacute;do &middot; Junho 2026</div>
+  </div>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Aulas</div>
+  <div class="sb-nav">
+    <a href="#a1"><span class="dot done"></span>Aula 1 &middot; Governan&ccedil;a de Dados &#10003;</a>
+    <a href="#a2"><span class="dot done"></span>Aula 2 &middot; LGPD na Pr&aacute;tica &#10003;</a>
+    <a href="#a3"><span class="dot done"></span>Aula 3 &middot; Entregáveis &#10003;</a>
+  </div>
+  <div class="sb-section-label">Entregáveis</div>
+  <div class="sb-nav">
+    <a href="#entregaveis"><span class="dot done"></span>Dicion&aacute;rio de Dados &#10003;</a>
+    <a href="#entregaveis"><span class="dot done"></span>Mapa de Riscos LGPD &#10003;</a>
+    <a href="#entregaveis"><span class="dot done"></span>Checklist de Qualidade &#10003;</a>
+    <a href="#entregaveis"><span class="dot done"></span>Mapa de Fluxo &#10003;</a>
+  </div>
+  <div class="sb-section-label">Reflex&atilde;o</div>
+  <div class="sb-nav">
+    <a href="#insights"><span class="dot"></span>Insights do m&oacute;dulo</a>
+  </div>
+  <div class="sb-footer">
+    <div class="sb-prog-label">Progresso do m&oacute;dulo</div>
+    <div class="sb-prog-track"><div class="sb-prog-fill"></div></div>
+    <div class="sb-prog-status">&#10003; 100% &mdash; M&oacute;dulo conclu&iacute;do</div>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="pipeline-card">
+    <div class="pipeline-eyebrow">Governan&ccedil;a no contexto de PMO de Dados</div>
+    <div class="pipeline-flow">
+      <div class="p-step"><div class="p-node"><div class="p-node-name">SQL &#10003;</div><div class="p-node-sub">M&oacute;dulo 1</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Power BI &#10003;</div><div class="p-node-sub">M&oacute;dulo 2</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Excel &#10003;</div><div class="p-node-sub">M&oacute;dulo 3</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node active-node"><div class="p-node-name hi">&#128737; Governan&ccedil;a</div><div class="p-node-sub">Voc&ecirc; est&aacute; aqui</div></div></div>
+      <div class="p-arrow">&#8594;</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">DAX Avan&ccedil;ado</div><div class="p-node-sub">M&oacute;dulo 5</div></div></div>
+    </div>
+    <div class="pipeline-note">Governan&ccedil;a define quem pode acessar, modificar e usar os dados. Em banco regulado, &eacute; parte do design de qualquer iniciativa &mdash; n&atilde;o um item de compliance passivo.</div>
+  </div>
+
+  <!-- AULA 1 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 1 &mdash; Governan&ccedil;a de Dados</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a1"></span>
+
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#127963;</div><h2 class="section-title">Conceitos, Pap&eacute;is e Estrutura</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>Governan&ccedil;a de Dados em uma frase:</strong> conjunto de regras, processos e responsabilidades que definem quem pode acessar, modificar e usar os dados. No banco, voc&ecirc; j&aacute; vive isso: aprova&ccedil;&otilde;es de acesso, pol&iacute;ticas de reten&ccedil;&atilde;o, classifica&ccedil;&atilde;o de informa&ccedil;&otilde;es.</div></div>
+    <div class="cg">
+      <div class="cc c-bl full">
+        <div class="ct">Os 4 pap&eacute;is essenciais</div>
+        <table class="ot">
+          <thead><tr><th>Papel</th><th>Responsabilidade</th><th>Quem geralmente &eacute;</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Data Owner</strong></td><td>Define regras de uso, aprova acessos, respons&aacute;vel pelo dado</td><td>Gestor de neg&oacute;cio (Head, Diretor)</td></tr>
+            <tr><td><strong>Data Steward</strong></td><td>Garante qualidade, documenta, monitora o dado no dia a dia</td><td>Analista s&ecirc;nior, <strong>PMO de Dados</strong></td></tr>
+            <tr><td><strong>Data Custodian</strong></td><td>Armazena e protege tecnicamente o dado</td><td>Time de Engenharia / TI</td></tr>
+            <tr><td><strong>DPO</strong></td><td>Data Protection Officer &mdash; conformidade com LGPD</td><td>&Aacute;rea jur&iacute;dica / compliance</td></tr>
+          </tbody>
+        </table>
+        <div class="cs">&#128204; <strong>Data Steward &eacute; o papel de PMO de Dados.</strong> &Eacute; quem conecta o neg&oacute;cio &agrave; tecnologia na gest&atilde;o do dado &mdash; valida qualidade, documenta e garante que o KPI publicado reflete a realidade.</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Data Catalog</div>
+        <div class="cx">Invent&aacute;rio de todos os dados da organiza&ccedil;&atilde;o. Responde: <em>quais dados existem, onde est&atilde;o, quem &eacute; o dono e o que significam.</em></div>
+        <div class="cs">&#128204; Ferramentas: Microsoft Purview, Alation, DataHub. No Databricks da empresa, o cat&aacute;logo &eacute; o ponto de refer&ecirc;ncia antes de qualquer nova demanda de dados.</div>
+      </div>
+      <div class="cc c-gr">
+        <div class="ct">Data Lineage</div>
+        <div class="cx">Rastreabilidade do dado. Responde: <em>de onde veio esse n&uacute;mero?</em> Permite saber que o KPI do dashboard veio de tal tabela, que veio de tal sistema fonte.</div>
+        <div class="ce">Jira (demandas) &#8594; ELT &#8594; Databricks Gold &#8594; Power BI &#8594; KPI</div>
+        <div class="cs">&#128204; Quando um n&uacute;mero &eacute; questionado numa reuni&atilde;o, Data Lineage &eacute; a prova de origem.</div>
+      </div>
+      <div class="cc c-am full">
+        <div class="ct">As 6 dimens&otilde;es de qualidade de dados &mdash; FACT+UV</div>
+        <table class="ot">
+          <thead><tr><th>Dimens&atilde;o</th><th>Pergunta que responde</th><th>Exemplo de problema</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Completude</strong></td><td>O dado est&aacute; preenchido?</td><td>DataFechamento em branco para demanda conclu&iacute;da</td></tr>
+            <tr><td><strong>Acur&aacute;cia</strong></td><td>O dado est&aacute; correto?</td><td>Nome do squad errado por erro de digita&ccedil;&atilde;o</td></tr>
+            <tr><td><strong>Consist&ecirc;ncia</strong></td><td>O mesmo dado tem o mesmo valor em sistemas diferentes?</td><td>SLA 30 dias no Jira, 20 dias no ServiceNow</td></tr>
+            <tr><td><strong>Atualidade</strong></td><td>O dado est&aacute; atualizado?</td><td>KPI do m&ecirc;s passado exibido como atual</td></tr>
+            <tr><td><strong>Unicidade</strong></td><td>N&atilde;o h&aacute; duplicatas?</td><td>Mesma demanda cadastrada duas vezes</td></tr>
+            <tr><td><strong>Validade</strong></td><td>O dado est&aacute; no formato correto?</td><td>Data inv&aacute;lida: 31/02/2024</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 2 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 2 &mdash; LGPD na Pr&aacute;tica em Banco Regulado</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a2"></span>
+
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128737;</div><h2 class="section-title">Bases Legais, Tipos de Dados e Privacy by Design</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>LGPD em banco regulado:</strong> em institui&ccedil;&otilde;es financeiras, LGPD &eacute; parte do <em>design</em> de qualquer iniciativa de dados &mdash; n&atilde;o um item de compliance adicionado no final. Um PMO de Dados precisa identificar dado pessoal, dado sens&iacute;vel e propor controles <strong>antes</strong> do projeto come&ccedil;ar.</div></div>
+    <div class="cg">
+      <div class="cc c-re full">
+        <div class="ct">Dado Pessoal vs Dado Pessoal Sens&iacute;vel</div>
+        <div class="cg" style="margin-top:.5rem;gap:.5rem">
+          <div style="background:#FEF2F2;border-radius:7px;padding:.75rem">
+            <div style="font-size:11px;font-weight:700;color:#991B1B;margin-bottom:.4rem">Dado Pessoal (Art. 5&ordm;, I)</div>
+            <div style="font-size:11.5px;color:#7F1D1D;line-height:1.7">Nome &middot; CPF &middot; RG &middot; E-mail &middot; Telefone<br>N&uacute;mero de conta &middot; Hist&oacute;rico de transa&ccedil;&otilde;es<br>Score de cr&eacute;dito &middot; Endere&ccedil;o &middot; IP</div>
+          </div>
+          <div style="background:#FFF7ED;border-radius:7px;padding:.75rem">
+            <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:.4rem">Dado Pessoal Sens&iacute;vel (Art. 5&ordm;, II) &mdash; prote&ccedil;&atilde;o refor&ccedil;ada</div>
+            <div style="font-size:11.5px;color:#78350F;line-height:1.7">Origem racial ou &eacute;tnica<br>Convic&ccedil;&atilde;o religiosa &middot; Opini&atilde;o pol&iacute;tica<br>Dado de sa&uacute;de ou vida sexual<br>Dado gen&eacute;tico ou <strong>biom&eacute;trico</strong> (reconhecimento facial)</div>
+          </div>
+        </div>
+        <div class="cs">&#128204; Em banco: CPF, renda, hist&oacute;rico de transa&ccedil;&otilde;es = <strong>dado pessoal</strong>. Biometria para autentica&ccedil;&atilde;o = <strong>dado pessoal sens&iacute;vel</strong> com prote&ccedil;&atilde;o refor&ccedil;ada.</div>
+      </div>
+      <div class="cc c-bl full">
+        <div class="ct">Bases Legais mais relevantes em banco (Art. 7&ordm;)</div>
+        <table class="ot">
+          <thead><tr><th>Base Legal</th><th>Quando se aplica</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Execu&ccedil;&atilde;o de contrato</strong></td><td>Necess&aacute;rio para cumprir contrato com o titular</td><td>Processar pagamento do cliente</td></tr>
+            <tr><td><strong>Obriga&ccedil;&atilde;o legal</strong></td><td>Lei exige o tratamento</td><td>Reporte ao BACEN, declara&ccedil;&atilde;o ao Fisco</td></tr>
+            <tr><td><strong>Leg&iacute;timo interesse</strong></td><td>Interesse razo&aacute;vel do controlador</td><td>Preven&ccedil;&atilde;o a fraudes</td></tr>
+            <tr><td><strong>Prote&ccedil;&atilde;o ao cr&eacute;dito</strong></td><td>Espec&iacute;fica para an&aacute;lise de risco</td><td>Consulta ao Serasa</td></tr>
+            <tr><td><strong>Consentimento</strong></td><td>Titular autorizou expressamente</td><td>Opt-in para marketing</td></tr>
+          </tbody>
+        </table>
+        <div class="cs">&#128204; Em banco regulado, a maioria dos tratamentos est&aacute; coberta por "execu&ccedil;&atilde;o de contrato" ou "obriga&ccedil;&atilde;o legal". Consentimento &eacute; menos comum porque a rela&ccedil;&atilde;o contratual j&aacute; legitima o uso.</div>
+      </div>
+      <div class="cc c-pu">
+        <div class="ct">Anonimiza&ccedil;&atilde;o &mdash; irrevers&iacute;vel</div>
+        <div class="cx">Ap&oacute;s aplicado, o dado deixa de ser pessoal e <strong>sai do escopo da LGPD</strong>.</div>
+        <div class="ce">CPF: 123.456.789-00
+Ap&oacute;s: *** (sem forma de recuperar)</div>
+        <div class="cs">&#128204; Os dados sint&eacute;ticos do Painel de Produtividade s&atilde;o an&ocirc;nimos &mdash; nenhum respons&aacute;vel &eacute; uma pessoa real.</div>
+      </div>
+      <div class="cc c-am">
+        <div class="ct">Pseudonimiza&ccedil;&atilde;o &mdash; revers&iacute;vel com chave</div>
+        <div class="cx">O dado continua sendo pessoal (ainda est&aacute; na LGPD), mas protegido. Deve ser usado em ambientes de dev e testes.</div>
+        <div class="ce">CPF: 123.456.789-00
+Ap&oacute;s: hash_a7f3c2b1
+(revers&iacute;vel com a chave)</div>
+        <div class="cs">&#128204; Em banco: dados de clientes em ambiente de desenvolvimento devem ser pseudonimizados, nunca reais.</div>
+      </div>
+      <div class="cc c-gr full">
+        <div class="ct">Privacy by Design &mdash; privacidade desde o requisito</div>
+        <div class="cx">Privacidade n&atilde;o &eacute; um add-on no final do projeto &mdash; &eacute; incorporada ao design desde o in&iacute;cio. Quando uma demanda chega solicitando cruzar dados de transa&ccedil;&atilde;o com dados comportamentais de app, a an&aacute;lise LGPD &eacute; feita <strong>antes</strong> de escrever o escopo.</div>
+        <div class="ce">Pergunta de Privacy by Design (antes do escopo):
+1. Qual &eacute; a base legal?
+2. O titular foi informado?
+3. &Eacute; necess&aacute;rio usar dado individual ou dado
+   agregado resolve o objetivo?
+4. Qual o prazo de reten&ccedil;&atilde;o m&aacute;ximo?
+5. O DPO precisa ser consultado?</div>
+        <div class="cs">&#128204; Contexto bancário adicional: Resolu&ccedil;&atilde;o BCB 4.893/2021 exige pol&iacute;tica de seguran&ccedil;a da informa&ccedil;&atilde;o e cibern&eacute;tica. Lei Complementar 105/2001 protege o sigilo banc&aacute;rio. Dois &acirc;ngulos de conformidade: LGPD (ANPD) + regulat&oacute;rio (BACEN).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 3 -->
+  <div class="aula-div"><div class="aula-div-label">Aula 3 &mdash; Entregáveis do Módulo</div><div class="aula-div-line"></div></div>
+  <span class="anchor" id="a3"></span>
+
+  <!-- ENTREGÁVEIS -->
+  <span class="anchor" id="entregaveis"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128196;</div><h2 class="section-title">4 Documentos de Governan&ccedil;a no Portf&oacute;lio</h2></div>
+    <div class="tip"><div class="tip-i">&#128161;</div><div class="tip-t"><strong>Por que esses 4 documentos juntos importam:</strong> mostram racioc&iacute;nio integrado de governan&ccedil;a aplicado ao mesmo dataset do SQL, Power BI e Excel. Um recrutador que navegar pelo reposit&oacute;rio vai ver consist&ecirc;ncia t&eacute;cnica em camadas, n&atilde;o projetos soltos.</div></div>
+
+    <div class="entregavel-card">
+      <div class="ev-icon">&#128214;</div>
+      <div>
+        <div class="ev-title">1. Dicion&aacute;rio de Dados — Painel de Produtividade</div>
+        <div class="ev-desc">10 colunas documentadas com tipo, descri&ccedil;&atilde;o, valores poss&iacute;veis, exemplo, obrigatoriedade e classifica&ccedil;&atilde;o LGPD. Avalia&ccedil;&atilde;o de qualidade com as 6 dimens&otilde;es. <code>ResponsavelID</code> identificado como <span class="badge-pessoal">&#9888; Pessoal indireto</span> &mdash; referencia colaborador (pessoa f&iacute;sica).</div>
+        <div class="ev-link">&#128279; 11-governanca/dicionario-de-dados.md</div>
+      </div>
+    </div>
+
+    <div class="entregavel-card">
+      <div class="ev-icon">&#128737;</div>
+      <div>
+        <div class="ev-title">2. Mapa de Riscos LGPD &mdash; Cen&aacute;rio Fict&iacute;cio</div>
+        <div class="ev-desc">An&aacute;lise de cen&aacute;rio: cruzamento de dados de transa&ccedil;&atilde;o + navega&ccedil;&atilde;o no app. Identifica base legal, risco de reidentifica&ccedil;&atilde;o, necessidade de anonimiza&ccedil;&atilde;o e obrigatoriedade de consulta ao DPO. Inclui nota sobre <strong>infer&ecirc;ncia de dado sens&iacute;vel por padr&atilde;o de compras</strong> &mdash; racioc&iacute;nio avan&ccedil;ado de privacidade.</div>
+        <div class="ev-link">&#128279; 11-governanca/mapa-riscos-lgpd.md</div>
+      </div>
+    </div>
+
+    <div class="entregavel-card">
+      <div class="ev-icon">&#9989;</div>
+      <div>
+        <div class="ev-title">3. Checklist de Qualidade de Dados</div>
+        <div class="ev-desc">18 itens distribu&iacute;dos nas 6 dimens&otilde;es de qualidade. Tabela de resultado com campos para Status e Observa&ccedil;&atilde;o. Assinatura de aprova&ccedil;&atilde;o com Data da valida&ccedil;&atilde;o e Validado por. Documento pronto para uso em qualquer projeto de dados &mdash; pode ser aplicado amanhã no trabalho.</div>
+        <div class="ev-link">&#128279; 11-governanca/checklist-qualidade.md</div>
+      </div>
+    </div>
+
+    <div class="entregavel-card">
+      <div class="ev-icon">&#128200;</div>
+      <div>
+        <div class="ev-title">4. Mapa de Fluxo de Dados</div>
+        <div class="ev-desc">Pipeline completo: Jira/ServiceNow/Excel &rarr; ELT &rarr; Databricks Lakehouse &rarr; Power BI &rarr; CIO Office. Detalhamento por etapa com sistema, respons&aacute;vel, frequ&ecirc;ncia e dado tratado. Pontos de controle de qualidade com respons&aacute;veis. Matriz de riscos identificando entrada manual via Excel como risco <span class="badge-alerta">Alta probabilidade / Alto impacto</span>.</div>
+        <div class="ev-link">&#128279; 11-governanca/mapa-fluxo-dados.md</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <span class="anchor" id="insights"></span>
+  <div class="section">
+    <div class="section-head"><div class="section-icon">&#128273;</div><h2 class="section-title">Insights do M&oacute;dulo 4</h2></div>
+
+    <div class="ins"><div class="ins-i">&#127963;</div><div><div class="ins-t">Data Steward &eacute; o papel de PMO de Dados</div><div class="ins-x">N&atilde;o &eacute; o t&iacute;tulo que muda &mdash; &eacute; o posicionamento. O Data Steward conecta neg&oacute;cio e tecnologia na gest&atilde;o do dado: documenta, valida qualidade e garante que o KPI publicado reflete a realidade. &Eacute; exatamente o que um PMO de Dados faz quando estrutura uma demanda, define m&eacute;tricas e revisa um dashboard antes de publicar.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#128737;</div><div><div class="ins-t">LGPD em banco &eacute; design, n&atilde;o compliance reativo</div><div class="ins-x">Em institui&ccedil;&atilde;o financeira regulada, a pergunta LGPD n&atilde;o &eacute; feita no final do projeto &mdash; &eacute; parte do requisito. Identificar a base legal, avaliar risco de reidentifica&ccedil;&atilde;o e definir se dado agregado resolve o objetivo s&atilde;o itens do escopo, n&atilde;o da auditoria. Quem domina esse vocabul&aacute;rio chega &agrave; reuni&atilde;o j&aacute; com as respostas que o jur&iacute;dico vai perguntar.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#9888;</div><div><div class="ins-t">ResponsavelID &eacute; pessoal indireto &mdash; n&iacute;vel de racioc&iacute;nio que diferencia</div><div class="ins-x">A coluna ResponsavelID &eacute; um n&uacute;mero &mdash; parece n&atilde;o pessoal. Mas combinada com responsaveis.csv, identifica um colaborador (pessoa f&iacute;sica). Esse n&iacute;vel de an&aacute;lise &mdash; pensar em como o dado se torna pessoal em combina&ccedil;&atilde;o com outras fontes &mdash; &eacute; o que distingue uma an&aacute;lise LGPD superficial de uma an&aacute;lise real. &Eacute; tamb&eacute;m o tipo de pergunta que aparece em entrevistas t&eacute;cnicas de PMO de Dados em banco.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#128270;</div><div><div class="ins-t">Dado comportamental pode inferir dado sens&iacute;vel</div><div class="ins-x">No mapa de riscos, o cen&aacute;rio de cruzamento de transa&ccedil;&otilde;es com navega&ccedil;&atilde;o no app gerou a observa&ccedil;&atilde;o de que padr&otilde;es de compras podem inferir origem &eacute;tnica, convic&ccedil;&atilde;o religiosa ou condi&ccedil;&atilde;o de sa&uacute;de. Um dado n&atilde;o sens&iacute;vel pode criar infer&ecirc;ncia de dado sens&iacute;vel quando cruzado. Privacy by Design existe justamente para identificar isso antes do projeto come&ccedil;ar.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#128200;</div><div><div class="ins-t">Entrada manual via Excel &eacute; o maior risco operacional do pipeline</div><div class="ins-x">No mapa de fluxo, a entrada via Excel foi classificada como Alta probabilidade / Alto impacto. Dado manual sem rastreabilidade &eacute; o tipo de vulnerabilidade que aparece em auditorias banc&aacute;rias. A mitiga&ccedil;&atilde;o documentada &mdash; substituir por integra&ccedil;&atilde;o direta &mdash; &eacute; exatamente a justificativa de um projeto de dados que um PMO vai levar para aprova&ccedil;&atilde;o.</div></div></div>
+
+    <div class="ins"><div class="ins-i">&#128196;</div><div><div class="ins-t">4 documentos no mesmo dataset criam consist&ecirc;ncia de portf&oacute;lio</div><div class="ins-x">SQL, Power BI, Excel e Governan&ccedil;a aplicados ao mesmo Painel de Produtividade mostram que voc&ecirc; n&atilde;o s&oacute; conhece as ferramentas &mdash; voc&ecirc; as integra em torno de um problema de neg&oacute;cio real. Para um recrutador, &eacute; a diferen&ccedil;a entre ver projetos soltos e ver uma profissional que pensa em solu&ccedil;&otilde;es.</div></div></div>
+  </div>
+
+</main>
+
+<script>
+const ids=["a1","a2","a3","entregaveis","insights"];
+const lks={};
+ids.forEach(id=>{lks[id]=document.querySelector('.sb-nav a[href="#'+id+'"]');});
+function spy(){let c=ids[0];ids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY+90>=el.getBoundingClientRect().top+window.scrollY)c=id;});Object.values(lks).forEach(l=>l&&l.classList.remove("active"));if(lks[c])lks[c].classList.add("active");}
+window.addEventListener("scroll",spy,{passive:true});spy();
+</script>
+</body>
+</html>
