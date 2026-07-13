@@ -28,3 +28,7 @@
 | Atualidade | ⚠️ Parcial | Base estática — última atualização Jun/2025 |
 | Unicidade | ✅ Ok | DemandaID único por linha |
 | Validade | ✅ Ok | Datas no formato ISO 8601 (YYYY-MM-DD) |
+
+
+## Classificação LGPD
+*A ser preenchida após análise de sensibilidade — Aula 3.*
