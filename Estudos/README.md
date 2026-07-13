@@ -63,7 +63,7 @@ Cada módulo contém:
 - Arquivo: `painel-produtividade-excel.xlsm`
   (disponível em `10-excel-avancado/`)
 
-  **Módulo 4 — Governança de Dados + LGPD** ✅
+**Módulo 4 — Governança de Dados + LGPD** ✅
 - Dicionário de dados com 10 colunas + classificação LGPD
 - Avaliação de qualidade nas 6 dimensões (Completude, Acurácia, 
   Consistência, Atualidade, Unicidade, Validade)
