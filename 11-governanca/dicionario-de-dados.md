@@ -31,15 +31,15 @@
 
 ## Classificação LGPD
 
-| Coluna | ... | LGPD |
-|--------|-----|------|
-| DemandaID | ... | Não pessoal |
-| Titulo | ... | Não pessoal |
-| SquadID | ... | Não pessoal |
-| StatusID | ... | Não pessoal |
-| PrioridadeID | ... | Não pessoal |
-| CategoriaID | ... | Não pessoal |
-| ResponsavelID | ... | ⚠️ Pessoal indireto* |
-| DataAbertura | ... | Não pessoal |
-| DataPrazo | ... | Não pessoal |
-| DataFechamento | ... | Não pessoal |
+| Coluna | LGPD |
+|--------|------|
+| DemandaID | Não pessoal |
+| Titulo | Não pessoal |
+| SquadID | Não pessoal |
+| StatusID | Não pessoal |
+| PrioridadeID | Não pessoal |
+| CategoriaID | Não pessoal |
+| ResponsavelID | ⚠️ Pessoal indireto* |
+| DataAbertura |  Não pessoal |
+| DataPrazo | Não pessoal |
+| DataFechamento | Não pessoal |
