@@ -43,3 +43,8 @@
 | DataAbertura |  Não pessoal |
 | DataPrazo | Não pessoal |
 | DataFechamento | Não pessoal |
+
+*ResponsavelID referencia um colaborador (pessoa física). 
+Combinado com responsaveis.csv (que contém Nome), 
+torna-se dado pessoal direto. Requer controle de acesso 
+diferenciado em ambiente de produção.
