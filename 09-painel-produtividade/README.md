@@ -2,7 +2,7 @@
 
 Dashboard executivo de gestão de demandas de squads de tecnologia.
 
-**Dashboard publicado:** [Acessar →](https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9)
+**Dashboard publicado:** [Acessar →](https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9&pageName=911b74bba5e5702198c3)
 
 ## Dados
 Dados sintéticos gerados para fins de estudo e portfólio.
