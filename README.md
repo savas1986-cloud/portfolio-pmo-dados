@@ -51,7 +51,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | 6 | Matriz de Riscos | Mapeamento e mitigação em migração de dados | ✅ Concluído | [Ver →](06-riscos/) |
 | 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | ✅ Concluído | [Ver →](07-comunicacao-riscos/) |
 | 8 | Glossário PMO de Dados | 23 termos com aplicação no contexto bancário | ✅ Concluído | [Ver →](08-glossario/) |
-| 9 | Painel de Produtividade — Power BI | Dashboard executivo: SLA, volume por squad, 4 medidas DAX, Star Schema · 3 páginas interativas | ✅ Concluído | [Ver →](https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9) |
+| 9 | Painel de Produtividade — Power BI | Dashboard executivo: SLA, volume por squad, 4 medidas DAX, Star Schema · 3 páginas interativas | ✅ Concluído | [Ver →](https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9&pageName=911b74bba5e5702198c3) |
 ---
 
 ## 📚 Roteiro de Estudos 2026
