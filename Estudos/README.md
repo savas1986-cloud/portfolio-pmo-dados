@@ -20,8 +20,8 @@ Cada módulo contém:
 | [Módulo 2](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-2-powerbi.html) | Power BI Básico + Intermediário | ~25h |  ✅ Concluído |
 | [Módulo 3](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-3-excel.html)| Excel Avançado (Power Query) | ~10h | ✅ Concluído |
 | [Módulo 4](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-4-governanca.html)| Governança de Dados & LGPD | ~20h | ✅ Concluído |
-| Módulo 5 | Power BI Avançado (DAX) | ~20h | 🔵 Em Andamento |
-| Módulo 6 | Python para Análise (Pandas) | ~10h | ⏳ Programado |
+| [Módulo 5](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-5-powerbi-dax.html)| Power BI Avançado (DAX) | ~20h | ✅ Concluído |
+| Módulo 6 | Python para Análise (Pandas) | ~10h | 🔵 Em Andamento |
 | Módulo 7 | IA Prática para PMO | ~15h | ⏳ Programado |
 
 **Total planejado:** ~155 horas · 4 meses · 1 hora por dia
@@ -71,6 +71,18 @@ Cada módulo contém:
 - Checklist de qualidade para validação pré-publicação
 - Mapa de fluxo de dados do pipeline completo
   (disponível em `11-governanca/`)
+
+  **Módulo 5 — Power BI Avançado: DAX & Time Intelligence** ✅
+- Tabela Calendário com CALENDARAUTO(), marcada como Tabela de Datas
+  e relacionada a demandas[DataAbertura] (1:*)
+- Time Intelligence: Demandas YTD (TOTALYTD), Demandas Período Anterior
+  (CALCULATE + DATEADD) e Variação % (VAR + DIVIDE)
+- Medida de texto dinâmica Desvio SLA Texto — gera o subtítulo do card
+  de SLA: "▼ 9.25pp vs meta (85%)"
+- Colunas de calendário em português (Ano, Mês Num, Mês Nome, Ano-Mês)
+  com ordenação cronológica
+- Código completo: `medidas-dax-painel-produtividade.dax`
+  (disponível em `03-dashboard-critico/`)
 ---
 
 *Roteiro completo disponível em [`roteiro/`](../roteiro/)*
