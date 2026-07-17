@@ -107,7 +107,7 @@ um número, e sim uma mensagem que interpreta o KPI para o gestor (seta,
 desvio em pp e meta). É a medida por trás da melhoria #2 (delta de meta
 nos KPIs de SLA) da V2.
 
-📄 Estudo completo do módulo: [modulo-5-powerbi-dax.html](https:/savas1986-cloud/portfolio-pmo-dados/main/Estudos/modulo-5-powerbi-dax.html)
+📄 Estudo completo do módulo: [modulo-5-powerbi-dax.html](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-5-powerbi-dax.html)
 
 ---
 
