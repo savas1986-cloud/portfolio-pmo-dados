@@ -94,7 +94,7 @@ Qualidade: de 2 critérios atendidos (V1) para 10 (V2).:
 Camada de medidas do dashboard, construída sobre uma tabela Calendário
 (`CALENDARAUTO()`) marcada como Tabela de Datas e relacionada a
 `demandas[DataAbertura]` (1:*). Código completo em
-[`medidas-dax-painel-produtividade.dax`](./medidas-dax-painel-produtividade.dax).
+[`medidas-dax-painel-produtividade.dax`](../medidas-dax-painel-produtividade.dax).
 
 | Medida | Função-chave | Entrega no painel |
 |---|---|---|
