@@ -8,9 +8,10 @@
 
 ## Sobre mim
 
-Profissional de TI com 5+ anos em Gestão de Projetos e PMO,
-especializando em PMO de Dados. Atualmente na F1RST (empresa de
-tecnologia do Santander Group), onde atuo na gestão de demandas
+Profissional de TI com 15+ anos de experiência em tecnologia,
+sendo 5+ dedicados a Gestão de Projetos e PMO, especializando-se
+em PMO de Dados. Atualmente na F1RST (empresa de tecnologia do
+Santander Group), onde atuo na gestão de demandas
 analíticas, especificação de dashboards e interface entre negócio
 e times de engenharia de dados.
 
@@ -27,7 +28,7 @@ FIAP
 
 | Categoria       | Ferramentas / Habilidades                                                  |
 |-----------------|----------------------------------------------------------------------------|
-| BI e Dados      | Power BI (Dashboards, Power Query), SQL (consultas, JOINs, agregações, subqueries)   |
+| BI e Dados | Power BI (Dashboards, Power Query, DAX/Time Intelligence, Star Schema), SQL (consultas, JOINs, agregações, subqueries) |
 | Gestão e PMO    | Jira, ServiceNow (ITSM/SPM), Scrum, Kanban, OKRs, KPIs, MoSCoW, TAP      |
 | Dados           | Pipeline de dados, ETL/ELT, Databricks (Lakehouse), Modelagem Dimensional  |
 | Governança      | Data Governance, Qualidade de Dados, LGPD, DAMA-DMBOK                     |
@@ -51,7 +52,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | 6 | Matriz de Riscos | Mapeamento e mitigação em migração de dados | ✅ Concluído | [Ver →](06-riscos/) |
 | 7 | Comunicação de Risco para Stakeholders | E-mail executivo com risco e alternativas | ✅ Concluído | [Ver →](07-comunicacao-riscos/) |
 | 8 | Glossário PMO de Dados | 23 termos com aplicação no contexto bancário | ✅ Concluído | [Ver →](08-glossario/) |
-| 9 | Painel de Produtividade — Power BI | Dashboard executivo: SLA, volume por squad, 4 medidas DAX, Star Schema · 3 páginas interativas | ✅ Concluído | [Ver →](https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9&pageName=911b74bba5e5702198c3) |
+| 9 | Painel de Produtividade — Power BI | Dashboard executivo: SLA, volume por squad, Time Intelligence (5 medidas DAX), Star Schema · 4 páginas interativas | ✅ Concluído | [Ver →](https://app.powerbi.com/view?r=eyJrIjoiNDNiYWU0NTUtYmJkMi00MDUyLWE5ZGMtYTBmNDQ0MGFkODIxIiwidCI6ImQ0NTdkYjJiLTdkNTAtNGVlYS1iZTk2LTQwNmE1MzhmNzVhMiJ9&pageName=911b74bba5e5702198c3) |
 ---
 
 ## 📚 Roteiro de Estudos 2026
@@ -59,7 +60,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | Módulo | Tema                             | Status                   |
 |--------|----------------------------------|--------------------------|
 | 0      | Fundamentos de Dados & BI        | ✅ Concluído              |
-| 1      | SQL — A Linguagem dos Dados      | ✅ Concluído  (Aula 4/4)  |
+| 1      | SQL — A Linguagem dos Dados      | ✅ Concluído           |
 | 2      | Power BI Básico + Intermediário  | ✅ Concluído              |
 | 3      | Excel Avançado (Power Query)     | ✅ Concluído           |
 | 4      | Governança de Dados & LGPD       | ✅ Concluído            |
@@ -84,4 +85,4 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 
 ---
 
-*Atualizado em: Junho/2026*
+*Atualizado em: Julho/2026*
