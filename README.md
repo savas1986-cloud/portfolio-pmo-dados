@@ -63,7 +63,7 @@ Projetos desenvolvidos durante o roteiro de estudos de PMO de Dados
 | 2      | Power BI Básico + Intermediário  | ✅ Concluído              |
 | 3      | Excel Avançado (Power Query)     | ✅ Concluído           |
 | 4      | Governança de Dados & LGPD       | ✅ Concluído            |
-| 5      | Power BI Avançado (DAX)          | 🔵 Em andamento             |
+| 5      | Power BI Avançado (DAX)          | ✅ Concluído            |
 
 
 
