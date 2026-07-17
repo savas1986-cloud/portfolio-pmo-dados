@@ -1,0 +1,74 @@
+/* ============================================================
+   TechFinance S.A. — Painel de Produtividade
+   Módulo 5 · Power BI Avançado — DAX & Time Intelligence
+   ------------------------------------------------------------
+   Dados 100% sintéticos (420 demandas · 8 squads · 18 meses).
+   Base de tempo: tabela Calendário marcada como Tabela de Datas,
+   relacionada a demandas[DataAbertura] (1:*).
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1) TABELA CALENDÁRIO
+   ------------------------------------------------------------ */
+
+Calendário = CALENDARAUTO()
+
+// Colunas calculadas (nomes em português)
+Ano       = YEAR( 'Calendário'[Date] )
+Mês Num   = MONTH( 'Calendário'[Date] )
+Mês Nome  = FORMAT( 'Calendário'[Date], "mmmm" )
+Mês Abrev = FORMAT( 'Calendário'[Date], "mmm" )
+Ano-Mês   = FORMAT( 'Calendário'[Date], "yyyy-MM" )
+Mês-Ano   = FORMAT( 'Calendário'[Date], "mmm/yy" )
+// + Ordem Mês · Trimestre · Dia Semana
+// Ordenação: 'Mês Nome' classificado por 'Mês Num'
+
+
+/* ------------------------------------------------------------
+   2) MEDIDA BASE
+   ------------------------------------------------------------ */
+
+Total Demandas =
+COUNTROWS( demandas )
+
+
+/* ------------------------------------------------------------
+   3) TIME INTELLIGENCE
+   ------------------------------------------------------------ */
+
+Demandas YTD =
+TOTALYTD(
+    COUNTROWS( demandas ),
+    'Calendário'[Date]
+)
+
+Demandas Período Anterior =
+CALCULATE(
+    COUNTROWS( demandas ),
+    DATEADD( 'Calendário'[Date], -1, MONTH )
+)
+
+Variação % =
+VAR atual    = [Total Demandas]
+VAR anterior = [Demandas Período Anterior]
+RETURN
+    DIVIDE( atual - anterior, anterior, 0 )
+// 3º argumento do DIVIDE = 0: retorna 0 quando não há mês anterior (jan/24)
+
+
+/* ------------------------------------------------------------
+   4) MEDIDA DE TEXTO DINÂMICA (subtítulo do card de SLA)
+   Depende de: [SLA Cumprido %]
+   ------------------------------------------------------------ */
+
+Desvio SLA Texto =
+VAR Atual   = [SLA Cumprido %]
+VAR Meta    = 0.85
+VAR Desvio  = Atual - Meta
+VAR Seta    = IF( Desvio >= 0, "▲", "▼" )
+VAR AbsPerc = ABS( ROUND( Desvio * 100, 2 ) )
+VAR Numero  = FORMAT( AbsPerc, "#0.00" ) & "pp"
+RETURN
+    Seta & " " & Numero & " vs meta (85%)"
+// Resultado real: "▼ 9.25pp vs meta (85%)"
