@@ -92,7 +92,7 @@ Qualidade: de 2 critérios atendidos (V1) para 10 (V2).:
 Camada de medidas do dashboard, construída sobre uma tabela Calendário
 (`CALENDARAUTO()`) marcada como Tabela de Datas e relacionada a
 `demandas[DataAbertura]` (1:*). Código completo em
-[`medidas-dax-painel-produtividade.dax`](./medidas-dax-painel-produtividade.dax).
+[`medidas-dax-painel-produtividade.dax`](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-5-powerbi-dax.html).
 
 | Medida | Função-chave | Entrega no painel |
 |---|---|---|
@@ -107,7 +107,7 @@ um número, e sim uma mensagem que interpreta o KPI para o gestor (seta,
 desvio em pp e meta). É a medida por trás da melhoria #2 (delta de meta
 nos KPIs de SLA) da V2.
 
-📄 Estudo completo do módulo: [modulo-5-powerbi-dax.html][(https://raw.githack.com/savas1986-cloud/portfolio-pmo-dados/main/Estudos/modulo-5-powerbi-dax.html])
+📄 Estudo completo do módulo: [modulo-5-powerbi-dax.html][(https:/savas1986-cloud/portfolio-pmo-dados/main/Estudos/modulo-5-powerbi-dax.html])
 
 ---
 
