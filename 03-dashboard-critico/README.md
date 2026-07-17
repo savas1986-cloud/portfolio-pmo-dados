@@ -92,7 +92,7 @@ Qualidade: de 2 critérios atendidos (V1) para 10 (V2).:
 Camada de medidas do dashboard, construída sobre uma tabela Calendário
 (`CALENDARAUTO()`) marcada como Tabela de Datas e relacionada a
 `demandas[DataAbertura]` (1:*). Código completo em
-[`medidas-dax-painel-produtividade.dax`](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-5-powerbi-dax.html).
+[`medidas-dax-painel-produtividade.dax`](https://savas1986-cloud.github.io/portfolio-pmo-dados/09-painel-produtividade/medidas-dax-painel-produtividade.dax).
 
 | Medida | Função-chave | Entrega no painel |
 |---|---|---|
