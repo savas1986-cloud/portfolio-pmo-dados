@@ -72,7 +72,7 @@ Cada módulo contém:
 - Mapa de fluxo de dados do pipeline completo
   (disponível em `11-governanca/`)
 
-  **Módulo 5 — Power BI Avançado: DAX & Time Intelligence** ✅
+**Módulo 5 — Power BI Avançado: DAX & Time Intelligence** ✅
 - Tabela Calendário com CALENDARAUTO(), marcada como Tabela de Datas
   e relacionada a demandas[DataAbertura] (1:*)
 - Time Intelligence: Demandas YTD (TOTALYTD), Demandas Período Anterior
