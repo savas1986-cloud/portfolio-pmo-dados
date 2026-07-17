@@ -96,7 +96,7 @@ Camada de medidas do dashboard, construída sobre uma tabela Calendário
 
 | Medida | Função-chave | Entrega no painel |
 |---|---|---|
-| Total de Demandas | `COUNTROWS` | Contagem base (420) |
+| Total Demandas | `COUNTROWS` | Contagem base (420) |
 | Demandas YTD | `TOTALYTD` | Acumulado no ano (134 em 2025) |
 | Demandas Período Anterior | `CALCULATE` + `DATEADD` | Comparação com o mês anterior |
 | Variação % | `VAR` + `DIVIDE` | Crescimento mês a mês (blindado contra ÷0) |
