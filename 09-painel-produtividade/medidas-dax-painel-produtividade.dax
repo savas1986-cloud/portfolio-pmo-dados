@@ -29,7 +29,7 @@ Mês-Ano   = FORMAT( 'Calendário'[Date], "mmm/yy" )
    2) MEDIDA BASE
    ------------------------------------------------------------ */
 
-Total de Demandas =
+Total Demandas =
 COUNTROWS( demandas )
 
 
