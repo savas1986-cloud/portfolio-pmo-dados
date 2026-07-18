@@ -55,7 +55,7 @@
     .sb-footer { margin-top: auto; padding-top: 1.25rem; }
     .sb-prog-label { font-size: 10px; color: rgba(255,255,255,.35); margin-bottom: .4rem; }
     .sb-prog-track { height: 4px; background: rgba(255,255,255,.12); border-radius: 2px; overflow: hidden; }
-    .sb-prog-fill { height: 100%; width: 92%; background: linear-gradient(90deg, #60A5FA, #34D399); border-radius: 2px; }
+    .sb-prog-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #60A5FA, #34D399); border-radius: 2px; }
     .sb-prog-status { font-size: 10px; color: #34D399; margin-top: .4rem; font-weight: 500; }
 
     /* ── MAIN ────────────────────────────────── */
@@ -235,9 +235,14 @@
     <a href="#texto-dinamico"><span class="dot done"></span>Desvio SLA Texto ✓</a>
   </div>
 
+  <div class="sb-section-label">Aula 6 — Ano a Ano</div>
+  <div class="sb-nav">
+    <a href="#year-over-year"><span class="dot done"></span>SAMEPERIODLASTYEAR · YoY ✓</a>
+  </div>
+
   <div class="sb-section-label">Exercícios</div>
   <div class="sb-nav">
-    <a href="#ex"><span class="dot done"></span>Exercícios · 5 medidas ✓</a>
+    <a href="#ex"><span class="dot done"></span>Exercícios · 7 medidas ✓</a>
     <a href="#erros"><span class="dot done"></span>Erros comuns ✓</a>
   </div>
 
@@ -249,7 +254,7 @@
   <div class="sb-footer">
     <div class="sb-prog-label">Progresso do módulo</div>
     <div class="sb-prog-track"><div class="sb-prog-fill"></div></div>
-    <div class="sb-prog-status">🟢 92% — núcleo de Time Intelligence concluído</div>
+    <div class="sb-prog-status">🟢 100% — módulo concluído (6 aulas · 7 medidas)</div>
   </div>
 </nav>
 
@@ -363,7 +368,7 @@
 
     <div class="tip-box">
       <div class="tip-ico">💡</div>
-      <div class="tip-text"><strong>A ideia central do DAX em uma frase:</strong> toda medida é recalculada dentro do "contexto" em que aparece. O mesmo <code>[Total de Demandas]</code> retorna 420 num card sem filtro, 52 na linha do Squad Crédito e 16 numa barra de jan/24. Você escreve a fórmula <em>uma vez</em> e ela responde certo em qualquer visual.</div>
+      <div class="tip-text"><strong>A ideia central do DAX em uma frase:</strong> toda medida é recalculada dentro do "contexto" em que aparece. O mesmo <code>[Total Demandas]</code> retorna 420 num card sem filtro, 52 na linha do Squad Crédito e 16 numa barra de jan/24. Você escreve a fórmula <em>uma vez</em> e ela responde certo em qualquer visual.</div>
     </div>
 
     <div class="concept-grid">
@@ -374,7 +379,7 @@
       <div class="concept-card c-purple">
         <div class="cc-title">Medida base</div>
         <div class="cc-text">Conta as demandas respeitando qualquer filtro. É o "tijolo" que as funções de tempo empilham.</div>
-        <div class="cc-example"><span class="measure-name">Total de Demandas</span> =
+        <div class="cc-example"><span class="measure-name">Total Demandas</span> =
   <span class="fn">COUNTROWS</span>( <span class="tbl">demandas</span> )</div>
       </div>
     </div>
@@ -424,14 +429,14 @@
     <div class="result-label">Resultado no Painel — card "Demandas no Ano"</div>
     <table class="result-table">
       <tr><th>Card</th><th>Medida</th><th>Valor</th><th>Leitura</th></tr>
-      <tr><td>Total de Demandas</td><td><code>Total de Demandas</code></td><td>420</td><td>Todo o histórico (18 meses)</td></tr>
+      <tr><td>Total Demandas</td><td><code>Total Demandas</code></td><td>420</td><td>Todo o histórico (18 meses)</td></tr>
       <tr><td>Demandas no Ano</td><td><code>Demandas YTD</code></td><td><strong>134</strong></td><td>Só o acumulado de 2025 (Jan–Jun)</td></tr>
     </table>
     <div class="result-meta">✔ 134 = demandas abertas de jan/2025 a jun/2025 · reinicia no dia 1º/jan</div>
 
     <div class="tip-box">
       <div class="tip-ico">♻️</div>
-      <div class="tip-text"><strong>Refino possível:</strong> aqui você usou <code>COUNTROWS(demandas)</code> direto. Como já existe a medida <code>[Total de Demandas]</code>, dá para trocar por ela — <code>TOTALYTD([Total de Demandas], 'Calendário'[Date])</code>. O resultado é idêntico, mas se um dia a regra de contagem mudar, você altera em <em>um</em> lugar só. É o padrão profissional de reuso.</div>
+      <div class="tip-text"><strong>Refino possível:</strong> aqui você usou <code>COUNTROWS(demandas)</code> direto. Como já existe a medida <code>[Total Demandas]</code>, dá para trocar por ela — <code>TOTALYTD([Total Demandas], 'Calendário'[Date])</code>. O resultado é idêntico, mas se um dia a regra de contagem mudar, você altera em <em>um</em> lugar só. É o padrão profissional de reuso.</div>
     </div>
   </div>
 
@@ -475,14 +480,14 @@
     <div class="cc-text" style="margin-bottom:.75rem">A pergunta: <em>"crescemos ou caímos vs. o mês anterior, em %?"</em>. Aqui aparecem duas boas práticas: <code>VAR</code> para guardar valores intermediários (legível e rápido) e <code>DIVIDE</code> em vez de <code>/</code>, que trata a divisão por zero sem quebrar o visual.</div>
 
     <div class="dax-block"><span class="measure-name">Variação %</span> =
-  <span class="kw">VAR</span> Atual    = <span class="fn">COUNTROWS</span>( <span class="tbl">demandas</span> )
-  <span class="kw">VAR</span> Anterior = [<span class="measure-name">Demandas Período Anterior</span>]
+  <span class="kw">VAR</span> atual    = [<span class="measure-name">Total Demandas</span>]
+  <span class="kw">VAR</span> anterior = [<span class="measure-name">Demandas Período Anterior</span>]
   <span class="kw">RETURN</span>
-    <span class="fn">DIVIDE</span>( Atual - Anterior, Anterior )</div>
+    <span class="fn">DIVIDE</span>( atual - anterior, anterior, <span class="num">0</span> )</div>
 
     <div class="tip-box">
-      <div class="tip-ico">📝</div>
-      <div class="tip-text"><strong>Confirme no seu arquivo:</strong> esta é a estrutura padrão (VAR + DIVIDE) — bata o olho para ver se bate com a sua exatamente, já que você não colou essa medida junto das outras.</div>
+      <div class="tip-ico">🛡️</div>
+      <div class="tip-text"><strong>O 3º argumento do DIVIDE:</strong> <code>DIVIDE(a, b, 0)</code> — o <code>0</code> no final é o valor de retorno quando o denominador é vazio/zero. No primeiro mês da série (jan/24) não existe "mês anterior", então a variação retorna <strong>0</strong> em vez de vazio, deixando o visual limpo. Note também que a medida reusa <code>[Total Demandas]</code> em vez de recontar — o padrão profissional de centralizar a contagem base.</div>
     </div>
 
     <div class="concept-grid">
@@ -534,18 +539,70 @@
     </div>
   </div>
 
+  <!-- ══ AULA 6 — YEAR OVER YEAR ══════════════ -->
+  <div class="section">
+    <span class="anchor" id="year-over-year"></span>
+    <div class="section-head">
+      <div class="section-icon">🔁</div>
+      <h2 class="section-title">Aula 6 — SAMEPERIODLASTYEAR: Comparação Ano a Ano</h2>
+    </div>
+
+    <div class="cc-text" style="margin-bottom:.75rem">A pergunta: <em>"tivemos mais ou menos demandas do que no mesmo mês do ano passado?"</em> — jun/25 vs jun/24. Enquanto o <code>DATEADD</code> da Aula 3 olha o mês imediatamente anterior, o <strong>YoY</strong> pula 12 meses e compara períodos equivalentes. É o que <strong>neutraliza sazonalidade</strong>: se dezembro sempre tem pico, comparar dez/25 com nov/25 engana; comparar dez/25 com dez/24 é justo. Vocabulário direto de Inteligência Competitiva.</div>
+
+    <div class="result-label">Medida 1 — o valor do mesmo período no ano anterior</div>
+    <div class="dax-block"><span class="measure-name">Demandas Ano Anterior</span> =
+  <span class="fn">CALCULATE</span>(
+    [<span class="measure-name">Total Demandas</span>],
+    <span class="fn">SAMEPERIODLASTYEAR</span>( <span class="tbl">'Calendário'</span>[<span class="col">Date</span>] )
+  )</div>
+    <div class="cc-text"><code>SAMEPERIODLASTYEAR</code> é, na prática, um atalho para <code>DATEADD('Calendário'[Date], -1, YEAR)</code>. Mesma família da Aula 3 — <code>CALCULATE</code> aplicando um deslocamento no tempo, só que de um ano.</div>
+
+    <div class="result-label" style="margin-top:1rem">Medida 2 — a variação YoY, blindada contra falso "-100%"</div>
+    <div class="dax-block"><span class="measure-name">Variação YoY %</span> =
+  <span class="kw">VAR</span> atual       = [<span class="measure-name">Total Demandas</span>]
+  <span class="kw">VAR</span> anoAnterior = [<span class="measure-name">Demandas Ano Anterior</span>]
+  <span class="kw">RETURN</span>
+    <span class="fn">IF</span>(
+      <span class="fn">NOT</span> <span class="fn">ISBLANK</span>( atual ) &amp;&amp; <span class="fn">NOT</span> <span class="fn">ISBLANK</span>( anoAnterior ),
+      <span class="fn">DIVIDE</span>( atual - anoAnterior, anoAnterior, <span class="num">0</span> )
+    )</div>
+
+    <div class="result-label">Resultado real no visual (matriz por Mês-Ano)</div>
+    <table class="result-table">
+      <tr><th>Mês-Ano</th><th>Total Demandas</th><th>Demandas Ano Anterior</th><th>Variação YoY %</th></tr>
+      <tr><td>jan/24 – dez/24</td><td>19 a 30</td><td><em>(vazio)</em></td><td><em>(vazio)</em></td></tr>
+      <tr><td>jan/25</td><td>34</td><td>20</td><td><strong>+70%</strong></td></tr>
+      <tr><td>fev/25</td><td>16</td><td>19</td><td>−16%</td></tr>
+      <tr><td>mar/25</td><td>21</td><td>29</td><td>−28%</td></tr>
+      <tr><td>abr/25</td><td>22</td><td>28</td><td>−21%</td></tr>
+      <tr><td>mai/25</td><td>28</td><td>21</td><td>+33%</td></tr>
+      <tr><td>jun/25</td><td>13</td><td>22</td><td>−41%</td></tr>
+    </table>
+    <div class="result-meta">✔ jan/25: (34 − 20) / 20 = +70% · 2024 fica vazio (sem ano-base no modelo)</div>
+
+    <div class="tip-box">
+      <div class="tip-ico">🛡️</div>
+      <div class="tip-text"><strong>Por que o <code>IF + ISBLANK</code>:</strong> sem a blindagem, os meses jul–dez/25 (cujo dado ainda não existe) apareceriam como <strong>−100%</strong> — porque a fórmula faria (0 − 26) / 26. Isso não é queda de operação, é <em>ausência de dado</em>. Um gestor bateria o olho e leria "caímos 100%!", o que é falso. O <code>IF(NOT ISBLANK(atual) &amp;&amp; NOT ISBLANK(anoAnterior), ...)</code> só calcula quando os dois lados existem; senão, deixa vazio. É a versão pronta para produção.</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-ico">🎯</div>
+      <div class="tip-text"><strong>Ponto de qualidade de dados (ouro em entrevista):</strong> o YoY só é válido a partir do <strong>13º mês</strong> da série. Como o dataset começa em jan/24, a comparação real só existe de jan/25 em diante. Saber explicar "meu YoY tem janela de aquecimento de 12 meses" mostra que você entende o dado, não só a fórmula. Cuidado também com o total geral: YoY faz sentido <em>por período</em>, nunca num card solto.</div>
+    </div>
+  </div>
+
   <!-- ══ EXERCÍCIOS ═══════════════════════════ -->
   <div class="section">
     <span class="anchor" id="ex"></span>
     <div class="section-head">
       <div class="section-icon">✍️</div>
-      <h2 class="section-title">Exercícios — 5 Medidas no Painel</h2>
+      <h2 class="section-title">Exercícios — 7 Medidas no Painel</h2>
     </div>
 
     <div class="ex-block">
       <div class="ex-header" onclick="toggleEx(this)">
         <div class="ex-num">1</div>
-        <div class="ex-title">Medida base — Total de Demandas</div>
+        <div class="ex-title">Medida base — Total Demandas</div>
         <span class="ex-badge">Concluído ✓</span>
         <span class="ex-chevron">▼</span>
       </div>
@@ -553,7 +610,7 @@
         <div class="ex-label">Objetivo</div>
         Contar as demandas respeitando qualquer filtro (Squad, prioridade, mês).
         <div class="ex-label">Solução</div>
-        <div class="dax-block"><span class="measure-name">Total de Demandas</span> = <span class="fn">COUNTROWS</span>( <span class="tbl">demandas</span> )</div>
+        <div class="dax-block"><span class="measure-name">Total Demandas</span> = <span class="fn">COUNTROWS</span>( <span class="tbl">demandas</span> )</div>
         <div class="ex-label">Verificação</div>
         Card sem filtro = 420. Na matriz por Squad, soma das linhas = 420. ✔
       </div>
@@ -606,9 +663,9 @@
         Mostrar em % a diferença entre o período atual e o anterior, sem quebrar em divisão por zero.
         <div class="ex-label">Solução</div>
         <div class="dax-block"><span class="measure-name">Variação %</span> =
-  <span class="kw">VAR</span> Atual    = <span class="fn">COUNTROWS</span>( <span class="tbl">demandas</span> )
-  <span class="kw">VAR</span> Anterior = [<span class="measure-name">Demandas Período Anterior</span>]
-  <span class="kw">RETURN</span> <span class="fn">DIVIDE</span>( Atual - Anterior, Anterior )</div>
+  <span class="kw">VAR</span> atual    = [<span class="measure-name">Total Demandas</span>]
+  <span class="kw">VAR</span> anterior = [<span class="measure-name">Demandas Período Anterior</span>]
+  <span class="kw">RETURN</span> <span class="fn">DIVIDE</span>( atual - anterior, anterior, <span class="num">0</span> )</div>
         <div class="ex-label">Verificação</div>
         Formatada como %. No gráfico mensal aponta subidas e quedas mês a mês. ✔
       </div>
@@ -635,6 +692,46 @@
   <span class="kw">RETURN</span> Seta &amp; <span class="str">" "</span> &amp; Numero &amp; <span class="str">" vs meta (85%)"</span></div>
         <div class="ex-label">Verificação</div>
         Subtítulo do card de SLA = "▼ 9.25pp vs meta (85%)". ✔
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-num">6</div>
+        <div class="ex-title">Ano a ano — Demandas Ano Anterior</div>
+        <span class="ex-badge">Concluído ✓</span>
+        <span class="ex-chevron">▼</span>
+      </div>
+      <div class="ex-body">
+        <div class="ex-label">Objetivo</div>
+        Trazer o valor do mesmo mês no ano anterior (base para o YoY).
+        <div class="ex-label">Solução</div>
+        <div class="dax-block"><span class="measure-name">Demandas Ano Anterior</span> =
+  <span class="fn">CALCULATE</span>( [<span class="measure-name">Total Demandas</span>], <span class="fn">SAMEPERIODLASTYEAR</span>( <span class="tbl">'Calendário'</span>[<span class="col">Date</span>] ) )</div>
+        <div class="ex-label">Verificação</div>
+        jan/25 mostra 20 (o valor de jan/24). 2024 fica vazio. ✔
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <div class="ex-header" onclick="toggleEx(this)">
+        <div class="ex-num">7</div>
+        <div class="ex-title">Variação ano a ano — Variação YoY %</div>
+        <span class="ex-badge">Concluído ✓</span>
+        <span class="ex-chevron">▼</span>
+      </div>
+      <div class="ex-body">
+        <div class="ex-label">Objetivo</div>
+        Calcular a variação % vs. o ano anterior, sem exibir "-100%" onde o dado atual ainda não existe.
+        <div class="ex-label">Solução</div>
+        <div class="dax-block"><span class="measure-name">Variação YoY %</span> =
+  <span class="kw">VAR</span> atual       = [<span class="measure-name">Total Demandas</span>]
+  <span class="kw">VAR</span> anoAnterior = [<span class="measure-name">Demandas Ano Anterior</span>]
+  <span class="kw">RETURN</span>
+    <span class="fn">IF</span>( <span class="fn">NOT</span> <span class="fn">ISBLANK</span>( atual ) &amp;&amp; <span class="fn">NOT</span> <span class="fn">ISBLANK</span>( anoAnterior ),
+       <span class="fn">DIVIDE</span>( atual - anoAnterior, anoAnterior, <span class="num">0</span> ) )</div>
+        <div class="ex-label">Verificação</div>
+        jan/25 = +70% · jul–dez/25 ficam vazios (não mais −100%). ✔
       </div>
     </div>
   </div>
@@ -709,7 +806,7 @@
       <div class="insight-ico">🧱</div>
       <div>
         <div class="insight-title">Uma ideia, cinco respostas</div>
-        <div class="insight-text">Todo o Time Intelligence gira em torno de uma única contagem — <code>COUNTROWS(demandas)</code>. YTD, período anterior e variação são apenas essa contagem vista por lentes de tempo diferentes. Aqui você a repetiu inline; o próximo nível é centralizá-la em <code>[Total de Demandas]</code> e reusar. Um PMO que entende isso projeta modelos que escalam sem virar uma sopa de medidas duplicadas.</div>
+        <div class="insight-text">Todo o Time Intelligence gira em torno de uma única contagem — <code>COUNTROWS(demandas)</code>. YTD, período anterior e variação são apenas essa contagem vista por lentes de tempo diferentes. Aqui você a repetiu inline; o próximo nível é centralizá-la em <code>[Total Demandas]</code> e reusar. Um PMO que entende isso projeta modelos que escalam sem virar uma sopa de medidas duplicadas.</div>
       </div>
     </div>
 
@@ -749,7 +846,7 @@
       <div class="insight-ico">➡️</div>
       <div>
         <div class="insight-title">Próximo passo natural</div>
-        <div class="insight-text">Com a base de tempo pronta, os candidatos de evolução são: <code>SAMEPERIODLASTYEAR</code> (comparação ano a ano), uma medida de <strong>meta</strong> para o card usar no lugar do "mês anterior", e <strong>títulos dinâmicos</strong> que mudam com o filtro selecionado — no mesmo espírito do <code>Desvio SLA Texto</code>. Cada um vira mais uma linha de portfólio.</div>
+        <div class="insight-text">Com Time Intelligence completo (YTD, mês anterior, YoY) e a blindagem de <code>IF + ISBLANK</code> dominada, o módulo está fechado. As evoluções opcionais que ficam no radar: uma medida de <strong>meta</strong> para o card usar no lugar do "mês anterior", e <strong>títulos dinâmicos</strong> que mudam com o filtro selecionado — no mesmo espírito do <code>Desvio SLA Texto</code>. Daqui, o roteiro segue para o próximo módulo.</div>
       </div>
     </div>
 
@@ -767,7 +864,7 @@
   }
 
   // Scrollspy
-  const ids = ['setup','contexto','calculate','medida-vs-coluna','totalytd','dateadd','variacao','texto-dinamico','ex','erros','insights'];
+  const ids = ['setup','contexto','calculate','medida-vs-coluna','totalytd','dateadd','variacao','texto-dinamico','year-over-year','ex','erros','insights'];
   const links = {};
   ids.forEach(id => { links[id] = document.querySelector(`.sb-nav a[href="#${id}"]`); });
 
