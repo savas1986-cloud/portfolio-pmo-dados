@@ -50,11 +50,31 @@ CALCULATE(
 )
 
 Variação % =
-VAR Atual    = COUNTROWS( demandas )
-VAR Anterior = [Demandas Período Anterior]
+VAR atual    = [Total Demandas]
+VAR anterior = [Demandas Período Anterior]
 RETURN
-    DIVIDE( Atual - Anterior, Anterior )
-// >>> CONFIRMAR: colar aqui a fórmula exata do seu arquivo
+    DIVIDE( atual - anterior, anterior, 0 )
+// 3º argumento do DIVIDE = 0: retorna 0 quando não há mês anterior (jan/24)
+
+// --- Comparação ano a ano (YoY) ---
+
+Demandas Ano Anterior =
+CALCULATE(
+    [Total Demandas],
+    SAMEPERIODLASTYEAR( 'Calendário'[Date] )
+)
+
+Variação YoY % =
+VAR Atual       = [Total Demandas]
+VAR AnoAnterior = [Demandas Ano Anterior]
+RETURN
+    IF(
+        NOT ISBLANK( Atual ) && NOT ISBLANK( AnoAnterior ),
+        DIVIDE( Atual - AnoAnterior, AnoAnterior, 0 )
+    )
+// Blindagem: só calcula quando há dado atual E do ano anterior.
+// Evita o "-100%" fantasma em jul-dez/25 (dado ainda inexistente)
+// e mantém 2024 vazio (não há ano-base anterior no modelo).
 
 
 /* ------------------------------------------------------------
