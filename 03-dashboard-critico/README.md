@@ -101,6 +101,8 @@ Camada de medidas do dashboard, construída sobre uma tabela Calendário
 | Demandas Período Anterior | `CALCULATE` + `DATEADD` | Comparação com o mês anterior |
 | Variação % | `VAR` + `DIVIDE` | Crescimento mês a mês (blindado contra ÷0) |
 | Desvio SLA Texto | `VAR` + `IF` + `FORMAT` | Subtítulo dinâmico do card: "▼ 9.25pp vs meta (85%)" |
+| Demandas Ano Anterior | `CALCULATE` + `SAMEPERIODLASTYEAR` | Valor do mesmo mês no ano anterior |
+| Variação YoY % | `IF` + `ISBLANK` + `DIVIDE` | Variação ano a ano, blindada contra "-100%" fantasma |
 
 **Destaque — medida de texto dinâmica:** `Desvio SLA Texto` não devolve
 um número, e sim uma mensagem que interpreta o KPI para o gestor (seta,
