@@ -58,7 +58,7 @@ A análise em Pandas reproduz os indicadores do Painel de Produtividade:
 O SLA usa como base as demandas **fechadas** (301), não o total (420): demandas
 em aberto não têm cumprimento de prazo a avaliar.
 
-📄 Estudo completo do módulo: [modulo-6-python-pandas.html](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-5-powerbi-dax.html)
+📄 Estudo completo do módulo: [modulo-6-python-pandas.html](https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-6-python-pandas.html)
 
 ---
 
