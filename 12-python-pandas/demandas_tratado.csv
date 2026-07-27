@@ -1,0 +1,421 @@
+DemandaID,Titulo,Squad,Area,StatusNome,PrioridadeNome,Nivel,SLA_Dias,CategoriaNome,Responsavel,DataAbertura,DataPrazo,DataFechamento
+1,Catálogo de dados do domínio #0001,Squad Dados,Data & Analytics,Concluído,Crítica,1,5,Desenvolvimento,Marina Oliveira,2024-05-22,2024-05-26,2024-05-28
+2,Validação de documentos KYC #0002,Squad Onboarding,Experiência do Cliente,Concluído,Crítica,1,5,Desenvolvimento,Isabela Nunes,2024-01-28,2024-02-03,2024-02-01
+3,Auditoria de logs de segurança #0003,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Infraestrutura,João Cardoso,2025-03-08,2025-03-21,2025-03-21
+4,Integração de API de Pagamentos #0004,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Bruno Costa,2024-09-27,2024-10-15,2024-10-10
+5,Dashboard de KPIs executivos #0005,Squad Dados,Data & Analytics,Aberto,Baixa,4,30,Melhoria,Nelson Gomes,2024-07-15,2024-08-13,
+6,Atualização de middleware #0006,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Infraestrutura,Paulo Martins,2025-01-24,2025-02-25,2025-02-28
+7,Redução de abandono no cadastro #0007,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Bug,Isabela Nunes,2024-03-14,2024-04-03,2024-03-29
+8,Integração com bureau de crédito #0008,Squad Crédito,Produtos Financeiros,Concluído,Baixa,4,30,Bug,Diego Rocha,2024-11-28,2024-12-26,2024-12-09
+9,Integração com bureau de crédito #0009,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Infraestrutura,Felipe Santos,2024-11-18,2024-11-29,2024-11-29
+10,Implementar novo gateway #0010,Squad Pagamentos,Produtos Financeiros,Bloqueado,Alta,2,10,Bug,Carla Mendes,2024-09-26,2024-10-10,
+11,Validação de documentos KYC #0011,Squad Onboarding,Experiência do Cliente,Bloqueado,Baixa,4,30,Desenvolvimento,Henrique Alves,2024-04-03,2024-05-01,
+12,Catálogo de dados do domínio #0012,Squad Dados,Data & Analytics,Concluído,Média,3,20,Manutenção,Marina Oliveira,2025-01-29,2025-02-22,2025-02-07
+13,Pesquisa de satisfação NPS #0013,Squad Experiência,Experiência do Cliente,Em Andamento,Crítica,1,5,Bug,Vera Lopes,2024-09-30,2024-10-08,
+14,Implementação de Pix agendado #0014,Squad Pagamentos,Produtos Financeiros,Concluído,Crítica,1,5,Bug,Carla Mendes,2024-09-26,2024-10-01,2024-09-29
+15,Automação de relatório executivo #0015,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Marina Oliveira,2024-01-01,2024-01-24,2024-01-13
+16,Migração de SOAP para REST #0016,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Sergio Dias,2024-03-21,2024-03-30,2024-04-12
+17,Migração de SOAP para REST #0017,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Melhoria,Sergio Dias,2024-06-18,2024-06-30,2024-06-22
+18,Monitoramento de integrações #0018,Squad Integrações,Tecnologia e Infraestrutura,Bloqueado,Média,3,20,Bug,Renata Barbosa,2025-01-17,2025-02-11,
+19,Otimização de conciliação bancária #0019,Squad Pagamentos,Produtos Financeiros,Aberto,Alta,2,10,Manutenção,Carla Mendes,2024-08-23,2024-09-03,
+20,Dashboard de KPIs executivos #0020,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Infraestrutura,Nelson Gomes,2024-03-13,2024-03-24,2024-03-22
+21,Integração com sistema legado #0021,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Baixa,4,30,Melhoria,Paulo Martins,2025-04-29,2025-06-02,
+22,Monitoramento de SLA por squad #0022,Squad Dados,Data & Analytics,Em Andamento,Média,3,20,Manutenção,Olivia Castro,2024-02-25,2024-03-15,
+23,Jornada de cadastro digital #0023,Squad Onboarding,Experiência do Cliente,Concluído,Baixa,4,30,Desenvolvimento,Gabriela Lima,2025-04-04,2025-05-04,2025-04-12
+24,Revisão de política de senhas #0024,Squad Segurança,Tecnologia e Infraestrutura,Bloqueado,Baixa,4,30,Melhoria,João Cardoso,2024-01-16,2024-02-14,
+25,Relatório de concessões mensais #0025,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Elena Ferreira,2024-03-01,2024-03-21,2024-03-26
+26,API Gateway para parceiros #0026,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Alta,2,10,Bug,Sergio Dias,2025-05-13,2025-05-23,
+27,Monitoramento de infraestrutura #0027,Squad Infraestrutura,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Melhoria,Yuri Fernandes,2024-11-17,2024-12-05,
+28,Pipeline de dados de transações #0028,Squad Dados,Data & Analytics,Em Andamento,Baixa,4,30,Desenvolvimento,Olivia Castro,2024-03-23,2024-04-22,
+29,Governança de dados mestres #0029,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Desenvolvimento,Olivia Castro,2024-09-09,2024-09-17,2024-09-15
+30,Análise de score de crédito #0030,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Elena Ferreira,2024-05-14,2024-06-05,2024-06-20
+31,Integração de API de Pagamentos #0031,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Ana Silva,2024-03-16,2024-04-06,2024-03-28
+32,Melhoria de acessibilidade #0032,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Desenvolvimento,Vera Lopes,2024-11-05,2024-11-23,2024-11-09
+33,Modelagem de risco de crédito #0033,Squad Crédito,Produtos Financeiros,Concluído,Baixa,4,30,Bug,Diego Rocha,2024-10-05,2024-11-06,2024-10-19
+34,Automação de relatório executivo #0034,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Melhoria,Marina Oliveira,2024-04-04,2024-04-18,2024-04-10
+35,Otimização de conciliação bancária #0035,Squad Pagamentos,Produtos Financeiros,Em Andamento,Baixa,4,30,Desenvolvimento,Bruno Costa,2025-03-13,2025-04-10,
+36,Otimização de performance UX #0036,Squad Experiência,Experiência do Cliente,Em Andamento,Média,3,20,Bug,Vera Lopes,2024-05-31,2024-06-24,
+37,Melhoria no fluxo de boas-vindas #0037,Squad Onboarding,Experiência do Cliente,Concluído,Baixa,4,30,Compliance,Gabriela Lima,2025-01-01,2025-02-01,2025-01-13
+38,Pesquisa de satisfação NPS #0038,Squad Experiência,Experiência do Cliente,Cancelado,Média,3,20,Melhoria,Tatiana Ramos,2024-08-30,2024-09-19,2024-10-04
+39,Implementação de Pix agendado #0039,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Bruno Costa,2024-09-11,2024-10-03,2024-09-24
+40,Integração de API de Pagamentos #0040,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Bruno Costa,2024-12-24,2025-01-15,2025-01-19
+41,Governança de dados mestres #0041,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Marina Oliveira,2024-10-12,2024-11-04,2024-10-30
+42,Monitoramento de infraestrutura #0042,Squad Infraestrutura,Tecnologia e Infraestrutura,Em Andamento,Alta,2,10,Compliance,Wagner Teixeira,2024-09-28,2024-10-06,
+43,Validação de documentos KYC #0043,Squad Onboarding,Experiência do Cliente,Bloqueado,Média,3,20,Manutenção,Isabela Nunes,2024-04-28,2024-05-22,
+44,Revisão de limites automáticos #0044,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Felipe Santos,2024-07-20,2024-08-12,2024-08-27
+45,Governança de dados mestres #0045,Squad Dados,Data & Analytics,Em Andamento,Média,3,20,Desenvolvimento,Nelson Gomes,2025-06-03,2025-06-25,
+46,Jornada de cadastro digital #0046,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Desenvolvimento,Henrique Alves,2025-01-23,2025-02-02,2025-02-01
+47,Integração com bureau de crédito #0047,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Bug,Felipe Santos,2024-11-25,2024-12-10,2024-12-04
+48,Integração com sistema legado #0048,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Bug,Sergio Dias,2024-03-27,2024-04-28,2024-04-18
+49,Melhoria de acessibilidade #0049,Squad Experiência,Experiência do Cliente,Aberto,Média,3,20,Bug,Tatiana Ramos,2024-07-22,2024-08-11,
+50,Atualização de servidores #0050,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Média,3,20,Bug,Xenia Campos,2025-02-28,2025-03-21,2025-03-13
+51,Implementar novo gateway #0051,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Infraestrutura,Ana Silva,2025-03-11,2025-04-01,2025-04-10
+52,Correção de divergência em pagamentos #0052,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Bug,Bruno Costa,2024-05-16,2024-05-31,2024-06-10
+53,Renovação de licenças #0053,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Melhoria,Yuri Fernandes,2025-05-31,2025-07-04,2025-06-11
+54,Design system atualizado #0054,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Bug,Vera Lopes,2024-10-10,2024-11-04,2024-10-13
+55,Modelagem de risco de crédito #0055,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Manutenção,Felipe Santos,2024-03-23,2024-04-02,2024-03-26
+56,Relatório de concessões mensais #0056,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Elena Ferreira,2025-03-01,2025-03-19,2025-03-02
+57,Redução de fricção no checkout #0057,Squad Experiência,Experiência do Cliente,Bloqueado,Média,3,20,Melhoria,Ulisses Faria,2024-11-01,2024-11-25,
+58,Redução de abandono no cadastro #0058,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Isabela Nunes,2024-08-13,2024-09-07,2024-08-14
+59,Melhoria no fluxo de boas-vindas #0059,Squad Onboarding,Experiência do Cliente,Cancelado,Média,3,20,Manutenção,Gabriela Lima,2025-04-23,2025-05-13,2025-05-06
+60,Implementação de data quality #0060,Squad Dados,Data & Analytics,Aberto,Crítica,1,5,Melhoria,Marina Oliveira,2025-04-17,2025-04-22,
+61,Formulário adaptativo de abertura de conta #0061,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Manutenção,Henrique Alves,2024-10-11,2024-11-04,2024-10-12
+62,Automação de relatório executivo #0062,Squad Dados,Data & Analytics,Concluído,Baixa,4,30,Manutenção,Olivia Castro,2024-03-11,2024-04-08,2024-04-12
+63,Atualização do fluxo de liquidação #0063,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Carla Mendes,2024-04-27,2024-05-08,2024-05-03
+64,Monitoramento de SLA por squad #0064,Squad Dados,Data & Analytics,Concluído,Baixa,4,30,Bug,Marina Oliveira,2024-11-14,2024-12-13,2024-12-23
+65,Redução de fricção no checkout #0065,Squad Experiência,Experiência do Cliente,Em Andamento,Média,3,20,Infraestrutura,Tatiana Ramos,2024-03-18,2024-04-08,
+66,Dashboard de inadimplência #0066,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Bug,Felipe Santos,2024-02-12,2024-03-06,2024-02-15
+67,Monitoramento de SLA por squad #0067,Squad Dados,Data & Analytics,Cancelado,Crítica,1,5,Manutenção,Nelson Gomes,2024-04-18,2024-04-27,2024-04-26
+68,Correção de divergência em pagamentos #0068,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Melhoria,Carla Mendes,2024-10-03,2024-10-18,2024-10-28
+69,Redução de abandono no cadastro #0069,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Infraestrutura,Henrique Alves,2025-04-06,2025-04-17,2025-04-17
+70,Formulário adaptativo de abertura de conta #0070,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Manutenção,Henrique Alves,2024-08-05,2024-08-28,2024-08-25
+71,Design system atualizado #0071,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Tatiana Ramos,2024-03-28,2024-04-18,2024-04-05
+72,Plano de resposta a incidentes #0072,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Média,3,20,Manutenção,João Cardoso,2024-04-05,2024-04-27,2024-04-15
+73,Dashboard de KPIs executivos #0073,Squad Dados,Data & Analytics,Concluído,Média,3,20,Melhoria,Nelson Gomes,2024-12-04,2024-12-27,2024-12-13
+74,Implementação de Pix agendado #0074,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Carla Mendes,2024-07-08,2024-07-19,2024-07-18
+75,Dashboard de KPIs executivos #0075,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Desenvolvimento,Marina Oliveira,2024-10-30,2024-11-10,2024-11-08
+76,Análise de score de crédito #0076,Squad Crédito,Produtos Financeiros,Em Andamento,Baixa,4,30,Melhoria,Felipe Santos,2024-05-09,2024-06-13,
+77,Implementação de data quality #0077,Squad Dados,Data & Analytics,Cancelado,Média,3,20,Manutenção,Marina Oliveira,2024-02-22,2024-03-15,2024-02-25
+78,Revisão de acessos privilegiados #0078,Squad Segurança,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Bug,João Cardoso,2024-06-01,2024-06-23,
+79,Implementar novo gateway #0079,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Carla Mendes,2024-08-19,2024-09-12,2024-09-07
+80,Atualização de política de concessão #0080,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Felipe Santos,2024-04-11,2024-05-02,2024-04-14
+81,Atualização de política de concessão #0081,Squad Crédito,Produtos Financeiros,Em Andamento,Média,3,20,Desenvolvimento,Elena Ferreira,2025-04-06,2025-05-01,
+82,Relatório de concessões mensais #0082,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Infraestrutura,Diego Rocha,2024-08-27,2024-09-08,2024-09-07
+83,Redução de fricção no checkout #0083,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Vera Lopes,2024-06-01,2024-06-23,2024-06-07
+84,Revisão de limites automáticos #0084,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Elena Ferreira,2025-03-25,2025-04-13,2025-04-07
+85,Monitoramento de SLA por squad #0085,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Marina Oliveira,2025-03-18,2025-04-10,2025-03-26
+86,Design system atualizado #0086,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Compliance,Vera Lopes,2024-10-02,2024-10-20,2024-10-19
+87,Plano de resposta a incidentes #0087,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Compliance,Karina Souza,2025-05-18,2025-05-27,2025-05-24
+88,Integração de API de Pagamentos #0088,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Manutenção,Bruno Costa,2024-10-22,2024-11-05,2024-10-30
+89,Melhoria no fluxo de boas-vindas #0089,Squad Onboarding,Experiência do Cliente,Em Andamento,Alta,2,10,Compliance,Henrique Alves,2025-06-10,2025-06-18,
+90,Revisão de acessos privilegiados #0090,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Crítica,1,5,Melhoria,Lucas Pereira,2025-05-25,2025-06-04,2025-06-03
+91,A/B test de interface #0091,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Bug,Tatiana Ramos,2024-01-30,2024-02-20,2024-01-31
+92,Melhoria no fluxo de boas-vindas #0092,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Bug,Gabriela Lima,2025-04-17,2025-04-26,2025-04-22
+93,Migração de SOAP para REST #0093,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Melhoria,Renata Barbosa,2024-09-06,2024-10-01,2024-09-26
+94,Versionamento de contratos de API #0094,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Renata Barbosa,2024-12-14,2024-12-26,2024-12-19
+95,Catálogo de dados do domínio #0095,Squad Dados,Data & Analytics,Em Andamento,Baixa,4,30,Melhoria,Marina Oliveira,2025-04-02,2025-05-07,
+96,Atualização de middleware #0096,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Infraestrutura,Paulo Martins,2024-09-01,2024-09-25,2024-09-26
+97,Atualização de middleware #0097,Squad Integrações,Tecnologia e Infraestrutura,Cancelado,Média,3,20,Bug,Renata Barbosa,2024-06-04,2024-06-29,2024-06-23
+98,Melhoria de acessibilidade #0098,Squad Experiência,Experiência do Cliente,Concluído,Baixa,4,30,Manutenção,Vera Lopes,2025-04-12,2025-05-10,2025-05-03
+99,Implementação de Pix agendado #0099,Squad Pagamentos,Produtos Financeiros,Bloqueado,Média,3,20,Desenvolvimento,Carla Mendes,2025-02-11,2025-03-02,
+100,Dashboard de KPIs executivos #0100,Squad Dados,Data & Analytics,Concluído,Média,3,20,Compliance,Olivia Castro,2025-05-14,2025-06-01,2025-05-24
+101,Integração com sistema legado #0101,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Sergio Dias,2024-04-12,2024-05-07,2024-04-13
+102,Validação de documentos KYC #0102,Squad Onboarding,Experiência do Cliente,Concluído,Crítica,1,5,Manutenção,Henrique Alves,2024-05-29,2024-06-04,2024-05-31
+103,Atualização do fluxo de liquidação #0103,Squad Pagamentos,Produtos Financeiros,Bloqueado,Média,3,20,Manutenção,Carla Mendes,2024-09-03,2024-09-28,
+104,Modelagem de risco de crédito #0104,Squad Crédito,Produtos Financeiros,Bloqueado,Média,3,20,Melhoria,Felipe Santos,2024-01-10,2024-02-04,
+105,Dashboard de KPIs executivos #0105,Squad Dados,Data & Analytics,Concluído,Crítica,1,5,Infraestrutura,Olivia Castro,2024-11-02,2024-11-11,2024-11-07
+106,Configuração de DR #0106,Squad Infraestrutura,Tecnologia e Infraestrutura,Cancelado,Baixa,4,30,Desenvolvimento,Xenia Campos,2025-01-02,2025-02-03,2025-01-28
+107,Atualização do fluxo de liquidação #0107,Squad Pagamentos,Produtos Financeiros,Concluído,Baixa,4,30,Bug,Ana Silva,2025-05-23,2025-06-24,2025-06-15
+108,Monitoramento de SLA por squad #0108,Squad Dados,Data & Analytics,Bloqueado,Média,3,20,Bug,Olivia Castro,2024-05-20,2024-06-08,
+109,Correção de divergência em pagamentos #0109,Squad Pagamentos,Produtos Financeiros,Bloqueado,Média,3,20,Desenvolvimento,Bruno Costa,2024-05-14,2024-06-02,
+110,Versionamento de contratos de API #0110,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Sergio Dias,2025-01-09,2025-01-21,2025-01-17
+111,Modelagem de risco de crédito #0111,Squad Crédito,Produtos Financeiros,Concluído,Baixa,4,30,Bug,Elena Ferreira,2024-03-18,2024-04-17,2024-04-09
+112,Pipeline de dados de transações #0112,Squad Dados,Data & Analytics,Concluído,Média,3,20,Bug,Olivia Castro,2025-01-09,2025-01-28,2025-01-27
+113,Revisão de acessos privilegiados #0113,Squad Segurança,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Bug,Lucas Pereira,2025-01-25,2025-02-17,
+114,Plano de resposta a incidentes #0114,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Média,3,20,Infraestrutura,Karina Souza,2024-08-14,2024-09-02,2024-08-24
+115,Melhoria no fluxo de boas-vindas #0115,Squad Onboarding,Experiência do Cliente,Aberto,Alta,2,10,Infraestrutura,Henrique Alves,2025-05-19,2025-05-28,
+116,Otimização de conciliação bancária #0116,Squad Pagamentos,Produtos Financeiros,Bloqueado,Média,3,20,Bug,Carla Mendes,2025-03-05,2025-03-25,
+117,Implementação de Pix agendado #0117,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Bruno Costa,2024-02-03,2024-02-26,2024-02-11
+118,Redução de abandono no cadastro #0118,Squad Onboarding,Experiência do Cliente,Concluído,Baixa,4,30,Manutenção,Isabela Nunes,2025-01-02,2025-01-30,2025-01-06
+119,Atualização do fluxo de liquidação #0119,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Melhoria,Ana Silva,2024-02-21,2024-03-05,2024-03-02
+120,Integração de API de Pagamentos #0120,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Ana Silva,2024-08-26,2024-09-18,2024-09-28
+121,Relatório de concessões mensais #0121,Squad Crédito,Produtos Financeiros,Em Andamento,Baixa,4,30,Compliance,Felipe Santos,2024-09-13,2024-10-13,
+122,Implementar novo gateway #0122,Squad Pagamentos,Produtos Financeiros,Concluído,Crítica,1,5,Bug,Ana Silva,2024-11-27,2024-11-30,2024-11-30
+123,Dashboard de KPIs executivos #0123,Squad Dados,Data & Analytics,Em Andamento,Média,3,20,Melhoria,Nelson Gomes,2025-06-09,2025-06-28,
+124,Implementação de IaC #0124,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Crítica,1,5,Bug,Yuri Fernandes,2024-11-04,2024-11-14,2024-11-12
+125,Otimização do onboarding mobile #0125,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Henrique Alves,2024-03-16,2024-04-04,2024-03-21
+126,Pipeline de dados de transações #0126,Squad Dados,Data & Analytics,Concluído,Média,3,20,Bug,Nelson Gomes,2024-10-28,2024-11-22,2024-11-20
+127,Redução de fricção no checkout #0127,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Bug,Vera Lopes,2024-08-08,2024-09-01,2024-08-19
+128,Implementação de MFA #0128,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Karina Souza,2024-11-16,2024-12-08,2024-12-02
+129,Revisão de regras de aprovação #0129,Squad Pagamentos,Produtos Financeiros,Concluído,Crítica,1,5,Manutenção,Carla Mendes,2025-01-16,2025-01-21,2025-01-21
+130,Jornada de cadastro digital #0130,Squad Onboarding,Experiência do Cliente,Cancelado,Alta,2,10,Manutenção,Isabela Nunes,2025-03-09,2025-03-17,2025-03-15
+131,Governança de dados mestres #0131,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Bug,Marina Oliveira,2024-04-20,2024-05-03,2024-05-03
+132,Governança de dados mestres #0132,Squad Dados,Data & Analytics,Aberto,Baixa,4,30,Bug,Olivia Castro,2024-01-27,2024-02-28,
+133,Documentação de APIs internas #0133,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Manutenção,Paulo Martins,2024-07-04,2024-07-14,2024-07-07
+134,Monitoramento de SLA por squad #0134,Squad Dados,Data & Analytics,Concluído,Crítica,1,5,Bug,Marina Oliveira,2025-01-20,2025-01-29,2025-01-25
+135,Otimização do onboarding mobile #0135,Squad Onboarding,Experiência do Cliente,Concluído,Baixa,4,30,Melhoria,Gabriela Lima,2024-06-08,2024-07-08,2024-06-11
+136,Implementação de MFA #0136,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Média,3,20,Melhoria,Karina Souza,2024-10-06,2024-10-27,2024-10-20
+137,Análise de score de crédito #0137,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Felipe Santos,2024-11-11,2024-11-29,2024-11-30
+138,Integração com bureau de crédito #0138,Squad Crédito,Produtos Financeiros,Em Andamento,Baixa,4,30,Bug,Elena Ferreira,2024-10-23,2024-11-25,
+139,Versionamento de contratos de API #0139,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Alta,2,10,Manutenção,Sergio Dias,2024-08-23,2024-09-05,
+140,Atualização de middleware #0140,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Melhoria,Paulo Martins,2024-11-16,2024-12-10,2024-11-30
+141,Implementação de Pix agendado #0141,Squad Pagamentos,Produtos Financeiros,Aberto,Crítica,1,5,Manutenção,Carla Mendes,2025-04-16,2025-04-24,
+142,Integração de API de Pagamentos #0142,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Ana Silva,2025-02-09,2025-03-03,2025-02-15
+143,Dashboard de KPIs executivos #0143,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Melhoria,Nelson Gomes,2024-12-25,2025-01-04,2024-12-29
+144,Monitoramento de SLA por squad #0144,Squad Dados,Data & Analytics,Concluído,Média,3,20,Bug,Marina Oliveira,2025-05-20,2025-06-14,2025-06-22
+145,Design system atualizado #0145,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Vera Lopes,2024-11-26,2024-12-19,2024-12-11
+146,Relatório de concessões mensais #0146,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Felipe Santos,2024-03-16,2024-03-28,2024-03-22
+147,Dashboard de inadimplência #0147,Squad Crédito,Produtos Financeiros,Em Andamento,Média,3,20,Compliance,Diego Rocha,2025-06-03,2025-06-27,
+148,Monitoramento de infraestrutura #0148,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Yuri Fernandes,2024-07-11,2024-08-03,2024-07-13
+149,Otimização de conciliação bancária #0149,Squad Pagamentos,Produtos Financeiros,Aberto,Baixa,4,30,Manutenção,Carla Mendes,2024-03-27,2024-04-26,
+150,Atualização de certificados SSL #0150,Squad Segurança,Tecnologia e Infraestrutura,Bloqueado,Média,3,20,Melhoria,João Cardoso,2025-01-07,2025-01-30,
+151,Otimização do onboarding mobile #0151,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Melhoria,Isabela Nunes,2024-12-08,2024-12-17,2024-12-15
+152,Modelagem de risco de crédito #0152,Squad Crédito,Produtos Financeiros,Em Andamento,Baixa,4,30,Compliance,Felipe Santos,2024-06-02,2024-07-05,
+153,Revisão de regras de aprovação #0153,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Compliance,Carla Mendes,2025-02-05,2025-02-15,2025-02-20
+154,Validação de documentos KYC #0154,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Bug,Isabela Nunes,2024-04-05,2024-04-29,2024-04-15
+155,Otimização de custos de cloud #0155,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Bug,Wagner Teixeira,2024-08-19,2024-08-29,2024-08-21
+156,Versionamento de contratos de API #0156,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Infraestrutura,Paulo Martins,2024-12-10,2025-01-09,2024-12-16
+157,Monitoramento de integrações #0157,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Infraestrutura,Sergio Dias,2025-03-24,2025-04-11,2025-04-01
+158,Automação de relatório executivo #0158,Squad Dados,Data & Analytics,Cancelado,Média,3,20,Bug,Marina Oliveira,2024-09-01,2024-09-23,2024-10-08
+159,Atualização de política de concessão #0159,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Elena Ferreira,2025-04-17,2025-05-09,2025-05-01
+160,A/B test de interface #0160,Squad Experiência,Experiência do Cliente,Bloqueado,Baixa,4,30,Desenvolvimento,Ulisses Faria,2024-02-23,2024-03-29,
+161,Melhoria de acessibilidade #0161,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Tatiana Ramos,2024-10-18,2024-11-06,2024-11-04
+162,Melhoria de acessibilidade #0162,Squad Experiência,Experiência do Cliente,Concluído,Crítica,1,5,Infraestrutura,Ulisses Faria,2024-12-23,2024-12-26,2024-12-25
+163,Redução de abandono no cadastro #0163,Squad Onboarding,Experiência do Cliente,Concluído,Crítica,1,5,Desenvolvimento,Henrique Alves,2024-04-11,2024-04-19,2024-04-16
+164,API Gateway para parceiros #0164,Squad Integrações,Tecnologia e Infraestrutura,Aberto,Alta,2,10,Bug,Renata Barbosa,2024-01-06,2024-01-15,
+165,Redesign do app mobile #0165,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Bug,Vera Lopes,2025-03-09,2025-03-28,2025-03-13
+166,Dashboard de inadimplência #0166,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Diego Rocha,2024-04-23,2024-05-18,2024-05-10
+167,Análise de score de crédito #0167,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Manutenção,Felipe Santos,2024-12-27,2025-01-07,2025-01-07
+168,Implementação de data quality #0168,Squad Dados,Data & Analytics,Em Andamento,Média,3,20,Compliance,Olivia Castro,2025-06-03,2025-06-21,
+169,Otimização de conciliação bancária #0169,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Carla Mendes,2024-01-17,2024-02-09,2024-02-08
+170,Implementação de Pix agendado #0170,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Ana Silva,2024-02-15,2024-03-09,2024-03-12
+171,Versionamento de contratos de API #0171,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Bug,Sergio Dias,2024-07-05,2024-07-25,
+172,Configuração de DR #0172,Squad Infraestrutura,Tecnologia e Infraestrutura,Cancelado,Crítica,1,5,Desenvolvimento,Wagner Teixeira,2024-02-12,2024-02-20,2024-02-20
+173,Correção de divergência em pagamentos #0173,Squad Pagamentos,Produtos Financeiros,Em Andamento,Média,3,20,Desenvolvimento,Ana Silva,2024-12-05,2024-12-27,
+174,Otimização do onboarding mobile #0174,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Manutenção,Henrique Alves,2024-12-13,2025-01-02,2024-12-30
+175,Atualização de middleware #0175,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Sergio Dias,2024-07-03,2024-07-25,2024-07-25
+176,Revisão de limites automáticos #0176,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Felipe Santos,2025-03-30,2025-04-22,2025-05-07
+177,Dashboard de KPIs executivos #0177,Squad Dados,Data & Analytics,Concluído,Média,3,20,Melhoria,Marina Oliveira,2024-03-17,2024-04-10,2024-04-21
+178,Implementação de IaC #0178,Squad Infraestrutura,Tecnologia e Infraestrutura,Em Andamento,Alta,2,10,Melhoria,Xenia Campos,2024-02-05,2024-02-15,
+179,Pipeline de dados de transações #0179,Squad Dados,Data & Analytics,Cancelado,Média,3,20,Infraestrutura,Marina Oliveira,2024-06-06,2024-07-01,2024-07-01
+180,Implementação de data quality #0180,Squad Dados,Data & Analytics,Cancelado,Média,3,20,Manutenção,Olivia Castro,2024-10-12,2024-11-02,2024-10-18
+181,Implementação de data quality #0181,Squad Dados,Data & Analytics,Cancelado,Baixa,4,30,Desenvolvimento,Nelson Gomes,2025-04-01,2025-05-02,2025-05-01
+182,Modelagem de risco de crédito #0182,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Diego Rocha,2025-03-31,2025-04-09,2025-04-15
+183,Validação de documentos KYC #0183,Squad Onboarding,Experiência do Cliente,Concluído,Crítica,1,5,Melhoria,Henrique Alves,2024-06-10,2024-06-15,2024-06-11
+184,Integração com sistema legado #0184,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Melhoria,Renata Barbosa,2025-01-12,2025-01-27,2025-01-22
+185,Otimização de conciliação bancária #0185,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Bruno Costa,2025-02-24,2025-03-20,2025-03-07
+186,Implementação de Pix agendado #0186,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Ana Silva,2024-07-05,2024-07-25,2024-07-26
+187,Implementação de Pix agendado #0187,Squad Pagamentos,Produtos Financeiros,Cancelado,Alta,2,10,Desenvolvimento,Bruno Costa,2024-08-18,2024-08-31,2024-08-23
+188,Atualização do fluxo de liquidação #0188,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Compliance,Bruno Costa,2024-05-08,2024-05-20,2024-05-19
+189,Monitoramento de SLA por squad #0189,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Olivia Castro,2024-12-11,2024-12-29,2024-12-13
+190,Documentação de APIs internas #0190,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Sergio Dias,2025-03-02,2025-03-10,2025-03-07
+191,Monitoramento de infraestrutura #0191,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Média,3,20,Bug,Yuri Fernandes,2025-02-19,2025-03-13,2025-02-25
+192,Validação de documentos KYC #0192,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Manutenção,Gabriela Lima,2024-11-16,2024-12-09,2024-12-16
+193,API Gateway para parceiros #0193,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Desenvolvimento,Paulo Martins,2025-04-22,2025-05-11,
+194,Correção de divergência em pagamentos #0194,Squad Pagamentos,Produtos Financeiros,Cancelado,Crítica,1,5,Infraestrutura,Carla Mendes,2025-03-04,2025-03-10,2025-03-24
+195,Redesign do app mobile #0195,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Desenvolvimento,Tatiana Ramos,2025-05-25,2025-06-19,2025-05-26
+196,Monitoramento de infraestrutura #0196,Squad Infraestrutura,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Compliance,Wagner Teixeira,2024-12-27,2025-01-14,
+197,Governança de dados mestres #0197,Squad Dados,Data & Analytics,Concluído,Baixa,4,30,Bug,Nelson Gomes,2024-01-09,2024-02-07,2024-02-19
+198,Monitoramento de integrações #0198,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Manutenção,Sergio Dias,2024-07-18,2024-08-10,2024-08-04
+199,Migração de SOAP para REST #0199,Squad Integrações,Tecnologia e Infraestrutura,Cancelado,Alta,2,10,Compliance,Sergio Dias,2024-05-01,2024-05-11,2024-05-07
+200,Atualização de servidores #0200,Squad Infraestrutura,Tecnologia e Infraestrutura,Aberto,Média,3,20,Desenvolvimento,Yuri Fernandes,2025-02-15,2025-03-05,
+201,Migração de SOAP para REST #0201,Squad Integrações,Tecnologia e Infraestrutura,Aberto,Baixa,4,30,Melhoria,Paulo Martins,2025-06-11,2025-07-11,
+202,Otimização do onboarding mobile #0202,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Henrique Alves,2024-12-10,2025-01-04,2024-12-11
+203,Melhoria no fluxo de boas-vindas #0203,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Manutenção,Henrique Alves,2024-01-28,2024-02-12,2024-02-10
+204,Monitoramento de SLA por squad #0204,Squad Dados,Data & Analytics,Concluído,Média,3,20,Melhoria,Marina Oliveira,2025-01-24,2025-02-13,2025-02-12
+205,Implementar novo gateway #0205,Squad Pagamentos,Produtos Financeiros,Concluído,Crítica,1,5,Manutenção,Ana Silva,2025-02-26,2025-03-04,2025-03-19
+206,Design system atualizado #0206,Squad Experiência,Experiência do Cliente,Em Andamento,Média,3,20,Desenvolvimento,Tatiana Ramos,2025-06-15,2025-07-06,
+207,Plano de resposta a incidentes #0207,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Média,3,20,Compliance,Karina Souza,2024-12-16,2025-01-08,2025-01-19
+208,Versionamento de contratos de API #0208,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Melhoria,Paulo Martins,2024-10-12,2024-10-24,2024-10-29
+209,Revisão de limites automáticos #0209,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Bug,Elena Ferreira,2025-05-06,2025-05-19,2025-05-31
+210,Revisão de limites automáticos #0210,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Melhoria,Elena Ferreira,2024-12-19,2025-01-08,2024-12-22
+211,Redesign do app mobile #0211,Squad Experiência,Experiência do Cliente,Cancelado,Média,3,20,Bug,Tatiana Ramos,2024-07-25,2024-08-16,2024-07-30
+212,Implementação de data quality #0212,Squad Dados,Data & Analytics,Em Andamento,Média,3,20,Desenvolvimento,Olivia Castro,2024-08-19,2024-09-09,
+213,Redução de abandono no cadastro #0213,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Bug,Gabriela Lima,2024-01-06,2024-01-26,2024-02-10
+214,Implementação de MFA #0214,Squad Segurança,Tecnologia e Infraestrutura,Bloqueado,Alta,2,10,Compliance,Karina Souza,2024-10-19,2024-10-27,
+215,Dashboard de KPIs executivos #0215,Squad Dados,Data & Analytics,Bloqueado,Alta,2,10,Bug,Marina Oliveira,2024-06-28,2024-07-12,
+216,Redesign do app mobile #0216,Squad Experiência,Experiência do Cliente,Bloqueado,Crítica,1,5,Bug,Ulisses Faria,2024-07-09,2024-07-16,
+217,Atualização de política de concessão #0217,Squad Crédito,Produtos Financeiros,Cancelado,Média,3,20,Infraestrutura,Elena Ferreira,2024-10-18,2024-11-12,2024-11-03
+218,Redesign do app mobile #0218,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Desenvolvimento,Tatiana Ramos,2024-12-04,2024-12-24,2024-12-10
+219,Monitoramento de integrações #0219,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Melhoria,Paulo Martins,2024-06-28,2024-07-22,2024-07-01
+220,Governança de dados mestres #0220,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Desenvolvimento,Nelson Gomes,2024-09-11,2024-09-19,2024-09-16
+221,Análise de score de crédito #0221,Squad Crédito,Produtos Financeiros,Em Andamento,Média,3,20,Desenvolvimento,Felipe Santos,2025-01-03,2025-01-24,
+222,Análise de vulnerabilidades #0222,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Bug,Lucas Pereira,2024-11-14,2024-11-23,2024-11-29
+223,Dashboard de inadimplência #0223,Squad Crédito,Produtos Financeiros,Concluído,Baixa,4,30,Melhoria,Elena Ferreira,2025-01-17,2025-02-20,2025-03-05
+224,Integração com sistema legado #0224,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Bug,Sergio Dias,2024-03-24,2024-04-28,2024-04-01
+225,Design system atualizado #0225,Squad Experiência,Experiência do Cliente,Concluído,Baixa,4,30,Desenvolvimento,Vera Lopes,2024-06-02,2024-07-02,2024-06-06
+226,Dashboard de inadimplência #0226,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Felipe Santos,2025-04-01,2025-04-19,2025-04-16
+227,Revisão de regras de aprovação #0227,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Carla Mendes,2024-01-23,2024-02-16,2024-01-30
+228,Implementar novo gateway #0228,Squad Pagamentos,Produtos Financeiros,Cancelado,Média,3,20,Bug,Carla Mendes,2024-03-02,2024-03-21,2024-03-12
+229,Implementar novo gateway #0229,Squad Pagamentos,Produtos Financeiros,Cancelado,Alta,2,10,Melhoria,Carla Mendes,2025-03-06,2025-03-19,2025-03-13
+230,Atualização do fluxo de liquidação #0230,Squad Pagamentos,Produtos Financeiros,Concluído,Baixa,4,30,Infraestrutura,Ana Silva,2024-12-22,2025-01-20,2025-01-08
+231,Monitoramento de integrações #0231,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Paulo Martins,2024-11-01,2024-11-16,2024-11-10
+232,Design system atualizado #0232,Squad Experiência,Experiência do Cliente,Aberto,Alta,2,10,Manutenção,Ulisses Faria,2024-07-12,2024-07-21,
+233,Melhoria no fluxo de boas-vindas #0233,Squad Onboarding,Experiência do Cliente,Em Andamento,Média,3,20,Infraestrutura,Gabriela Lima,2024-09-03,2024-09-24,
+234,Implementação de Pix agendado #0234,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Ana Silva,2024-09-07,2024-09-25,2024-09-14
+235,Otimização de performance UX #0235,Squad Experiência,Experiência do Cliente,Concluído,Crítica,1,5,Melhoria,Ulisses Faria,2024-08-27,2024-09-04,2024-09-18
+236,Modelagem de risco de crédito #0236,Squad Crédito,Produtos Financeiros,Concluído,Baixa,4,30,Compliance,Felipe Santos,2024-08-14,2024-09-17,2024-08-26
+237,Implementação de data quality #0237,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Nelson Gomes,2025-01-25,2025-02-17,2025-02-04
+238,Implementar novo gateway #0238,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Ana Silva,2024-11-03,2024-11-23,2024-12-02
+239,Implementação de IaC #0239,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Wagner Teixeira,2024-09-18,2024-10-09,2024-10-03
+240,Validação de documentos KYC #0240,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Bug,Gabriela Lima,2024-10-01,2024-10-25,2024-10-04
+241,Atualização de middleware #0241,Squad Integrações,Tecnologia e Infraestrutura,Bloqueado,Média,3,20,Bug,Paulo Martins,2025-05-05,2025-05-26,
+242,Modelagem de risco de crédito #0242,Squad Crédito,Produtos Financeiros,Bloqueado,Baixa,4,30,Desenvolvimento,Diego Rocha,2024-04-30,2024-06-04,
+243,Governança de dados mestres #0243,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Infraestrutura,Olivia Castro,2024-11-25,2024-12-07,2024-12-01
+244,Revisão de limites automáticos #0244,Squad Crédito,Produtos Financeiros,Bloqueado,Média,3,20,Melhoria,Diego Rocha,2025-04-25,2025-05-18,
+245,Formulário adaptativo de abertura de conta #0245,Squad Onboarding,Experiência do Cliente,Concluído,Crítica,1,5,Infraestrutura,Isabela Nunes,2024-05-29,2024-06-01,2024-06-11
+246,Otimização do onboarding mobile #0246,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Manutenção,Henrique Alves,2024-09-08,2024-09-23,2024-09-29
+247,Versionamento de contratos de API #0247,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Bug,Sergio Dias,2025-05-17,2025-06-11,
+248,Jornada de cadastro digital #0248,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Melhoria,Gabriela Lima,2024-03-01,2024-03-09,2024-03-02
+249,Melhoria no fluxo de boas-vindas #0249,Squad Onboarding,Experiência do Cliente,Concluído,Baixa,4,30,Desenvolvimento,Isabela Nunes,2024-06-03,2024-07-01,2024-06-05
+250,Catálogo de dados do domínio #0250,Squad Dados,Data & Analytics,Aberto,Baixa,4,30,Infraestrutura,Olivia Castro,2025-05-14,2025-06-11,
+251,Validação de documentos KYC #0251,Squad Onboarding,Experiência do Cliente,Concluído,Crítica,1,5,Bug,Isabela Nunes,2024-10-20,2024-10-23,2024-10-22
+252,Implementar novo gateway #0252,Squad Pagamentos,Produtos Financeiros,Concluído,Crítica,1,5,Desenvolvimento,Ana Silva,2024-09-15,2024-09-23,2024-09-21
+253,Atualização de certificados SSL #0253,Squad Segurança,Tecnologia e Infraestrutura,Em Andamento,Alta,2,10,Bug,Karina Souza,2024-03-23,2024-03-31,
+254,Melhoria no fluxo de boas-vindas #0254,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Isabela Nunes,2024-06-24,2024-07-13,2024-07-05
+255,Renovação de licenças #0255,Squad Infraestrutura,Tecnologia e Infraestrutura,Bloqueado,Baixa,4,30,Infraestrutura,Wagner Teixeira,2024-08-23,2024-09-23,
+256,Melhoria de acessibilidade #0256,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Desenvolvimento,Tatiana Ramos,2024-10-14,2024-11-01,2024-11-02
+257,Monitoramento de SLA por squad #0257,Squad Dados,Data & Analytics,Concluído,Média,3,20,Bug,Nelson Gomes,2024-03-19,2024-04-10,2024-04-01
+258,Pesquisa de satisfação NPS #0258,Squad Experiência,Experiência do Cliente,Em Andamento,Alta,2,10,Bug,Tatiana Ramos,2024-03-21,2024-04-03,
+259,Revisão de limites automáticos #0259,Squad Crédito,Produtos Financeiros,Aberto,Crítica,1,5,Melhoria,Felipe Santos,2025-02-10,2025-02-18,
+260,Integração com sistema legado #0260,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Sergio Dias,2025-01-19,2025-02-12,2025-02-01
+261,API Gateway para parceiros #0261,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Paulo Martins,2024-03-25,2024-04-06,2024-04-05
+262,Integração com sistema legado #0262,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Paulo Martins,2024-11-11,2024-11-26,2024-11-14
+263,Revisão de regras de aprovação #0263,Squad Pagamentos,Produtos Financeiros,Em Andamento,Média,3,20,Melhoria,Bruno Costa,2024-04-15,2024-05-03,
+264,Revisão de regras de aprovação #0264,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Bruno Costa,2024-01-13,2024-02-04,2024-02-16
+265,Otimização de performance UX #0265,Squad Experiência,Experiência do Cliente,Em Andamento,Baixa,4,30,Melhoria,Tatiana Ramos,2025-01-24,2025-02-23,
+266,Atualização de política de concessão #0266,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Elena Ferreira,2025-03-07,2025-03-19,2025-03-12
+267,Versionamento de contratos de API #0267,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Melhoria,Renata Barbosa,2024-04-19,2024-05-09,2024-05-15
+268,Dashboard de KPIs executivos #0268,Squad Dados,Data & Analytics,Concluído,Baixa,4,30,Manutenção,Nelson Gomes,2025-03-16,2025-04-15,2025-04-08
+269,Atualização de certificados SSL #0269,Squad Segurança,Tecnologia e Infraestrutura,Cancelado,Alta,2,10,Manutenção,Karina Souza,2024-10-25,2024-11-09,2024-11-15
+270,Modelagem de risco de crédito #0270,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Manutenção,Felipe Santos,2024-07-23,2024-08-12,2024-08-07
+271,Revisão de limites automáticos #0271,Squad Crédito,Produtos Financeiros,Em Andamento,Média,3,20,Bug,Diego Rocha,2025-02-22,2025-03-19,
+272,Dashboard de inadimplência #0272,Squad Crédito,Produtos Financeiros,Cancelado,Média,3,20,Bug,Elena Ferreira,2024-03-16,2024-04-10,2024-03-29
+273,Monitoramento de SLA por squad #0273,Squad Dados,Data & Analytics,Concluído,Baixa,4,30,Bug,Olivia Castro,2024-02-07,2024-03-11,2024-03-21
+274,Redução de fricção no checkout #0274,Squad Experiência,Experiência do Cliente,Concluído,Alta,2,10,Desenvolvimento,Vera Lopes,2024-12-29,2025-01-08,2025-01-05
+275,Formulário adaptativo de abertura de conta #0275,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Desenvolvimento,Gabriela Lima,2024-09-21,2024-10-12,2024-10-10
+276,Pipeline de dados de transações #0276,Squad Dados,Data & Analytics,Em Andamento,Média,3,20,Manutenção,Olivia Castro,2025-05-27,2025-06-16,
+277,Análise de vulnerabilidades #0277,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Infraestrutura,João Cardoso,2024-04-28,2024-05-08,2024-05-02
+278,Implementação de MFA #0278,Squad Segurança,Tecnologia e Infraestrutura,Aberto,Média,3,20,Manutenção,Lucas Pereira,2025-04-08,2025-05-01,
+279,Documentação de APIs internas #0279,Squad Integrações,Tecnologia e Infraestrutura,Bloqueado,Alta,2,10,Bug,Sergio Dias,2024-04-21,2024-05-01,
+280,Atualização de política de concessão #0280,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Felipe Santos,2025-03-12,2025-03-27,2025-03-15
+281,Dashboard de KPIs executivos #0281,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Olivia Castro,2024-07-21,2024-08-15,2024-08-13
+282,Revisão de limites automáticos #0282,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Bug,Diego Rocha,2024-04-14,2024-05-04,2024-04-18
+283,Catálogo de dados do domínio #0283,Squad Dados,Data & Analytics,Concluído,Média,3,20,Compliance,Nelson Gomes,2025-02-01,2025-02-25,2025-02-16
+284,Atualização do fluxo de liquidação #0284,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Carla Mendes,2024-03-27,2024-04-16,2024-03-31
+285,Formulário adaptativo de abertura de conta #0285,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Manutenção,Isabela Nunes,2024-05-21,2024-06-04,2024-05-30
+286,Otimização de performance UX #0286,Squad Experiência,Experiência do Cliente,Em Andamento,Baixa,4,30,Desenvolvimento,Tatiana Ramos,2025-05-16,2025-06-17,
+287,Pesquisa de satisfação NPS #0287,Squad Experiência,Experiência do Cliente,Em Andamento,Média,3,20,Infraestrutura,Tatiana Ramos,2025-05-11,2025-05-31,
+288,Migração para cloud #0288,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Média,3,20,Melhoria,Yuri Fernandes,2025-05-18,2025-06-11,2025-05-24
+289,Catálogo de dados do domínio #0289,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Marina Oliveira,2024-10-08,2024-10-29,2024-10-23
+290,Migração de SOAP para REST #0290,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Melhoria,Paulo Martins,2024-04-26,2024-05-18,2024-05-24
+291,Redução de fricção no checkout #0291,Squad Experiência,Experiência do Cliente,Em Andamento,Crítica,1,5,Bug,Vera Lopes,2024-08-11,2024-08-20,
+292,Automação de relatório executivo #0292,Squad Dados,Data & Analytics,Em Andamento,Alta,2,10,Infraestrutura,Marina Oliveira,2025-04-05,2025-04-17,
+293,Revisão de regras de aprovação #0293,Squad Pagamentos,Produtos Financeiros,Bloqueado,Baixa,4,30,Desenvolvimento,Ana Silva,2024-08-02,2024-09-04,
+294,Governança de dados mestres #0294,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Desenvolvimento,Marina Oliveira,2024-07-30,2024-08-07,2024-08-02
+295,Migração para cloud #0295,Squad Infraestrutura,Tecnologia e Infraestrutura,Cancelado,Alta,2,10,Melhoria,Yuri Fernandes,2024-04-07,2024-04-17,2024-05-02
+296,Implementação de IaC #0296,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Desenvolvimento,Wagner Teixeira,2024-09-12,2024-10-12,2024-10-25
+297,Implementação de data quality #0297,Squad Dados,Data & Analytics,Concluído,Média,3,20,Melhoria,Nelson Gomes,2025-02-28,2025-03-24,2025-03-03
+298,Pipeline de dados de transações #0298,Squad Dados,Data & Analytics,Em Andamento,Alta,2,10,Infraestrutura,Nelson Gomes,2025-04-10,2025-04-25,
+299,Redução de fricção no checkout #0299,Squad Experiência,Experiência do Cliente,Concluído,Baixa,4,30,Desenvolvimento,Ulisses Faria,2025-01-01,2025-01-30,2025-01-15
+300,Análise de score de crédito #0300,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Bug,Elena Ferreira,2024-05-13,2024-05-28,2024-06-10
+301,Atualização do fluxo de liquidação #0301,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Ana Silva,2024-05-07,2024-05-27,2024-05-21
+302,Configuração de DR #0302,Squad Infraestrutura,Tecnologia e Infraestrutura,Em Andamento,Baixa,4,30,Infraestrutura,Xenia Campos,2024-06-11,2024-07-13,
+303,Atualização de política de concessão #0303,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Infraestrutura,Diego Rocha,2024-02-23,2024-03-18,2024-03-31
+304,Validação de documentos KYC #0304,Squad Onboarding,Experiência do Cliente,Em Andamento,Crítica,1,5,Desenvolvimento,Gabriela Lima,2025-05-03,2025-05-07,
+305,Implementação de data quality #0305,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Nelson Gomes,2024-05-03,2024-05-27,2024-05-11
+306,Atualização do fluxo de liquidação #0306,Squad Pagamentos,Produtos Financeiros,Concluído,Baixa,4,30,Desenvolvimento,Bruno Costa,2024-11-02,2024-12-02,2024-12-16
+307,Monitoramento de SLA por squad #0307,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Olivia Castro,2024-01-09,2024-01-29,2024-02-09
+308,Integração de API de Pagamentos #0308,Squad Pagamentos,Produtos Financeiros,Em Andamento,Média,3,20,Bug,Ana Silva,2024-03-29,2024-04-17,
+309,Catálogo de dados do domínio #0309,Squad Dados,Data & Analytics,Concluído,Média,3,20,Compliance,Nelson Gomes,2024-05-23,2024-06-13,2024-06-10
+310,Monitoramento de SLA por squad #0310,Squad Dados,Data & Analytics,Concluído,Média,3,20,Bug,Olivia Castro,2024-01-28,2024-02-19,2024-02-04
+311,Redução de abandono no cadastro #0311,Squad Onboarding,Experiência do Cliente,Em Andamento,Média,3,20,Bug,Gabriela Lima,2025-05-21,2025-06-14,
+312,Automação de relatório executivo #0312,Squad Dados,Data & Analytics,Em Andamento,Crítica,1,5,Infraestrutura,Marina Oliveira,2025-01-04,2025-01-12,
+313,Redesign do app mobile #0313,Squad Experiência,Experiência do Cliente,Aberto,Média,3,20,Melhoria,Tatiana Ramos,2025-04-27,2025-05-16,
+314,Revisão de regras de aprovação #0314,Squad Pagamentos,Produtos Financeiros,Em Andamento,Alta,2,10,Infraestrutura,Bruno Costa,2025-06-02,2025-06-14,
+315,Integração com sistema legado #0315,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Manutenção,Sergio Dias,2024-06-05,2024-06-27,
+316,Monitoramento de SLA por squad #0316,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Bug,Olivia Castro,2024-11-30,2024-12-14,2024-12-25
+317,Implementação de data quality #0317,Squad Dados,Data & Analytics,Em Andamento,Alta,2,10,Manutenção,Marina Oliveira,2024-02-29,2024-03-11,
+318,Atualização do fluxo de liquidação #0318,Squad Pagamentos,Produtos Financeiros,Aberto,Média,3,20,Desenvolvimento,Carla Mendes,2024-06-28,2024-07-17,
+319,API Gateway para parceiros #0319,Squad Integrações,Tecnologia e Infraestrutura,Aberto,Alta,2,10,Compliance,Sergio Dias,2025-06-13,2025-06-25,
+320,Atualização de middleware #0320,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Bug,Paulo Martins,2024-01-31,2024-03-04,2024-02-05
+321,Versionamento de contratos de API #0321,Squad Integrações,Tecnologia e Infraestrutura,Aberto,Média,3,20,Desenvolvimento,Renata Barbosa,2025-06-07,2025-06-30,
+322,Dashboard de KPIs executivos #0322,Squad Dados,Data & Analytics,Concluído,Média,3,20,Desenvolvimento,Marina Oliveira,2024-04-28,2024-05-19,2024-04-29
+323,Correção de divergência em pagamentos #0323,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Infraestrutura,Ana Silva,2024-02-06,2024-03-01,2024-03-01
+324,Integração com bureau de crédito #0324,Squad Crédito,Produtos Financeiros,Concluído,Crítica,1,5,Manutenção,Felipe Santos,2024-02-23,2024-02-28,2024-02-24
+325,Correção de divergência em pagamentos #0325,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Bruno Costa,2024-12-01,2024-12-20,2024-12-08
+326,Catálogo de dados do domínio #0326,Squad Dados,Data & Analytics,Cancelado,Alta,2,10,Melhoria,Nelson Gomes,2025-01-12,2025-01-27,2025-02-08
+327,Atualização de middleware #0327,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Renata Barbosa,2024-01-25,2024-02-05,2024-01-26
+328,Implementar novo gateway #0328,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Carla Mendes,2024-11-10,2024-11-29,2024-12-06
+329,Implementação de IaC #0329,Squad Infraestrutura,Tecnologia e Infraestrutura,Bloqueado,Baixa,4,30,Desenvolvimento,Xenia Campos,2024-04-05,2024-05-03,
+330,Pipeline de dados de transações #0330,Squad Dados,Data & Analytics,Concluído,Média,3,20,Manutenção,Olivia Castro,2024-03-27,2024-04-15,2024-04-09
+331,Implementação de data quality #0331,Squad Dados,Data & Analytics,Concluído,Crítica,1,5,Bug,Marina Oliveira,2024-08-30,2024-09-06,2024-09-06
+332,Integração com sistema legado #0332,Squad Integrações,Tecnologia e Infraestrutura,Cancelado,Média,3,20,Manutenção,Renata Barbosa,2024-08-27,2024-09-15,2024-09-15
+333,Implementar novo gateway #0333,Squad Pagamentos,Produtos Financeiros,Cancelado,Alta,2,10,Melhoria,Bruno Costa,2024-05-03,2024-05-16,2024-05-08
+334,Análise de score de crédito #0334,Squad Crédito,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Felipe Santos,2024-11-07,2024-11-15,2024-11-18
+335,Versionamento de contratos de API #0335,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Manutenção,Paulo Martins,2024-11-02,2024-12-04,2024-11-28
+336,Implementação de MFA #0336,Squad Segurança,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Desenvolvimento,Karina Souza,2024-04-14,2024-05-04,
+337,Redesign do app mobile #0337,Squad Experiência,Experiência do Cliente,Concluído,Baixa,4,30,Desenvolvimento,Ulisses Faria,2025-01-16,2025-02-14,2025-02-12
+338,Implementação de Pix agendado #0338,Squad Pagamentos,Produtos Financeiros,Bloqueado,Crítica,1,5,Infraestrutura,Bruno Costa,2024-05-11,2024-05-15,
+339,Monitoramento de integrações #0339,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Infraestrutura,Paulo Martins,2024-06-21,2024-07-05,2024-06-22
+340,Catálogo de dados do domínio #0340,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Desenvolvimento,Marina Oliveira,2024-10-08,2024-10-20,2024-10-18
+341,Implementação de data quality #0341,Squad Dados,Data & Analytics,Aberto,Média,3,20,Melhoria,Olivia Castro,2025-05-05,2025-05-23,
+342,Implementar novo gateway #0342,Squad Pagamentos,Produtos Financeiros,Cancelado,Alta,2,10,Infraestrutura,Carla Mendes,2024-09-12,2024-09-20,2024-09-26
+343,Dashboard de KPIs executivos #0343,Squad Dados,Data & Analytics,Concluído,Média,3,20,Infraestrutura,Olivia Castro,2024-11-25,2024-12-19,2024-12-15
+344,Atualização do fluxo de liquidação #0344,Squad Pagamentos,Produtos Financeiros,Cancelado,Baixa,4,30,Desenvolvimento,Bruno Costa,2025-01-01,2025-02-01,2025-01-23
+345,Atualização de política de concessão #0345,Squad Crédito,Produtos Financeiros,Concluído,Baixa,4,30,Infraestrutura,Diego Rocha,2024-08-12,2024-09-15,2024-09-29
+346,Revisão de regras de aprovação #0346,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Bug,Carla Mendes,2025-01-02,2025-01-20,2025-01-07
+347,Otimização de custos de cloud #0347,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Bug,Xenia Campos,2024-11-12,2024-12-12,2024-11-20
+348,Análise de score de crédito #0348,Squad Crédito,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Felipe Santos,2024-07-25,2024-08-14,2024-08-05
+349,Revisão de regras de aprovação #0349,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Infraestrutura,Ana Silva,2025-01-08,2025-01-27,2025-02-03
+350,Otimização de conciliação bancária #0350,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Ana Silva,2025-03-23,2025-04-07,2025-04-01
+351,Melhoria de acessibilidade #0351,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Manutenção,Vera Lopes,2024-06-28,2024-07-22,2024-07-03
+352,API Gateway para parceiros #0352,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Infraestrutura,Renata Barbosa,2024-02-03,2024-03-04,2024-03-14
+353,Pipeline de dados de transações #0353,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Melhoria,Nelson Gomes,2024-03-20,2024-03-31,2024-03-31
+354,Melhoria de acessibilidade #0354,Squad Experiência,Experiência do Cliente,Em Andamento,Média,3,20,Bug,Ulisses Faria,2025-04-02,2025-04-20,
+355,Monitoramento de integrações #0355,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Bug,Sergio Dias,2024-01-02,2024-01-20,2024-01-23
+356,Implementação de MFA #0356,Squad Segurança,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Melhoria,João Cardoso,2025-05-05,2025-05-26,
+357,Documentação de APIs internas #0357,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Crítica,1,5,Desenvolvimento,Renata Barbosa,2024-04-17,2024-04-21,2024-04-24
+358,Implementar novo gateway #0358,Squad Pagamentos,Produtos Financeiros,Concluído,Baixa,4,30,Compliance,Bruno Costa,2025-05-09,2025-06-06,2025-05-29
+359,Integração de API de Pagamentos #0359,Squad Pagamentos,Produtos Financeiros,Concluído,Alta,2,10,Desenvolvimento,Ana Silva,2025-02-23,2025-03-07,2025-02-25
+360,Validação de documentos KYC #0360,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Gabriela Lima,2025-01-04,2025-01-22,2025-01-20
+361,Implementar novo gateway #0361,Squad Pagamentos,Produtos Financeiros,Em Andamento,Alta,2,10,Melhoria,Ana Silva,2025-04-29,2025-05-08,
+362,Atualização de certificados SSL #0362,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Desenvolvimento,Lucas Pereira,2025-01-31,2025-03-02,2025-02-06
+363,Otimização de conciliação bancária #0363,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Bruno Costa,2024-03-04,2024-03-24,2024-03-07
+364,Melhoria no fluxo de boas-vindas #0364,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Compliance,Isabela Nunes,2024-08-20,2024-09-07,2024-09-14
+365,Automação de relatório executivo #0365,Squad Dados,Data & Analytics,Aberto,Baixa,4,30,Melhoria,Marina Oliveira,2025-05-02,2025-06-03,
+366,API Gateway para parceiros #0366,Squad Integrações,Tecnologia e Infraestrutura,Cancelado,Média,3,20,Infraestrutura,Sergio Dias,2024-05-30,2024-06-18,2024-06-05
+367,Atualização de middleware #0367,Squad Integrações,Tecnologia e Infraestrutura,Cancelado,Alta,2,10,Manutenção,Sergio Dias,2025-03-21,2025-04-01,2025-03-31
+368,Redução de abandono no cadastro #0368,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Bug,Gabriela Lima,2025-02-01,2025-02-25,2025-03-06
+369,Redesign do app mobile #0369,Squad Experiência,Experiência do Cliente,Concluído,Crítica,1,5,Bug,Vera Lopes,2025-03-05,2025-03-09,2025-03-06
+370,Catálogo de dados do domínio #0370,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Desenvolvimento,Olivia Castro,2024-12-18,2025-01-01,2024-12-28
+371,Revisão de acessos privilegiados #0371,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Manutenção,Lucas Pereira,2025-02-15,2025-02-23,2025-03-07
+372,Implementação de Pix agendado #0372,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Bruno Costa,2024-01-21,2024-02-13,2024-01-30
+373,Auditoria de logs de segurança #0373,Squad Segurança,Tecnologia e Infraestrutura,Cancelado,Média,3,20,Desenvolvimento,João Cardoso,2024-05-17,2024-06-08,2024-05-28
+374,Atualização de middleware #0374,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Renata Barbosa,2024-08-04,2024-08-28,2024-09-11
+375,Redução de fricção no checkout #0375,Squad Experiência,Experiência do Cliente,Aberto,Média,3,20,Desenvolvimento,Ulisses Faria,2025-06-02,2025-06-26,
+376,Pipeline de dados de transações #0376,Squad Dados,Data & Analytics,Aberto,Média,3,20,Desenvolvimento,Marina Oliveira,2024-02-29,2024-03-21,
+377,Redesign do app mobile #0377,Squad Experiência,Experiência do Cliente,Em Andamento,Média,3,20,Desenvolvimento,Ulisses Faria,2025-06-01,2025-06-25,
+378,Automação de relatório executivo #0378,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Melhoria,Nelson Gomes,2024-06-30,2024-07-15,2024-07-03
+379,Redução de fricção no checkout #0379,Squad Experiência,Experiência do Cliente,Aberto,Média,3,20,Bug,Ulisses Faria,2024-01-29,2024-02-22,
+380,Automação de relatório executivo #0380,Squad Dados,Data & Analytics,Concluído,Baixa,4,30,Infraestrutura,Olivia Castro,2024-08-18,2024-09-18,2024-08-19
+381,Documentação de APIs internas #0381,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Desenvolvimento,Paulo Martins,2024-06-26,2024-07-14,2024-07-06
+382,Otimização de custos de cloud #0382,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Média,3,20,Manutenção,Xenia Campos,2024-12-23,2025-01-17,2025-01-14
+383,Otimização de performance UX #0383,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Desenvolvimento,Vera Lopes,2025-01-18,2025-02-09,2025-01-21
+384,Implementação de IaC #0384,Squad Infraestrutura,Tecnologia e Infraestrutura,Em Andamento,Média,3,20,Infraestrutura,Xenia Campos,2024-11-01,2024-11-22,
+385,Integração com bureau de crédito #0385,Squad Crédito,Produtos Financeiros,Concluído,Crítica,1,5,Infraestrutura,Felipe Santos,2025-02-17,2025-02-25,2025-03-08
+386,Otimização de custos de cloud #0386,Squad Infraestrutura,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Manutenção,Xenia Campos,2024-02-06,2024-02-17,2024-02-17
+387,Catálogo de dados do domínio #0387,Squad Dados,Data & Analytics,Concluído,Média,3,20,Infraestrutura,Nelson Gomes,2025-06-03,2025-06-25,2025-06-30
+388,Otimização de conciliação bancária #0388,Squad Pagamentos,Produtos Financeiros,Concluído,Crítica,1,5,Desenvolvimento,Bruno Costa,2024-07-06,2024-07-14,2024-07-10
+389,Redução de fricção no checkout #0389,Squad Experiência,Experiência do Cliente,Concluído,Média,3,20,Infraestrutura,Ulisses Faria,2024-09-23,2024-10-15,2024-09-25
+390,Implementação de data quality #0390,Squad Dados,Data & Analytics,Bloqueado,Média,3,20,Melhoria,Nelson Gomes,2024-07-18,2024-08-06,
+391,Implementação de data quality #0391,Squad Dados,Data & Analytics,Concluído,Média,3,20,Infraestrutura,Marina Oliveira,2024-05-20,2024-06-10,2024-06-25
+392,Integração de API de Pagamentos #0392,Squad Pagamentos,Produtos Financeiros,Concluído,Baixa,4,30,Desenvolvimento,Ana Silva,2025-05-14,2025-06-16,2025-05-18
+393,Análise de vulnerabilidades #0393,Squad Segurança,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Bug,Lucas Pereira,2024-06-11,2024-06-26,2024-06-29
+394,Validação de documentos KYC #0394,Squad Onboarding,Experiência do Cliente,Aberto,Média,3,20,Manutenção,Henrique Alves,2025-01-27,2025-02-14,
+395,API Gateway para parceiros #0395,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Infraestrutura,Sergio Dias,2024-07-14,2024-08-11,2024-07-22
+396,Versionamento de contratos de API #0396,Squad Integrações,Tecnologia e Infraestrutura,Em Andamento,Alta,2,10,Desenvolvimento,Renata Barbosa,2025-05-30,2025-06-11,
+397,Atualização do fluxo de liquidação #0397,Squad Pagamentos,Produtos Financeiros,Bloqueado,Baixa,4,30,Melhoria,Carla Mendes,2024-12-11,2025-01-14,
+398,Validação de documentos KYC #0398,Squad Onboarding,Experiência do Cliente,Aberto,Baixa,4,30,Manutenção,Gabriela Lima,2024-06-17,2024-07-21,
+399,Documentação de APIs internas #0399,Squad Integrações,Tecnologia e Infraestrutura,Aberto,Alta,2,10,Bug,Sergio Dias,2025-05-31,2025-06-10,
+400,Pipeline de dados de transações #0400,Squad Dados,Data & Analytics,Concluído,Crítica,1,5,Infraestrutura,Nelson Gomes,2024-02-19,2024-02-22,2024-02-20
+401,Documentação de APIs internas #0401,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Manutenção,Sergio Dias,2024-09-15,2024-10-10,2024-10-07
+402,Otimização de conciliação bancária #0402,Squad Pagamentos,Produtos Financeiros,Concluído,Média,3,20,Desenvolvimento,Carla Mendes,2024-10-03,2024-10-23,2024-11-01
+403,Governança de dados mestres #0403,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Bug,Nelson Gomes,2024-07-22,2024-08-02,2024-08-06
+404,Integração com sistema legado #0404,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Alta,2,10,Desenvolvimento,Renata Barbosa,2024-07-31,2024-08-15,2024-08-11
+405,Design system atualizado #0405,Squad Experiência,Experiência do Cliente,Concluído,Baixa,4,30,Bug,Tatiana Ramos,2024-04-02,2024-05-01,2024-04-11
+406,Revisão de limites automáticos #0406,Squad Crédito,Produtos Financeiros,Concluído,Baixa,4,30,Desenvolvimento,Elena Ferreira,2024-02-21,2024-03-21,2024-04-04
+407,Validação de documentos KYC #0407,Squad Onboarding,Experiência do Cliente,Aberto,Média,3,20,Manutenção,Gabriela Lima,2024-04-07,2024-04-25,
+408,Implementação de data quality #0408,Squad Dados,Data & Analytics,Concluído,Alta,2,10,Manutenção,Nelson Gomes,2024-10-01,2024-10-10,2024-10-03
+409,Validação de documentos KYC #0409,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Bug,Isabela Nunes,2025-05-04,2025-05-28,2025-05-30
+410,Monitoramento de integrações #0410,Squad Integrações,Tecnologia e Infraestrutura,Bloqueado,Crítica,1,5,Infraestrutura,Paulo Martins,2024-04-16,2024-04-25,
+411,Versionamento de contratos de API #0411,Squad Integrações,Tecnologia e Infraestrutura,Bloqueado,Média,3,20,Desenvolvimento,Renata Barbosa,2025-01-02,2025-01-20,
+412,Integração com sistema legado #0412,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Baixa,4,30,Melhoria,Renata Barbosa,2024-04-25,2024-05-29,2024-05-16
+413,Integração com sistema legado #0413,Squad Integrações,Tecnologia e Infraestrutura,Concluído,Média,3,20,Bug,Sergio Dias,2024-08-17,2024-09-09,2024-09-06
+414,Jornada de cadastro digital #0414,Squad Onboarding,Experiência do Cliente,Concluído,Média,3,20,Melhoria,Isabela Nunes,2025-01-29,2025-02-18,2025-02-18
+415,Implementar novo gateway #0415,Squad Pagamentos,Produtos Financeiros,Aberto,Baixa,4,30,Melhoria,Bruno Costa,2025-05-22,2025-06-21,
+416,Redução de abandono no cadastro #0416,Squad Onboarding,Experiência do Cliente,Concluído,Alta,2,10,Desenvolvimento,Isabela Nunes,2024-08-16,2024-08-30,2024-08-24
+417,Integração com sistema legado #0417,Squad Integrações,Tecnologia e Infraestrutura,Cancelado,Média,3,20,Infraestrutura,Renata Barbosa,2024-11-19,2024-12-08,2024-12-09
+418,Otimização do onboarding mobile #0418,Squad Onboarding,Experiência do Cliente,Concluído,Crítica,1,5,Melhoria,Gabriela Lima,2024-11-07,2024-11-13,2024-11-10
+419,Redesign do app mobile #0419,Squad Experiência,Experiência do Cliente,Concluído,Baixa,4,30,Bug,Ulisses Faria,2025-04-29,2025-06-01,2025-05-14
+420,Validação de documentos KYC #0420,Squad Onboarding,Experiência do Cliente,Aberto,Baixa,4,30,Compliance,Henrique Alves,2025-01-17,2025-02-15,
