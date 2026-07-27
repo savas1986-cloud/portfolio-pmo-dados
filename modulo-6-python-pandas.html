@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 6 — Python para Análise (Pandas)</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #EFF4FF;
+      --sidebar-bg: #1E3A8A;
+      --sidebar-accent: #60A5FA;
+      --accent: #2563EB;
+      --accent2: #7C3AED;
+      --surface: #FFFFFF;
+      --border: #E0E7FF;
+      --text: #0F172A;
+      --muted: #64748B;
+      --amber: #D97706;
+      --green: #059669;
+      --red: #DC2626;
+      --code-bg: #EEF2FF;
+      --code: #4338CA;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      font-size: 14px;
+    }
+
+    /* ── SIDEBAR ─────────────────────────────── */
+    .sidebar {
+      width: 236px; min-width: 236px;
+      background: var(--sidebar-bg);
+      position: sticky; top: 0; height: 100vh;
+      overflow-y: auto;
+      padding: 1.75rem 1.1rem 1.5rem;
+      display: flex; flex-direction: column;
+    }
+    .sb-badge { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #F59E0B; margin-bottom: .4rem; }
+    .sb-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.25rem; color: #fff; line-height: 1.25; }
+    .sb-meta { margin-top: .55rem; font-size: 11px; color: rgba(255,255,255,.4); line-height: 1.75; }
+    .sb-divider { height: 1px; background: rgba(255,255,255,.1); margin: 1.1rem 0; }
+    .sb-section-label { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.28); margin: .9rem 0 .3rem; }
+    .sb-nav a { display: flex; align-items: center; gap: .45rem; padding: .38rem .6rem; border-radius: 6px; font-size: 12px; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: 1px; transition: all .15s; }
+    .sb-nav a:hover, .sb-nav a.active { background: rgba(255,255,255,.1); color: #fff; }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sidebar-accent); flex-shrink: 0; }
+    .dot.done { background: #34D399; }
+    .dot.pending { background: rgba(255,255,255,.2); }
+    .sb-footer { margin-top: auto; padding-top: 1.25rem; }
+    .sb-prog-label { font-size: 10px; color: rgba(255,255,255,.35); margin-bottom: .4rem; }
+    .sb-prog-track { height: 4px; background: rgba(255,255,255,.12); border-radius: 2px; overflow: hidden; }
+    .sb-prog-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #60A5FA, #34D399); border-radius: 2px; }
+    .sb-prog-status { font-size: 10px; color: #34D399; margin-top: .4rem; font-weight: 500; }
+
+    /* ── MAIN ────────────────────────────────── */
+    .main { flex: 1; max-width: 820px; padding: 2.25rem 2.75rem 4rem; overflow-x: hidden; }
+    .anchor { display: block; position: relative; top: -20px; visibility: hidden; height: 0; }
+
+    /* ── PIPELINE CARD ───────────────────────── */
+    .pipeline-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 2.25rem; box-shadow: 0 1px 4px rgba(37,99,235,.06); }
+    .pipeline-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: .85rem; }
+    .pipeline-flow { display: flex; align-items: center; overflow-x: auto; padding-bottom: .25rem; }
+    .p-step { flex-shrink: 0; text-align: center; }
+    .p-node { display: inline-block; background: var(--bg); border: 1.5px solid #C7D7FE; border-radius: 8px; padding: .45rem .9rem; transition: all .2s; }
+    .p-node:hover { border-color: var(--accent); background: #EFF6FF; }
+    .p-node.active-node { border-color: var(--accent2); background: #EDE9FE; box-shadow: 0 0 0 3px rgba(124,58,237,.15); }
+    .p-node-name { font-size: 11px; font-weight: 600; color: var(--accent); }
+    .p-node-name.highlight { color: #7C3AED; }
+    .p-node-sub { font-size: 9px; color: var(--muted); margin-top: 2px; }
+    .p-arrow { font-size: 1rem; color: #C7D7FE; padding: 0 .35rem; flex-shrink: 0; }
+    .pipeline-note { margin-top: .9rem; font-size: 11px; color: var(--muted); font-style: italic; }
+
+    /* ── SECTION ─────────────────────────────── */
+    .section { margin-bottom: 2.5rem; }
+    .section-head { display: flex; align-items: center; gap: .65rem; margin-bottom: 1.2rem; padding-bottom: .6rem; border-bottom: 1.5px solid var(--border); }
+    .section-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: .95rem; background: #EEF2FF; flex-shrink: 0; }
+    .section-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.3rem; color: var(--text); }
+
+    /* ── SETUP STEPS ─────────────────────────── */
+    .setup-steps { display: flex; flex-direction: column; gap: .85rem; }
+    .setup-step { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-content { flex: 1; }
+    .step-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: .3rem; }
+    .step-desc { font-size: 12px; color: var(--muted); line-height: 1.65; }
+    .step-link { font-size: 11px; font-family: 'JetBrains Mono', monospace; background: var(--code-bg); color: var(--code); padding: .3rem .6rem; border-radius: 5px; display: inline-block; margin-top: .4rem; }
+    .step-verify { margin-top: .6rem; padding: .5rem .75rem; background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 6px; font-size: 11px; color: #065F46; }
+
+    /* ── CONCEITO GRID ───────────────────────── */
+    .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+    .concept-card { background: var(--surface); border: 1px solid var(--border); border-radius: 9px; padding: .95rem 1.1rem; position: relative; overflow: hidden; }
+    .concept-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+    .c-blue::before   { background: var(--accent); }
+    .c-purple::before { background: var(--accent2); }
+    .c-amber::before  { background: var(--amber); }
+    .c-green::before  { background: var(--green); }
+    .c-red::before    { background: var(--red); }
+    .c-teal::before   { background: #0D9488; }
+    .c-full { grid-column: 1 / -1; }
+    .cc-title { font-size: 12px; font-weight: 600; margin-bottom: .35rem; }
+    .cc-text { font-size: 12px; color: var(--muted); line-height: 1.65; }
+    .cc-example { margin-top: .55rem; padding: .55rem .75rem; background: #0D1117; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #7EE787; line-height: 1.8; white-space: pre; overflow-x: auto; }
+    .cc-sub { font-size: 11px; color: var(--muted); margin-top: .55rem; padding-top: .55rem; border-top: 1px solid var(--border); line-height: 1.6; }
+
+    /* ── DAX CODE ────────────────────────────── */
+    .dax-block { background: #0D1117; border-radius: 8px; padding: 1.1rem 1.4rem; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; line-height: 1.8; overflow-x: auto; white-space: pre; margin: .75rem 0; }
+    .measure-name { color: #79C0FF; font-weight: 500; } /* nome da medida / ref de medida */
+    .kw  { color: #FF7B72; }   /* VAR RETURN MONTH */
+    .fn  { color: #D2A8FF; }   /* CALCULATE TOTALYTD DATEADD DIVIDE IF ABS */
+    .str { color: #A5D6FF; }   /* "mmmm" "pp" */
+    .num { color: #F8C555; }   /* -1, 0.85, 100 */
+    .cm  { color: #8B949E; font-style: italic; } /* comentários */
+    .col { color: #7EE787; }   /* [Date] [DataAbertura] */
+    .tbl { color: #FFA657; }   /* 'Calendário' demandas */
+
+    /* ── RESULT TABLE ────────────────────────── */
+    .result-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: .65rem 0 .4rem; }
+    .result-table { width: 100%; border-collapse: collapse; font-size: 11.5px; background: var(--surface); border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+    .result-table th { background: #EEF2FF; color: var(--accent); padding: .45rem .75rem; text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+    .result-table td { padding: .5rem .75rem; border-top: 1px solid var(--border); color: var(--text); line-height: 1.45; }
+    .result-table tr:hover td { background: #F5F8FF; }
+    .result-meta { font-size: 10.5px; color: var(--green); font-weight: 500; margin-top: .4rem; font-family: 'JetBrains Mono', monospace; }
+
+    /* ── OPERATOR TABLE ──────────────────────── */
+    .op-table { width: 100%; border-collapse: collapse; font-size: 12px; background: var(--surface); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); margin-top: .65rem; }
+    .op-table th { background: var(--sidebar-bg); color: #fff; padding: .5rem .85rem; text-align: left; font-size: 10.5px; font-weight: 500; }
+    .op-table td { padding: .55rem .85rem; border-top: 1px solid var(--border); line-height: 1.5; }
+    .op-table tr:hover td { background: #F5F8FF; }
+    .op-table code { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; background: var(--code-bg); color: var(--code); padding: 1px 5px; border-radius: 3px; }
+
+    /* ── ERROR BLOCK ─────────────────────────── */
+    .error-block { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 1rem 1.2rem; margin: .75rem 0; }
+    .error-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+    .error-ico { font-size: 1rem; }
+    .error-title { font-size: 12.5px; font-weight: 600; color: var(--red); }
+    .error-msg { font-family: 'JetBrains Mono', monospace; font-size: 10px; background: #0D1117; color: #FF7B72; padding: .55rem .75rem; border-radius: 5px; margin: .5rem 0; }
+    .error-fix { font-size: 12px; color: #991B1B; line-height: 1.65; }
+    .fix-block { background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 8px; padding: .85rem 1rem; margin-top: .65rem; }
+    .fix-title { font-size: 11px; font-weight: 700; color: #065F46; margin-bottom: .4rem; }
+
+    /* ── EXERCISES ───────────────────────────── */
+    .ex-block { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: .85rem; overflow: hidden; }
+    .ex-header { display: flex; align-items: center; gap: .75rem; padding: .95rem 1.15rem; cursor: pointer; user-select: none; }
+    .ex-header:hover { background: #F5F8FF; }
+    .ex-num { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .ex-title { font-size: 13px; font-weight: 500; flex: 1; }
+    .ex-badge { font-size: 10px; padding: 2px 8px; border-radius: 20px; background: #D1FAE5; color: #065F46; font-weight: 500; flex-shrink: 0; }
+    .ex-badge.pending { background: #EEF2FF; color: #4338CA; }
+    .ex-chevron { font-size: 10px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+    .ex-header.is-open .ex-chevron { transform: rotate(180deg); }
+    .ex-body { display: none; padding: 1rem 1.15rem 1.25rem; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.65; color: var(--muted); }
+    .ex-body.is-open { display: block; }
+    .ex-label { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: .75rem 0 .3rem; }
+    .ex-label:first-child { margin-top: 0; }
+
+    /* ── INSIGHTS ────────────────────────────── */
+    .insight { display: flex; gap: .85rem; padding: .95rem 1.1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; margin-bottom: .75rem; }
+    .insight-ico { font-size: 1.2rem; flex-shrink: 0; margin-top: .05rem; }
+    .insight-title { font-size: 12.5px; font-weight: 600; margin-bottom: .25rem; color: var(--text); }
+    .insight-text { font-size: 12px; color: var(--muted); line-height: 1.65; }
+
+    /* ── TAGS ────────────────────────────────── */
+    .tag { display: inline-block; font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; text-transform: uppercase; letter-spacing: .04em; }
+    .tag-blue   { background: #DBEAFE; color: #1E40AF; }
+    .tag-purple { background: #EDE9FE; color: #5B21B6; }
+    .tag-green  { background: #D1FAE5; color: #065F46; }
+    .tag-red    { background: #FEE2E2; color: #991B1B; }
+    .tag-amber  { background: #FEF3C7; color: #92400E; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; background: var(--code-bg); color: var(--code); padding: 1px 5px; border-radius: 3px; }
+    .mt075 { margin-top: .75rem; }
+    .tip-box { display: flex; gap: .75rem; padding: .85rem 1rem; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; margin: .75rem 0; }
+    .tip-ico { font-size: 1rem; flex-shrink: 0; }
+    .tip-text { font-size: 12px; color: #92400E; line-height: 1.6; }
+    .tip-text strong { color: #78350F; }
+
+    @media print {
+      .sidebar { display: none; }
+      .main { max-width: 100%; padding: 1rem; }
+      .ex-body { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<nav class="sidebar">
+  <div>
+    <div class="sb-badge">Data PMO · Semana 10</div>
+    <div class="sb-title">Módulo 6<br>Python para<br>Análise<br>(Pandas)</div>
+    <div class="sb-meta">
+      ⏱ ~4h (versão enxuta) &nbsp;·&nbsp; 🟢 Literacia<br>
+      Concluído · Julho 2026
+    </div>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section-label">Setup</div>
+  <div class="sb-nav">
+    <a href="#setup"><span class="dot done"></span>Ambiente &amp; dataset ✓</a>
+  </div>
+
+  <div class="sb-section-label">Aula 1 — Importação</div>
+  <div class="sb-nav">
+    <a href="#importacao"><span class="dot done"></span>read_csv &amp; os 3 diagnósticos ✓</a>
+  </div>
+
+  <div class="sb-section-label">Aula 2 — Merge</div>
+  <div class="sb-nav">
+    <a href="#merge"><span class="dot done"></span>Star Schema em Pandas ✓</a>
+  </div>
+
+  <div class="sb-section-label">Aula 3 — Limpeza</div>
+  <div class="sb-nav">
+    <a href="#limpeza"><span class="dot done"></span>Seleção &amp; rename ✓</a>
+  </div>
+
+  <div class="sb-section-label">Aula 4 — Agregações</div>
+  <div class="sb-nav">
+    <a href="#agregacoes"><span class="dot done"></span>groupby &amp; crosstab ✓</a>
+  </div>
+
+  <div class="sb-section-label">Aula 5 — SLA</div>
+  <div class="sb-nav">
+    <a href="#sla"><span class="dot done"></span>Datas &amp; 75,75% ✓</a>
+  </div>
+
+  <div class="sb-section-label">Aula 6 — Visualização</div>
+  <div class="sb-nav">
+    <a href="#viz"><span class="dot done"></span>matplotlib ✓</a>
+  </div>
+
+  <div class="sb-section-label">Referência</div>
+  <div class="sb-nav">
+    <a href="#erros"><span class="dot done"></span>Erros comuns ✓</a>
+    <a href="#insights"><span class="dot"></span>Insights da aula</a>
+  </div>
+
+  <div class="sb-footer">
+    <div class="sb-prog-label">Progresso do módulo</div>
+    <div class="sb-prog-track"><div class="sb-prog-fill"></div></div>
+    <div class="sb-prog-status">🟢 100% — 6 aulas · notebook entregue</div>
+  </div>
+</nav>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+  <!-- PIPELINE -->
+  <div class="pipeline-card">
+    <div class="pipeline-eyebrow">A mesma base, a quarta ferramenta — Módulo 6</div>
+    <div class="pipeline-flow">
+      <div class="p-step"><div class="p-node"><div class="p-node-name">SQL</div><div class="p-node-sub">Mód. 1</div></div></div>
+      <div class="p-arrow">→</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Power BI</div><div class="p-node-sub">Mód. 2 / 5</div></div></div>
+      <div class="p-arrow">→</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Excel</div><div class="p-node-sub">Mód. 3</div></div></div>
+      <div class="p-arrow">→</div>
+      <div class="p-step"><div class="p-node active-node"><div class="p-node-name highlight">Pandas</div><div class="p-node-sub">Você está aqui</div></div></div>
+      <div class="p-arrow">→</div>
+      <div class="p-step"><div class="p-node"><div class="p-node-name">Validação</div><div class="p-node-sub">75,75% ✓</div></div></div>
+    </div>
+    <div class="pipeline-note">Para PMO, Python não é obrigatório — o objetivo aqui é literacia: ler código, abrir um notebook e estimar a complexidade de uma demanda. A jogada de portfólio: reproduzir em Pandas as MESMAS análises do Painel de Produtividade, usando as mesmas 420 demandas, e validar que os números batem com o dashboard. Consistência entre ferramentas é competência central de um PMO de Dados.</div>
+  </div>
+
+  <!-- ══ SETUP ══ -->
+  <div class="section">
+    <span class="anchor" id="setup"></span>
+    <div class="section-head"><div class="section-icon">⚙️</div><h2 class="section-title">Setup — Ambiente &amp; Dataset</h2></div>
+
+    <div class="concept-grid">
+      <div class="concept-card c-blue">
+        <div class="cc-title">Colab × VS Code</div>
+        <div class="cc-text">O estudo começou no <strong>Google Colab</strong> (nuvem, nada a instalar) e migrou para o <strong>VS Code</strong> (local, mais próximo do fluxo real de dev). No Colab, arquivos são <em>enviados</em> com <code>files.upload()</code>; no VS Code, já estão no disco — basta apontar o caminho.</div>
+      </div>
+      <div class="concept-card c-purple">
+        <div class="cc-title">Bibliotecas</div>
+        <div class="cc-text">No VS Code o ambiente é montado uma vez, via terminal:</div>
+        <div class="cc-example">pip install pandas matplotlib openpyxl</div>
+        <div class="cc-sub"><strong>pandas</strong> = análise · <strong>matplotlib</strong> = gráficos · <strong>openpyxl</strong> = ler/gravar Excel</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-ico">🗂️</div>
+      <div class="tip-text"><strong>O dataset (Star Schema em 6 CSVs):</strong> a fato <code>demandas</code> (420 linhas) mais 5 dimensões — <code>squads</code> (8), <code>status</code> (5), <code>prioridade</code> (4), <code>categoria</code> (6) e <code>responsaveis</code> (24). É o mesmo modelo dimensional do Power BI, agora em arquivos separados. Cada dimensão traz um <strong>ID</strong> (a chave) + atributos.</div>
+    </div>
+  </div>
+
+  <!-- ══ AULA 1 — IMPORTAÇÃO ══ -->
+  <div class="section">
+    <span class="anchor" id="importacao"></span>
+    <div class="section-head"><div class="section-icon">📥</div><h2 class="section-title">Aula 1 — Importação e os 3 Diagnósticos</h2></div>
+
+    <div class="cc-text" style="margin-bottom:.75rem">Carregar um CSV parece trivial — até esbarrar nos três perrengues clássicos de dados brasileiros. Passar por eles <em>na ordem</em> é praticamente um rito de iniciação da análise de dados no Brasil.</div>
+
+    <div class="dax-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="tbl">demandas</span> = pd.<span class="fn">read_csv</span>(<span class="str">"demandas.csv"</span>, encoding=<span class="str">"utf-8"</span>)
+<span class="tbl">demandas</span>.<span class="fn">head</span>()   <span class="cm"># espia as 5 primeiras linhas</span></div>
+
+    <div class="result-label">Os três diagnósticos, na ordem em que aparecem</div>
+    <table class="op-table">
+      <tr><th>Sintoma / erro</th><th>Causa</th><th>Correção</th></tr>
+      <tr><td>Conteúdo estranho, JSON, <code>NaN</code></td><td>Arquivo errado (tema/dinâmica, não os dados)</td><td>Exportar a aba de <strong>dados brutos</strong></td></tr>
+      <tr><td><code>UnicodeDecodeError: byte 0xe1</code></td><td>Encoding — acento gravado em Latin-1 (Excel PT-BR)</td><td><code>encoding="latin-1"</code></td></tr>
+      <tr><td><code>Expected 1 field, saw 7</code></td><td>Separador — Excel PT-BR usa <code>;</code></td><td><code>sep=";"</code></td></tr>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-ico">🧭</div>
+      <div class="tip-text"><strong>Régua de leitura de erro:</strong> "byte inválido" = <em>encoding</em>; "expected X fields" = <em>separador</em>. No fim, cada arquivo pode ter sua própria regra — neste dataset, a <code>demandas</code> vinha com <code>;</code> e as dimensões com <code>,</code>. Inspecionar antes de confiar é metade do trabalho.</div>
+    </div>
+  </div>
+
+  <!-- ══ AULA 2 — MERGE ══ -->
+  <div class="section">
+    <span class="anchor" id="merge"></span>
+    <div class="section-head"><div class="section-icon">🔗</div><h2 class="section-title">Aula 2 — Merge: Star Schema em Pandas</h2></div>
+
+    <div class="cc-text" style="margin-bottom:.75rem">A fato sozinha só tem IDs (<code>SquadID = 5</code>). O <code>merge</code> troca cada ID pelo atributo legível da dimensão — é o <strong>LEFT JOIN</strong> do SQL. Encadeamos 5 merges, um por dimensão.</div>
+
+    <div class="dax-block"><span class="tbl">df</span> = (
+    <span class="tbl">demandas</span>
+    .<span class="fn">merge</span>(<span class="tbl">squads</span>,       on=<span class="str">"SquadID"</span>,       how=<span class="str">"left"</span>)
+    .<span class="fn">merge</span>(<span class="tbl">status</span>,       on=<span class="str">"StatusID"</span>,      how=<span class="str">"left"</span>)
+    .<span class="fn">merge</span>(<span class="tbl">prioridade</span>,   on=<span class="str">"PrioridadeID"</span>,  how=<span class="str">"left"</span>)
+    .<span class="fn">merge</span>(<span class="tbl">categoria</span>,    on=<span class="str">"CategoriaID"</span>,   how=<span class="str">"left"</span>)
+    .<span class="fn">merge</span>(<span class="tbl">responsaveis</span>, on=<span class="str">"ResponsavelID"</span>, how=<span class="str">"left"</span>)
+)</div>
+
+    <div class="concept-grid">
+      <div class="concept-card c-green">
+        <div class="cc-title">how="left"</div>
+        <div class="cc-text">Mantém <strong>todas</strong> as 420 demandas e traz os dados da dimensão. Se o total de linhas mudasse, seria sinal de ID duplicado numa dimensão — sempre confira com <code>df.shape</code>.</div>
+      </div>
+      <div class="concept-card c-amber">
+        <div class="cc-title">A colisão _x / _y</div>
+        <div class="cc-text">Tanto <code>squads</code> quanto <code>responsaveis</code> tinham <code>SquadNome</code>. O Pandas renomeia para <code>_x</code> (o que já estava) e <code>_y</code> (o novo). Não é erro — é <strong>redundância do modelo</strong>: o squad chega por dois caminhos. Mantém-se o da relação principal.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ AULA 3 — LIMPEZA ══ -->
+  <div class="section">
+    <span class="anchor" id="limpeza"></span>
+    <div class="section-head"><div class="section-icon">🧹</div><h2 class="section-title">Aula 3 — Limpeza: Selecionar e Renomear</h2></div>
+
+    <div class="cc-text" style="margin-bottom:.75rem">Depois dos merges, 20 colunas — mais do que o necessário. Selecionamos só o essencial e damos nomes limpos, resolvendo o <code>_x/_y</code>.</div>
+
+    <div class="dax-block"><span class="tbl">df_limpo</span> = <span class="tbl">df</span>[colunas].<span class="fn">rename</span>(columns={
+    <span class="str">"SquadNome_x"</span>: <span class="str">"Squad"</span>,       <span class="cm"># a versão vinda pela demanda</span>
+    <span class="str">"Nome"</span>: <span class="str">"Responsavel"</span>
+})</div>
+
+    <table class="op-table">
+      <tr><th>Operação</th><th>O que faz</th></tr>
+      <tr><td><code>df[[lista]]</code></td><td>Seleciona só as colunas desejadas (descarta os IDs numéricos, que já cumpriram seu papel no merge)</td></tr>
+      <tr><td><code>.rename(columns={...})</code></td><td>Troca nomes técnicos por legíveis: <code>SquadNome_x → Squad</code></td></tr>
+    </table>
+    <div class="result-meta">✔ Resultado: (420, 13) — tabela final legível, pronta para análise</div>
+  </div>
+
+  <!-- ══ AULA 4 — AGREGAÇÕES ══ -->
+  <div class="section">
+    <span class="anchor" id="agregacoes"></span>
+    <div class="section-head"><div class="section-icon">📊</div><h2 class="section-title">Aula 4 — Agregações: groupby &amp; crosstab</h2></div>
+
+    <div class="dax-block"><span class="cm"># Demandas por squad — o COUNT(*) ... GROUP BY do SQL</span>
+por_squad = <span class="tbl">df</span>.<span class="fn">groupby</span>(<span class="str">"Squad"</span>).<span class="fn">size</span>().<span class="fn">sort_values</span>(ascending=<span class="kw">False</span>)
+
+<span class="cm"># Squad × Status — recria a tabela dinâmica do Excel</span>
+squad_status = pd.<span class="fn">crosstab</span>(<span class="tbl">df</span>[<span class="str">"Squad"</span>], <span class="tbl">df</span>[<span class="str">"StatusNome"</span>])</div>
+
+    <div class="result-label">Demandas por Squad — idêntico ao Painel do Power BI</div>
+    <table class="result-table">
+      <tr><th>Squad</th><th>Demandas</th><th>Squad</th><th>Demandas</th></tr>
+      <tr><td>Squad Dados</td><td><strong>83</strong></td><td>Squad Crédito</td><td>52</td></tr>
+      <tr><td>Squad Pagamentos</td><td>74</td><td>Squad Experiência</td><td>47</td></tr>
+      <tr><td>Squad Integrações</td><td>64</td><td>Squad Segurança</td><td>24</td></tr>
+      <tr><td>Squad Onboarding</td><td>52</td><td>Squad Infraestrutura</td><td>24</td></tr>
+    </table>
+    <div class="result-meta">✔ Total = 420 · números idênticos ao dashboard (mesma base, mesma história)</div>
+  </div>
+
+  <!-- ══ AULA 5 — SLA ══ -->
+  <div class="section">
+    <span class="anchor" id="sla"></span>
+    <div class="section-head"><div class="section-icon">⏱️</div><h2 class="section-title">Aula 5 — SLA: Datas e o Denominador Correto</h2></div>
+
+    <div class="cc-text" style="margin-bottom:.75rem">A pergunta de PMO: <em>"quantas demandas fecharam dentro do prazo?"</em>. Antes de comparar datas, é preciso convertê-las de texto para tipo data.</div>
+
+    <div class="dax-block"><span class="cm"># 1) texto → data (senão a comparação não funciona)</span>
+<span class="tbl">df</span>[<span class="str">"DataPrazo"</span>]      = pd.<span class="fn">to_datetime</span>(<span class="tbl">df</span>[<span class="str">"DataPrazo"</span>])
+<span class="tbl">df</span>[<span class="str">"DataFechamento"</span>] = pd.<span class="fn">to_datetime</span>(<span class="tbl">df</span>[<span class="str">"DataFechamento"</span>])
+
+<span class="cm"># 2) cumpriu o SLA? fechou até o prazo?</span>
+<span class="tbl">df</span>[<span class="str">"Cumpriu_SLA"</span>] = <span class="tbl">df</span>[<span class="str">"DataFechamento"</span>] &lt;= <span class="tbl">df</span>[<span class="str">"DataPrazo"</span>]
+
+<span class="cm"># 3) só as FECHADAS (abertas não têm SLA a avaliar)</span>
+fechadas = <span class="tbl">df</span>[<span class="tbl">df</span>[<span class="str">"DataFechamento"</span>].<span class="fn">notna</span>()]
+fechadas[<span class="str">"Cumpriu_SLA"</span>].<span class="fn">mean</span>()   <span class="cm"># → 0.7575</span></div>
+
+    <div class="result-label">Resultado — validado contra o card do dashboard</div>
+    <table class="result-table">
+      <tr><th>Métrica</th><th>Valor</th><th>Observação</th></tr>
+      <tr><td>Demandas fechadas</td><td>301</td><td>A base correta (não 420)</td></tr>
+      <tr><td>Cumpriram o SLA</td><td>228</td><td>Fecharam até o prazo</td></tr>
+      <tr><td>% SLA</td><td><strong>75,75%</strong></td><td>228 ÷ 301 — idêntico ao Painel</td></tr>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-ico">🎯</div>
+      <div class="tip-text"><strong>O denominador certo:</strong> o SLA usa as <strong>301 fechadas</strong>, não as 420 totais — demanda em aberto não tem cumprimento de prazo a avaliar. Saber qual é o denominador correto é o que separa quem faz conta de quem entende o negócio. Pensamento de PMO, não de operador de ferramenta.</div>
+    </div>
+  </div>
+
+  <!-- ══ AULA 6 — VIZ ══ -->
+  <div class="section">
+    <span class="anchor" id="viz"></span>
+    <div class="section-head"><div class="section-icon">📈</div><h2 class="section-title">Aula 6 — Visualização com matplotlib</h2></div>
+
+    <div class="cc-text" style="margin-bottom:.75rem">Dois gráficos fecham a narrativa: demandas por squad (barras horizontais) e SLA cumprido vs não cumprido, com cores semânticas — verde = bom, vermelho = atenção, a mesma lógica do Painel.</div>
+
+    <div class="dax-block"><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+por_squad.<span class="fn">plot</span>(kind=<span class="str">"barh"</span>, color=<span class="str">"#2563EB"</span>)   <span class="cm"># azul do design system</span>
+plt.<span class="fn">title</span>(<span class="str">"Demandas por Squad"</span>)
+plt.<span class="fn">show</span>()</div>
+
+    <div class="tip-box">
+      <div class="tip-ico">🎨</div>
+      <div class="tip-text"><strong>Consistência visual:</strong> usar o mesmo azul (<code>#2563EB</code>) e a mesma semântica de cores do dashboard mantém a identidade do portfólio entre ferramentas. Detalhe de literacia: barras horizontais (<code>barh</code>) leem melhor quando os rótulos são longos, como nomes de squad.</div>
+    </div>
+  </div>
+
+  <!-- ══ ERROS COMUNS ══ -->
+  <div class="section">
+    <span class="anchor" id="erros"></span>
+    <div class="section-head"><div class="section-icon">🔴</div><h2 class="section-title">Erros Comuns (todos vividos nesta sessão)</h2></div>
+
+    <div class="error-block">
+      <div class="error-header"><span class="error-ico">⚠️</span><span class="error-title">1. Subir o arquivo errado</span></div>
+      <div class="error-fix">Um <code>tema.json</code> do Power BI e uma tabela dinâmica exportada foram carregados por engano. O Pandas lê qualquer coisa — cabe a você verificar se é o dado bruto (uma linha por demanda), não um resumo.</div>
+    </div>
+
+    <div class="error-block">
+      <div class="error-header"><span class="error-ico">⚠️</span><span class="error-title">2. Encoding — byte 0xe1</span></div>
+      <div class="error-msg">UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe1</div>
+      <div class="fix-block"><div class="fix-title">✅ Correção</div><div class="error-fix"><code>encoding="latin-1"</code> (ou <code>cp1252</code>). Padrão do Excel PT-BR.</div></div>
+    </div>
+
+    <div class="error-block">
+      <div class="error-header"><span class="error-ico">⚠️</span><span class="error-title">3. Separador — Expected 1 field</span></div>
+      <div class="error-msg">ParserError: Expected 1 fields in line 5, saw 7</div>
+      <div class="fix-block"><div class="fix-title">✅ Correção</div><div class="error-fix"><code>sep=";"</code>. O "7" no erro é uma pista: são as 7 colunas grudadas.</div></div>
+    </div>
+
+    <div class="error-block">
+      <div class="error-header"><span class="error-ico">⚠️</span><span class="error-title">4. Variável quebrada na memória — KeyError</span></div>
+      <div class="error-msg">KeyError: 'SquadID'</div>
+      <div class="error-fix">Uma dimensão foi carregada com separador errado numa célula anterior e ficou "quebrada" na memória. Num notebook, a variável guarda o <strong>último</strong> valor recebido, não a ordem visual das células.</div>
+      <div class="fix-block"><div class="fix-title">✅ Correção</div><div class="error-fix">Recarregar os dados do zero numa célula limpa. Reflexo certo quando algo "deveria funcionar e não funciona".</div></div>
+    </div>
+
+    <div class="error-block">
+      <div class="error-header"><span class="error-ico">⚠️</span><span class="error-title">5. Biblioteca não instalada — ModuleNotFoundError</span></div>
+      <div class="error-msg">ModuleNotFoundError: No module named 'matplotlib'</div>
+      <div class="fix-block"><div class="fix-title">✅ Correção</div><div class="error-fix"><code>pip install matplotlib</code> no terminal → <strong>Restart</strong> do kernel → <strong>Run All</strong>. No local, o ambiente é você que monta (diferente do Colab).</div></div>
+    </div>
+  </div>
+
+  <!-- ══ INSIGHTS ══ -->
+  <div class="section">
+    <span class="anchor" id="insights"></span>
+    <div class="section-head"><div class="section-icon">💭</div><h2 class="section-title">Insights da Aula</h2></div>
+
+    <div class="insight">
+      <div class="insight-ico">🔄</div>
+      <div>
+        <div class="insight-title">A mesma base em quatro ferramentas</div>
+        <div class="insight-text">SQL, Power BI, Excel e Pandas produziram os <strong>mesmos números</strong> a partir das mesmas 420 demandas — incluindo o SLA de 75,75%. Numa entrevista, isso vira uma frase poderosa: "peguei o dataset que modelei no Power BI e reproduzi as análises em Pandas, validando os resultados nas duas ferramentas". Fluência de dados, não só sintaxe.</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-ico">🎯</div>
+      <div>
+        <div class="insight-title">O denominador certo é decisão de negócio</div>
+        <div class="insight-text">Filtrar as 301 fechadas em vez de dividir por 420 não é detalhe técnico — é entender o que o indicador significa. Esse tipo de julgamento é o núcleo do papel de PMO de Dados.</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-ico">🧭</div>
+      <div>
+        <div class="insight-title">Diagnosticar erro é literacia de dados</div>
+        <div class="insight-text">Arquivo errado → encoding → separador → memória → biblioteca: cinco erros, cinco diagnósticos. Esse é o fluxo real de quem trabalha com dados. Saber <em>ler</em> a mensagem de erro e agir vale mais que decorar sintaxe — e não está em curso nenhum.</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-ico">➡️</div>
+      <div>
+        <div class="insight-title">Python para PMO: literacia, não bootcamp</div>
+        <div class="insight-text">O objetivo foi cumprido: ler e entender código Pandas, abrir um notebook e estimar complexidade de uma demanda de Python. Aprofundar (Python avançado, que algumas vagas pedem) fica como evolução opcional — sem travar a transição. Daqui, o roteiro segue para os Módulos 7 (IA Prática) e 8 (Gestão de Projetos de Dados).</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  const ids = ['setup','importacao','merge','limpeza','agregacoes','sla','viz','erros','insights'];
+  const links = {};
+  ids.forEach(id => { links[id] = document.querySelector(`.sb-nav a[href="#${id}"]`); });
+  function spy() {
+    let cur = ids[0];
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY + 90 >= el.getBoundingClientRect().top + window.scrollY) cur = id;
+    });
+    Object.values(links).forEach(l => l && l.classList.remove('active'));
+    if (links[cur]) links[cur].classList.add('active');
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+</script>
+</body>
+</html>
