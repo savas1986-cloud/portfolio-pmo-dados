@@ -59,7 +59,7 @@ O SLA usa como base as demandas **fechadas** (301), não o total (420): demandas
 em aberto não têm cumprimento de prazo a avaliar.
 
 📄 Estudo completo do módulo:
-[`../Estudos/modulo-6-python-pandas.html`](../https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-5-powerbi-dax.html)
+[`../Estudos/modulo-6-python-pandas.html`]([../https://savas1986-cloud.github.io/portfolio-pmo-dados/Estudos/modulo-5-powerbi-dax.html])
 
 ---
 
